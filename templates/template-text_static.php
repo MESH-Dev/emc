@@ -1,5 +1,7 @@
 <?php get_header(); 
-/* Template Name: Homepage*/
+
+/* Template Name: Text Page Template - Static */
+
 ?>
 
 <main id="content">

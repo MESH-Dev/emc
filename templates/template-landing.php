@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php get_header(); 
+/* Template Name: Landing Page Template */
+?>
 
 <main id="content">
 

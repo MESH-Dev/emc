@@ -1,6 +1,4 @@
-<?php get_header(); 
-/* Template Name: Homepage*/
-?>
+<?php get_header(); ?>
 
 <main id="content">
 
