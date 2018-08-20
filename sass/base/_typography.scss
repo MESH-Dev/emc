@@ -1,7 +1,33 @@
 // Typography
 //––––––––––––––––––––––––––––––––––––––––––––––––––
+@font-face{
+   font-family: "whitney-light";
+   src: url("fonts/WhitneyHTF-Light.otf");
+}
+@font-face{
+   font-family: "whitney-book";
+   src: url("fonts/whitney-book.ttf");
+}
+@font-face{
+   font-family: "whitney-semi";
+   src: url("fonts/WhitneyHTF-SemiBold.otf");
+}
+@font-face{
+   font-family: 'whitney-bold';
+   src: url('fonts/WhitneyHTF-Bold.otf');
+}
+@font-face{
+   font-family: 'bianco-reg';
+   src: url('fonts/Bianco-Serif-New.otf');
+}
+@font-face{
+   font-family: 'bianco-extrabold';
+   src: url('fonts/Bianco-Serif-New ExtraBold.otf');
+}
+
 
 h1, h2, h3, h4, h5, h6 {
+   font-family: 'whitney-semi';
   margin-top: 0;
   margin-bottom: 2rem;
   font-weight: 300;
@@ -14,7 +40,7 @@ h4 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
 h5 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
 h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0;       }
 
- 
+
 @media($bp-smaller-than-tablet) {
   h1 { font-size: 5.0rem; }
   h2 { font-size: 4.2rem; }
@@ -25,9 +51,29 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0;       }
 }
 
 p {
-  font-size: 1.4rem;  
-  line-height: 1.428; 
+  font-size: 1.4rem;
+  line-height: 1.428;
   margin-top: 0;
   margin-bottom: 1.8rem;
- 
+
+}
+
+//Callout Color Classes
+.orange{
+   color: $primary-orange;
+}
+
+.heading1{
+   font-family: 'whitney-book';
+   font-size: 4.8rem;
+   line-height: 60px;
+   letter-spacing: 0.6px;
+}
+
+.heading6{
+   font-family: 'whitney-bold';
+   font-size: 1.4rem;
+   line-height: 30px;
+   letter-spacing: 3px;
+   text-transform: uppercase;
 }
