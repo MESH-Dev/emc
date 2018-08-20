@@ -939,36 +939,30 @@ td:last-child {
 .ticker .text {
   float: left;
   line-height: 30px;
+  margin-bottom: 0;
 }
-/* line 71, sass/modules/_header.scss */
+/* line 72, sass/modules/_header.scss */
 .ticker .ticker-title {
   font-family: 'bianco-extrabold';
 }
-/* line 74, sass/modules/_header.scss */
+/* line 75, sass/modules/_header.scss */
 .ticker .close {
   float: right;
   height: 30px;
+  padding: 7px 0;
 }
-/* line 78, sass/modules/_header.scss */
-.ticker .close a {
-  display: block;
-  line-height: normal;
-  height: 30px;
-  font-size: 3.6rem;
-  color: #EDD9BC;
-  transform: rotate(45deg);
-  transform-origin: center;
-}
-/* line 86, sass/modules/_header.scss */
-.ticker .close a:hover {
-  text-decoration: none;
+/* line 79, sass/modules/_header.scss */
+.ticker .close svg {
+  height: 14px;
+  width: auto;
 }
 
 /* line 2, sass/modules/_footer.scss */
 footer .nav-row {
+  padding: 14px 0;
   background-color: rgba(251, 216, 194, 0.5);
 }
-/* line 4, sass/modules/_footer.scss */
+/* line 5, sass/modules/_footer.scss */
 footer .nav-row a {
   margin-bottom: 0;
   font-family: 'whitney-bold';
@@ -979,16 +973,45 @@ footer .nav-row a {
   transition: color 0.15s ease-in-out;
   margin-right: 31px;
 }
-/* line 13, sass/modules/_footer.scss */
+/* line 14, sass/modules/_footer.scss */
+footer .nav-row a.newsletter {
+  color: #70594C;
+}
+/* line 17, sass/modules/_footer.scss */
 footer .nav-row a:hover {
   text-decoration: none;
   color: #EB742D;
 }
-/* line 19, sass/modules/_footer.scss */
+/* line 22, sass/modules/_footer.scss */
+footer .nav-row .search-field {
+  display: inline-block;
+  max-width: 140px;
+  height: 20px;
+  float: right;
+}
+/* line 29, sass/modules/_footer.scss */
+footer .footer-nav {
+  display: inline-block;
+}
+/* line 32, sass/modules/_footer.scss */
 footer .copy-row {
+  padding: 14px 0;
   background-color: #FBD8C2;
 }
-/* line 22, sass/modules/_footer.scss */
+/* line 35, sass/modules/_footer.scss */
+footer .copy-row p, footer .copy-row a {
+  margin-bottom: 0;
+}
+/* line 38, sass/modules/_footer.scss */
+footer .copy-row .copy {
+  display: inline-block;
+}
+/* line 41, sass/modules/_footer.scss */
+footer .copy-row .byline {
+  display: inline-block;
+  float: right;
+}
+/* line 46, sass/modules/_footer.scss */
 footer #search {
   float: right;
   width: 20px;

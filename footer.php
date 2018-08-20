@@ -10,7 +10,7 @@
                <a href="#">Our Financials</a>
                <a href="#">Privacy Policy</a>
                <a href="#">Careers</a>
-               <a href="">Sign Up For Our Newsletter!</a>
+               <a class="newsletter" href="">Sign Up For Our Newsletter!</a>
             </div>
             <svg id="search" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
@@ -24,6 +24,7 @@
                	S24.6,69,41.1,69c6.2,0,12.1-1.9,16.9-5.2l19,19l0,0l6.3,6.3l5.9-5.9l0,0L82.8,76.9z M18.3,39.1c0-12.5,10.2-22.7,22.7-22.7
                	s22.7,10.2,22.7,22.7S53.6,61.8,41.1,61.8S18.3,51.6,18.3,39.1z"/>
             </svg>
+            <input class="search-field" type="text" name="search" value="">
          </div>
       </div>
    </div>
@@ -36,10 +37,11 @@
                <a href="#"><i class="fab fa-facebook"></i></a>
                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
+            <p class="copy">&#169; Every Mother Counts 2018</p>
    				<!-- <nav class="main-navigation">
    					<//?php wp_nav_menu( array('menu_id' => 'footer-menu', 'theme_location' => 'footer-menu') ); ?>
    				</nav> -->
-   			<p>Site by <a href="http://meshfresh.com" target="_blank">MESH</a></p>
+   			<p class="byline">Site by <a href="http://meshfresh.com" target="_blank">MESH</a></p>
    		</div>
    	</div>
    </div>

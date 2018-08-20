@@ -43,7 +43,19 @@
 				<div class="row">
 					<p class="text"><span class="ticker-title">Giving Birth in America:</span> The number of women who have lost their lives giving birth in America has nearly doubled in 25 years. Watch the films and take action today.</p>
 					<div class="close">
-						<a href="">+</a>
+						<a href="#">
+							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+								<style type="text/css">
+									.st0{fill:#EED9BD;}
+									.st1{fill:#EC742E;}
+								</style>
+								<g>
+									<path class="st0" d="M50.2,56.5L18.6,88.2l-6.3-6.3l31.6-31.6L12.5,18.8l5.9-5.9l31.5,31.5l31.6-31.6l6.3,6.3L56.1,50.7L87.4,82
+										l-5.9,5.9L50.2,56.5z"/>
+								</g>
+							</svg>
+						</a>
 					</div>
 				</div>
 			</div>

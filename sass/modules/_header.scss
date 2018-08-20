@@ -67,6 +67,7 @@
    .text{
       float: left;
       line-height: 30px;
+      margin-bottom: 0;
    }
    .ticker-title{
       font-family: 'bianco-extrabold';
@@ -74,18 +75,10 @@
    .close{
       float: right;
       height: 30px;
-      // transform: rotate(45deg);
-      a{
-         display: block;
-         line-height: normal;
-         height: 30px;
-         font-size: 3.6rem;
-         color: $offwhite-2;
-         transform: rotate(45deg);
-         transform-origin: center;
-         &:hover{
-            text-decoration: none;
-         }
+      padding: 7px 0;
+      svg{
+         height: 14px;
+         width: auto;
       }
    }
 }
