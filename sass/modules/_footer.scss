@@ -1,0 +1,51 @@
+footer{
+   .nav-row{
+      padding: 14px 0;
+      background-color: $offwhite-1-rgba;
+      a{
+         margin-bottom: 0;
+         font-family: 'whitney-bold';
+         font-size: 1.4rem;
+         text-transform: uppercase;
+         color: $primary-red;
+         letter-spacing: 0.8px;
+         transition: color 0.15s ease-in-out;
+         margin-right: 31px;
+         &.newsletter{
+            color: $nav-brown;
+         }
+         &:hover{
+            text-decoration: none;
+            color: $primary-orange;
+         }
+      }
+      .search-field{
+         display: inline-block;
+         max-width: 140px;
+         height: 20px;
+         float: right;
+      }
+   }
+   .footer-nav{
+      display: inline-block;
+   }
+   .copy-row{
+      padding: 14px 0;
+      background-color: $offwhite-1;
+      p, a{
+         margin-bottom: 0;
+      }
+      .copy{
+         display: inline-block;
+      }
+      .byline{
+         display: inline-block;
+         float: right;
+      }
+   }
+   #search{
+      float: right;
+      width: 20px;
+      height: auto;
+   }
+}

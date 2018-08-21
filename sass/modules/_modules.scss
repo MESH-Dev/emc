@@ -1,0 +1,45 @@
+.welcome-gate{
+   height: 700px;
+   width: 100%;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   padding-top: 220px;
+   img{
+      display: block;
+      width: 450px;
+      height: auto;
+      margin: 0 auto;
+   }
+}
+
+.panel{
+   padding: 40px 0;
+   &.callout{
+      background-color: $offwhite-3;
+      text-align: center;
+      p.intro{
+         max-width: 933px;
+         margin: 0 auto;
+         margin-bottom: 20px;
+         font-family: 'bianco-reg';
+         color: $tertiary-grey;
+         font-size: 1.8rem;
+         letter-spacing: 0.5px;
+         line-height: 30px;
+      }
+   }
+   &.map{
+      background-color: $offwhite-3;
+      text-align: center;
+      .heading6{
+         color: $primary-orange;
+      }
+      img{
+         display: block;
+         max-width: 1087px;
+         height: auto;
+         margin: 0 auto;
+      }
+   }
+}
