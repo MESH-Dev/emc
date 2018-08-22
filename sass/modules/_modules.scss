@@ -1,10 +1,20 @@
 .welcome-gate{
-   height: 700px;
+   height: calc(100vh - 115px);
    width: 100%;
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
-   padding-top: 220px;
+   padding-top: 30vh;
+   &.interior{
+      height: 564px;
+      padding-top: 55px;
+      .top-callout{
+         color: $offwhite-1;
+         font-family: 'whitney-bold';
+         font-size: 2rem;
+         letter-spacing: 3px;
+      }
+   }
    img{
       display: block;
       width: 450px;
@@ -13,8 +23,13 @@
    }
 }
 
+//Panels
 .panel{
    padding: 40px 0;
+   @media screen and ($bp-smaller-than-largedesktop){
+      padding-left: 40px;
+      padding-right: 40px;
+   }
    &.callout{
       background-color: $offwhite-3;
       text-align: center;
@@ -27,6 +42,24 @@
          font-size: 1.8rem;
          letter-spacing: 0.5px;
          line-height: 30px;
+      }
+      .heading1{
+         color: $primary-lightbrown;
+      }
+      &.interior{
+         background-color: $tertiary-background;
+         p.intro{
+            max-width: 1050px;
+            font-size: 2.6rem;
+            letter-spacing: 0.6px;
+            line-height: 38px;
+            color: $primary-red;
+         }
+         .heading6{
+            color: $primary-orange;
+            max-width: 885px;
+            margin: 0 auto;
+         }
       }
    }
    &.map{
@@ -41,5 +74,271 @@
          height: auto;
          margin: 0 auto;
       }
+   }
+   &.text-grid{
+      background-color: $secondary-pink;
+      .heading6{
+         color: $primary-orange;
+      }
+      .desc{
+         display: inline;
+         font-family: 'bianco-reg';
+         font-size: 2.8rem;
+         color: $nav-brown;
+         letter-spacing: 0.82px;
+      }
+      .grid-item{
+         max-width: 280px;
+         // margin: 0 auto;
+         svg{
+            display: inline;
+            height: 18px;
+            width: auto;
+         }
+      }
+   }
+   &.feature{
+      padding-top: 0;
+      // padding-left: 40px;
+      // padding-right: 40px;
+      position: relative;
+      &::before{
+         position: absolute;
+         content: '';
+         top: 0;
+         left: 0;
+         right: 0;
+         width: 100%;
+         width: 100vw;
+         background-color: $secondary-pink;
+         height: 100px;
+         z-index: -2;
+      }
+      .feature-image{
+         width: 100%;
+         height: auto;
+         padding-right: 40px;
+         padding-left: 40px;
+      }
+      .intro{
+         position: absolute;
+         top: 150px;
+         .title{
+            font-family: 'whitney-bold';
+            text-transform: uppercase;
+            line-height: 29px;
+            color: $offwhite-1;
+         }
+         .desc{
+            display: inline;
+            font-family: 'bianco-reg';
+            font-size: 2rem;
+            letter-spacing: 0.6px;
+            line-height: 32px;
+            color: $offwhite-1;
+         }
+         svg{
+            display: inline;
+            height: 18px;
+            width: auto;
+         }
+      }
+      .feature-image{
+         // position: absolute;
+         // top: 0;
+         // left: 40px;
+         // right: 40px;
+         // height: auto;
+         // z-index: -1;
+      }
+   }
+   &.offset-text{
+      background-color: $tertiary-background;
+      .heading2{
+         font-family: 'whitney-light';
+         color: $nav-brown;
+      }
+      .desc-col{
+         p{
+            color: $nav-brown;
+         }
+      }
+   }
+   &.img-and-wysiwyg{
+      background-color: $tertiary-background;
+      .textsection{
+         h1,h2,h3,h4,h5,h6,p,ul,ol,li{
+            color: $primary-red;
+            font-family: 'whitney-book';
+         }
+      }
+      img{
+         width: 100%;
+         height: auto;
+         margin: 0;
+      }
+   }
+   &.half-img-callout{
+      background-color: $tertiary-background;
+      overflow: hidden;
+      img{
+         width: 100%;
+         height: auto;
+      }
+      .callout-half{
+         color: $primary-orange;
+         max-width: 300px;
+         position: relative;
+         a{
+            text-decoration: none;
+            display: inline;
+            transition: opacity 0.2s ease-in-out;
+            &:hover{
+               text-decoration: none;
+               opacity: 0.5;
+            }
+         }
+         img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 0;
+            height: 340px;
+            width: auto;
+         }
+      }
+      .desc{
+         z-index: 1;
+         font-family: 'whitney-bold';
+         letter-spacing: 0.6px;
+         line-height: 40px;
+         font-size: 3.6rem;
+         color: $primary-orange;
+      }
+      .cta{
+         z-index: 1;
+         p{
+            display: inline;
+            font-family: 'whitney-bold';
+            color: $primary-orange;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+         }
+         svg{
+            display: inline;
+            height: 16px;
+            width: auto;
+         }
+      }
+   }
+   &.story{
+      background-color: $offwhite-1;
+      img{
+         width: 100%;
+         height: auto;
+         margin-bottom: 10px;
+      }
+      .caption{
+         color: $nav-brown;
+         font-family: 'whitney-book';
+         font-size: 2.4rem;
+         letter-spacing: 1.23px;
+         line-height: 34px;
+      }
+      .wysiwyg-section{
+         padding-left: 37px;
+      }
+   }
+   &.statistic{
+      background-color: $tertiary-background;
+      position: relative;
+      .stats{
+         position: absolute;
+         top: 132px;
+      }
+      .stat-visual{
+         width: 100%;
+         // padding-top: 40px;
+         padding-left: 40px;
+         padding-right: 40px;
+      }
+   }
+   &.photo-essay{
+      background-color: $tertiary-background;
+      .text-section{
+         padding-right: 37px;
+         .desc{
+            color: $primary-red;
+         }
+      }
+      .thumbnails{
+         margin-top: 10px;
+         img{
+            width: 100%;
+            height: auto;
+         }
+      }
+      .img-section{
+         .feature{
+            width: 100%;
+            height: auto;
+         }
+      }
+   }
+   &.icon-grid{
+      background-color: $tertiary-background;
+      .card{
+         overflow: hidden;
+      }
+      .card-icon{
+         height: 215px;
+         width: auto;
+      }
+      .divider{
+         width: 34px;
+         height: 10px;
+         background-color: $primary-orange;
+         margin: 14px 0;
+      }
+      .caption{
+         p{
+            font-family: 'whitney-book';
+            font-size: 2rem;
+            letter-spacing: 0.6px;
+            line-height: 26px;
+         }
+      }
+   }
+   &.half-cta{
+      .cta{
+         a{
+            transition: opacity 0.2s ease-in-out;
+            &:hover{
+               text-decoration: none;
+               opacity: 0.5;
+            }
+            p{
+               font-family: 'whitney-bold';
+               font-size: 3.6rem;
+               letter-spacing: 0.6px;
+               line-height: 48px;
+               color: $primary-pink;
+               display: inline;
+               color: $primary-pink;
+            }
+            svg{
+               display: inline;
+               height: 14px;
+               width: auto;
+            }
+         }
+      }
+   }
+}
+
+main.landing{
+   .text-grid{
+      background-color: $tertiary-background;
    }
 }

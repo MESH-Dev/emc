@@ -24,6 +24,7 @@ footer{
          max-width: 140px;
          height: 20px;
          float: right;
+         display: none;
       }
    }
    .footer-nav{
@@ -37,10 +38,28 @@ footer{
       }
       .copy{
          display: inline-block;
+         font-family: 'whitney-bold';
+         font-size: 1.2rem;
+         letter-spacing: 2px;
+         color: $nav-brown;
+         text-transform: uppercase;
       }
       .byline{
          display: inline-block;
          float: right;
+         font-family: 'whitney-bold';
+         font-size: 1.2rem;
+         letter-spacing: 2px;
+         color: $nav-brown;
+         text-transform: uppercase;
+         a{
+            font-family: 'whitney-light';
+            color: $nav-brown;
+            &:hover{
+               text-decoration: none;
+               opacity: 0.5;
+            }
+         }
       }
    }
    #search{

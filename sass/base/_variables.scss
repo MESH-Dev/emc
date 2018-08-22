@@ -13,6 +13,7 @@ $bp-smaller-than-desktop : "max-width: 1060px" !default;
 $bp-smaller-than-tablet : "max-width: 750px" !default;
 $bp-smaller-than-mobile : "max-width: 480px" !default;
 $bp-smaller-than-phablet   : "max-width: 550px" !default;
+$bp-smaller-than-largedesktop : "max-width: 1400px" !default;
 
 // Colors
 $red: #a42126 !default;
@@ -26,12 +27,17 @@ $nav-brown: #70594C;
 $primary-lightbrown: #A99689 !default;
 $primary-orange: #EB742D;
 $primary-red: #B46C4E;
+$primary-pink: #F8B199;
+
+//Secondary
+$secondary-pink: #D9B5A5;
 
 //Tertiary
 $ticker-green: #97A88F;
 $offwhite-3: #FDF6ED;
 $offwhite-2: #EDD9BC;
 $tertiary-grey: #356B51;
+$tertiary-background: #FEF6F2;
 
 
 //Fonts
