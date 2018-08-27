@@ -22,7 +22,9 @@ $max-width: 1400px;
 .container{
 	max-width: $max-width;
 	margin:  0 auto;
-
+	@media ($bp-smaller-than-desktop){
+		max-width:98%;
+	}
 }
 
 .row {

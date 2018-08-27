@@ -6,7 +6,7 @@
 $bp-larger-than-mobile    : "min-width: 480px" !default;
 $bp-larger-than-phablet   : "min-width: 550px" !default;
 $bp-larger-than-tablet    : "min-width: 750px" !default;
-$bp-larger-than-desktop   : "min-width: 1000px" !default;
+$bp-larger-than-desktop   : "min-width: 1060px" !default;
 $bp-larger-than-desktophd : "min-width: 1200px" !default;
 
 $bp-smaller-than-desktop : "max-width: 1060px" !default;
@@ -38,8 +38,9 @@ $offwhite-3: #FDF6ED;
 $offwhite-2: #EDD9BC;
 $tertiary-grey: #356B51;
 $tertiary-background: #FEF6F2;
-
-
+$callout-brown: #B56C4B;
+$h5-brown: #8B572A;
+$h3-brown: #41282C;
 //Fonts
 $proxima: "proxima-nova",sans-serif;
 

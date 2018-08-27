@@ -30,7 +30,9 @@ add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call usi
 register_nav_menus(
     array(
         'main_nav' => 'Header and breadcrumb trail heirarchy',
-        'social_nav' => 'Social menu used throughout'
+        'social_nav' => 'Social menu used throughout',
+        'footer_nav' => 'Footer navigation menu',
+        'gateway_nav' => 'Gateway nav in the header'
     )
 );
 

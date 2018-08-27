@@ -33,15 +33,41 @@
 
 	<?php wp_head(); ?>
 
+	<!-- Bugherd - Delete before site is live -->
+	<script type='text/javascript'>
+		(function (d, t) {
+		  var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
+		  bh.type = 'text/javascript';
+		  bh.src = 'https://www.bugherd.com/sidebarv2.js?apikey=yxjz33jhnn2bgxyldpsrtg';
+		  s.parentNode.insertBefore(bh, s);
+		  })(document, 'script');
+	</script>
+
 </head>
 
 <body <?php body_class(); ?>>
 
 	<header>
+		<?php 
+			$h_cta = get_field('cta_message', 'options');
+			$h_link = get_field('cta_message_link', 'options');
+			$h_external = get_field('tc_external');
+
+			$h_target = '';
+			if($h_external == 'true'){
+				$h_target='target="_blank"';
+			}
+		?>
 		<div class="ticker">
 			<div class="container">
 				<div class="row">
-					<p class="text"><span class="ticker-title">Giving Birth in America:</span> The number of women who have lost their lives giving birth in America has nearly doubled in 25 years. Watch the films and take action today.</p>
+					<div class="text">
+						<a href="<?php echo $h_link; ?>" <?php echo $h_target; ?>>
+							
+								<?php echo $h_cta; ?>
+							
+						</a>
+					</div>
 					<div class="close">
 						<a href="#">
 							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -67,7 +93,13 @@
 						<!-- <div class="logo">
 							<h1 class="site-title"><a href="<//?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><//?php bloginfo( 'name' ); ?></a></h1>
 						</div> -->
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_Madonna_onecolor_40in.png" alt=""></a>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+							<?php if(is_front_page()){ ?>
+							<img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_Madonna_onecolor_40in.png" alt="">
+							<?php }else{ ?>
+							<img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo@3x.png" alt="">
+							<?php } ?>
+						</a>
 						<nav class="main-navigation">
 							<?php if(has_nav_menu('main_nav')){
 										$defaults = array(
@@ -93,10 +125,28 @@
 									} ?>
 						</nav>
 						<div class="secondary-navigation">
-							<ul>
-								<li><a href="#">What Can I Do?</a></li>
-								<li><a href="#">Donate</a></li>
-							</ul>
+							<?php if(has_nav_menu('gateway_nav')){
+										$defaults = array(
+											'theme_location'  => 'gateway_nav',
+											'menu'            => 'gateway_nav',
+											'container'       => false,
+											'container_class' => '',
+											'container_id'    => '',
+											'menu_class'      => 'menu',
+											'menu_id'         => '',
+											'echo'            => true,
+											'fallback_cb'     => 'wp_page_menu',
+											'before'          => '',
+											'after'           => '',
+											'link_before'     => '',
+											'link_after'      => '',
+											'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+											'depth'           => 0,
+											'walker'          => ''
+										); wp_nav_menu( $defaults );
+									}else{
+										echo "<p><em>gateway_nav</em> doesn't exist! Create it and it'll render here.</p>";
+									} ?>
 							<div class="socials">
 								<a href="#"><i class="fab fa-twitter"></i></a>
 								<a href="#"><i class="fab fa-instagram"></i></a>

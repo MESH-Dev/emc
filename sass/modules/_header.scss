@@ -8,7 +8,7 @@ header{
 }
 
 main#content{
-   margin-top: 115px;
+   //margin-top: 115px;
 }
 
 .main-navigation, .secondary-navigation{
@@ -103,10 +103,26 @@ main#content{
 .ticker{
    height: 30px;
    background-color: $ticker-green;
+   a{
+         &:hover,
+         &:active,
+         &:focus{
+            text-decoration:none;
+            *{
+               opacity:.5;
+            }
+            
+         }
+      }
    p{
       font-family: 'bianco-reg';
       font-size: 1.4rem;
       color: $offwhite-3;
+      margin:0;
+      strong, b{
+         font-family: 'bianco-extrabold';
+      }
+      
    }
    .text{
       float: left;
