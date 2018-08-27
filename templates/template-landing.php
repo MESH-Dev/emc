@@ -342,7 +342,7 @@
 			</div>
 		</div>
 	</div>
-<? } elseif($panel_type == 'cross-promo'){?>
+<?php } elseif($panel_type == 'cross-promo'){?>
 
 <div class="panel half-cta">
 		<div class="container">
