@@ -381,7 +381,7 @@
 			</div>
 		</div>
 	</div>
-<? } ?>
+<?php } ?>
 <?php endwhile; endif; ?>
 <!-- End of Content -->
 

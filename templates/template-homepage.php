@@ -11,8 +11,7 @@
 
 				"<?php echo $row['country']; ?>":"\u003ca href=\"<?php echo $row['country_lp'][0]; ?>\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eBRAZIL\u003c/span\u003e \u003ca a/\u003e"
 
-			<?php }
-			?>
+			<?php } ?>
 			};
 			</script>
 <main id="content">
@@ -39,7 +38,7 @@
 				<source src ="<?php echo $vo_url; ?>" autoplay="true" loop="true" muted="true">
 				<source src ="<?php echo $vw_url; ?>" autoplay="true" loop="true" muted="true">
 			<video>
-		<? } ?>
+		<?php } ?>
 	</div>
 	<div class="panel callout">
 		<div class="container">
@@ -93,7 +92,7 @@
 							</svg>
 						<?php if($s_link !="_blank"){ ?>
 						</a>
-						<?php } }?>
+						<?php } } ?>
 					</div>
 
 			</div>
