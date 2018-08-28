@@ -23,8 +23,8 @@ body{
    //padding-top: 220px;
 
     &.interior{
-      height: 564px;
-      padding-top: 115px;
+      height: 675px;
+      padding-top: 165px;
       .top-callout{
          color: $offwhite-1;
          font-family: 'whitney-bold';
@@ -177,6 +177,7 @@ body{
       }
       &.interior{
          background-color: $tertiary-background;
+         padding-top: 80px;
          .intro{
             max-width: 1050px;
             p{

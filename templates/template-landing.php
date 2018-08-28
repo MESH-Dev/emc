@@ -223,7 +223,7 @@
 
 							?>
 							<img class="feature" src="<?php echo $n_image_url;?>" alt="<?php echo $n_image_alt; ?>">
-							<? }else{
+						<?php }else{
 								$t_cnt++;
 								if($first_loop == 1){
 									$first_loop=0;
