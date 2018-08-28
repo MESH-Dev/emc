@@ -29,32 +29,32 @@ if( function_exists('acf_add_options_page') ) {
 //add_action('wp_enqueue_scripts','loadmore_ajaxurl');
 //function loadmore_ajaxurl() {
 
-function update_locations_map( $post_id ) {
-	 $post_type = get_post_type($post_id);
-
-	 if('front_page' == $post_type){
-
-	 $countries = get_field('countries', $post_id);
-	 //var_dump $countries; 
-
-	 $abbr = $countries[0]('country');
-	 $c_link = $countries[0]('country_lp;');
-
-	 $a = [
-	 	"id"->$abbr,
-	 	"marker"->$c_link,
-	 ];
-
-	  array_push($arr, $a);
-
-	  //The file location for the json file we're creating
-        $directory = get_template_directory().'/helpers/locations.json';
-        //Write to our file
-        $myfile = fopen(''.$directory.'', "w") or die("Unable to open file!");
-        fwrite($myfile, $arr);
-        fclose($myfile);  
-    }
-}
+// function update_locations_map( $post_id ) {
+// 	 $post_type = get_post_type($post_id);
+//
+// 	 if('front_page' == $post_type){
+//
+// 	 $countries = get_field('countries', $post_id);
+// 	 //var_dump $countries;
+//
+// 	 $abbr = $countries[0]('country');
+// 	 $c_link = $countries[0]('country_lp;');
+//
+// 	 $a = [
+// 	 	"id"->$abbr,
+// 	 	"marker"->$c_link,
+// 	 ];
+//
+// 	  array_push($arr, $a);
+//
+// 	  //The file location for the json file we're creating
+//         $directory = get_template_directory().'/helpers/locations.json';
+//         //Write to our file
+//         $myfile = fopen(''.$directory.'', "w") or die("Unable to open file!");
+//         fwrite($myfile, $arr);
+//         fclose($myfile);
+//     }
+// }
 
 add_action('save_post', 'update_locations_map', 10, 3);
 // function my_endpoint( $request_data ) {
@@ -67,7 +67,7 @@ add_action('save_post', 'update_locations_map', 10, 3);
 // 	// get posts
 // 	$posts = get_posts($args);
 
-// 	// add custom field data to posts array	
+// 	// add custom field data to posts array
 // 	foreach ($posts as $key => $post) {
 // 			$posts[$key]->acf = get_fields($post->ID);
 // 			$posts[$key]->link = get_permalink($post->ID);

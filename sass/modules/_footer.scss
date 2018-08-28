@@ -9,7 +9,7 @@ footer{
          text-transform: uppercase;
          color: $primary-red;
          letter-spacing: 0.8px;
-         transition: color 0.15s ease-in-out;
+         transition: color 0.5s ease-in-out;
          margin-right: 31px;
          &.newsletter{
             color: $nav-brown;
@@ -21,10 +21,36 @@ footer{
       }
       .search-field{
          display: inline-block;
-         max-width: 140px;
-         height: 20px;
+         // max-width: 140px;
+         width: 0;
+         // height: 20px;
+         opacity: 0;
          float: right;
-         display: none;
+         border-bottom: 2px solid $nav-brown;
+         transition: all 0.2s ease-in-out;
+         white-space: nowrap;
+         input[type="text"]{
+            width: 90%;
+            background: transparent;
+            border: 0;
+            height: 20px;
+         }
+         a.submit{
+            display: none;
+            margin: 0;
+            &.show{
+               display: inline-block;
+            }
+         }
+         svg{
+            height: 15px;
+            width: auto;
+            // max-width: 10%;
+         }
+         &.open{
+            width: 90%;
+            opacity: 1;
+         }
       }
    }
    .footer-nav{
@@ -75,5 +101,6 @@ footer{
       float: right;
       width: 20px;
       height: auto;
+      cursor: pointer;
    }
 }

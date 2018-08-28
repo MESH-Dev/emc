@@ -36,7 +36,19 @@
                </nav>
             </div>
             <div class="columns-2">
-               <input class="search-field" type="text" name="search" value="">
+               <div class="search-field">
+                  <input class="" type="text" name="search" value="">
+                  <a class="submit" href="#">
+                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                        <style type="text/css">
+                           .st9{fill:#70594C;}
+                        </style>
+                        <polygon class="st9" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
+                           39.3,83.3 66,56.5 71.9,50.7 "/>
+                     </svg>
+                  </a>
+               </div>
                <svg id="search" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                   <style type="text/css">

@@ -5,6 +5,12 @@ header{
    left: 0;
    right: 0;
    z-index: 999;
+   a[rel="home"]{
+      transition: opacity 0.5s ease-in-out;
+      &:hover{
+         opacity: 0.5;
+      }
+   }
 }
 
 main#content{
@@ -63,6 +69,10 @@ main#content{
          a{
             margin: 0;
             // border-bottom: 3px solid $primary-lightbrown;
+            font-family: 'whitney-book';
+            font-size: 1.7rem;
+            letter-spacing: 0.66px;
+            display: inline-block;
             &::after{
                content: '';
                position: absolute;
@@ -78,11 +88,28 @@ main#content{
    }
 }
 
+#mobileMenuTrigger{
+   cursor: pointer;
+   transition: opacity 0.5s ease-in-out;
+   &:hover{
+      opacity: 0.5;
+   }
+}
+
+svg.menu-icon{
+   height: 20px;
+   width: auto;
+}
+
 .socials{
    display: inline-block;
    a{
       color: $primary-red;
       margin-right: 10px;
+      transition: opacity 0.5s ease-in-out;
+      &:hover{
+         opacity: 0.5;
+      }
    }
 }
 
@@ -101,9 +128,16 @@ main#content{
 }
 
 .ticker{
-   height: 30px;
+   // height: 30px;
    background-color: $ticker-green;
+   padding: 10px 0;
+   .ticker-row{
+      position: relative;
+   }
    a{
+      *{
+         transition: opacity 0.5s ease-in-out;
+      }
          &:hover,
          &:active,
          &:focus{
@@ -111,7 +145,7 @@ main#content{
             *{
                opacity:.5;
             }
-            
+
          }
       }
    p{
@@ -119,23 +153,33 @@ main#content{
       font-size: 1.4rem;
       color: $offwhite-3;
       margin:0;
+      line-height: 18px;
       strong, b{
          font-family: 'bianco-extrabold';
       }
-      
+
    }
    .text{
-      float: left;
-      line-height: 30px;
-      margin: 0;
+      // float: left;
+      // line-height: 30px;
+      max-width: 1230px;
+      margin: 0 auto;
+      text-align: center;
+      @media screen and (max-width: 1250px){
+         padding-left: 20px;
+         padding-right: 20px;
+      }
    }
    .ticker-title{
       font-family: 'bianco-extrabold';
    }
    .close{
-      float: right;
+      // float: right;
       height: 30px;
-      padding: 7px 0;
+      // padding: 7px 0;
+      position: absolute;
+      top: 0;
+      right: 0;
       svg{
          height: 14px;
          width: auto;

@@ -1,8 +1,8 @@
-<?php get_header(); 
+<?php get_header();
 /* Template Name: Landing Page Template */
 ?>
 
-"<?php 
+"<?php
 	$background_img = get_field('background_image');
 	$background_image_url = $background_img['sizes']['short-banner'];
 	$v_ogg = get_field('video_ogg');
@@ -16,14 +16,14 @@
 <div class="welcome-gate interior" style="background-image:url('<?php echo get_template_directory_uri(); ?>/img/EMC_MasterLandingPage_HeaderImage.png');">
 	<!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
 	<?php if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
-	<div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?> "></div>
+	<div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>
 	<?php } ?>
 	<div class="banner-text columns-5 offset-by-1">
 		<p class="top-callout"><?php echo $l_page_callout; ?></p>
 		<h1 class="page-title heading1"><?php echo the_title(); ?></h1>
 	</div>
 	<?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
-		<video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true">	
+		<video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true">
 			<source src ="<?php echo $vm_url; ?>" autoplay="true" loop="true" muted="true">
 			<source src ="<?php echo $vo_url; ?>" autoplay="true" loop="true" muted="true">
 			<source src ="<?php echo $vw_url; ?>" autoplay="true" loop="true" muted="true">
@@ -56,7 +56,7 @@
 		</div>
 	</div>
 </div>
-<?php } 
+<?php }
 	}elseif($panel_type == 'partners') {
 		//echo 'partners';
 		$pb_layout = get_sub_field('partner_block_layout');
@@ -94,7 +94,7 @@
 				</div>
 			</div>
 		</div>
-		<?php } 
+		<?php }
 }elseif($panel_type == 'stats'){
 
 	$s_img = get_sub_field('statistic_image');
@@ -143,7 +143,7 @@
 		</div>
 	</div>
 </div>
-<? }elseif($panel_type == 'story'){ 
+<? }elseif($panel_type == 'story'){
 	$story_title = get_sub_field('story_title');
 	$story_text = get_sub_field('story_text');
 	$story_img = get_sub_field('story_image');
@@ -164,7 +164,7 @@
 			</div>
 		</div>
 	</div>
-<?php }elseif($panel_type == 'image'){ 
+<?php }elseif($panel_type == 'image'){
 
 	$ip_image = get_sub_field('image_panel_image');
 	$ip_image_url = $ip_image['sizes']['background-fullscreen'];
@@ -185,7 +185,7 @@
 		</div>
 		<img class="stat-visual" src="<?php echo get_template_directory_uri(); ?>/img/Y1WMEo9Q.png" alt="">
 	</div>
-<?php }elseif($panel_type == 'news') { 
+<?php }elseif($panel_type == 'news') {
 	$n_title = get_sub_field('news_title');
 	$n_excerpt = get_sub_field('news_story_excerpt');
 	$n_link = get_sub_field('news_story_link');
@@ -200,7 +200,7 @@
 					<p class="desc"><?php echo $n_excerpt; ?></p>
 				</div>
 				<div class="columns-7 img-section">
-					<?php 
+					<?php
 						$i_rows = count(get_sub_field('news_story_images'));
 						//var_dump($i_rows);
 					if (have_rows('news_story_images')):
@@ -220,10 +220,10 @@
 							}
 							if($i_cnt == 1){
 								$first_loop++;
-								
+
 							?>
 							<img class="feature" src="<?php echo $n_image_url;?>" alt="<?php echo $n_image_alt; ?>">
-							<? }else{ 
+							<? }else{
 								$t_cnt++;
 								if($first_loop == 1){
 									$first_loop=0;
@@ -233,7 +233,7 @@
 							<div class="<?php echo $class; ?> <?php echo $t_cnt; ?>">
 								<img src="<?php echo $n_image_url;?>" alt="<?php echo $n_image_alt; ?>">
 							</div>
-							<?php 
+							<?php
 								if($t_cnt %2 == 0 && $t_cnt+1 != $i_rows){
 									echo '</div><div class="thumbnails row '.($t_cnt+1).' '.$i_rows.'">';
 								}
@@ -243,7 +243,7 @@
 						} ?>
 						<!-- </div> -->
 					<?php endwhile; endif; ?>
-					
+
 				</div>
 			</div>
 		</div>
@@ -302,7 +302,7 @@
 			<div class="row">
 				<div class="columns-10 offset-by-1">
 					<?php if (have_rows('cta_grid')):
-							while (have_rows('cta_grid')):the_row(); 
+							while (have_rows('cta_grid')):the_row();
 							$cta_title=get_sub_field('cta_title');
 							$cta_text=get_sub_field('cta_text');
 							$cta_link=get_sub_field('cta_link');
@@ -317,7 +317,7 @@
 							<?php if ($cta_link != ''){?>
 							<a href="<?php echo $cta_link; ?>" <?php echo $target; ?>>
 							<?php } ?>
-							
+
 								<p class="heading6"><?php echo $cta_title; ?></p>
 								<p class="desc"><?php echo $cta_text; ?></p>
 								<?php if ($cta_link != ''){?>
@@ -350,7 +350,7 @@
 				<div class="columns-10 offset-by-1">
 					<div class="row">
 						<?php if(have_rows('cross_promotional_grid')):
-								while(have_rows('cross_promotional_grid')):the_row(); 
+								while(have_rows('cross_promotional_grid')):the_row();
 								$cp_text = get_sub_field('cross_promotional_text');
 								$cp_link = get_sub_field('cross_promotional_link');
 								$target = '';
@@ -375,7 +375,7 @@
 							</a>
 						</div>
 						<?php endwhile; endif; ?>
-						
+
 					</div>
 				</div>
 			</div>
