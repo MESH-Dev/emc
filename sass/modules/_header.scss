@@ -145,6 +145,17 @@ header .socials{
       width: auto;
       margin-top: 10px;
       margin-right: 20px;
+      &.interior{
+         @media screen and ($bp-smaller-than-mobile){
+            display: none;
+         }
+      }
+      &.interior-mobile{
+         display: none;
+         @media screen and ($bp-smaller-than-mobile){
+            display: inline-block;
+         }
+      }
    }
 }
 

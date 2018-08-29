@@ -1044,35 +1044,51 @@ svg.menu-icon {
   margin-top: 10px;
   margin-right: 20px;
 }
+@media screen and (max-width: 480px) {
+  /* line 148, sass/modules/_header.scss */
+  .top-nav .main-logo.interior {
+    display: none;
+  }
+}
+/* line 153, sass/modules/_header.scss */
+.top-nav .main-logo.interior-mobile {
+  display: none;
+}
+@media screen and (max-width: 480px) {
+  /* line 153, sass/modules/_header.scss */
+  .top-nav .main-logo.interior-mobile {
+    display: inline-block;
+  }
+}
 
-/* line 151, sass/modules/_header.scss */
+/* line 162, sass/modules/_header.scss */
 .ticker {
   background-color: #97A88F;
   padding: 10px 0;
 }
 @media screen and (max-width: 1400px) {
-  /* line 151, sass/modules/_header.scss */
+  /* line 162, sass/modules/_header.scss */
   .ticker {
     padding: 10px;
   }
 }
-/* line 158, sass/modules/_header.scss */
+/* line 169, sass/modules/_header.scss */
 .ticker .ticker-row {
   position: relative;
 }
-/* line 162, sass/modules/_header.scss */
+/* line 173, sass/modules/_header.scss */
 .ticker a * {
   transition: opacity 0.5s ease-in-out;
 }
-/* line 165, sass/modules/_header.scss */
+/* line 176, sass/modules/_header.scss */
 .ticker a:hover, .ticker a:active, .ticker a:focus {
   text-decoration: none;
 }
-/* line 169, sass/modules/_header.scss */
+/* line 180, sass/modules/_header.scss */
 .ticker a:hover *, .ticker a:active *, .ticker a:focus * {
   opacity: .5;
 }
-/* line 175, sass/modules/_header.scss */
+/* line 186, sass/modules/_header.scss */
 .ticker p {
   font-family: 'bianco-reg';
   font-size: 1.4rem;
@@ -1080,41 +1096,41 @@ svg.menu-icon {
   margin: 0;
   line-height: 18px;
 }
-/* line 181, sass/modules/_header.scss */
+/* line 192, sass/modules/_header.scss */
 .ticker p strong, .ticker p b {
   font-family: 'bianco-extrabold';
 }
-/* line 186, sass/modules/_header.scss */
+/* line 197, sass/modules/_header.scss */
 .ticker .text {
   max-width: 1230px;
   margin: 0 auto;
   text-align: center;
 }
 @media screen and (max-width: 1250px) {
-  /* line 186, sass/modules/_header.scss */
+  /* line 197, sass/modules/_header.scss */
   .ticker .text {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
-/* line 197, sass/modules/_header.scss */
+/* line 208, sass/modules/_header.scss */
 .ticker .ticker-title {
   font-family: 'bianco-extrabold';
 }
-/* line 200, sass/modules/_header.scss */
+/* line 211, sass/modules/_header.scss */
 .ticker .close {
   height: 30px;
   position: absolute;
   top: 0;
   right: 0;
 }
-/* line 207, sass/modules/_header.scss */
+/* line 218, sass/modules/_header.scss */
 .ticker .close svg {
   height: 14px;
   width: auto;
 }
 
-/* line 215, sass/modules/_header.scss */
+/* line 226, sass/modules/_header.scss */
 body .sidr {
   position: fixed;
   z-index: 999;
@@ -1125,27 +1141,27 @@ body .sidr {
   text-align: center;
 }
 @media screen and (max-width: 750px) {
-  /* line 215, sass/modules/_header.scss */
+  /* line 226, sass/modules/_header.scss */
   body .sidr {
     padding-top: 250px;
   }
 }
-/* line 226, sass/modules/_header.scss */
+/* line 237, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav {
   border-top: 0px;
   border-bottom: 0px;
 }
-/* line 229, sass/modules/_header.scss */
+/* line 240, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li {
   border-top: 0px;
   border-bottom: 0px;
   list-style-type: none;
 }
-/* line 234, sass/modules/_header.scss */
+/* line 245, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li:hover > a {
   box-shadow: 0px;
 }
-/* line 238, sass/modules/_header.scss */
+/* line 249, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li a {
   font-family: 'bianco-reg';
   font-size: 1.8rem;
@@ -1153,20 +1169,20 @@ body .sidr ul#menu-main_nav li a {
   color: #70594C;
   transition: opacity 0.5s ease-in-out;
 }
-/* line 244, sass/modules/_header.scss */
+/* line 255, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li a::after {
   display: none;
 }
-/* line 247, sass/modules/_header.scss */
+/* line 258, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li a:hover {
   opacity: 0.5;
   text-decoration: none;
 }
-/* line 254, sass/modules/_header.scss */
+/* line 265, sass/modules/_header.scss */
 body .sidr li.menu-item {
   list-style-type: none;
 }
-/* line 256, sass/modules/_header.scss */
+/* line 267, sass/modules/_header.scss */
 body .sidr li.menu-item a {
   margin: 0;
   font-family: 'whitney-book';
@@ -1177,12 +1193,12 @@ body .sidr li.menu-item a {
   position: relative;
   transition: opacity 0.5s ease-in-out;
 }
-/* line 266, sass/modules/_header.scss */
+/* line 277, sass/modules/_header.scss */
 body .sidr li.menu-item a:hover {
   text-decoration: none;
   opacity: 0.5;
 }
-/* line 270, sass/modules/_header.scss */
+/* line 281, sass/modules/_header.scss */
 body .sidr li.menu-item a::after {
   content: '';
   position: absolute;
@@ -1194,21 +1210,21 @@ body .sidr li.menu-item a::after {
   transform: translateX(-50%);
 }
 
-/* line 296, sass/modules/_header.scss */
+/* line 307, sass/modules/_header.scss */
 body .sidr.right {
   right: -100%;
 }
 
-/* line 301, sass/modules/_header.scss */
+/* line 312, sass/modules/_header.scss */
 .sidr-inner:nth-of-type(3) {
   margin-top: 5vh;
 }
-/* line 303, sass/modules/_header.scss */
+/* line 314, sass/modules/_header.scss */
 .sidr-inner:nth-of-type(3) a {
   color: #B46C4E;
   margin: 0 4px;
 }
-/* line 308, sass/modules/_header.scss */
+/* line 319, sass/modules/_header.scss */
 .sidr-inner:nth-of-type(1) {
   margin-bottom: 10vh;
 }
