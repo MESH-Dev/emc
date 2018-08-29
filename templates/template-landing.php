@@ -252,7 +252,7 @@
 <div class="panel icon-grid">
 		<div class="container">
 			<div class="row">
-				<div class="columns-10 offset-by-1">
+				<div class="columns-10 offset-by-1 grid-cols">
 					<!-- <div class="row"> -->
 						<?php if(have_rows('grid')):
 						$g_cnt = 0;
