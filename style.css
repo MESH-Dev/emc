@@ -1076,12 +1076,89 @@ svg.menu-icon {
   width: auto;
 }
 
-/* line 2, sass/modules/_footer.scss */
+@media (max-width: 1200px) {
+  /* line 2, sass/modules/_footer.scss */
+  footer [class*="columns-"] {
+    width: 100%;
+    padding: 0;
+  }
+}
+/* line 9, sass/modules/_footer.scss */
+footer .search-wrap {
+  text-align: right;
+  margin-bottom: -4px;
+}
+@media screen and (max-width: 1200px) {
+  /* line 9, sass/modules/_footer.scss */
+  footer .search-wrap {
+    text-align: center;
+    margin-bottom: 0;
+  }
+}
+/* line 16, sass/modules/_footer.scss */
+footer .search-wrap .search-field {
+  display: inline-block;
+  width: 0;
+  opacity: 0;
+  border-bottom: 2px solid #70594C;
+  transition: all 0.2s ease-in-out;
+  vertical-align: top;
+  white-space: nowrap;
+}
+/* line 24, sass/modules/_footer.scss */
+footer .search-wrap .search-field input[type="text"] {
+  width: 90%;
+  background: transparent;
+  border: 0;
+  height: 20px;
+  font-family: 'whitney-bold';
+  letter-spacing: 3px;
+  color: #8B572A;
+}
+/* line 33, sass/modules/_footer.scss */
+footer .search-wrap .search-field a.submit {
+  display: none;
+  margin: 0;
+}
+/* line 36, sass/modules/_footer.scss */
+footer .search-wrap .search-field a.submit.show {
+  display: inline-block;
+}
+/* line 40, sass/modules/_footer.scss */
+footer .search-wrap .search-field svg {
+  height: 15px;
+  width: auto;
+}
+/* line 45, sass/modules/_footer.scss */
+footer .search-wrap .search-field.open {
+  width: 80%;
+  opacity: 1;
+}
+@media screen and (max-width: 1200px) {
+  /* line 45, sass/modules/_footer.scss */
+  footer .search-wrap .search-field.open {
+    width: 200px;
+  }
+}
+/* line 54, sass/modules/_footer.scss */
+footer #search {
+  display: inline-block;
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+}
+/* line 60, sass/modules/_footer.scss */
 footer .nav-row {
   padding: 14px 0;
   background-color: rgba(251, 216, 194, 0.5);
 }
-/* line 5, sass/modules/_footer.scss */
+@media screen and (max-width: 1400px) {
+  /* line 60, sass/modules/_footer.scss */
+  footer .nav-row {
+    padding: 14px 20px;
+  }
+}
+/* line 66, sass/modules/_footer.scss */
 footer .nav-row a {
   margin-bottom: 0;
   font-family: 'whitney-bold';
@@ -1092,75 +1169,68 @@ footer .nav-row a {
   transition: color 0.5s ease-in-out;
   margin-right: 31px;
 }
-/* line 14, sass/modules/_footer.scss */
+@media screen and (max-width: 1200px) {
+  /* line 66, sass/modules/_footer.scss */
+  footer .nav-row a {
+    margin-right: 0;
+  }
+}
+/* line 78, sass/modules/_footer.scss */
 footer .nav-row a.newsletter {
   color: #70594C;
 }
-/* line 17, sass/modules/_footer.scss */
+/* line 81, sass/modules/_footer.scss */
 footer .nav-row a:hover {
   text-decoration: none;
   color: #EB742D;
 }
-/* line 22, sass/modules/_footer.scss */
-footer .nav-row .search-field {
-  display: inline-block;
-  width: 0;
-  opacity: 0;
-  float: right;
-  border-bottom: 2px solid #70594C;
-  transition: all 0.2s ease-in-out;
-  white-space: nowrap;
+@media screen and (max-width: 1200px) {
+  /* line 87, sass/modules/_footer.scss */
+  footer .footer-nav {
+    text-align: center;
+  }
 }
-/* line 32, sass/modules/_footer.scss */
-footer .nav-row .search-field input[type="text"] {
-  width: 90%;
-  background: transparent;
-  border: 0;
-  height: 20px;
-  font-family: 'whitney-bold';
-  letter-spacing: 3px;
-  color: #8B572A;
-}
-/* line 41, sass/modules/_footer.scss */
-footer .nav-row .search-field a.submit {
-  display: none;
-  margin: 0;
-}
-/* line 44, sass/modules/_footer.scss */
-footer .nav-row .search-field a.submit.show {
-  display: inline-block;
-}
-/* line 48, sass/modules/_footer.scss */
-footer .nav-row .search-field svg {
-  height: 15px;
-  width: auto;
-}
-/* line 53, sass/modules/_footer.scss */
-footer .nav-row .search-field.open {
-  width: 90%;
-  opacity: 1;
-}
-/* line 60, sass/modules/_footer.scss */
+/* line 91, sass/modules/_footer.scss */
 footer .footer-nav ul {
   list-style-type: none;
   margin: 0;
 }
-/* line 63, sass/modules/_footer.scss */
+/* line 94, sass/modules/_footer.scss */
 footer .footer-nav ul li {
   display: inline-block;
   margin: 0;
   margin-right: 30px;
 }
-/* line 71, sass/modules/_footer.scss */
+@media screen and (max-width: 1200px) {
+  /* line 94, sass/modules/_footer.scss */
+  footer .footer-nav ul li {
+    display: block;
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+}
+/* line 107, sass/modules/_footer.scss */
 footer .copy-row {
   padding: 14px 0;
   background-color: #FBD8C2;
 }
-/* line 74, sass/modules/_footer.scss */
+@media screen and (max-width: 1200px) {
+  /* line 107, sass/modules/_footer.scss */
+  footer .copy-row {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 1400px) {
+  /* line 107, sass/modules/_footer.scss */
+  footer .copy-row {
+    padding: 14px 20px;
+  }
+}
+/* line 116, sass/modules/_footer.scss */
 footer .copy-row p, footer .copy-row a {
   margin-bottom: 0;
 }
-/* line 77, sass/modules/_footer.scss */
+/* line 119, sass/modules/_footer.scss */
 footer .copy-row .copy {
   display: inline-block;
   font-family: 'whitney-bold';
@@ -1169,7 +1239,13 @@ footer .copy-row .copy {
   color: #70594C;
   text-transform: uppercase;
 }
-/* line 85, sass/modules/_footer.scss */
+@media screen and (max-width: 1200px) {
+  /* line 119, sass/modules/_footer.scss */
+  footer .copy-row .copy {
+    margin-left: 10px;
+  }
+}
+/* line 130, sass/modules/_footer.scss */
 footer .copy-row .byline {
   display: inline-block;
   float: right;
@@ -1179,22 +1255,22 @@ footer .copy-row .byline {
   color: #70594C;
   text-transform: uppercase;
 }
-/* line 93, sass/modules/_footer.scss */
+@media screen and (max-width: 1200px) {
+  /* line 130, sass/modules/_footer.scss */
+  footer .copy-row .byline {
+    display: block;
+    float: none;
+  }
+}
+/* line 142, sass/modules/_footer.scss */
 footer .copy-row .byline a {
   font-family: 'whitney-light';
   color: #70594C;
 }
-/* line 96, sass/modules/_footer.scss */
+/* line 145, sass/modules/_footer.scss */
 footer .copy-row .byline a:hover {
   text-decoration: none;
   opacity: 0.5;
-}
-/* line 103, sass/modules/_footer.scss */
-footer #search {
-  float: right;
-  width: 20px;
-  height: auto;
-  cursor: pointer;
 }
 
 /* line 2, sass/modules/_modules.scss */
