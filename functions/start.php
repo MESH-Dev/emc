@@ -7,7 +7,7 @@
 //enqueue scripts and styles *use production assets. Dev assets are located in  /css and /js
 function loadup_scripts() {
    wp_enqueue_script( 'sidr', '//cdn.jsdelivr.net/npm/sidr@2.2.1/dist/jquery.sidr.min.js', array('jquery'), '1.0.0', true );
-   wp_enqueue_style( 'sidr-css', '//cdn.jsdelivr.net/jquery.sidr/2.2.1/stylesheets/jquery.sidr.dark.min.css', '1.0.0', true );
+   wp_enqueue_style( 'sidr-css', '//cdn.jsdelivr.net/npm/sidr@2.2.1/dist/stylesheets/jquery.sidr.bare.css', '1.0.0', true );
     wp_enqueue_script( 'vmap-js', get_template_directory_uri().'/js/jquery.vmap.min.js', array('jquery'), '1.0.0', true );
     wp_enqueue_script( 'vmap-world-js', get_template_directory_uri().'/js/jquery.vmap.world.js', array('jquery'), '1.0.0', true );
 	wp_enqueue_script( 'theme-js', get_template_directory_uri().'/js/mesh.js', array('jquery'), '1.0.0', true );

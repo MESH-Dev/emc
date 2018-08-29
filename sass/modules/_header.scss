@@ -4,7 +4,7 @@ header{
    width: 100%;
    left: 0;
    right: 0;
-   z-index: 999;
+   z-index: 9999;
    a[rel="home"]{
       transition: opacity 0.5s ease-in-out;
       &:hover{
@@ -53,6 +53,9 @@ main#content{
 
 .main-navigation{
    float: left;
+   @media screen and ($bp-smaller-than-desktophd){
+      display: none;
+   }
 }
 
 .secondary-navigation{
@@ -63,6 +66,11 @@ main#content{
    -o-justify-content: flex-end;
    justify-content: flex-end;
    ul{
+      &.menu{
+         @media screen and ($bp-smaller-than-desktophd){
+            display: none;
+         }
+      }
       li{
          position: relative;
          margin-right: 35px;
@@ -91,8 +99,12 @@ main#content{
 #mobileMenuTrigger{
    cursor: pointer;
    transition: opacity 0.5s ease-in-out;
+   display: none;
    &:hover{
       opacity: 0.5;
+   }
+   @media screen and ($bp-smaller-than-desktophd){
+      display: inline-block;
    }
 }
 
@@ -103,6 +115,9 @@ svg.menu-icon{
 
 .socials{
    display: inline-block;
+   @media screen and ($bp-smaller-than-desktophd){
+      display: none;
+   }
    a{
       color: $primary-red;
       margin-right: 10px;
@@ -190,5 +205,104 @@ svg.menu-icon{
          height: 14px;
          width: auto;
       }
+   }
+}
+
+//Sidr
+body .sidr{
+   position: fixed;
+   z-index: 999;
+   top: 0;
+   padding-top: 150px;
+   width: 100%;
+   background: $offwhite-1;
+   text-align: center;
+   @media screen and ($bp-smaller-than-tablet){
+      padding-top: 250px;
+   }
+   ul#menu-main_nav{
+      border-top: 0px;
+      border-bottom: 0px;
+      li{
+         border-top: 0px;
+         border-bottom: 0px;
+         list-style-type: none;
+         &:hover{
+            > a{
+               box-shadow: 0px;
+            }
+         }
+         a{
+            font-family: 'bianco-reg';
+            font-size: 1.8rem;
+            letter-spacing: 0.7px;
+            color: $nav-brown;
+            transition: opacity 0.5s ease-in-out;
+            &::after{
+               display: none;
+            }
+            &:hover{
+               opacity: 0.5;
+               text-decoration: none;
+            }
+         }
+      }
+   }
+   li.menu-item{
+      list-style-type: none;
+      a{
+         margin: 0;
+         // border-bottom: 3px solid $primary-lightbrown;
+         font-family: 'whitney-book';
+         font-size: 1.7rem;
+         letter-spacing: 0.66px;
+         display: inline-block;
+         color: $nav-brown;
+         position: relative;
+         transition: opacity 0.5s ease-in-out;
+         &:hover{
+            text-decoration: none;
+            opacity: 0.5;
+         }
+         &::after{
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            height: 3px;
+            width: 60%;
+            background-color: $primary-lightbrown;
+            left: 50%;
+            transform: translateX(-50%);
+         }
+      }
+   }
+}
+
+// body .sidr-class-socials{
+//    display: inline-block;
+//    a{
+//       color: $primary-red;
+//       margin-right: 10px;
+//       transition: opacity 0.5s ease-in-out;
+//       &:hover{
+//          opacity: 0.5;
+//       }
+//    }
+// }
+
+body .sidr.right{
+   right: -100%;
+}
+
+.sidr-inner{
+   &:nth-of-type(3){
+      margin-top: 5vh;
+      a{
+         color: $primary-red;
+         margin: 0 4px;
+      }
+   }
+   &:nth-of-type(1){
+      margin-bottom: 10vh;
    }
 }

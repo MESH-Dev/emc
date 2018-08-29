@@ -98,6 +98,9 @@
 			</div>
 		</div>
 		<div class="content">
+			<div class="img-screen">
+
+			</div>
 			<div class="feature-image has-background" style="background-image:url('<?php echo $story_img_url; ?>');">
 			<img class="feature-image" src="<?php echo $story_img_url; ?>" alt="" style="opacity:0;">
 			</div>

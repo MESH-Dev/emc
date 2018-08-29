@@ -11,9 +11,19 @@ jQuery(document).ready(function($){
   // the locations that are entered into the appropriate ACF fields on the homepage
 
   $('#mobileMenuTrigger').sidr({
+     // name: 'mobile',
+     // onOpen: function(){
+     //    console.log('Opened');
+     // },
+     displace: false,
+     renaming: false,
      side: 'right',
-     source: '#header-main, #header-secondary, #header-social'
+     source: '#header-main, #menu-gateway_nav, #header-social'
  });
+
+//  $('#mobileMenuTrigger').click(function(){
+//     $.sidr('toggle', 'mobile');
+// });
 
  // $('.submit').hide();
 

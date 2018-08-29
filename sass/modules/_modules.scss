@@ -30,6 +30,7 @@ body{
          font-family: 'whitney-bold';
          font-size: 2rem;
          letter-spacing: 3px;
+         text-transform: uppercase;
       }
    }
 
@@ -101,6 +102,9 @@ body{
          @media ($bp-smaller-than-mobile){
             width:80%;
          }
+         @media screen and ($bp-smaller-than-desktop){
+            margin-top: 100px;
+         }
       }
    }
 
@@ -146,7 +150,9 @@ body{
          max-width: 933px;
          margin: 0 auto;
          margin-bottom: 20px;
-
+         @media screen and ($bp-smaller-than-tablet){
+            margin-bottom: 40px;
+         }
          p{
             font-family: 'bianco-reg';
             color: $tertiary-grey;
@@ -221,12 +227,12 @@ body{
    &.text-grid{
       background-color: $secondary-pink;
       .container{
-         @media ($bp-smaller-than-largedesktop){
-            padding:0 40px;
-         }
-         @media ($bp-smaller-than-mobile){
-            padding:0 20px;
-         }
+         // @media ($bp-smaller-than-largedesktop){
+         //    padding:0 40px;
+         // }
+         // @media ($bp-smaller-than-mobile){
+         //    padding:0 20px;
+         // }
       }
       .heading6{
          color: $primary-orange;
@@ -242,13 +248,16 @@ body{
       .columns-4:first-of-type{
          .grid-item{
             margin: 0;
+            @media screen and ($bp-smaller-than-tablet){
+               margin-bottom: 40px;
+            }
          }
       }
       .grid-item{
          max-width: 280px;
          //padding:0 2%;
          margin: 0 auto;
-         @media screen and ($bp-smaller-than-largedesktop){
+         @media screen and ($bp-smaller-than-tablet){
             margin-bottom: 40px;
             max-width: none;
          }
@@ -316,6 +325,7 @@ body{
          // }
       }
       .content{
+         position: relative;
          padding:0 40px;
          @media ($bp-smaller-than-tablet){
             padding:0;
@@ -334,9 +344,13 @@ body{
       .intro{
          position: absolute;
          top: 150px;
+         z-index: 999;
          // width:25%;
          @media screen and ($bp-smaller-than-desktop){
             top: 50px;
+         }
+         @media screen and ($bp-smaller-than-tablet){
+            padding-left: 20px;
          }
          // @media ($bp-smaller-than-largedesktop){
          //    padding-left:40px;
@@ -578,6 +592,10 @@ body{
          padding-right:15px;
       }
       .cta{
+         margin-bottom: 40px;
+         &:last-of-type{
+            margin-bottom: 0;
+         }
          a{
             transition: opacity 0.5s ease-in-out;
             &:hover{
@@ -675,6 +693,21 @@ body{
 
          }
       }
+   }
+}
+
+.img-screen{
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 40px;
+   right: 40px;
+   background-color: $black;
+   opacity: 0.2;
+   @media screen and ($bp-smaller-than-tablet){
+      left: 0;
+      right: 0;
+      opacity: 0.5;
    }
 }
 

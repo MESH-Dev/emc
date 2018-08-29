@@ -153,7 +153,7 @@
 								<a href="#"><i class="fab fa-facebook"></i></a>
 								<a href="#"><i class="fab fa-youtube"></i></a>
 							</div>
-							<a href="#" id="#mobileMenuTrigger">
+							<a id="mobileMenuTrigger">
 								<svg class="menu-icon" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 23">
 								  <g>
 									 <line x1="2" y1="2.5" x2="27" y2="2.5" style="fill: none;stroke: #eb742d;stroke-linecap: square;stroke-miterlimit: 10;stroke-width: 3px"/>
