@@ -25,12 +25,23 @@ body{
     &.interior{
       height: 675px;
       padding-top: 165px;
+      position: relative;
       .top-callout{
          color: $offwhite-1;
          font-family: 'whitney-bold';
          font-size: 2rem;
          letter-spacing: 3px;
          text-transform: uppercase;
+      }
+      &::after{
+         content: '';
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         opacity: 0.2;
+         background-color: $black;
       }
    }
 
@@ -150,6 +161,10 @@ body{
       text-align: center;
       position:relative;
       z-index:500;
+      padding-bottom: 100px;
+      @media screen and ($bp-smaller-than-tablet){
+         padding-bottom: 60px;
+      }
        .intro{
          max-width: 933px;
          margin: 0 auto;
@@ -164,12 +179,16 @@ body{
             letter-spacing: 0.5px;
             line-height: 30px;
             strong,b{
-               font-weight:normal;
+               font-family: 'bianco-extrabold';
                color:$primary-orange
             }
          }
       }
       .intro-callout{
+         margin-bottom: 120px;
+         @media screen and ($bp-smaller-than-tablet){
+            margin-bottom: 60px;
+         }
          p{
             font-family: 'whitney-book';
             font-size: 4.8rem;
@@ -230,6 +249,7 @@ body{
    }
    &.text-grid{
       background-color: $secondary-pink;
+      padding: 60px 0;
       .container{
          // @media ($bp-smaller-than-largedesktop){
          //    padding:0 40px;
@@ -237,6 +257,9 @@ body{
          // @media ($bp-smaller-than-mobile){
          //    padding:0 20px;
          // }
+      }
+      &.interior{
+         background-color: $offwhite-3;
       }
       .heading6{
          color: $primary-orange;
@@ -421,9 +444,14 @@ body{
    &.img-and-wysiwyg{
       background-color: $tertiary-background;
       .textsection{
-         h1,h2,h3,h4,h5,h6,p,ul,ol,li{
+         h1,h2,h3,h4,h5,h6,ul,ol,li{
             color: $primary-red;
             font-family: 'whitney-book';
+         }
+
+         p{
+            font-family: 'bianco-reg';
+            color: $primary-red;
          }
 
          h1{
@@ -507,7 +535,7 @@ body{
          }
          svg{
             display: inline;
-            height: 16px;
+            height: 18px;
             width: auto;
          }
       }
@@ -548,8 +576,11 @@ body{
       background-color: $tertiary-background;
       .text-section{
          padding-right: 37px;
-         .desc{
+         p,.desc{
             color: $primary-red;
+         }
+         .heading6{
+            color: $primary-orange;
          }
       }
       .thumbnails{
@@ -594,20 +625,30 @@ body{
          }
       }
       .caption{
-         p{
+         p,a{
             font-family: 'whitney-book';
             font-size: 2rem;
             letter-spacing: 0.6px;
             line-height: 26px;
             width:60%;
+            text-decoration: none;
+            color: $nav-brown;
             @media screen and ($bp-smaller-than-tablet){
                display: block;
                width: 100%;
             }
          }
+         a{
+            transition: opacity 0.5s ease-in-out;
+            &:hover{
+               text-decoration: none;
+               opacity: 0.5;
+            }
+         }
       }
    }
    &.half-cta{
+      padding: 60px 0;
       [class*='columns-']:last-of-type{
          padding-right:15px;
       }
@@ -753,8 +794,13 @@ main.landing{
    }
 }
 
+main.text{
+   padding-top: 9em;
+   background-color: $offwhite-bg;
+}
+
 .text{
-   margin-top:9em;
+   // margin-top:9em;
    [class*='columns-']:last-of-type{
          padding-right:15px;
       }

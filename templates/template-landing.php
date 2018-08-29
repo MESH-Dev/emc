@@ -272,24 +272,25 @@
 								// 	echo '</div><div class="row">';
 								// }
 								?>
-						<?php if($grid_item_link != '') {?>
-						<a href="<?php echo $icon_url; ?>" <?php echo $target?>>
-						<?php } ?>
 						<div class="columns-3 card">
-							<img class="card-icon" src="<?php echo $icon_url; ?>" alt="<?php echo $icon_alt; ?>">
-							<div class="content">
-								<div class="divider"></div>
-								<div class="caption">
-									<p><?php echo $grid_text; ?> <?php echo ($g_cnt%4); ?></p>
+							<?php if($grid_item_link != '') {?>
+							<a href="<?php echo $icon_url; ?>" <?php echo $target?>>
+							<?php } ?>
+								<img class="card-icon" src="<?php echo $icon_url; ?>" alt="<?php echo $icon_alt; ?>">
+								<div class="content">
+									<div class="divider"></div>
+									<div class="caption">
+										<p><?php echo $grid_text; ?> <?php echo ($g_cnt%4); ?></p>
+									</div>
 								</div>
-							</div>
+								<?php if($grid_item_link != '') {?>
+								</a>
+							<?php } ?>
 						</div>
-						<?php if($grid_item_link != '') {?>
-						</a>
 						<?php if($g_cnt %4 == 0){
 									echo '</div><div class="row">';
 								}?>
-						<?php if($g_cnt%4 != 0){ echo '</div>';} } ?>
+						<?php if($g_cnt%4 != 0){ echo '</div>';} ?>
 						<?php endwhile; endif; ?>
 					</div>
 				</div>
@@ -297,7 +298,7 @@
 		</div>
 	</div>
 <?php }elseif($panel_type == 'cta-grid'){?>
-<div class="panel text-grid">
+<div class="panel text-grid interior">
 		<div class="container">
 			<div class="row">
 				<div class="columns-10 offset-by-1">
