@@ -1006,36 +1006,37 @@ svg.menu-icon {
 .socials {
   display: inline-block;
 }
-@media screen and (max-width: 1200px) {
-  /* line 116, sass/modules/_header.scss */
-  .socials {
-    display: none;
-  }
-}
-/* line 121, sass/modules/_header.scss */
+/* line 118, sass/modules/_header.scss */
 .socials a {
   color: #B46C4E;
   margin-right: 10px;
   transition: opacity 0.5s ease-in-out;
 }
-/* line 125, sass/modules/_header.scss */
+/* line 122, sass/modules/_header.scss */
 .socials a:hover {
   opacity: 0.5;
 }
 
-/* line 131, sass/modules/_header.scss */
+@media screen and (max-width: 1200px) {
+  /* line 128, sass/modules/_header.scss */
+  header .socials {
+    display: none;
+  }
+}
+
+/* line 134, sass/modules/_header.scss */
 .top-nav {
   background-color: #FBD8C2;
   position: relative;
   height: 85px;
 }
 @media screen and (max-width: 1400px) {
-  /* line 131, sass/modules/_header.scss */
+  /* line 134, sass/modules/_header.scss */
   .top-nav {
     padding: 0 20px;
   }
 }
-/* line 139, sass/modules/_header.scss */
+/* line 142, sass/modules/_header.scss */
 .top-nav .main-logo {
   float: left;
   height: 59px;
@@ -1044,34 +1045,34 @@ svg.menu-icon {
   margin-right: 20px;
 }
 
-/* line 148, sass/modules/_header.scss */
+/* line 151, sass/modules/_header.scss */
 .ticker {
   background-color: #97A88F;
   padding: 10px 0;
 }
 @media screen and (max-width: 1400px) {
-  /* line 148, sass/modules/_header.scss */
+  /* line 151, sass/modules/_header.scss */
   .ticker {
     padding: 10px;
   }
 }
-/* line 155, sass/modules/_header.scss */
+/* line 158, sass/modules/_header.scss */
 .ticker .ticker-row {
   position: relative;
 }
-/* line 159, sass/modules/_header.scss */
+/* line 162, sass/modules/_header.scss */
 .ticker a * {
   transition: opacity 0.5s ease-in-out;
 }
-/* line 162, sass/modules/_header.scss */
+/* line 165, sass/modules/_header.scss */
 .ticker a:hover, .ticker a:active, .ticker a:focus {
   text-decoration: none;
 }
-/* line 166, sass/modules/_header.scss */
+/* line 169, sass/modules/_header.scss */
 .ticker a:hover *, .ticker a:active *, .ticker a:focus * {
   opacity: .5;
 }
-/* line 172, sass/modules/_header.scss */
+/* line 175, sass/modules/_header.scss */
 .ticker p {
   font-family: 'bianco-reg';
   font-size: 1.4rem;
@@ -1079,41 +1080,41 @@ svg.menu-icon {
   margin: 0;
   line-height: 18px;
 }
-/* line 178, sass/modules/_header.scss */
+/* line 181, sass/modules/_header.scss */
 .ticker p strong, .ticker p b {
   font-family: 'bianco-extrabold';
 }
-/* line 183, sass/modules/_header.scss */
+/* line 186, sass/modules/_header.scss */
 .ticker .text {
   max-width: 1230px;
   margin: 0 auto;
   text-align: center;
 }
 @media screen and (max-width: 1250px) {
-  /* line 183, sass/modules/_header.scss */
+  /* line 186, sass/modules/_header.scss */
   .ticker .text {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
-/* line 194, sass/modules/_header.scss */
+/* line 197, sass/modules/_header.scss */
 .ticker .ticker-title {
   font-family: 'bianco-extrabold';
 }
-/* line 197, sass/modules/_header.scss */
+/* line 200, sass/modules/_header.scss */
 .ticker .close {
   height: 30px;
   position: absolute;
   top: 0;
   right: 0;
 }
-/* line 204, sass/modules/_header.scss */
+/* line 207, sass/modules/_header.scss */
 .ticker .close svg {
   height: 14px;
   width: auto;
 }
 
-/* line 212, sass/modules/_header.scss */
+/* line 215, sass/modules/_header.scss */
 body .sidr {
   position: fixed;
   z-index: 999;
@@ -1124,27 +1125,27 @@ body .sidr {
   text-align: center;
 }
 @media screen and (max-width: 750px) {
-  /* line 212, sass/modules/_header.scss */
+  /* line 215, sass/modules/_header.scss */
   body .sidr {
     padding-top: 250px;
   }
 }
-/* line 223, sass/modules/_header.scss */
+/* line 226, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav {
   border-top: 0px;
   border-bottom: 0px;
 }
-/* line 226, sass/modules/_header.scss */
+/* line 229, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li {
   border-top: 0px;
   border-bottom: 0px;
   list-style-type: none;
 }
-/* line 231, sass/modules/_header.scss */
+/* line 234, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li:hover > a {
   box-shadow: 0px;
 }
-/* line 235, sass/modules/_header.scss */
+/* line 238, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li a {
   font-family: 'bianco-reg';
   font-size: 1.8rem;
@@ -1152,20 +1153,20 @@ body .sidr ul#menu-main_nav li a {
   color: #70594C;
   transition: opacity 0.5s ease-in-out;
 }
-/* line 241, sass/modules/_header.scss */
+/* line 244, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li a::after {
   display: none;
 }
-/* line 244, sass/modules/_header.scss */
+/* line 247, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li a:hover {
   opacity: 0.5;
   text-decoration: none;
 }
-/* line 251, sass/modules/_header.scss */
+/* line 254, sass/modules/_header.scss */
 body .sidr li.menu-item {
   list-style-type: none;
 }
-/* line 253, sass/modules/_header.scss */
+/* line 256, sass/modules/_header.scss */
 body .sidr li.menu-item a {
   margin: 0;
   font-family: 'whitney-book';
@@ -1176,12 +1177,12 @@ body .sidr li.menu-item a {
   position: relative;
   transition: opacity 0.5s ease-in-out;
 }
-/* line 263, sass/modules/_header.scss */
+/* line 266, sass/modules/_header.scss */
 body .sidr li.menu-item a:hover {
   text-decoration: none;
   opacity: 0.5;
 }
-/* line 267, sass/modules/_header.scss */
+/* line 270, sass/modules/_header.scss */
 body .sidr li.menu-item a::after {
   content: '';
   position: absolute;
@@ -1193,21 +1194,21 @@ body .sidr li.menu-item a::after {
   transform: translateX(-50%);
 }
 
-/* line 293, sass/modules/_header.scss */
+/* line 296, sass/modules/_header.scss */
 body .sidr.right {
   right: -100%;
 }
 
-/* line 298, sass/modules/_header.scss */
+/* line 301, sass/modules/_header.scss */
 .sidr-inner:nth-of-type(3) {
   margin-top: 5vh;
 }
-/* line 300, sass/modules/_header.scss */
+/* line 303, sass/modules/_header.scss */
 .sidr-inner:nth-of-type(3) a {
   color: #B46C4E;
   margin: 0 4px;
 }
-/* line 305, sass/modules/_header.scss */
+/* line 308, sass/modules/_header.scss */
 .sidr-inner:nth-of-type(1) {
   margin-bottom: 10vh;
 }
