@@ -1,19 +1,19 @@
 <?php get_header();
 /* Template Name: Homepage*/
 ?>
-<!-- <script>
+<script>
 			var _places = {
-			<//?php $countries = get_field('countries');
+			<?php $countries = get_field('countries');
 			//echo $countries;
 			foreach ($countries as $row){
 				//var_dump($row['country_lp'][0]);
 				?>
 
-				"<//?php echo $row['country']; ?>":"\u003ca href=\"<//?php echo $row['country_lp'][0]; ?>\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eBRAZIL\u003c/span\u003e \u003ca a/\u003e"
+				"<?php echo $row['country']; ?>":"\u003ca href=\"<//?php echo $row['country_lp'][0]; ?>\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eBRAZIL\u003c/span\u003e \u003ca a/\u003e"
 
-			<//?php } ?>
+			<?php } ?>
 			};
-			</script> -->
+			</script>
 <main id="content">
 	<?php
 		$background_img = get_field('img_fallback');

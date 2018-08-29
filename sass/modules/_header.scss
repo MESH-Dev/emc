@@ -118,6 +118,9 @@ svg.menu-icon{
    background-color: $offwhite-1;
    position: relative;
    height: 85px;
+   @media screen and ($bp-smaller-than-largedesktop){
+      padding: 0 20px;
+   }
    .main-logo{
       float: left;
       height: 59px;
@@ -131,6 +134,9 @@ svg.menu-icon{
    // height: 30px;
    background-color: $ticker-green;
    padding: 10px 0;
+   @media screen and ($bp-smaller-than-largedesktop){
+      padding: 10px;
+   }
    .ticker-row{
       position: relative;
    }

@@ -1004,7 +1004,13 @@ svg.menu-icon {
   position: relative;
   height: 85px;
 }
-/* line 121, sass/modules/_header.scss */
+@media screen and (max-width: 1400px) {
+  /* line 116, sass/modules/_header.scss */
+  .top-nav {
+    padding: 0 20px;
+  }
+}
+/* line 124, sass/modules/_header.scss */
 .top-nav .main-logo {
   float: left;
   height: 59px;
@@ -1013,28 +1019,34 @@ svg.menu-icon {
   margin-right: 20px;
 }
 
-/* line 130, sass/modules/_header.scss */
+/* line 133, sass/modules/_header.scss */
 .ticker {
   background-color: #97A88F;
   padding: 10px 0;
 }
-/* line 134, sass/modules/_header.scss */
+@media screen and (max-width: 1400px) {
+  /* line 133, sass/modules/_header.scss */
+  .ticker {
+    padding: 10px;
+  }
+}
+/* line 140, sass/modules/_header.scss */
 .ticker .ticker-row {
   position: relative;
 }
-/* line 138, sass/modules/_header.scss */
+/* line 144, sass/modules/_header.scss */
 .ticker a * {
   transition: opacity 0.5s ease-in-out;
 }
-/* line 141, sass/modules/_header.scss */
+/* line 147, sass/modules/_header.scss */
 .ticker a:hover, .ticker a:active, .ticker a:focus {
   text-decoration: none;
 }
-/* line 145, sass/modules/_header.scss */
+/* line 151, sass/modules/_header.scss */
 .ticker a:hover *, .ticker a:active *, .ticker a:focus * {
   opacity: .5;
 }
-/* line 151, sass/modules/_header.scss */
+/* line 157, sass/modules/_header.scss */
 .ticker p {
   font-family: 'bianco-reg';
   font-size: 1.4rem;
@@ -1042,35 +1054,35 @@ svg.menu-icon {
   margin: 0;
   line-height: 18px;
 }
-/* line 157, sass/modules/_header.scss */
+/* line 163, sass/modules/_header.scss */
 .ticker p strong, .ticker p b {
   font-family: 'bianco-extrabold';
 }
-/* line 162, sass/modules/_header.scss */
+/* line 168, sass/modules/_header.scss */
 .ticker .text {
   max-width: 1230px;
   margin: 0 auto;
   text-align: center;
 }
 @media screen and (max-width: 1250px) {
-  /* line 162, sass/modules/_header.scss */
+  /* line 168, sass/modules/_header.scss */
   .ticker .text {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
-/* line 173, sass/modules/_header.scss */
+/* line 179, sass/modules/_header.scss */
 .ticker .ticker-title {
   font-family: 'bianco-extrabold';
 }
-/* line 176, sass/modules/_header.scss */
+/* line 182, sass/modules/_header.scss */
 .ticker .close {
   height: 30px;
   position: absolute;
   top: 0;
   right: 0;
 }
-/* line 183, sass/modules/_header.scss */
+/* line 189, sass/modules/_header.scss */
 .ticker .close svg {
   height: 14px;
   width: auto;
