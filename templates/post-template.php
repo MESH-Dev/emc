@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php get_header(); 
+
+/* Template Name: Old Post Template */?>
 
 <main id="content" style="margin-top:12em;">
 	<h1><?php single_post_title(); ?></h1>
@@ -49,8 +51,8 @@
 
 			//Remember to use the global $paged instead of trying to use the variable above.
 			$args = array(
-				'post_type' => 'post',
-				'posts_per_page' => 4,
+				'post_type' => 'community',
+				'posts_per_page' => 9,
 				'paged'=>$paged
 			);
 			$wp_query = new WP_Query( $args );?>
@@ -95,7 +97,7 @@
 					  });
 					  $('.load_more').load(link+' .load_more a');
 					  var url = link;
-					 history.pushState(undefined, '', url);
+					 
 				  });
 			  });
 		   </script>

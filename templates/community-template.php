@@ -1,33 +1,15 @@
-<?php get_header(); ?>
+<?php get_header(); 
+
+/* Template Name: Community Resource Library Template */?>
 
 <main id="content" style="margin-top:12em;">
 	<h1><?php single_post_title(); ?></h1>
 	<div class="container">
 		<div class="row">
 			<nav class="filter-bar">
-				Explore our news
-				<ul class="topic-filter">
-					<li data-filter="">All</li>
-					<?php 
-						$categories='';
-						$separator=", ";
-						// $terms = get_terms([
-						//     'taxonomy' => 'category',
-						//     'hide_empty' => true,
-						// ]);
-
-						$categories = get_terms('category');
-
-						//var_dump($terms);
-							foreach ($categories as $cat) {?>
-
-							  <li data-filter="<?php echo $cat->slug; ?>"><?php echo $cat->name ?></li>
-					<?php } ?>
-
-			</ul>
-				<div class="mr-search-filter search-filter">
+				<div class="cr-search-filter search-filter">
 					<form action="<?php home_url(); ?>" method="get">
-						<label for="search">Search Resources</label>
+						<label for="search">Search Members</label>
 						<input type="search" name="s" id="search" placeholder="" value="" /><img src="<?php bloginfo('template_directory'); ?>/assets/img/search.png">
 					</form>
 				</div>
@@ -49,8 +31,8 @@
 
 			//Remember to use the global $paged instead of trying to use the variable above.
 			$args = array(
-				'post_type' => 'post',
-				'posts_per_page' => 4,
+				'post_type' => 'community',
+				'posts_per_page' => 9,
 				'paged'=>$paged
 			);
 			$wp_query = new WP_Query( $args );?>
@@ -95,7 +77,7 @@
 					  });
 					  $('.load_more').load(link+' .load_more a');
 					  var url = link;
-					 history.pushState(undefined, '', url);
+					 
 				  });
 			  });
 		   </script>
