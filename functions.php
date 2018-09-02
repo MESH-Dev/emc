@@ -317,91 +317,91 @@ endif;
        die();//if this isn't included, you will get funky characters at the end of your query results.
 }
 
-// function get_community_members(){
-//   //$post_topic = $_POST['postTopic'];
-//   $query = $_POST['query']; //*
+function get_community_members(){
+  //$post_topic = $_POST['postTopic'];
+  $query = $_POST['query']; //*
  
-//  //Make the search exlusive to entries or clicking the filter
-//  if ($query != ''): //All posts? No filter
-//       $args = array(
-//       'post_type' => 'community',
-//       'posts_per_page' => 9,
-//       'post_status' => 'publish',
-//       'paged' => $paged,
-//       's' => $query
-//       //
-//       );
+ //Make the search exlusive to entries or clicking the filter
+ if ($query != ''): //All posts? No filter
+      $args = array(
+      'post_type' => 'community',
+      'posts_per_page' => 9,
+      'post_status' => 'publish',
+      'paged' => $paged,
+      's' => $query
+      //
+      );
 
-//       //var_dump($query);
-// endif;
-//         // the query
-//       //var_dump($query);
-//         $the_query = new WP_Query( $args ); 
-//         //var_dump($args);
-//         $count = $the_query->found_posts;
+      //var_dump($query);
+endif;
+        // the query
+      //var_dump($query);
+        $the_query = new WP_Query( $args ); 
+        //var_dump($args);
+        $count = $the_query->found_posts;
         
 
-//        if ( $the_query->have_posts() ) : 
-//       // Do we have any posts in the databse that match our query?
-//       // In the case of the home page, this will call for the most recent posts 
+       if ( $the_query->have_posts() ) : 
+      // Do we have any posts in the databse that match our query?
+      // In the case of the home page, this will call for the most recent posts 
       
-//         //echo '<div class="container '.$profile_class .'" id="project-gallery">';
-//          while ( $the_query->have_posts() ) : $the_query->the_post(); //We set up $the_query on line 144
-//         // If we have some posts to show, start a loop that will display each one the same way
+        //echo '<div class="container '.$profile_class .'" id="project-gallery">';
+         while ( $the_query->have_posts() ) : $the_query->the_post(); //We set up $the_query on line 144
+        // If we have some posts to show, start a loop that will display each one the same way
         
         
-//          //if (have_rows ('project_gallery')): //Setup the panels between the top/bottom panels
-//                //Setup variables
+         //if (have_rows ('project_gallery')): //Setup the panels between the top/bottom panels
+               //Setup variables
                
-//                 $the_title = get_the_title();
-//                 $the_excerpt = get_the_excerpt();
+                $the_title = get_the_title();
+                $the_excerpt = get_the_excerpt();
                 
-//                 $target = '';
+                $target = '';
 
-//                 $directory = get_bloginfo('template_directory');
+                $directory = get_bloginfo('template_directory');
 
-//                 $f_override = get_field('override_feature_image_text', $post->ID);
-//                 $f_image = the_post_thumbnail('large', $post->ID);
+                $f_override = get_field('override_feature_image_text', $post->ID);
+                $f_image = the_post_thumbnail('large', $post->ID);
 
-//                 $feature = '';
+                $feature = '';
 
-//                 if(the_post_thumbnail($post->ID) != ''){
-//           $feature = get_the_post_thumbnail('large');
-//           }elseif(get_field('override_feature_image_text', $post->ID) != ''){
-//             $b = "'bianco-reg'";
-//             $feature = '<h2 style="text-align:center; font-size:48px; font-family: '.$b.';">'.$f_override.'</h2>';
-//           }
+                if(the_post_thumbnail($post->ID) != ''){
+          $feature = get_the_post_thumbnail('large');
+          }elseif(get_field('override_feature_image_text', $post->ID) != ''){
+            $b = "'bianco-reg'";
+            $feature = '<h2 style="text-align:center; font-size:48px; font-family: '.$b.';">'.$f_override.'</h2>';
+          }
 
-//           //endif; 
-//           echo '
-//           <section id="posts">
-//           <article class="post">
-//           '.$feature.'
-//           <div class="content" style="width:60%; margin:0 auto; text-align:center;">
-//             <h2>'.$the_title.'</h2>
+          //endif; 
+          echo '
+          <section id="posts">
+          <article class="post">
+          '.$feature.'
+          <div class="content" style="width:60%; margin:0 auto; text-align:center;">
+            <h2>'.$the_title.'</h2>
 
-//             '.$the_excerpt.'
-//           </div>
-//           </article>
+            '.$the_excerpt.'
+          </div>
+          </article>
 
-//       </section>';
-//          endwhile; 
+      </section>';
+         endwhile; 
          
-//        else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
+       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
         
-//         echo '<article class="post-error">
-//                 <h3 class="404">
-//                   Your search did not produce any results!</br>
+        echo '<article class="post-error">
+                <h3 class="404">
+                  Your search did not produce any results!</br>
                 
-//                   Please use a different search term, or try something more specific.
-//                 </h3>
-//               </article>';
-//        endif; // OK, I think that takes care of both scenarios (having posts or not having any posts) 
-//        // echo '<nav class="load_more results">'
-//          //  .next_posts_link( 'Load More' ).
-//           // '</nav>';
-//        die();//if this isn't included, you will get funky characters at the end of your query results.
-// }
+                  Please use a different search term, or try something more specific.
+                </h3>
+              </article>';
+       endif; // OK, I think that takes care of both scenarios (having posts or not having any posts) 
+       // echo '<nav class="load_more results">'
+         //  .next_posts_link( 'Load More' ).
+          // '</nav>';
+       die();//if this isn't included, you will get funky characters at the end of your query results.
+}
 
 
 ?>
