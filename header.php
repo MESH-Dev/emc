@@ -48,7 +48,7 @@
 <body <?php body_class(); ?>>
 
 	<header>
-		<?php 
+		<?php
 			$h_cta = get_field('cta_message', 'options');
 			$h_link = get_field('cta_message_link', 'options');
 			$h_external = get_field('tc_external');
@@ -60,12 +60,12 @@
 		?>
 		<div class="ticker">
 			<div class="container">
-				<div class="row">
+				<div class="row ticker-row">
 					<div class="text">
 						<a href="<?php echo $h_link; ?>" <?php echo $h_target; ?>>
-							
+
 								<?php echo $h_cta; ?>
-							
+
 						</a>
 					</div>
 					<div class="close">
@@ -97,10 +97,11 @@
 							<?php if(is_front_page()){ ?>
 							<img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_Madonna_onecolor_40in.png" alt="">
 							<?php }else{ ?>
-							<img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo@3x.png" alt="">
+							<img class="interior main-logo" src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo@3x.png" alt="">
+							<img class="interior-mobile main-logo" src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_Madonna_onecolor_40in.png" alt="">
 							<?php } ?>
 						</a>
-						<nav class="main-navigation">
+						<nav class="main-navigation" id="header-main">
 							<?php if(has_nav_menu('main_nav')){
 										$defaults = array(
 											'theme_location'  => 'main_nav',
@@ -124,7 +125,7 @@
 										echo "<p><em>main_nav</em> doesn't exist! Create it and it'll render here.</p>";
 									} ?>
 						</nav>
-						<div class="secondary-navigation">
+						<div class="secondary-navigation" id="header-secondary">
 							<?php if(has_nav_menu('gateway_nav')){
 										$defaults = array(
 											'theme_location'  => 'gateway_nav',
@@ -147,12 +148,21 @@
 									}else{
 										echo "<p><em>gateway_nav</em> doesn't exist! Create it and it'll render here.</p>";
 									} ?>
-							<div class="socials">
+							<div class="socials" id="header-social">
 								<a href="#"><i class="fab fa-twitter"></i></a>
 								<a href="#"><i class="fab fa-instagram"></i></a>
 								<a href="#"><i class="fab fa-facebook"></i></a>
 								<a href="#"><i class="fab fa-youtube"></i></a>
 							</div>
+							<a id="mobileMenuTrigger">
+								<svg class="menu-icon" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 23">
+								  <g>
+									 <line x1="2" y1="2.5" x2="27" y2="2.5" style="fill: none;stroke: #eb742d;stroke-linecap: square;stroke-miterlimit: 10;stroke-width: 3px"/>
+									 <line x1="2" y1="11.5" x2="27" y2="11.5" style="fill: none;stroke: #eb742d;stroke-linecap: square;stroke-miterlimit: 10;stroke-width: 3px"/>
+									 <line x1="2" y1="20.5" x2="27" y2="20.5" style="fill: none;stroke: #eb742d;stroke-linecap: square;stroke-miterlimit: 10;stroke-width: 3px"/>
+								  </g>
+								</svg>
+							</a>
 						</div>
 					</div>
 				</div>

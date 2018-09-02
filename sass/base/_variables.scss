@@ -13,6 +13,7 @@ $bp-smaller-than-desktop : "max-width: 1060px" !default;
 $bp-smaller-than-tablet : "max-width: 750px" !default;
 $bp-smaller-than-mobile : "max-width: 480px" !default;
 $bp-smaller-than-phablet   : "max-width: 550px" !default;
+$bp-smaller-than-desktophd : "max-width: 1200px" !default;
 $bp-smaller-than-largedesktop : "max-width: 1400px" !default;
 
 // Colors
@@ -28,6 +29,7 @@ $primary-lightbrown: #A99689 !default;
 $primary-orange: #EB742D;
 $primary-red: #B46C4E;
 $primary-pink: #F8B199;
+$primary-darkbrown: #40292D;
 
 //Secondary
 $secondary-pink: #D9B5A5;
@@ -39,6 +41,7 @@ $offwhite-2: #EDD9BC;
 $tertiary-grey: #356B51;
 $tertiary-background: #FEF6F2;
 $callout-brown: #B56C4B;
+$offwhite-bg: #FEF7F3;
 $h5-brown: #8B572A;
 $h3-brown: #41282C;
 //Fonts

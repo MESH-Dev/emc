@@ -1,7 +1,7 @@
 <div class="panel text-grid">
 		<div class="container">
 			<div class="row">
-				<div class=""><!-- columns-10 offset-by-1 -->
+				<div class="columns-10 offset-by-1"><!-- columns-10 offset-by-1 -->
 					<?php if (have_rows('cta_grid_item')) :
 							while(have_rows('cta_grid_item')) : the_row();
 								$cta_title = get_sub_field('cta_title');

@@ -1,21 +1,21 @@
-<?php get_header(); 
+<?php get_header();
 /* Template Name: Homepage*/
 ?>
 <script>
 			var _places = {
-			<?php $countries = get_field('countries'); 
-			//echo $countries; 
-			foreach ($countries as $row){ 
+			<?php $countries = get_field('countries');
+			//echo $countries;
+			foreach ($countries as $row){
 				//var_dump($row['country_lp'][0]);
 				?>
 
-				"<?php echo $row['country']; ?>":"\u003ca href=\"<?php echo $row['country_lp'][0]; ?>\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eBRAZIL\u003c/span\u003e \u003ca a/\u003e"
+				"<?php echo $row['country']; ?>":"\u003ca href=\"<//?php echo $row['country_lp'][0]; ?>\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eBRAZIL\u003c/span\u003e \u003ca a/\u003e"
 
 			<?php } ?>
 			};
 			</script>
 <main id="content">
-	<?php 
+	<?php
 		$background_img = get_field('img_fallback');
 		$background_image_url = $background_img['sizes']['background-fullscreen'];
 		$v_ogg = get_field('video_ogg');
@@ -33,7 +33,7 @@
 			<img src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt="">
 		</div>
 		<?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
-			<video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true">	
+			<video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true">
 				<source src ="<?php echo $vm_url; ?>" autoplay="true" loop="true" muted="true">
 				<source src ="<?php echo $vo_url; ?>" autoplay="true" loop="true" muted="true">
 				<source src ="<?php echo $vw_url; ?>" autoplay="true" loop="true" muted="true">
@@ -42,7 +42,7 @@
 	</div>
 	<div class="panel callout">
 		<div class="container">
-			<?php 
+			<?php
 			//Setup our ACF fields for use in this region
 			$intro_callout = get_field('intro_callout');
 			$intro_text = get_field('intro_text');
@@ -59,9 +59,9 @@
 	<div class="panel feature">
 		<div class="container">
 			<div class="row">
-				
+				<div class="columns-3 offset-by-1 intro-wrap">
 					<div class="intro"><!-- offset-by-1 -->
-						<?php 
+						<?php
 							$s_title = get_field('story_title');
 							$s_excerpt = get_field('story_excerpt');
 							$s_link = get_field('story_link');
@@ -75,7 +75,7 @@
 
 							if($s_title != ''){
 						?>
-					
+
 						<p class="title"><?php echo $s_title; ?></p>
 						<?php if($s_link !="_blank"){ ?>
 						<a href="<?php echo $s_link;?>" <?php echo $target; ?>>
@@ -94,17 +94,20 @@
 						</a>
 						<?php } } ?>
 					</div>
-
+				</div>
 			</div>
 		</div>
 		<div class="content">
+			<div class="img-screen">
+
+			</div>
 			<div class="feature-image has-background" style="background-image:url('<?php echo $story_img_url; ?>');">
 			<img class="feature-image" src="<?php echo $story_img_url; ?>" alt="" style="opacity:0;">
 			</div>
 		</div>
-		
+
 	</div>
-	
+
 
 </main><!-- End of Content -->
 
