@@ -2,7 +2,7 @@
 /* Template Name: Landing Page Template */
 ?>
 
-"<?php
+<?php
 	$background_img = get_field('background_image');
 	$background_image_url = $background_img['sizes']['short-banner'];
 	$v_ogg = get_field('video_ogg');
@@ -28,7 +28,7 @@
 			<source src ="<?php echo $vo_url; ?>" autoplay="true" loop="true" muted="true">
 			<source src ="<?php echo $vw_url; ?>" autoplay="true" loop="true" muted="true">
 		<video>
-	<? } ?>
+	<?php } ?>
 </div>
 <?php
 	if(have_rows('content_panel')):
@@ -143,7 +143,7 @@
 		</div>
 	</div>
 </div>
-<? }elseif($panel_type == 'story'){
+<?php }elseif($panel_type == 'story'){
 	$story_title = get_sub_field('story_title');
 	$story_text = get_sub_field('story_text');
 	$story_img = get_sub_field('story_image');

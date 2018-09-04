@@ -165,18 +165,37 @@ function new_excerpt_more($more) {
 add_filter('the_excerpt', 'new_excerpt_more');
 
 /* Display post thumbnail meta box including description */
-add_filter( 'admin_post_thumbnail_html', 'plc_post_thumbnail_add_description', 10, 2 );
+add_filter( 'admin_post_thumbnail_html', 'post_thumbnail_add_description', 10, 2 );
 
-function plc_post_thumbnail_add_description( $content, $post_id ){
+function post_thumbnail_add_description( $content, $post_id ){
 $post = get_post( $post_id );
 $post_type = $post->post_type;
 //if ( $post_type == 'post' {
-    $content .= "<p><label for=\"html\">This image will be included on your blog post archive page</label></p>";
+    $content .= "<p><label for=\"html\">This image will be included on your post archive page</label></p>";
     return $content;
     return $post_id;
 //}
 }
-// function my_endpoint( $request_data ) {
+
+// // define the admin_title callback 
+// function filter_admin_title( $admin_title, $title ) { 
+//     // make filter magic happen here... 
+//   global $before_title, $title, $after_title;
+//   $before_title = '<label>';
+//   $after_title = '</label>';
+//     return $after_title.$title.$before_title;
+// }; 
+         
+// add the filter 
+//add_filter( 'admin_title', 'filter_admin_title', 10, 2 ); 
+
+// function change_post_titles($admin_title) {
+//     global $post, $after_title, $action, $current_screen;
+//    // if (is_template('/templates/'))
+//     $after_title = '<label>Event Title</label>';
+// }
+// apply_filters('admin_title', 'change_post_titles');
+//function my_endpoint( $request_data ) {
 
 // 	// setup query argument
 // 	$args = array(
@@ -303,7 +322,7 @@ endif;
 
 		  </section>';
          endwhile; 
-         
+         wp_reset_postdata();
        else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
         
         echo '<article class="post-error">
@@ -317,6 +336,7 @@ endif;
        // echo '<nav class="load_more results">'
 		     //  .next_posts_link( 'Load More' ).
 		    	// '</nav>';
+       
        die();//if this isn't included, you will get funky characters at the end of your query results.
 }
 
@@ -400,6 +420,188 @@ endif;
                 </h3>
               </article>';
        endif; // OK, I think that takes care of both scenarios (having posts or not having any posts) 
+       // echo '<nav class="load_more results">'
+         //  .next_posts_link( 'Load More' ).
+          // '</nav>';
+       die();//if this isn't included, you will get funky characters at the end of your query results.
+}
+
+add_action('wp_ajax_get_events', 'get_events');  
+add_action('wp_ajax_nopriv_get_events', 'get_events'); 
+
+function get_events(){
+  //$post_topic = $_POST['postTopic'];
+  $event_topic = $_POST['eventTopic'];
+  $event_location = $_POST['eventLocation'];
+  $query = $_POST['query']; //*
+  //var_dump($event_topic);
+  //var_dump($event_location);
+
+ if ($event_topic == '' && $event_topic == '' && $query == ''): //All posts? No filter
+      $args = array(
+      'post_type' => 'events',
+      'posts_per_page' => 9,
+      'meta_key' => 'event_start_date',
+      'orderby' => 'meta_value',
+      'order' => 'ASC',
+      'paged'=>$paged,
+      //
+      );
+ elseif ($event_topic != '' ): //Using the filter - Topic filter used
+      $args = array(
+      'post_type' => 'events',
+      'posts_per_page' => 4,
+      'paged' => $paged,
+      'post_status' => 'publish',
+      //'s' => $query, //This is an 'and', so the query is effectively stopping here, if not commented out
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'event_topic',
+          'field'    => 'slug',
+          'terms'    => $event_topic, 
+          ),
+        ),
+      );
+  elseif ($event_location != '' ): //Using the filter - Topic filter used
+  $args = array(
+  'post_type' => 'events',
+  'posts_per_page' => 6,
+  'paged' => $paged,
+  'post_status' => 'publish',
+  //'s' => $query, //This is an 'and', so the query is effectively stopping here, if not commented out
+  'tax_query' => array(
+    array(
+      'taxonomy' => 'event_location',
+      'field'    => 'slug',
+      'terms'    => $event_location, 
+      ),
+    ),
+  );
+ //Make the search exlusive to entries or clicking the filter
+ elseif ($query != ''): //All posts? No filter
+      $args = array(
+      'post_type' => 'events',
+      'posts_per_page' => 9,
+      'post_status' => 'publish',
+      'paged' => $paged,
+      's' => $query
+      //
+      );
+
+      //var_dump($query);
+endif;
+        // the query
+      //var_dump($query);
+        $the_query = new WP_Query( $args ); 
+        //var_dump($args);
+        $count = $the_query->found_posts;
+        
+
+       if ( $the_query->have_posts() ) : 
+      // Do we have any posts in the databse that match our query?
+      // In the case of the home page, this will call for the most recent posts 
+        $e_cnt=0;
+        echo '<div class="row grid-row">';
+        //echo '<div class="container '.$profile_class .'" id="project-gallery">';
+         while ( $the_query->have_posts() ) : $the_query->the_post(); //We set up $the_query on line 144
+        // If we have some posts to show, start a loop that will display each one the same way
+        
+        
+         //if (have_rows ('project_gallery')): //Setup the panels between the top/bottom panels
+               //Setup variables
+               
+            $the_title = get_the_title();
+            
+            $e_cnt++;
+            $div_class='';
+            $icon = get_field('eo_icon', $post->ID);
+            $icon_url = $icon['sizes']['medium'];
+            $icon_alt = $icon['alt'];
+            $event_desc = get_field('event_description', $post->ID);
+            $event_loc = get_field('event_location', $post->ID);
+            $event_start = get_field('event_start_date', $post->ID);
+            //$event_sd = date('F j, Y', $event_start);
+            $event_end = get_field('event_end_date', $post->ID);
+
+            $end='';
+            //$dash = htm('&mdash');
+            // if($event_end != '' && $event_end != $event_start){
+            //   $end =  $dash.$event_end;
+            // }
+            $event_link_text = get_field('el_text', $post->ID);
+            $event_link = get_field('el_link', $post->ID);
+            $external = get_field('external', $post->ID);
+            $event_tax = get_the_terms(get_the_ID(),'event_topic'); 
+            $topic_name='';
+            if($event_tax != ''){
+               foreach($event_tax as $topic){
+                  $topic_name = $topic->name;
+               }
+            }
+            $target = '';
+            if($external == true){
+               $target='target="_blank"';
+            }
+
+            if($e_cnt % 2 != 0){
+               $div_class = 'offset_by_1';
+            }
+                
+                $target = '';
+
+                $directory = get_bloginfo('template_directory');
+
+                $f_override = get_field('override_feature_image_text', $post->ID);
+                $f_image = the_post_thumbnail('large', $post->ID);
+
+                $feature = '';
+
+                if(the_post_thumbnail($post->ID) != ''){
+          $feature = get_the_post_thumbnail('large');
+          }elseif(get_field('override_feature_image_text', $post->ID) != ''){
+            $b = "'bianco-reg'";
+            $feature = '<h2 style="text-align:center; font-size:48px; font-family: '.$b.';">'.$f_override.'</h2>';
+          }
+
+          
+
+          //endif; 
+          echo '
+          <div class="columns-5 card '.$div_class.'">
+             <div class="row">
+                <div class="event-columns-1">
+                   <img src="'.$icon_url.'" alt="'.$icon_alt.'">
+                </div>
+                <div class="event-columns-4">
+                   <p class="heading6 date">'.$event_start.'</p>
+                   <p class="title">'.$the_title.'</p>
+                   <p class="tags">'.$event_loc.' | '. $topic_name .'</p>
+                   <div class="excerpt">'.$event_desc.'</div>
+                   <a href="'.$event_link.'" '. $target.'>'.$event_link_text.'</a>
+                </div>
+             </div>
+          </div>';
+
+          if($e_cnt %2 == 0){
+            echo '</div><div class="row grid-row"> <!-- New Row -->';
+          };
+         endwhile; 
+         // if($e_cnt % 2 == 0){
+         //  echo '</div><div class="row grid-row">';
+         // };
+       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
+        
+        echo '<article class="post-error">
+                <h3 class="404">
+                  Your search did not produce any results!</br>
+                
+                  Please use a different search term, or try something more specific.
+                </h3>
+              </article>';
+       endif; 
+       echo '</div> <!--end row-->';
+       //wp_reset_postdata();
+       // OK, I think that takes care of both scenarios (having posts or not having any posts) 
        // echo '<nav class="load_more results">'
          //  .next_posts_link( 'Load More' ).
           // '</nav>';

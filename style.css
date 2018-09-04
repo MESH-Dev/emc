@@ -2199,24 +2199,47 @@ body {
   letter-spacing: 0.6px;
   line-height: 26px;
 }
-/* line 743, sass/modules/_modules.scss */
+/* line 742, sass/modules/_modules.scss */
+.panel.events .event-columns-4 a {
+  display: inline;
+  margin-bottom: 0;
+  font-family: 'whitney-bold';
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+  color: #EB742D;
+}
+/* line 751, sass/modules/_modules.scss */
+.panel.events .event-columns-4 a svg {
+  width: 15px;
+  height: auto;
+  display: inline-block;
+  margin-top: -3px;
+  vertical-align: middle;
+}
+/* line 759, sass/modules/_modules.scss */
+.panel.events .event-columns-4 a:hover, .panel.events .event-columns-4 a:focus, .panel.events .event-columns-4 a:active {
+  opacity: .5;
+  text-decoration: none;
+}
+/* line 767, sass/modules/_modules.scss */
 .panel.events [class*="event-columns-"] {
   float: left;
   padding-right: 15px;
 }
-/* line 747, sass/modules/_modules.scss */
+/* line 771, sass/modules/_modules.scss */
 .row .panel.events [class*="event-columns-"]:last-of-type {
   padding-right: 0;
 }
 @media (max-width: 750px) {
-  /* line 743, sass/modules/_modules.scss */
+  /* line 767, sass/modules/_modules.scss */
   .panel.events [class*="event-columns-"] {
     width: 100%;
     padding: 0;
   }
 }
 
-/* line 760, sass/modules/_modules.scss */
+/* line 784, sass/modules/_modules.scss */
 .img-screen {
   position: absolute;
   top: 0;
@@ -2227,7 +2250,7 @@ body {
   opacity: 0.2;
 }
 @media screen and (max-width: 750px) {
-  /* line 760, sass/modules/_modules.scss */
+  /* line 784, sass/modules/_modules.scss */
   .img-screen {
     left: 0;
     right: 0;
@@ -2235,40 +2258,40 @@ body {
   }
 }
 
-/* line 775, sass/modules/_modules.scss */
+/* line 799, sass/modules/_modules.scss */
 .event-grid {
   margin-bottom: 26px;
 }
 
-/* line 779, sass/modules/_modules.scss */
+/* line 803, sass/modules/_modules.scss */
 .filter-bar {
   background-color: #FBD8C2;
 }
-/* line 782, sass/modules/_modules.scss */
+/* line 806, sass/modules/_modules.scss */
 .filter-bar ul li {
   display: inline-block;
 }
-/* line 784, sass/modules/_modules.scss */
+/* line 808, sass/modules/_modules.scss */
 .filter-bar ul li a {
   color: #40292D;
 }
 
-/* line 792, sass/modules/_modules.scss */
+/* line 816, sass/modules/_modules.scss */
 main.landing .text-grid {
   background-color: #FEF6F2;
 }
 
-/* line 797, sass/modules/_modules.scss */
+/* line 821, sass/modules/_modules.scss */
 main.text {
   padding-top: 9em;
   background-color: #FEF7F3;
 }
 
-/* line 804, sass/modules/_modules.scss */
+/* line 828, sass/modules/_modules.scss */
 .text [class*='columns-']:last-of-type {
   padding-right: 15px;
 }
-/* line 807, sass/modules/_modules.scss */
+/* line 831, sass/modules/_modules.scss */
 .text .headline {
   font-family: 'whitney-book';
   font-size: 3.6rem;
@@ -2277,7 +2300,7 @@ main.text {
   color: #70594C;
   margin-bottom: 2rem;
 }
-/* line 815, sass/modules/_modules.scss */
+/* line 839, sass/modules/_modules.scss */
 .text .callout {
   font-family: 'whitney-book';
   font-size: 2.6rem;
@@ -2286,32 +2309,32 @@ main.text {
   color: #B46C4E;
   margin-bottom: 2em;
 }
-/* line 824, sass/modules/_modules.scss */
+/* line 848, sass/modules/_modules.scss */
 .text .row {
   margin-bottom: 6em;
 }
-/* line 829, sass/modules/_modules.scss */
+/* line 853, sass/modules/_modules.scss */
 .text .col img {
   width: 100%;
   height: auto;
 }
-/* line 834, sass/modules/_modules.scss */
+/* line 858, sass/modules/_modules.scss */
 .text .col p {
   color: #B46C4E;
 }
 
-/* line 843, sass/modules/_modules.scss */
+/* line 867, sass/modules/_modules.scss */
 #vmap svg {
   position: relative;
   z-index: 0;
 }
 
-/* line 847, sass/modules/_modules.scss */
+/* line 871, sass/modules/_modules.scss */
 .jqvmap-pin {
   z-index: 9999;
   pointer-events: initial;
 }
-/* line 850, sass/modules/_modules.scss */
+/* line 874, sass/modules/_modules.scss */
 .jqvmap-pin a {
   padding-right: 25px;
   background-image: url("img/EMC_MapPin_Landing.png");
@@ -2326,22 +2349,46 @@ main.text {
   color: #EB742D;
   display: inline-block;
 }
-/* line 864, sass/modules/_modules.scss */
+/* line 888, sass/modules/_modules.scss */
 .jqvmap-pin a:hover, .jqvmap-pin a:active, .jqvmap-pin a:focus {
   background-image: url("img/EMC_MapPin_Hover.png");
   text-decoration: none;
   color: #FDF6ED;
 }
 
-/* line 874, sass/modules/_modules.scss */
+/* line 898, sass/modules/_modules.scss */
 .jqvmap-region {
   position: relative;
   z-index: -1;
   pointer-events: none;
 }
 
-/* line 879, sass/modules/_modules.scss */
+/* line 903, sass/modules/_modules.scss */
 .jqvmap-region path {
   position: relative;
   z-index: 1;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* line 919, sass/modules/_modules.scss */
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+/* line 923, sass/modules/_modules.scss */
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+/* line 928, sass/modules/_modules.scss */
+.hide {
+  display: none;
 }

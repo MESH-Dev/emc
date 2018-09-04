@@ -261,7 +261,7 @@ function event_location_taxonomy() {
 		'parent_item'                => __( 'Parent Item', 'text_domain' ),
 		'parent_item_colon'          => __( 'Parent Item:', 'text_domain' ),
 		'new_item_name'              => __( 'New Event Location', 'text_domain' ),
-		'add_new_item'               => __( 'Add New EEvent Location', 'text_domain' ),
+		'add_new_item'               => __( 'Add New Event Location', 'text_domain' ),
 		'edit_item'                  => __( 'Edit Event Location', 'text_domain' ),
 		'update_item'                => __( 'Update Event Location', 'text_domain' ),
 		'view_item'                  => __( 'View Event Location', 'text_domain' ),

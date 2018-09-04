@@ -739,6 +739,30 @@ body{
             letter-spacing: 0.6px;
             line-height: 26px;
          }
+         a{
+            display: inline;
+            margin-bottom: 0;
+            font-family: 'whitney-bold';
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            color:$primary-orange;
+             
+             svg{
+               width:15px;
+               height:auto;
+               display: inline-block;
+               margin-top: -3px;
+               vertical-align: middle;
+             }
+
+             &:hover,
+             &:focus,
+             &:active{
+               opacity:.5;
+               text-decoration:none;
+             }
+         }
       }
       [class*="event-columns-"]{
          float: left;
@@ -880,3 +904,27 @@ main.text{
    position: relative;
    z-index:1;
  }
+
+ //Animations
+ @keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both
+}
+
+.hide{
+   display:none;
+}

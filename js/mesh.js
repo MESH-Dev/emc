@@ -222,7 +222,7 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
 	
   });
 
-function loadCommunityMembers ( query) { //*
+function loadCommunityMembers (query) { //*
  
       //console.log(projectType);
       //console.log(query);  //*
@@ -291,6 +291,8 @@ function loadCommunityMembers ( query) { //*
         }    
   }
 
+
+
 $('.cr-search-filter form').submit(function(e){
     e.preventDefault();
     var $form = $(this);
@@ -310,6 +312,142 @@ $('.cr-search-filter form').submit(function(e){
 
     //Detach all of our original posts so that we can add our results back to the DOM
     $('.post').detach();
+  
+  });
+
+function loadEvents (eventTopic, eventLocation, query) { //*
+ 
+      //console.log(projectType);
+      //console.log(query);  //*
+      var is_loading = false;
+       if (is_loading == false){
+            is_loading = true;
+      
+      $('loader-container').removeClass('hide');
+            $('.loader, .loader-container').fadeIn(200);
+
+            var data = {
+                action: 'get_events',  //Our function from function.php
+                //postTopic: postTopic,
+                eventTopic: eventTopic,
+                eventLocation: eventLocation, //the return value
+                data: "?query=",
+                //contentType: contentType,
+                query: query //Are we using the search?  
+            };
+            jQuery.post(ajaxurl, data, function(response) {
+                // now we have the response, so hide the loader
+
+                //console.log(response);
+                //console.log(data);
+                //console.log(memberResource);
+                //console.log(contentType);
+                //console.log(get_member_resources);
+                
+               //$('a#load-more-photos').show();
+                // append: add the new statments to the existing data
+                if(response != 0){
+
+                  $('.card').detach();
+                  $('.row.event-grid').detach();
+                  $('#emc-events').append(response);
+                  //$container.waitForImages(function() {
+                  //   $('#loader').hide();
+                  // });                  
+          $('.loader').fadeOut(1000);
+          $('.loader-container').fadeOut(300);
+          $('.card').addClass('hide');
+          //$('.projects-nav ul > li').removeClass('selected');
+          //Adds slideinLeft and animated classes to each project tile in order
+          $('.card').each(function(i, el){
+            //Show each item in it's turn
+            window.setTimeout(function(){
+            $(el).removeClass('hide').addClass('fadeIn animated');
+            }, 50 * i);
+          });
+          $('.search_form')
+            .removeClass('slideInLeft')
+            .addClass('slideOutLeft');
+          // $('.projects-nav.gallery')
+          //  .removeClass('slideInLeft')
+          //  .addClass('slideOutLeft');
+                  is_loading = false;
+                  //console.log(url);
+                //   if(query != '')
+                //    //history.pushState(null, null, '?s='+query);
+                }
+                else{
+                  $('#loader').hide();
+                  
+                  is_loading = false;
+                }
+
+                
+            });
+        }    
+  }
+
+$('.e-topic-filters li').click(function(e){
+    e.preventDefault;
+    $(this).parent().find('li.selected').removeClass('selected');
+
+     $(this).addClass('selected');
+    var eventTopic = $('.e-topic-filters li.selected').attr('data-filter');
+    console.log("eventTopic = "+eventTopic);
+    // Push the filter that was used to the end of the current URL so that we can use it 
+    // to run our functions when the user is visiting from a shared link
+    if(eventTopic != ''){
+      history.pushState(null, null, '?category='+eventTopic);
+    }else{
+      history.replaceState(null, null, window.location.pathname);
+    }
+    var cat = getUrlParameter('category');
+    //console.log(cat);
+    //console.log(postTopic);
+    //Run our function above using our topic filter data
+    loadEvents(eventTopic,'', '');
+  });
+
+$('.e-location-filters li').click(function(e){
+    e.preventDefault;
+    $(this).parent().find('li.selected').removeClass('selected');
+
+     $(this).addClass('selected');
+    var eventLocation = $('.e-location-filters li.selected').attr('data-filter');
+    //console.log("eventTopic = "+eventTopic);
+    // Push the filter that was used to the end of the current URL so that we can use it 
+    // to run our functions when the user is visiting from a shared link
+    if(eventLocation != ''){
+      history.pushState(null, null, '?location='+eventLocation);
+    }else{
+      history.replaceState(null, null, window.location.pathname);
+    }
+    var loc = getUrlParameter('location');
+    //console.log(cat);
+    //console.log(postTopic);
+    //Run our function above using our topic filter data
+    loadEvents('',eventLocation, '');
+  });
+
+$('.e-search-filter form').submit(function(e){
+    e.preventDefault();
+    var $form = $(this);
+    var $input = $form.find('input[name="s"]');
+    var query = $input.val();
+
+    // Push the search query to the end of the current URL so that we can use it to run
+    // our functions when a user is visiting from a shared link 
+    if(query != ''){
+     history.pushState(null, null, '?query='+query);
+    }else{
+      history.pushState(null, null, window.location.pathname);
+    }
+
+    //Run our AJAX function loadPostsByTopic(topic, query)
+    loadEvents('','',query);
+
+    //Detach all of our original posts so that we can add our results back to the DOM
+    $('.card').detach();
   
   });
 
