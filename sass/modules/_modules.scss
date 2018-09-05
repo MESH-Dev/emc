@@ -26,6 +26,9 @@ body{
       height: 675px;
       padding-top: 165px;
       position: relative;
+      @media screen and ($bp-smaller-than-tablet){
+         padding-top: 200px;
+      }
       .top-callout{
          color: $offwhite-1;
          font-family: 'whitney-bold';
@@ -439,6 +442,9 @@ body{
          p{
             color: $nav-brown;
          }
+         strong{
+            font-family: 'bianco-extrabold';
+         }
       }
    }
    &.img-and-wysiwyg{
@@ -556,20 +562,64 @@ body{
       }
       .wysiwyg-section{
          padding-left: 37px;
+         @media screen and ($bp-smaller-than-tablet){
+            padding-left: 0;
+         }
       }
    }
    &.statistic{
       background-color: $tertiary-background;
       position: relative;
+      .row{
+         position: relative;
+      }
+      .content{
+         position: relative;
+         padding:0 40px;
+         @media ($bp-smaller-than-tablet){
+            padding:0;
+         }
+      }
+      .feature-image{
+         width: 100%;
+         height: auto;
+         min-height:600px;
+         //padding-right: 40px;
+         //padding-left: 40px;
+      }
+      .img-screen{
+         background-color: $offwhite-1;
+      }
       .stats{
          position: absolute;
-         top: 132px;
+         top: 90px;
+         z-index: 999;
+         @media screen and ($bp-smaller-than-desktop){
+            top: 20px;
+            padding-left: 20px;
+         }
+         .title{
+            font-family: 'whitney-bold';
+            font-size: 2rem;
+            letter-spacing: 2.96px;
+            // line-height: 29px;
+            color: $primary-darkbrown;
+         }
+         .desc{
+            color: $primary-darkbrown;
+            letter-spacing: 0.82px;
+            line-height: 32px;
+         }
       }
       .stat-visual{
          width: 100%;
          // padding-top: 40px;
          padding-left: 40px;
          padding-right: 40px;
+         @media screen and ($bp-smaller-than-desktop){
+            padding-left: 0;
+            padding-right: 0;
+         }
       }
    }
    &.photo-essay{
@@ -747,7 +797,7 @@ body{
             font-size: 1.4rem;
             letter-spacing: 3px;
             color:$primary-orange;
-             
+
              svg{
                width:15px;
                height:auto;

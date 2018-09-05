@@ -12,13 +12,25 @@ jQuery(document).ready(function($){
 
   $('#mobileMenuTrigger').sidr({
      // name: 'mobile',
-     // onOpen: function(){
-     //    console.log('Opened');
-     // },
+     onOpen: function(){
+        $('#mobileMenuTrigger .menu-icon').toggle();
+        $('#mobileMenuTrigger .menu-close').toggle();
+     },
+     onClose: function(){
+       $('#mobileMenuTrigger .menu-icon').toggle();
+       $('#mobileMenuTrigger .menu-close').toggle();
+     },
      displace: false,
      renaming: false,
      side: 'right',
      source: '#header-main, #menu-gateway_nav, #header-social'
+ });
+
+ $('.menu-item-has-children > a').after('<div class="after-arrow"></div>');
+
+ $('ul#menu-main_nav li.menu-item-has-children').click(function(){
+    $(this).children('.sub-menu').toggleClass('open');
+    $(this).children('.after-arrow').toggleClass('open');
  });
 
 //  $('#mobileMenuTrigger').click(function(){
@@ -30,6 +42,11 @@ jQuery(document).ready(function($){
 $('#search').click(function(){
    $('.search-field').toggleClass('open');
    $('.submit').toggleClass('show');
+});
+
+$('#tickerClose').click(function(event){
+   event.preventDefault();
+   $('.ticker').toggle();
 });
 
   _pins = { "us" : "\u003ca href=\"#\"\u003e \u003cspan\u003eUSA\u003c/span\u003e \u003ca a/\u003e",//\u003cimg src=\"pk.png\" /\u003e
@@ -74,7 +91,7 @@ $('#search').click(function(){
 
         sp += sParameterName;
         console.log(sp);
-        //We only need this if statement if we are sending the function our 
+        //We only need this if statement if we are sending the function our
         // if (sParameterName[0] === sParam) {
         //     return sParameterName[1] === undefined ? true : sParameterName[1];
         // }
@@ -94,7 +111,7 @@ console.log('Parameter name = '+getUrlParameter());
 // //var cparam = fparam.split('=');
 // console.log('Search param = '+fparam);
 
-// Runs the filter query based on the url search 
+// Runs the filter query based on the url search
 // could be shortened so that we don't have to run a million if statements
 // still need one for search
 //__If we're running the filter POSTS
@@ -110,13 +127,13 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
 }
 
 	function loadPostsByTopic (postTopic, query) { //*
- 
+
       //console.log(projectType);
       //console.log(query);  //*
       var is_loading = false;
        if (is_loading == false){
             is_loading = true;
- 			
+
  			$('loader-container').removeClass('hide');
             $('.loader, .loader-container').fadeIn(200);
 
@@ -125,7 +142,7 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
                 postTopic: postTopic, //the return value
                 data: "?query=",
                 //contentType: contentType,
-                query: query //Are we using the search?  
+                query: query //Are we using the search?
             };
             jQuery.post(ajaxurl, data, function(response) {
                 // now we have the response, so hide the loader
@@ -135,7 +152,7 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
                 //console.log(memberResource);
                 //console.log(contentType);
                 //console.log(get_member_resources);
-                
+
                //$('a#load-more-photos').show();
                 // append: add the new statments to the existing data
                 if(response != 0){
@@ -144,7 +161,7 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
                   $('#posts').append(response);
                   //$container.waitForImages(function() {
                   //   $('#loader').hide();
-                  // });                  
+                  // });
  					$('.loader').fadeOut(1000);
  					$('.loader-container').fadeOut(300);
  					$('.member-resource-item').addClass('hide');
@@ -169,13 +186,13 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
                 }
                 else{
                   $('#loader').hide();
-                  
+
                   is_loading = false;
                 }
 
-                
+
             });
-        }    
+        }
   }
 
   $('.topic-filter li').click(function(e){
@@ -184,7 +201,7 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
 
      $(this).addClass('selected');
     var postTopic = $('.topic-filter li.selected').attr('data-filter');
-    // Push the filter that was used to the end of the current URL so that we can use it 
+    // Push the filter that was used to the end of the current URL so that we can use it
     // to run our functions when the user is visiting from a shared link
     if(postTopic != ''){
       history.pushState(null, null, '?category='+postTopic);
@@ -207,7 +224,7 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
   	var query = $input.val();
 
     // Push the search query to the end of the current URL so that we can use it to run
-    // our functions when a user is visiting from a shared link 
+    // our functions when a user is visiting from a shared link
     if(query != ''){
   	 history.pushState(null, null, '?query='+query);
     }else{
@@ -219,17 +236,17 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
 
     //Detach all of our original posts so that we can add our results back to the DOM
   	$('.post').detach();
-	
+
   });
 
 function loadCommunityMembers (query) { //*
- 
+
       //console.log(projectType);
       //console.log(query);  //*
       var is_loading = false;
        if (is_loading == false){
             is_loading = true;
-      
+
       $('loader-container').removeClass('hide');
             $('.loader, .loader-container').fadeIn(200);
 
@@ -238,7 +255,7 @@ function loadCommunityMembers (query) { //*
                 //postTopic: postTopic, //the return value
                 data: "?query=",
                 //contentType: contentType,
-                query: query //Are we using the search?  
+                query: query //Are we using the search?
             };
             jQuery.post(ajaxurl, data, function(response) {
                 // now we have the response, so hide the loader
@@ -248,7 +265,7 @@ function loadCommunityMembers (query) { //*
                 //console.log(memberResource);
                 //console.log(contentType);
                 //console.log(get_member_resources);
-                
+
                //$('a#load-more-photos').show();
                 // append: add the new statments to the existing data
                 if(response != 0){
@@ -257,7 +274,7 @@ function loadCommunityMembers (query) { //*
                   $('#posts').append(response);
                   //$container.waitForImages(function() {
                   //   $('#loader').hide();
-                  // });                  
+                  // });
           $('.loader').fadeOut(1000);
           $('.loader-container').fadeOut(300);
           $('.member-resource-item').addClass('hide');
@@ -282,13 +299,13 @@ function loadCommunityMembers (query) { //*
                 }
                 else{
                   $('#loader').hide();
-                  
+
                   is_loading = false;
                 }
 
-                
+
             });
-        }    
+        }
   }
 
 
@@ -300,7 +317,7 @@ $('.cr-search-filter form').submit(function(e){
     var query = $input.val();
 
     // Push the search query to the end of the current URL so that we can use it to run
-    // our functions when a user is visiting from a shared link 
+    // our functions when a user is visiting from a shared link
     if(query != ''){
      history.pushState(null, null, '?query='+query);
     }else{
@@ -312,17 +329,17 @@ $('.cr-search-filter form').submit(function(e){
 
     //Detach all of our original posts so that we can add our results back to the DOM
     $('.post').detach();
-  
+
   });
 
 function loadEvents (eventTopic, eventLocation, query) { //*
- 
+
       //console.log(projectType);
       //console.log(query);  //*
       var is_loading = false;
        if (is_loading == false){
             is_loading = true;
-      
+
       $('loader-container').removeClass('hide');
             $('.loader, .loader-container').fadeIn(200);
 
@@ -333,7 +350,7 @@ function loadEvents (eventTopic, eventLocation, query) { //*
                 eventLocation: eventLocation, //the return value
                 data: "?query=",
                 //contentType: contentType,
-                query: query //Are we using the search?  
+                query: query //Are we using the search?
             };
             jQuery.post(ajaxurl, data, function(response) {
                 // now we have the response, so hide the loader
@@ -343,7 +360,7 @@ function loadEvents (eventTopic, eventLocation, query) { //*
                 //console.log(memberResource);
                 //console.log(contentType);
                 //console.log(get_member_resources);
-                
+
                //$('a#load-more-photos').show();
                 // append: add the new statments to the existing data
                 if(response != 0){
@@ -353,7 +370,7 @@ function loadEvents (eventTopic, eventLocation, query) { //*
                   $('#emc-events').append(response);
                   //$container.waitForImages(function() {
                   //   $('#loader').hide();
-                  // });                  
+                  // });
           $('.loader').fadeOut(1000);
           $('.loader-container').fadeOut(300);
           $('.card').addClass('hide');
@@ -378,13 +395,13 @@ function loadEvents (eventTopic, eventLocation, query) { //*
                 }
                 else{
                   $('#loader').hide();
-                  
+
                   is_loading = false;
                 }
 
-                
+
             });
-        }    
+        }
   }
 
 $('.e-topic-filters li').click(function(e){
@@ -394,7 +411,7 @@ $('.e-topic-filters li').click(function(e){
      $(this).addClass('selected');
     var eventTopic = $('.e-topic-filters li.selected').attr('data-filter');
     console.log("eventTopic = "+eventTopic);
-    // Push the filter that was used to the end of the current URL so that we can use it 
+    // Push the filter that was used to the end of the current URL so that we can use it
     // to run our functions when the user is visiting from a shared link
     if(eventTopic != ''){
       history.pushState(null, null, '?category='+eventTopic);
@@ -415,7 +432,7 @@ $('.e-location-filters li').click(function(e){
      $(this).addClass('selected');
     var eventLocation = $('.e-location-filters li.selected').attr('data-filter');
     //console.log("eventTopic = "+eventTopic);
-    // Push the filter that was used to the end of the current URL so that we can use it 
+    // Push the filter that was used to the end of the current URL so that we can use it
     // to run our functions when the user is visiting from a shared link
     if(eventLocation != ''){
       history.pushState(null, null, '?location='+eventLocation);
@@ -436,7 +453,7 @@ $('.e-search-filter form').submit(function(e){
     var query = $input.val();
 
     // Push the search query to the end of the current URL so that we can use it to run
-    // our functions when a user is visiting from a shared link 
+    // our functions when a user is visiting from a shared link
     if(query != ''){
      history.pushState(null, null, '?query='+query);
     }else{
@@ -448,7 +465,7 @@ $('.e-search-filter form').submit(function(e){
 
     //Detach all of our original posts so that we can add our results back to the DOM
     $('.card').detach();
-  
+
   });
 
 });

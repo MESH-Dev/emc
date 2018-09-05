@@ -51,7 +51,7 @@
 				<div class="heading2"><?php echo $callout_intro ?></div>
 			</div>
 			<div class="columns-4 desc-col">
-				<p class="paragraph"><?php echo $callout_paragraph; ?></p>
+				<div class="paragraph"><?php echo $callout_paragraph; ?></div>
 			</div>
 		</div>
 	</div>
@@ -183,7 +183,19 @@
 				<?php } ?>
 			</div>
 		</div>
-		<img class="stat-visual" src="<?php echo get_template_directory_uri(); ?>/img/Y1WMEo9Q.png" alt="">
+		<div class="content">
+			<div class="img-screen">
+
+			</div>
+			<div class="feature-image has-background" style="background-image:url('<?php echo get_template_directory_uri(); ?>/img/Y1WMEo9Q.png');">
+			<!-- <img class="feature-image" src="<//?php echo $story_img_url; ?>" alt="" style="opacity:0;"> -->
+			</div>
+		</div>
+		<!-- <div class="stat-visual" src="<//?php echo get_template_directory_uri(); ?>/img/Y1WMEo9Q.png" alt="">
+			<div class="img-screen">
+
+			</div>
+		</div> -->
 	</div>
 <?php }elseif($panel_type == 'news') {
 	$n_title = get_sub_field('news_title');

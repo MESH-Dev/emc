@@ -231,7 +231,7 @@ add_action('wp_ajax_nopriv_get_post_by_topic', 'get_post_by_topic');  //_nopriv_
 function get_post_by_topic(){
   $post_topic = $_POST['postTopic'];
   $query = $_POST['query']; //*
- 
+  global $wp_query;
  //Make the search exlusive to entries or clicking the filter
  if ($post_topic == '' && $query == ''): //All posts? No filter
       $args = array(
@@ -272,17 +272,17 @@ elseif($query != ''):  //If the search is used
 endif;
         // the query
       //var_dump($query);
-        $the_query = new WP_Query( $args ); 
+        $wp_query = new WP_Query( $args ); 
         //var_dump($args);
-        $count = $the_query->found_posts;
+        $count = $wp_query->found_posts;
         
 
-       if ( $the_query->have_posts() ) : 
+       if ( $wp_query->have_posts() ) : 
       // Do we have any posts in the databse that match our query?
       // In the case of the home page, this will call for the most recent posts 
       
         //echo '<div class="container '.$profile_class .'" id="project-gallery">';
-         while ( $the_query->have_posts() ) : $the_query->the_post(); //We set up $the_query on line 144
+         while ( $wp_query->have_posts() ) : $the_query->the_post(); //We set up $the_query on line 144
         // If we have some posts to show, start a loop that will display each one the same way
         
         
@@ -322,7 +322,7 @@ endif;
 
 		  </section>';
          endwhile; 
-         wp_reset_postdata();
+         //
        else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
         
         echo '<article class="post-error">
@@ -336,7 +336,7 @@ endif;
        // echo '<nav class="load_more results">'
 		     //  .next_posts_link( 'Load More' ).
 		    	// '</nav>';
-       
+       wp_reset_query();
        die();//if this isn't included, you will get funky characters at the end of your query results.
 }
 
@@ -434,13 +434,16 @@ function get_events(){
   $event_topic = $_POST['eventTopic'];
   $event_location = $_POST['eventLocation'];
   $query = $_POST['query']; //*
+  //var_dump($event_location);
+  // $page = $_POST['page'];
+  // var_dump($page);
   //var_dump($event_topic);
   //var_dump($event_location);
 
- if ($event_topic == '' && $event_topic == '' && $query == ''): //All posts? No filter
+ if ($event_topic == '' && $event_location == '' && $query == ''): //All posts? No filter
       $args = array(
       'post_type' => 'events',
-      'posts_per_page' => 9,
+      'posts_per_page' => 6,
       'meta_key' => 'event_start_date',
       'orderby' => 'meta_value',
       'order' => 'ASC',
@@ -450,7 +453,10 @@ function get_events(){
  elseif ($event_topic != '' ): //Using the filter - Topic filter used
       $args = array(
       'post_type' => 'events',
-      'posts_per_page' => 4,
+      'posts_per_page' => 6,
+      'meta_key' => 'event_start_date',
+      'orderby' => 'meta_value',
+      'order' => 'ASC',
       'paged' => $paged,
       'post_status' => 'publish',
       //'s' => $query, //This is an 'and', so the query is effectively stopping here, if not commented out
@@ -462,11 +468,15 @@ function get_events(){
           ),
         ),
       );
+      var_dump($args['paged']);
   elseif ($event_location != '' ): //Using the filter - Topic filter used
   $args = array(
   'post_type' => 'events',
   'posts_per_page' => 6,
-  'paged' => $paged,
+  'meta_key' => 'event_start_date',
+  'orderby' => 'meta_value',
+  'order' => 'ASC',
+  'paged'=>$paged,
   'post_status' => 'publish',
   //'s' => $query, //This is an 'and', so the query is effectively stopping here, if not commented out
   'tax_query' => array(
@@ -481,9 +491,12 @@ function get_events(){
  elseif ($query != ''): //All posts? No filter
       $args = array(
       'post_type' => 'events',
-      'posts_per_page' => 9,
+      'posts_per_page' => 6,
       'post_status' => 'publish',
-      'paged' => $paged,
+      'meta_key' => 'event_start_date',
+      'orderby' => 'meta_value',
+      'order' => 'ASC',
+      'paged'=>$paged,
       's' => $query
       //
       );
@@ -492,18 +505,21 @@ function get_events(){
 endif;
         // the query
       //var_dump($query);
-        $the_query = new WP_Query( $args ); 
+      global $wp_query;
+      global $paged;
+
+        $wp_query = new WP_Query( $args ); 
         //var_dump($args);
-        $count = $the_query->found_posts;
+        //$count = $the_query->found_posts;
         
 
-       if ( $the_query->have_posts() ) : 
+       if ( $wp_query->have_posts() ) : 
       // Do we have any posts in the databse that match our query?
       // In the case of the home page, this will call for the most recent posts 
         $e_cnt=0;
         echo '<div class="row grid-row">';
         //echo '<div class="container '.$profile_class .'" id="project-gallery">';
-         while ( $the_query->have_posts() ) : $the_query->the_post(); //We set up $the_query on line 144
+         while ( $wp_query->have_posts() ) : $wp_query->the_post(); //We set up $the_query on line 144
         // If we have some posts to show, start a loop that will display each one the same way
         
         
@@ -577,7 +593,17 @@ endif;
                    <p class="title">'.$the_title.'</p>
                    <p class="tags">'.$event_loc.' | '. $topic_name .'</p>
                    <div class="excerpt">'.$event_desc.'</div>
-                   <a href="'.$event_link.'" '. $target.'>'.$event_link_text.'</a>
+                   <a href="'.$event_link.'" '. $target.'>'.$event_link_text.'
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                        <style type="text/css">
+                           .st0{fill:#EED9BD;}
+                           .st1{fill:#EC742E;}
+                        </style>
+                        <polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
+                           39.3,83.3 66,56.5 71.9,50.7 "/>
+                     </svg>
+                     </a>
                 </div>
              </div>
           </div>';
@@ -603,10 +629,98 @@ endif;
        //wp_reset_postdata();
        // OK, I think that takes care of both scenarios (having posts or not having any posts) 
        // echo '<nav class="load_more results">'
-         //  .next_posts_link( 'Load More' ).
-          // '</nav>';
+       //    .next_posts_link( 'Load More' ).
+       //    '</nav>';
+       wp_reset_query();
        die();//if this isn't included, you will get funky characters at the end of your query results.
 }
 
+//Can we get this to work for page filter/search results?
+// add_action('wp_enqueue_scripts','loadmore_ajaxurl');
+// function loadmore_ajaxurl() {
 
+//   global $wp_query;
+//   //var_dump($wp_query);
+
+//     $args = array(
+//       'post_type' => 'events',
+//       'posts_per_page' => 6,
+//       'meta_key' => 'event_start_date',
+//       'orderby' => 'meta_value',
+//       'order' => 'ASC',
+//       //'paged'=>$paged,
+//       );
+
+//      $the_query = new WP_Query($args);
+
+//   wp_register_script( 'my_loadmore', get_template_directory_uri().'/js/myloadmore.js', array('jquery'), true);
+
+
+//     wp_localize_script( 'my_loadmore', 'loadmore_params', array(
+//     'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+//     'posts' => json_encode( $the_query->query_vars ), // everything about your loop is here
+//     'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
+//     'max_page' => $the_query->max_num_pages
+//   ) );
+
+//       wp_enqueue_script( 'my_loadmore',get_template_directory_uri().'/js/myloadmore.js', array('jquery'),true);
+
+//      }
+
+//      function loadmore_ajax_handler(){
+
+//   // prepare our arguments for the query
+//   $args = json_decode( stripslashes( $_POST['query'] ), true );
+//   //var_dump('Args= '.$args);
+//   $args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
+//   $args['post_status'] = 'publish';
+
+//   // it is always better to use WP_Query but not here
+//   query_posts( $args );
+
+//   // $args = array(
+//   //    'post_type' => 'post',
+//   //    'posts_per_page' => 5,
+//   //    );
+
+//   //  $the_query = new WP_Query($args);
+
+//   if( have_posts() ) :
+
+//     // run the loop
+//     while( have_posts() ): the_post();
+
+//       // look into your theme code how the posts are inserted, but you can use your own HTML of course
+//       // do you remember? - my example is adapted for Twenty Seventeen theme
+//       //get_template_part( 'template-parts/post/content', get_post_format() );
+//       // for the test purposes comment the line above and uncomment the below one
+//       // the_title();
+
+//       echo '<article class="post row">';
+//       echo '<div class="columns-6">';
+//       echo '<h2>'.get_the_title(). '</a></h2>';
+//       //echo '<p class="postinfo">By '.the_author().' | Categories: '.the_category(', ').' | '. comments_popup_link().'</p>';
+//       the_excerpt($post->ID);
+//       //echo '<a href="'.get_the_permalink().'">Learn more about our story</a>';
+//       echo '</div>';
+//       $img_id = get_post_thumbnail_id($post->ID);
+//       //var_dump($img_id);
+//       $alt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
+//       if(has_post_thumbnail($post->ID)){
+
+//         echo '<div class="columns-6 grid-item img" style="background-image:url('.get_the_post_thumbnail_url($post->ID, 'large').');">';
+//         //echo '<img class="" alt="'.$alt.'" src="'.get_the_post_thumbnail_url($post->ID, 'large').'" >';
+//         echo '</div>';
+//       }
+//       echo '</article>';
+
+
+//     endwhile;
+
+//   endif;
+//   die; // here we exit the script and even no wp_reset_query() required!
+// }
+
+// add_action('wp_ajax_loadmore', 'loadmore_ajax_handler'); // wp_ajax_{action}
+// add_action('wp_ajax_nopriv_loadmore', 'loadmore_ajax_handler'); // wp_ajax_nopriv_{action}
 ?>
