@@ -326,7 +326,7 @@ function resources_post_type() {
 		'label'                 => __( 'Resource', 'text_domain' ),
 		'description'           => __( 'Post Type Description', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'supports'              => array( 'title' ),
 		'taxonomies'            => array( 'post_tag', ' media_type', 'media_topic' ),
 		'hierarchical'          => true,
 		'public'                => true,
@@ -383,7 +383,7 @@ function media_type_taxonomy() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'media_type', array( 'resource' ), $args );
+	register_taxonomy( 'media_type', array( 'resources' ), $args );
 
 }
 add_action( 'init', 'media_type_taxonomy', 0 );
@@ -423,7 +423,7 @@ function media_topic_taxonomy() {
 		'show_tagcloud'              => true,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'media_topic', array( 'resource' ), $args );
+	register_taxonomy( 'media_topic', array( 'resources' ), $args );
 
 }
 add_action( 'init', 'media_topic_taxonomy', 0 );

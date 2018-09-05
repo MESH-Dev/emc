@@ -55,12 +55,12 @@
       </article>
     		<?php endwhile; ?>
 		  </section>
-		  <?php //if ( $wp_query->max_num_pages > 1 ) { ?>
+		  <?php if ( $wp_query->max_num_pages > 1 ) { ?>
 		    <nav class="load_more">
 		      <?php next_posts_link( 'Load More' ); ?>
 		    </nav>
-
-
+	
+			<?php } ?>
 		   <script type="text/javascript">
 		   	  //Move this to the mesh.js file
 		  	  jQuery(document).ready(function($){
@@ -72,7 +72,7 @@
 					  $('.load_more').html('<span class="loader">Loading More Posts...</span>');
 					  $.get(link, function(data) {
 						  var post = $("#posts .post ", data);
-						  console.log(post);
+						  //console.log(post);
 						  $('#posts').append(post);
 					  });
 					  $('.load_more').load(link+' .load_more a');

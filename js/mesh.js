@@ -366,6 +366,7 @@ function loadEvents (eventTopic, eventLocation, query) { //*
                 if(response != 0){
 
                   $('.card').detach();
+                  $('.post-error').detach();
                   $('.row.event-grid').detach();
                   $('#emc-events').append(response);
                   //$container.waitForImages(function() {
@@ -406,7 +407,7 @@ function loadEvents (eventTopic, eventLocation, query) { //*
 
 $('.e-topic-filters li').click(function(e){
     e.preventDefault;
-    $(this).parent().find('li.selected').removeClass('selected');
+    $(this).parent().parent().find('ul li.selected').removeClass('selected');
 
      $(this).addClass('selected');
     var eventTopic = $('.e-topic-filters li.selected').attr('data-filter');
@@ -427,7 +428,7 @@ $('.e-topic-filters li').click(function(e){
 
 $('.e-location-filters li').click(function(e){
     e.preventDefault;
-    $(this).parent().find('li.selected').removeClass('selected');
+    $(this).parent().parent().find('ul li.selected').removeClass('selected');
 
      $(this).addClass('selected');
     var eventLocation = $('.e-location-filters li.selected').attr('data-filter');
@@ -443,7 +444,7 @@ $('.e-location-filters li').click(function(e){
     //console.log(cat);
     //console.log(postTopic);
     //Run our function above using our topic filter data
-    loadEvents('',eventLocation, '');
+    loadEvents('', eventLocation, '');
   });
 
 $('.e-search-filter form').submit(function(e){

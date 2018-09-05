@@ -122,6 +122,7 @@
 								 <div class="content">
 									 <h2 class="listing-display-title"><?php the_title(); ?></h2>
 
+
 									 <?php the_excerpt(); ?>
 								 </div>
 					 </article>
