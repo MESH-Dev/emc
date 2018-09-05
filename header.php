@@ -7,7 +7,6 @@
 <head>
 
 	<meta charset="utf-8">
-	<title><?php bloginfo('name'); ?></title>
 
 	<!-- Meta / og: tags -->
 	<meta name="description" content="">
@@ -69,7 +68,7 @@
 						</a>
 					</div>
 					<div class="close">
-						<a href="#">
+						<a href="#" id="tickerClose">
 							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 								 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
 								<style type="text/css">
@@ -161,6 +160,13 @@
 									 <line x1="2" y1="11.5" x2="27" y2="11.5" style="fill: none;stroke: #eb742d;stroke-linecap: square;stroke-miterlimit: 10;stroke-width: 3px"/>
 									 <line x1="2" y1="20.5" x2="27" y2="20.5" style="fill: none;stroke: #eb742d;stroke-linecap: square;stroke-miterlimit: 10;stroke-width: 3px"/>
 								  </g>
+								</svg>
+								<svg class="menu-close" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+									 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+									<g>
+										<path style="fill:#EB742D;" d="M50.2,56.5L18.6,88.2l-6.3-6.3l31.6-31.6L12.5,18.8l5.9-5.9l31.5,31.5l31.6-31.6l6.3,6.3L56.1,50.7L87.4,82
+											l-5.9,5.9L50.2,56.5z"/>
+									</g>
 								</svg>
 							</a>
 						</div>
