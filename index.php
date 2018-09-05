@@ -58,7 +58,7 @@
   <section id="posts">
     <?php while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
       <article class="post">
-					<?php if(the_post_thumbnail() != ''){
+					<?php if(has_post_thumbnail() && get_field('override_feature_image_text') == ''){
 							echo the_post_thumbnail('large');
 						  }elseif(get_field('override_feature_image_text') != ''){
 						  	$b = "'bianco-reg'";

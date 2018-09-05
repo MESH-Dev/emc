@@ -51,7 +51,7 @@
 				<div class="heading2"><?php echo $callout_intro ?></div>
 			</div>
 			<div class="columns-4 desc-col">
-				<p class="paragraph"><?php echo $callout_paragraph; ?></p>
+				<div class="paragraph"><?php echo $callout_paragraph; ?></div>
 			</div>
 		</div>
 	</div>
