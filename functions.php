@@ -73,7 +73,7 @@ function pluginname_ajaxurl() {
 
 function wpse_allowedtags() {
     // Add custom tags to this string
-        return '<script>,<style>,<br>,<em>,<i>,<ul>,<ol>,<li>,<a>,<p>,<img>,<video>,<audio>, <h1>, <h2>, <h3>, <h4>, <h5>, <h6>'; 
+        return '<script>,<style>,<br>,<em>,<i>,<ul>,<ol>,<li>,<a>,<p>, <h1>, <h2>, <h3>, <h4>, <h5>, <h6>'; 
     }
 
 if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) : 
@@ -89,11 +89,21 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
             //$wpse_excerpt = strip_tags($wpse_excerpt, wpse_allowedtags()); /*IF you need to allow just certain tags. Delete if all tags are allowed */
 
             //Set the excerpt word count and only break after sentence is complete.
-                $excerpt_word_count = 20;
+            //__Since we are looking for a rough end-of-sententce point to trim the excerpt
+            //__compensate by setting your word count 10-15 words above what you think you
+            //__would need.
+
+                $excerpt_word_count = 30;
                 $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
                 $tokens = array();
                 $excerptOutput = '';
                 $count = 0;
+
+                $directory = get_template_directory();
+                $imgs = '/img/arrow-right.svg';
+                $arrow  = $directory.$imgs;
+                $arrow_icon = file_get_contents($arrow);
+                $arrow_clean = str_replace(array("\r\n", "\r", "\n"), '',$arrow_icon);
 
                 // Divide the string into tokens; HTML tags, or words, followed by any whitespace
                 preg_match_all('/(<[^>]+>|[^<>\s]+)\s*/u', $wpse_excerpt, $tokens);
@@ -116,7 +126,7 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
             $wpse_excerpt = trim(force_balance_tags($excerptOutput));
 
                 //$excerpt_end = ' <a href="'. esc_url( get_permalink() ) . '">' . '&nbsp;&raquo;&nbsp;' . sprintf(__( 'Read more about: %s &nbsp;&raquo;', 'wpse' ), get_the_title()) . '</a>'; 
-                $excerpt_end = '...';
+                $excerpt_end = ' ... <p><a class="more-link" href="'. esc_url( get_permalink() ) . '"><span class="text"><span class="img">'.$arrow_clean.'</span></a></p>';
                 $excerpt_more = apply_filters('excerpt_more', $excerpt_end); 
 
                 $pos = strrpos($wpse_excerpt, '</');
@@ -125,6 +135,8 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
                 $wpse_excerpt = substr_replace($wpse_excerpt, $excerpt_end, $pos, 0); /* Add read more next to last word */
                 //else
                 // After the content
+                // __Only use this if you need your More content to be in a new paragraph below
+                // __your excerpt
                 //$wpse_excerpt .= $excerpt_more; /*Add read more in new paragraph */
 
             return $wpse_excerpt;   
@@ -147,7 +159,7 @@ function custom_excerpt_length( $length ) {
 function custom_excerpt_more( $more ) {
     return '...';
 }
-add_filter( 'excerpt_more', 'custom_excerpt_more' );
+//add_filter( 'excerpt_more', 'custom_excerpt_more' );
 
 /**
  * Replace the_excerpt "more" text with a link

@@ -2,17 +2,19 @@
 /* Template Name: Event Archive Template*/
 ?>
 
+<?php if ( have_posts() ) : ?>
+	<?php while ( have_posts() ) : the_post(); ?>
 <main id="content" class="landing">
    <?php
-   $background_img = get_field('background_image');
+   $background_img = get_field('background_image', 305);
    $background_image_url = $background_img['sizes']['short-banner'];
-   $v_ogg = get_field('video_ogg');
+   $v_ogg = get_field('video_ogg', 305);
    $vo_url = $v_ogg['url'];
-   $v_mp4 = get_field('video_mp4');
+   $v_mp4 = get_field('video_mp4', 305);
    $vm_url = $v_mp4['url'];
-   $v_webm = get_field('video_webm');
+   $v_webm = get_field('video_webm', 305);
    $vw_url = $v_webm['url'];
-   $l_page_callout = get_field('banner_callout_text');
+   $l_page_callout = get_field('banner_callout_text', get_queried_object_id());
 ?>
 <div class="welcome-gate interior" style="background-image:url('<?php echo $background_image_url; ?>">
    <!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
@@ -20,7 +22,7 @@
    <div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>
    <?php } ?>
    <div class="banner-text columns-5 offset-by-1">
-      <p class="top-callout"><?php single_post_title(); ?></p>
+      <p class="top-callout"><?php the_title(); ?>s</p>
       <h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
    </div>
    <?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
@@ -31,6 +33,7 @@
       <video>
    <?php } ?>
 </div>
+<?php endwhile; endif;  wp_reset_postdata(); ?>
    <div class="panel filters">
       <div class="container">
          <div class="row">
@@ -255,9 +258,10 @@
             }
 
             endwhile;
+            
          ?>
           </div> <!--end row-->
-      <?php endif; ?>
+      <?php endif; wp_reset_postdata();?>
        
    </section>
    <nav class="load_more">
