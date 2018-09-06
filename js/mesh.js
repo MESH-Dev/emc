@@ -77,34 +77,34 @@ $('#tickerClose').click(function(event){
 	  pinMode: 'content'
 	});
 
-  var getUrlParameter = function getUrlParameter() { //sParam
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+//   var getUrlParameter = function getUrlParameter() { //sParam
+//     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+//         sURLVariables = sPageURL.split('&'),
+//         sParameterName,
+//         i;
 
-        console.log(sPageURL);
-        var sp = [];
+//         console.log(sPageURL);
+//         var sp = [];
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
+//     for (i = 0; i < sURLVariables.length; i++) {
+//         sParameterName = sURLVariables[i].split('=');
 
-        sp += sParameterName;
-        console.log(sp);
-        //We only need this if statement if we are sending the function our
-        // if (sParameterName[0] === sParam) {
-        //     return sParameterName[1] === undefined ? true : sParameterName[1];
-        // }
+//         sp += sParameterName;
+//         console.log(sp);
+//         //We only need this if statement if we are sending the function our
+//         // if (sParameterName[0] === sParam) {
+//         //     return sParameterName[1] === undefined ? true : sParameterName[1];
+//         // }
 
-        return sParameterName;
-    }
-};
+//         return sParameterName;
+//     }
+// };
 
-var $parameter = getUrlParameter();
-console.log($parameter[0]);
+//var $parameter = getUrlParameter();
+// console.log($parameter[0]);
 
-console.log('Parameter = '+getUrlParameter());
-console.log('Parameter name = '+getUrlParameter());
+// console.log('Parameter = '+getUrlParameter());
+// console.log('Parameter name = '+getUrlParameter());
 
 // var param = window.location.search;
 // var fparam = param.split('&');
@@ -115,16 +115,16 @@ console.log('Parameter name = '+getUrlParameter());
 // could be shortened so that we don't have to run a million if statements
 // still need one for search
 //__If we're running the filter POSTS
-if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'category'){
-  $(window).on('load',function(){
-    loadPostsByTopic($parameter[1],'');
-  });
-  //If we're running the search POSTS
-}else if (getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'query'){
-  $(window).on('load',function(){
-  loadPostsByTopic('',$parameter[1]);
-  });
-}
+// if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'category'){
+//   $(window).on('load',function(){
+//     loadPostsByTopic($parameter[1],'');
+//   });
+//   //If we're running the search POSTS
+// }else if (getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'query'){
+//   $(window).on('load',function(){
+//   loadPostsByTopic('',$parameter[1]);
+//   });
+// }
 
 	function loadPostsByTopic (postTopic, query) { //*
 
@@ -203,12 +203,12 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
     var postTopic = $('.topic-filter li.selected').attr('data-filter');
     // Push the filter that was used to the end of the current URL so that we can use it
     // to run our functions when the user is visiting from a shared link
-    if(postTopic != ''){
-      history.pushState(null, null, '?category='+postTopic);
-    }else{
-      history.replaceState(null, null, window.location.pathname);
-    }
-    var cat = getUrlParameter('category');
+    // if(postTopic != ''){
+    //   history.pushState(null, null, '?category='+postTopic);
+    // }else{
+    //   history.replaceState(null, null, window.location.pathname);
+    // }
+    //var cat = getUrlParameter('category');
     //console.log(cat);
     //console.log(postTopic);
     //Run our function above using our topic filter data
@@ -225,11 +225,11 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
 
     // Push the search query to the end of the current URL so that we can use it to run
     // our functions when a user is visiting from a shared link
-    if(query != ''){
-  	 history.pushState(null, null, '?query='+query);
-    }else{
-      history.pushState(null, null, window.location.pathname);
-    }
+    // if(query != ''){
+  	 // history.pushState(null, null, '?query='+query);
+    // }else{
+    //   history.pushState(null, null, window.location.pathname);
+    // }
 
     //Run our AJAX function loadPostsByTopic(topic, query)
   	loadPostsByTopic('',query);
@@ -318,11 +318,11 @@ $('.cr-search-filter form').submit(function(e){
 
     // Push the search query to the end of the current URL so that we can use it to run
     // our functions when a user is visiting from a shared link
-    if(query != ''){
-     history.pushState(null, null, '?query='+query);
-    }else{
-      history.pushState(null, null, window.location.pathname);
-    }
+    // if(query != ''){
+    //  history.pushState(null, null, '?query='+query);
+    // }else{
+    //   history.pushState(null, null, window.location.pathname);
+    // }
 
     //Run our AJAX function loadPostsByTopic(topic, query)
     loadCommunityMembers(query);

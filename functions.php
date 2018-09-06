@@ -86,10 +86,10 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
             $wpse_excerpt = strip_shortcodes( $wpse_excerpt );
             $wpse_excerpt = apply_filters('the_content', $wpse_excerpt);
             $wpse_excerpt = str_replace(']]>', ']]&gt;', $wpse_excerpt);
-            $wpse_excerpt = strip_tags($wpse_excerpt, wpse_allowedtags()); /*IF you need to allow just certain tags. Delete if all tags are allowed */
+            //$wpse_excerpt = strip_tags($wpse_excerpt, wpse_allowedtags()); /*IF you need to allow just certain tags. Delete if all tags are allowed */
 
             //Set the excerpt word count and only break after sentence is complete.
-                $excerpt_word_count = 75;
+                $excerpt_word_count = 20;
                 $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
                 $tokens = array();
                 $excerptOutput = '';
@@ -116,7 +116,7 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
             $wpse_excerpt = trim(force_balance_tags($excerptOutput));
 
                 $excerpt_end = ' <a href="'. esc_url( get_permalink() ) . '">' . '&nbsp;&raquo;&nbsp;' . sprintf(__( 'Read more about: %s &nbsp;&raquo;', 'wpse' ), get_the_title()) . '</a>'; 
-                $excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end); 
+                $excerpt_more = apply_filters('excerpt_more', 'custom_excerpt_more'); 
 
                 //$pos = strrpos($wpse_excerpt, '</');
                 //if ($pos !== false)
@@ -124,7 +124,7 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
                 //$wpse_excerpt = substr_replace($wpse_excerpt, $excerpt_end, $pos, 0); /* Add read more next to last word */
                 //else
                 // After the content
-                $wpse_excerpt .= $excerpt_more; /*Add read more in new paragraph */
+                //$wpse_excerpt .= $excerpt_more; /*Add read more in new paragraph */
 
             return $wpse_excerpt;   
 
@@ -136,15 +136,15 @@ endif;
 
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'wpse_custom_wp_trim_excerpt'); 
-
+//$wpse_excerpt = strip_tags($wpse_excerpt, wpse_allowedtags());
 
 function custom_excerpt_length( $length ) {
-	return 30;
+	return 15;
 }
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+//add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 function custom_excerpt_more( $more ) {
-    //return '...';
+    return '...';
 }
 add_filter( 'excerpt_more', 'custom_excerpt_more' );
 
@@ -160,7 +160,7 @@ function new_excerpt_more($more) {
     $arrow  = $directory.$imgs;
     $arrow_icon = file_get_contents($arrow);
     $arrow_clean = str_replace(array("\r\n", "\r", "\n"), '',$arrow_icon);
-    return $more . '<p><a class="more-link" href="'. get_permalink($post->ID) . '"><span class="text"><span class="img">'.$arrow_clean.'</span></a></p>';
+    return $more . '...<p><a class="more-link" href="'. get_permalink($post->ID) . '"><span class="text"><span class="img">'.$arrow_clean.'</span></a></p>';
 }
 add_filter('the_excerpt', 'new_excerpt_more');
 
@@ -282,7 +282,7 @@ endif;
       // In the case of the home page, this will call for the most recent posts 
       
         //echo '<div class="container '.$profile_class .'" id="project-gallery">';
-         while ( $wp_query->have_posts() ) : $the_query->the_post(); //We set up $the_query on line 144
+         while ( $wp_query->have_posts() ) : $wp_query->the_post(); //We set up $the_query on line 144
         // If we have some posts to show, start a loop that will display each one the same way
         
         
@@ -297,30 +297,30 @@ endif;
                 $directory = get_bloginfo('template_directory');
 
                 $f_override = get_field('override_feature_image_text', $post->ID);
-                $f_image = the_post_thumbnail('large', $post->ID);
+                //$f_image = the_post_thumbnail('large', $post->ID);
 
                 $feature = '';
 
-                if(the_post_thumbnail($post->ID) != ''){
-					$feature = get_the_post_thumbnail('large');
+          if(get_the_post_thumbnail() != '' && get_field('override_feature_image_text', $post->ID) == ''){
+					   $feature = get_the_post_thumbnail( 'large');
 				  }elseif(get_field('override_feature_image_text', $post->ID) != ''){
-				  	$b = "'bianco-reg'";
-				  	$feature = '<h2 style="text-align:center; font-size:48px; font-family: '.$b.';">'.$f_override.'</h2>';
+				  	//$b = "'bianco-reg'";
+				  	$feature = '<h2 class="img-override">'.$f_override.'</h2>';
 				  }
 
           //endif; 
           echo '
-          <section id="posts">
+          
       		<article class="post">
 					'.$feature.'
-					<div class="content" style="width:60%; margin:0 auto; text-align:center;">
-						<h2>'.$the_title.'</h2>
+					<div class="content">
+						<h2 class="listing-display-title">'.$the_title.'</h2>
 
 						'.$the_excerpt.'
 					</div>
       		</article>
 
-		  </section>';
+		  ';
          endwhile; 
          //
        else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
