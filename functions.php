@@ -124,7 +124,7 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
                 //$wpse_excerpt = substr_replace($wpse_excerpt, $excerpt_end, $pos, 0); /* Add read more next to last word */
                 //else
                 // After the content
-                //$wpse_excerpt .= $excerpt_more; /*Add read more in new paragraph */
+                $wpse_excerpt .= $excerpt_more; /*Add read more in new paragraph */
 
             return $wpse_excerpt;   
 
@@ -160,7 +160,7 @@ function new_excerpt_more($more) {
     $arrow  = $directory.$imgs;
     $arrow_icon = file_get_contents($arrow);
     $arrow_clean = str_replace(array("\r\n", "\r", "\n"), '',$arrow_icon);
-    return $more . '...<p><a class="more-link" href="'. get_permalink($post->ID) . '"><span class="text"><span class="img">'.$arrow_clean.'</span></a></p>';
+    return $more . '<p><a class="more-link" href="'. get_permalink($post->ID) . '"><span class="text"><span class="img">'.$arrow_clean.'</span></a></p>';
 }
 add_filter('the_excerpt', 'new_excerpt_more');
 
