@@ -20,7 +20,7 @@
    <div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>
    <?php } ?>
    <div class="banner-text columns-5 offset-by-1">
-      <p class="top-callout"><?php the_title(); ?></p>
+      <p class="top-callout"><?php single_post_title(); ?></p>
       <h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
    </div>
    <?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
@@ -262,6 +262,16 @@
    </section>
    <nav class="load_more">
             <?php next_posts_link( 'Load More' ); ?>
+            <div class="arrow-wrap">
+				 <svg class="down-arrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+					<style type="text/css">
+						.st0{fill:#EED9BD;}
+						.st1{fill:#EC742E;}
+					</style>
+					<polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
+						39.3,83.3 66,56.5 71.9,50.7 "/>
+				 </svg>
+			 </div>
           </nav>
 
 

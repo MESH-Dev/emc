@@ -123,7 +123,7 @@
 									 <h2 class="listing-display-title"><?php the_title(); ?></h2>
 
 
-									 <?php the_excerpt(); ?>
+									 <?php echo get_the_excerpt(); ?>
 								 </div>
 					 </article>
 						 <?php endwhile; ?>
