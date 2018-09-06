@@ -2,8 +2,8 @@
 /* Template Name: Event Archive Template*/
 ?>
 
-<?php if ( have_posts() ) : ?>
-	<?php while ( have_posts() ) : the_post(); ?>
+<?php //if ( have_posts() ) : ?>
+	<?php //while ( have_posts() ) : the_post(); ?>
 <main id="content" class="landing">
    <?php
    $background_img = get_field('background_image', 305);
@@ -14,7 +14,7 @@
    $vm_url = $v_mp4['url'];
    $v_webm = get_field('video_webm', 305);
    $vw_url = $v_webm['url'];
-   $l_page_callout = get_field('banner_callout_text', get_queried_object_id());
+   $l_page_callout = get_field('banner_callout_text', 305);
 ?>
 <div class="welcome-gate interior" style="background-image:url('<?php echo $background_image_url; ?>">
    <!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
@@ -33,7 +33,7 @@
       <video>
    <?php } ?>
 </div>
-<?php endwhile; endif;  wp_reset_postdata(); ?>
+<?php //endwhile; endif;  wp_reset_postdata(); ?>
    <div class="panel filters">
       <div class="container">
          <div class="row">
