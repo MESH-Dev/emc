@@ -150,15 +150,22 @@ header .socials{
       margin-top: 10px;
       margin-right: 20px;
       &.interior{
+         height: 54px;
+         margin-top: 12px;
          @media screen and ($bp-smaller-than-mobile){
-            display: none;
+            height: auto;
+            width: 200px;
+            margin-top: 23px;
          }
+         // @media screen and ($bp-smaller-than-iphone6){
+         //    display: none;
+         // }
       }
       &.interior-mobile{
          display: none;
-         @media screen and ($bp-smaller-than-mobile){
-            display: inline-block;
-         }
+         // @media screen and ($bp-smaller-than-iphone6){
+         //    display: inline-block;
+         // }
       }
    }
 }

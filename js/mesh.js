@@ -77,6 +77,27 @@ $('#tickerClose').click(function(event){
    $('.ticker').toggle();
 });
 
+$('#topicTrigger').click(function(event){
+   event.preventDefault();
+   $('.panel.topics').slideToggle();
+   $('.panel.search-filter').slideUp();
+   $('.panel.locations').slideUp();
+});
+
+$('#searchTrigger').click(function(event){
+   event.preventDefault();
+   $('.panel.search-filter').slideToggle();
+   $('.panel.topics').slideUp();
+   $('.panel.locations').slideUp();
+});
+
+$('#locationTrigger').click(function(event){
+   event.preventDefault();
+   $('.panel.locations').slideToggle();
+   $('.panel.topics').slideUp();
+   $('.panel.search-filter').slideUp();
+});
+
   //Vmap functionality for homepage
 
   // This is serializaed data that will be pulled from a variable created by
@@ -505,14 +526,14 @@ $('.e-search-filter form').submit(function(e){
 //2nd type of AJAX onclick
 
 // $('.load_more').click(function(){
- 
+
 //     var button = $(this),
 //         data = {
 //       'action': 'loadmore',
 //       'query': loadmore_params.posts, // that's how we get params from wp_localize_script() function
 //       'page' : loadmore_params.current_page
 //     };
- 
+
 //     $.ajax({
 //       url : loadmore_params.ajaxurl, // AJAX handler
 //       data : data,
@@ -521,13 +542,13 @@ $('.e-search-filter form').submit(function(e){
 //         button.text('Loading...'); // change the button text, you can also add a preloader image
 //       },
 //       success : function( data ){
-//         if( data ) { 
+//         if( data ) {
 //           button.text( 'More posts' ).prev().before(data); // insert new posts
 //           loadmore_params.current_page++;
- 
-//           if ( loadmore_params.current_page == loadmore_params.max_page ) 
+
+//           if ( loadmore_params.current_page == loadmore_params.max_page )
 //             button.remove(); // if last page, remove the button
- 
+
 //           // you can also fire the "post-load" event here if you use a plugin that requires it
 //           // $( document.body ).trigger( 'post-load' );
 //         } else {

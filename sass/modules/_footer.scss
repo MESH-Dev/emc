@@ -15,7 +15,7 @@ footer{
       a{
          margin-bottom: 0;
          font-family: 'whitney-bold';
-         font-size: 1.4rem;
+         font-size: 1.2rem;
          text-transform: uppercase;
          color: $primary-red;
          letter-spacing: 0.8px;
@@ -44,6 +44,8 @@ footer{
             display: inline-block;
             margin:0;
             margin-right:30px;
+            line-height: normal;
+            vertical-align: bottom;
             @media screen and ($bp-smaller-than-desktophd){
                display: block;
                margin-bottom: 10px;
@@ -123,8 +125,24 @@ footer{
          font-family: 'whitney-bold';
          letter-spacing: 3px;
          color: #8B572A;
+         text-transform: uppercase;
+         &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+           color: #8B572A;
+         }
+         &::-moz-placeholder { /* Firefox 19+ */
+           color: #8B572A;
+         }
+         &:-ms-input-placeholder { /* IE 10+ */
+           color: #8B572A;
+         }
+         &:-moz-placeholder { /* Firefox 18- */
+           color: #8B572A;
+         }
+         &:placeholder-shown{
+            color: #8B572A;
+         }
       }
-      a.submit{
+      a.submit, button.submit{
          display: none;
          margin: 0;
          &.show{
