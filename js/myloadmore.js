@@ -4,7 +4,7 @@ jQuery(document).ready(function($){
 			'query': loadmore_params.posts,
 			'page' : loadmore_params.current_page
 		};
-		console.log(data);
+		//console.log(data);
 		$('.load_more').click(function(){
 			console.log('AJAAAAAAX');
 			$.ajax({

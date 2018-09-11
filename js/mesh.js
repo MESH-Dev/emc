@@ -5,10 +5,38 @@ jQuery(document).ready(function($){
 
   //Let's do something awesome!
 
-  //Vmap functionality for homepage
 
-  // This is serializaed data that will be pulled from a variable created by
-  // the locations that are entered into the appropriate ACF fields on the homepage
+  //  We're setting up the video to play on our image click,
+  //  so here, we're trying to get information from the video object,
+  //  which is why our selector is referencing an array
+
+  $('.play.desktop-up').click(function(event){
+    $matinee = $('.matinee')[0];
+    $matinee.play();
+    $matinee.controls = true;
+    //$matinee.requestFullscreen();
+    $('.player-holder').fadeOut('slow');
+  });
+
+//Fullscreen not yet working on Firefox
+  $('.play.tablet-down').click(function(event){
+    $matinee = $('.matinee')[0];
+    $matinee.play();
+    $matinee.controls = true;
+    //$matinee.requestFullscreen();
+    $matinee.webkitRequestFullScreen();
+    $matinee.mozRequestFullScreen();
+    $matinee.msRequestFullScreen();
+    $matinee.RequestFullScreen();
+    $('.player-holder').fadeOut('slow');
+  });
+
+  //  Here, we're trying to obtain information directly from the object,
+  //  so we don't need to access the object data
+  $('.matinee').on('pause', function(event){
+    //console.log('Play Again');
+    //$('.player-holder').fadeIn('slow');
+  });
 
   $('#mobileMenuTrigger').sidr({
      // name: 'mobile',
@@ -49,6 +77,11 @@ $('#tickerClose').click(function(event){
    $('.ticker').toggle();
 });
 
+  //Vmap functionality for homepage
+
+  // This is serializaed data that will be pulled from a variable created by
+  // the locations that are entered into the appropriate ACF fields on the homepage
+
   _pins = { "us" : "\u003ca href=\"#\"\u003e \u003cspan\u003eUSA\u003c/span\u003e \u003ca a/\u003e",//\u003cimg src=\"pk.png\" /\u003e
         	"id" : "\u003ca href=\"#\"\u003e \u003cspan\u003eBRAZIL\u003c/span\u003e \u003ca a/\u003e"}, //\u003cimg src=\"pk.png\" /\u003e
 
@@ -77,34 +110,34 @@ $('#tickerClose').click(function(event){
 	  pinMode: 'content'
 	});
 
-//   var getUrlParameter = function getUrlParameter() { //sParam
-//     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-//         sURLVariables = sPageURL.split('&'),
-//         sParameterName,
-//         i;
+  var getUrlParameter = function getUrlParameter() { //sParam
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
 
-//         console.log(sPageURL);
-//         var sp = [];
+        console.log(sPageURL);
+        var sp = [];
 
-//     for (i = 0; i < sURLVariables.length; i++) {
-//         sParameterName = sURLVariables[i].split('=');
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
 
-//         sp += sParameterName;
-//         console.log(sp);
-//         //We only need this if statement if we are sending the function our
-//         // if (sParameterName[0] === sParam) {
-//         //     return sParameterName[1] === undefined ? true : sParameterName[1];
-//         // }
+        sp += sParameterName;
+        console.log(sp);
+        //We only need this if statement if we are sending the function our
+        // if (sParameterName[0] === sParam) {
+        //     return sParameterName[1] === undefined ? true : sParameterName[1];
+        // }
 
-//         return sParameterName;
-//     }
-// };
+        return sParameterName;
+    }
+};
 
-//var $parameter = getUrlParameter();
-// console.log($parameter[0]);
+var $parameter = getUrlParameter();
+console.log($parameter[0]);
 
-// console.log('Parameter = '+getUrlParameter());
-// console.log('Parameter name = '+getUrlParameter());
+console.log('Parameter = '+getUrlParameter());
+console.log('Parameter name = '+getUrlParameter());
 
 // var param = window.location.search;
 // var fparam = param.split('&');
@@ -115,16 +148,16 @@ $('#tickerClose').click(function(event){
 // could be shortened so that we don't have to run a million if statements
 // still need one for search
 //__If we're running the filter POSTS
-// if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'category'){
-//   $(window).on('load',function(){
-//     loadPostsByTopic($parameter[1],'');
-//   });
-//   //If we're running the search POSTS
-// }else if (getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'query'){
-//   $(window).on('load',function(){
-//   loadPostsByTopic('',$parameter[1]);
-//   });
-// }
+if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'category'){
+  $(window).on('load',function(){
+    loadPostsByTopic($parameter[1],'');
+  });
+  //If we're running the search POSTS
+}else if (getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'query'){
+  $(window).on('load',function(){
+  loadPostsByTopic('',$parameter[1]);
+  });
+}
 
 	function loadPostsByTopic (postTopic, query) { //*
 
@@ -318,11 +351,11 @@ $('.cr-search-filter form').submit(function(e){
 
     // Push the search query to the end of the current URL so that we can use it to run
     // our functions when a user is visiting from a shared link
-    // if(query != ''){
-    //  history.pushState(null, null, '?query='+query);
-    // }else{
-    //   history.pushState(null, null, window.location.pathname);
-    // }
+    if(query != ''){
+     history.pushState(null, null, '?query='+query);
+    }else{
+      history.pushState(null, null, window.location.pathname);
+    }
 
     //Run our AJAX function loadPostsByTopic(topic, query)
     loadCommunityMembers(query);
@@ -468,5 +501,40 @@ $('.e-search-filter form').submit(function(e){
     $('.card').detach();
 
   });
+
+//2nd type of AJAX onclick
+
+// $('.load_more').click(function(){
+ 
+//     var button = $(this),
+//         data = {
+//       'action': 'loadmore',
+//       'query': loadmore_params.posts, // that's how we get params from wp_localize_script() function
+//       'page' : loadmore_params.current_page
+//     };
+ 
+//     $.ajax({
+//       url : loadmore_params.ajaxurl, // AJAX handler
+//       data : data,
+//       type : 'POST',
+//       beforeSend : function ( xhr ) {
+//         button.text('Loading...'); // change the button text, you can also add a preloader image
+//       },
+//       success : function( data ){
+//         if( data ) { 
+//           button.text( 'More posts' ).prev().before(data); // insert new posts
+//           loadmore_params.current_page++;
+ 
+//           if ( loadmore_params.current_page == loadmore_params.max_page ) 
+//             button.remove(); // if last page, remove the button
+ 
+//           // you can also fire the "post-load" event here if you use a plugin that requires it
+//           // $( document.body ).trigger( 'post-load' );
+//         } else {
+//           button.remove(); // if no data, remove the button as well
+//         }
+//       }
+//     });
+//   });
 
 });
