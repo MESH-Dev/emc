@@ -175,7 +175,7 @@ function new_excerpt_more($more) {
     $arrow_clean = str_replace(array("\r\n", "\r", "\n"), '',$arrow_icon);
     return $more . '<p><a class="more-link" href="'. get_permalink($post->ID) . '"><span class="text"><span class="img">'.$arrow_clean.'</span></a></p>';
 }
-add_filter('the_excerpt', 'new_excerpt_more');
+//add_filter('the_excerpt', 'new_excerpt_more');
 
 /* Display post thumbnail meta box including description */
 add_filter( 'admin_post_thumbnail_html', 'post_thumbnail_add_description', 10, 2 );
@@ -335,6 +335,10 @@ endif;
 
 		  ';
          endwhile; 
+
+         // echo '<nav class="load_more results">'
+         //  .next_posts_link( 'Load More' ).
+         //  '</nav>';
          //
        else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
         
@@ -656,11 +660,11 @@ endif;
 //   //var_dump($wp_query);
 
 //     $args = array(
-//       'post_type' => 'events',
+//       'post_type' => 'post',
 //       'posts_per_page' => 6,
-//       'meta_key' => 'event_start_date',
-//       'orderby' => 'meta_value',
-//       'order' => 'ASC',
+//       // 'meta_key' => 'event_start_date',
+//       // 'orderby' => 'meta_value',
+//       // 'order' => 'ASC',
 //       //'paged'=>$paged,
 //       );
 
@@ -684,6 +688,7 @@ endif;
 
 //   // prepare our arguments for the query
 //   $args = json_decode( stripslashes( $_POST['query'] ), true );
+//   //var_dump($args);
 //   //var_dump('Args= '.$args);
 //   $args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
 //   $args['post_status'] = 'publish';
@@ -736,4 +741,31 @@ endif;
 
 // add_action('wp_ajax_loadmore', 'loadmore_ajax_handler'); // wp_ajax_{action}
 // add_action('wp_ajax_nopriv_loadmore', 'loadmore_ajax_handler'); // wp_ajax_nopriv_{action}
+
+add_action( 'admin_head', 'hide_text_editor' );
+
+function hide_text_editor() {
+  // Get the Post ID.
+  $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+  if( !isset( $post_id ) ) return;
+
+  // Hide the editor on certian pages
+   $pgname = get_the_title($post_id);
+   $pages = array('Content Tester');
+  if(in_array($pgname, $pages)){ 
+    remove_post_type_support('page', 'editor');
+  }
+
+  // Hide the editor on a page with a specific page template
+  // Get the name of the Page Template file.
+  $template_file = get_post_meta($post_id, '_wp_page_template', true);
+  $templates = array('templates/template-landing.php', 'templates/template-homepage.php', 'templates/template-event-listing.php', 'single-films.php');
+
+
+  if(in_array($template_file, $templates)){ // the filename of the page template
+    remove_post_type_support('page', 'editor');
+  }
+}
+
+
 ?>

@@ -30,7 +30,7 @@
          <source src ="<?php echo $vm_url; ?>" autoplay="true" loop="true" muted="true">
          <source src ="<?php echo $vo_url; ?>" autoplay="true" loop="true" muted="true">
          <source src ="<?php echo $vw_url; ?>" autoplay="true" loop="true" muted="true">
-      <video>
+      </video>
    <?php } ?>
 </div>
 <?php //endwhile; endif;  wp_reset_postdata(); ?>
