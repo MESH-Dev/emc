@@ -6,6 +6,12 @@
 
 //enqueue scripts and styles *use production assets. Dev assets are located in  /css and /js
 function loadup_scripts() {
+   wp_enqueue_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js', '1.20.4', true );
+   wp_enqueue_script( 'scrollmagic', 'http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.js', '2.0.5', true );
+   wp_enqueue_script( 'scrollmagic-gsap', 'http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js', '2.0.5', true );
+   if (is_page_template('templates/template-landing.php')) {
+      wp_enqueue_script( 'anim-js', get_template_directory_uri().'/js/animations.js', array('jquery'), '1.0.0', true );
+   }
    wp_enqueue_script( 'sidr', '//cdn.jsdelivr.net/npm/sidr@2.2.1/dist/jquery.sidr.min.js', array('jquery'), '1.0.0', true );
    wp_enqueue_style( 'sidr-css', '//cdn.jsdelivr.net/npm/sidr@2.2.1/dist/stylesheets/jquery.sidr.bare.css', '1.0.0', true );
     wp_enqueue_script( 'vmap-js', get_template_directory_uri().'/js/jquery.vmap.min.js', array('jquery'), '1.0.0', true );

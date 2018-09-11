@@ -71,10 +71,10 @@
 		<div class="panel img-and-wysiwyg image-right">
 			<div class="container">
 				<div class="row">
-					<div class="columns-5 offset-by-1 textsection">
+					<div class="columns-5 offset-by-1 textsection left-col">
 						<?php echo $partner_text; ?>
 					</div>
-					<div class="columns-4 offset-by-1">
+					<div class="columns-4 offset-by-1 right-col">
 						<img src="<?php echo $partner_img_url; ?>" alt="<?php echo $partner_img_alt; ?>">
 					</div>
 				</div>
@@ -84,10 +84,10 @@
 		<div class="panel img-and-wysiwyg image-left">
 			<div class="container">
 				<div class="row">
-					<div class="columns-4 offset-by-1">
+					<div class="columns-4 offset-by-1 left-col">
 						<img src="<?php echo $partner_img_url; ?>" alt="<?php echo $partner_img_alt; ?>">
 					</div>
-					<div class="columns-5 offset-by-1 textsection">
+					<div class="columns-5 offset-by-1 textsection right-col">
 						<?php echo $partner_text; ?>
 						<!-- <p>Asociación Corazón del Agua trains indigenous midwives from high maternal-mortality districts with a 3-year curriculum that incorporates indigenous traditions in the country’s first professional university-level degree program.</p> -->
 					</div>
