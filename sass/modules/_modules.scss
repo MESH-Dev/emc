@@ -1038,6 +1038,9 @@ main.text{
    // [class*='columns-']:last-of-type{
    //       padding-right:15px;
    //    }
+   h1,h2,h3,h4,h5,h6{
+      margin-top: 0;
+   }
    .headline{
    @include whitney-book();
    font-size: 3.6rem;
@@ -1047,7 +1050,7 @@ main.text{
    margin-bottom:2rem;
    }
    .callout{
-   @include whitney-book();
+   @include whitney-bold();
    font-size: 2.6rem;
    line-height: 32px;
    letter-spacing: 0.6px;
