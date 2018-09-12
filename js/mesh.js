@@ -150,12 +150,12 @@ function _resize(){
 
 
   if($wW <= 1100){
-    $('.main-navigation').css({'display':'none'});
+    //$('.main-navigation').css({'display':'none'});
 
     //$('.main-navigation ul > li.menu-item-has-children .wrap .content').append(arrow);
     
   }else{
-    $('.main-navigation').css({'display':'inline-block'});
+    //$('.main-navigation').css({'display':'inline-block'});
     // if(arrow.length > 0){
     //   $('.main-navigation ul li.menu-item-has-children .wrap .content').remove(arrow);
     // }
