@@ -27,7 +27,7 @@
 				<img class="play tablet-down" src="<?php echo get_template_directory_uri(); ?>/img/EMC_playbutton.png">
 			</div>
 		</div>
-   <div class="video-holder" style="position:absolute; top:0px; bottom:50px; right:50px; left:50px; background:red;">
+   <div class="video-holder" style="position:absolute; background:red; margin:0 auto;">
 	   <?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
 	      <video class="matinee" placeholder="<?php echo $background_image_url; ?>" controls style="position:absolute; z-index: 300; height: auto; max-width: 800px; max-height:600px; min-height:0;">
 	         <source src ="<?php echo $vm_url; ?>" >

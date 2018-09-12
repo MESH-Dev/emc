@@ -135,7 +135,9 @@ function _resize(){
   $('.grid-item.columns-3').css({height:cp3});
   $('.grid-item.columns-4').css({height:cp4});
   $('.welcome-gate.full-video').css({'height':'calc(100vh - ' + hh + 'px)', 'margin-top':hh});
-  $('.matinee').css({width:(wg_w-150)});
+  $('.video-holder').css({height:(wg_h), width:(wg_w)});
+  $('.matinee').css({height:wg_h, width:wg_w});
+  //$('.matinee').css({width:(wg_w-150)});
   if($wW >= 1000){
     $('.grid-item.columns-6').css({height:cp6*0.66});
     $('.grid-item.columns-4.tweener').css({height:cp4});
