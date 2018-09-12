@@ -2607,8 +2607,8 @@ body {
 }
 /* line 928, sass/modules/_modules.scss */
 .panel.search-filter {
-  padding-top: 10px;
-  padding-bottom: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #FBD8C2;
   display: none;
 }
