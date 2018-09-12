@@ -920,7 +920,7 @@ body{
             font-size: 1.4rem;
             letter-spacing: 3px;
             color: $primary-darkbrown;
-            margin-left: 65px;
+            margin-right: 65px;
             text-transform: uppercase;
          }
       }
@@ -960,6 +960,41 @@ body{
          padding-left: 0;
       }
    }
+   &.resources{
+      background-color: $offwhite-3;
+      .event-grid{
+         &.resource-grid{
+            margin-bottom: 120px;
+            @media screen and ($bp-smaller-than-tablet){
+               margin-bottom: 0;
+            }
+            &:last-of-type{
+               margin-bottom: 0;
+            }
+         }
+         .card{
+            .date{
+            }
+            .title{
+               a{
+                  font-family: 'bianco-reg';
+                  font-size: 2.8rem;
+                  letter-spacing: 0.82px;
+                  color: $nav-brown;
+                  text-transform: none;
+                  line-height: normal;
+                  span.category{
+                     color: $primary-lightbrown;
+                  }
+                  svg{
+                     height: 18px;
+                     width: auto;
+                  }
+               }
+            }
+         }
+      }
+   }
 }
 
 .landing{
@@ -993,6 +1028,9 @@ body{
    .card{
       @media screen and ($bp-smaller-than-tablet){
          margin-bottom: 40px;
+      }
+      .date{
+         margin-bottom: 1.4rem;
       }
       .excerpt{
          p{
@@ -1365,3 +1403,5 @@ a[rel="next"]{
       color: $h5-brown;
    }
 }
+
+//Resource Listing

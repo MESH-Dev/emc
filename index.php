@@ -85,10 +85,6 @@
 								</form>
 							</div>
 						</div>
-						<!-- <form action="<//?php home_url(); ?>" method="get">
-							<label class="sr-only" for="search">Search Resources</label>
-							<input type="search" name="s" id="search" placeholder="" value="" /><img src="<//?php bloginfo('template_directory'); ?>/assets/img/search.png">
-						</form> -->
 					</div>
 				</div>
 			</div>
@@ -145,7 +141,7 @@
 					</svg>
 				</div>
 			</div>
-			 
+
 		  <nav class="load_more">
 			 <?php next_posts_link( 'Load More' ); ?>
 			 <div class="arrow-wrap">
