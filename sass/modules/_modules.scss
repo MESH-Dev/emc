@@ -31,7 +31,7 @@ body{
       }
       .top-callout{
          color: $offwhite-1;
-         font-family: 'whitney-bold';
+         @include whitney-bold();
          font-size: 2rem;
          letter-spacing: 3px;
          text-transform: uppercase;
@@ -139,7 +139,7 @@ body{
 //       padding-top: 55px;
 //       .top-callout{
 //          color: $offwhite-1;
-//          font-family: 'whitney-bold';
+//          @include whitney-bold();
 //          font-size: 2rem;
 //          letter-spacing: 3px;
 //       }
@@ -183,7 +183,6 @@ body{
             line-height: 30px;
             strong,b{
                font-family: 'bianco-extrabold';
-               color:$primary-orange
             }
          }
       }
@@ -193,7 +192,7 @@ body{
             margin-bottom: 60px;
          }
          p{
-            font-family: 'whitney-book';
+            @include whitney-book();
             font-size: 4.8rem;
             line-height: 60px;
             letter-spacing: 0.6px;
@@ -227,7 +226,7 @@ body{
             max-width: 885px;
             margin: 0 auto;
             p{
-               font-family: 'whitney-bold';
+               @include whitney-bold();
                font-size: 1.4rem;
                line-height: 30px;
                letter-spacing: 3px;
@@ -263,7 +262,7 @@ body{
          // }
       }
       &.interior{
-         background-color: $offwhite-3;
+         background-color: $tertiary-background;
       }
       .heading6{
          color: $primary-orange;
@@ -398,7 +397,7 @@ body{
          //    padding-left:20px;
          // }
          .title{
-            font-family: 'whitney-bold';
+            @include whitney-bold();
             text-transform: uppercase;
             line-height: 29px;
             color: $offwhite-1;
@@ -432,7 +431,7 @@ body{
          //font-family: 'whitney-light';
          //color: $nav-brown;
          p{
-            font-family: 'whitney-light';
+            @include whitney-light();
             font-size: 3.6rem;
             line-height: 48px;
             letter-spacing: 0.6px;
@@ -453,7 +452,7 @@ body{
       .textsection{
          h1,h2,h3,h4,h5,h6,ul,ol,li{
             color: $primary-red;
-            font-family: 'whitney-book';
+            @include whitney-book();
          }
 
          p{
@@ -467,8 +466,10 @@ body{
 
          h6{
             text-transform:none;
+            margin-top: 0;
+            margin-bottom: 14px;
             strong{
-               font-family: 'whitney-bold';
+               @include whitney-bold();
                text-transform:uppercase;
             }
          }
@@ -523,7 +524,7 @@ body{
       .desc{
          z-index: 1;
          position: relative;
-         font-family: 'whitney-bold';
+         @include whitney-bold();
          letter-spacing: 0.6px;
          line-height: 40px;
          font-size: 3.6rem;
@@ -534,7 +535,7 @@ body{
          position:relative;
          p{
             display: inline;
-            font-family: 'whitney-bold';
+            @include whitney-bold();
             color: $primary-orange;
             font-size: 1.4rem;
             letter-spacing: 3px;
@@ -556,7 +557,7 @@ body{
       }
       .caption{
          color: $nav-brown;
-         font-family: 'whitney-book';
+         @include whitney-book();
          font-size: 2.4rem;
          letter-spacing: 1.23px;
          line-height: 34px;
@@ -590,6 +591,12 @@ body{
       }
       .img-screen{
          background-color: $offwhite-1;
+         opacity: 0.2;
+         @media screen and ($bp-smaller-than-tablet){
+            opacity: 0.5;
+            left: 0;
+            right: 0;
+         }
       }
       .stats{
          position: absolute;
@@ -600,7 +607,7 @@ body{
             padding-left: 20px;
          }
          .title{
-            font-family: 'whitney-bold';
+            @include whitney-bold();
             font-size: 2rem;
             letter-spacing: 2.96px;
             // line-height: 29px;
@@ -655,6 +662,30 @@ body{
          @media($bp-smaller-than-tablet){
             text-align:center;
          }
+         a{
+            text-decoration: none;
+            &:hover{
+               text-decoration: none;
+               p{
+                  opacity: 0.5;
+               }
+            }
+            p{
+               text-decoration: none;
+               transition: opacity 0.5s ease-in-out;
+               &::after{
+                  content: '';
+                  display: inline-block;
+                  height: 14px;
+                  width: 9px;
+                  background-image: url('img/arrow-right.svg');
+                  background-position: center;
+                  background-size: cover;
+                  background-repeat: no-repeat;
+                  margin-left: 6px;
+               }
+            }
+         }
       }
       .grid-cols{
          @media screen and ($bp-smaller-than-desktop){
@@ -677,7 +708,7 @@ body{
       }
       .caption{
          p,a{
-            font-family: 'whitney-book';
+            @include whitney-book();
             font-size: 2rem;
             letter-spacing: 0.6px;
             line-height: 26px;
@@ -699,10 +730,11 @@ body{
       }
    }
    &.half-cta{
-      padding: 60px 0;
-      [class*='columns-']:last-of-type{
-         padding-right:15px;
-      }
+      padding-top: 60px;
+      padding-bottom: 60px;
+      // [class*='columns-']:last-of-type{
+      //    padding-right:15px;
+      // }
       .cta{
          margin-bottom: 40px;
          &:last-of-type{
@@ -715,7 +747,7 @@ body{
                opacity: 0.5;
             }
             p{
-               font-family: 'whitney-bold';
+               @include whitney-bold();
                font-size: 3.6rem;
                letter-spacing: 0.6px;
                line-height: 48px;
@@ -725,7 +757,7 @@ body{
             }
             svg{
                display: inline;
-               height: 14px;
+               height: 18px;
                width: auto;
             }
          }
@@ -735,6 +767,7 @@ body{
       position: relative;
       z-index: 999;
       background-color: $offwhite-3;
+      padding: 30px 0 20px 0;
       ul{
          margin-bottom: 0;
          li{
@@ -749,7 +782,7 @@ body{
             p{
                display: inline;
                margin-bottom: 0;
-               font-family: 'whitney-bold';
+               @include whitney-bold();
                text-transform: uppercase;
                font-size: 1.4rem;
                letter-spacing: 3px;
@@ -777,18 +810,19 @@ body{
       .event-columns-4{
          width: 80%;
          .title{
-            font-family: 'whitney-bold';
+            @include whitney-bold();
             font-size: 3.6rem;
             letter-spacing: 0.6px;
             line-height: 48px;
             color: $nav-brown;
          }
          .tags{
-            font-family: 'whitney-book';
+            @include whitney-book();
             line-height: 20px;
             font-size:1.4rem;
             letter-spacing: 3px;
             text-transform: uppercase;
+            margin-bottom: 20px;
          }
          .excerpt{
             font-family: 'bianco-reg';
@@ -799,12 +833,12 @@ body{
          a{
             display: inline;
             margin-bottom: 0;
-            font-family: 'whitney-bold';
+            @include whitney-bold();
             text-transform: uppercase;
             font-size: 1.4rem;
             letter-spacing: 3px;
             color:$primary-orange;
-
+            transition: opacity 0.5s ease-in-out;
              svg{
                width:15px;
                height:auto;
@@ -840,7 +874,7 @@ body{
       padding-top: 150px;
       padding-bottom: 50px;
       h1{
-         font-family: 'whitney-bold';
+         @include whitney-bold();
          color: $primary-red;
          font-size: 4.8rem;
          letter-spacing: 3px;
@@ -853,6 +887,7 @@ body{
       padding-top: 20px;
       padding-bottom: 20px;
       background-color: $offwhite-1;
+      display: none;
       &.events{
          text-align: left;
       }
@@ -860,7 +895,28 @@ body{
          margin-bottom: 0;
          li{
             margin-bottom: 0;
-            font-family: 'whitney-bold';
+            @include whitney-bold();
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            color: $primary-darkbrown;
+            margin-left: 65px;
+            text-transform: uppercase;
+         }
+      }
+   }
+   &.locations{
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background-color: $offwhite-1;
+      display: none;
+      &.events{
+         text-align: left;
+      }
+      ul{
+         margin-bottom: 0;
+         li{
+            margin-bottom: 0;
+            @include whitney-bold();
             font-size: 1.4rem;
             letter-spacing: 3px;
             color: $primary-darkbrown;
@@ -873,6 +929,7 @@ body{
       padding-top: 10px;
       padding-bottom: 16px;
       background-color: $offwhite-1;
+      display: none;
       &.event-search{
          .search-wrap{
             text-align: left;
@@ -884,9 +941,16 @@ body{
          @media screen and ($bp-smaller-than-tablet){
             width: 100%;
          }
+         input[type="text"]{
+            text-transform: none;
+         }
       }
-      a.submit{
+      a.submit, button.submit{
          display: inline-block;
+      }
+      button.submit{
+         padding: 0;
+         border: 0;
       }
       input[type="text"]{
          font-family: 'bianco-reg';
@@ -916,12 +980,12 @@ body{
    left: 40px;
    right: 40px;
    background-color: $black;
-   opacity: 0.2;
-   @media screen and ($bp-smaller-than-tablet){
-      left: 0;
-      right: 0;
-      opacity: 0.5;
-   }
+   opacity: 0.5;
+   // @media screen and ($bp-smaller-than-tablet){
+   //    left: 0;
+   //    right: 0;
+   //    opacity: 0.5;
+   // }
 }
 
 .event-grid{
@@ -929,6 +993,14 @@ body{
    .card{
       @media screen and ($bp-smaller-than-tablet){
          margin-bottom: 40px;
+      }
+      .excerpt{
+         p{
+            color: $primary-red;
+            font-size: 1.6rem;
+            line-height: 28px;
+            letter-spacing: 0.6px;
+         }
       }
    }
 }
@@ -952,17 +1024,22 @@ main.landing{
 }
 
 main.text{
-   padding-top: 9em;
+   padding-top: 80px;
+   padding-bottom: 50px;
    background-color: $offwhite-bg;
+   @media screen and ($bp-smaller-than-tablet){
+      padding-left: 20px;
+      padding-right: 20px;
+   }
 }
 
 .text{
    // margin-top:9em;
-   [class*='columns-']:last-of-type{
-         padding-right:15px;
-      }
+   // [class*='columns-']:last-of-type{
+   //       padding-right:15px;
+   //    }
    .headline{
-   font-family: 'whitney-book';
+   @include whitney-book();
    font-size: 3.6rem;
    line-height: 1.25;
    letter-spacing: 0.6px;
@@ -970,7 +1047,7 @@ main.text{
    margin-bottom:2rem;
    }
    .callout{
-      font-family: 'whitney-book';
+   @include whitney-book();
    font-size: 2.6rem;
    line-height: 32px;
    letter-spacing: 0.6px;
@@ -978,9 +1055,9 @@ main.text{
    margin-bottom:2em;
    }
 
-   .row{
-      margin-bottom:6em;
-   }
+   // .row{
+   //    margin-bottom:6em;
+   // }
 
    .col{
       img{
@@ -1010,20 +1087,21 @@ main.text{
       background-repeat:no-repeat;
       background-position:right center;
       background-size:25px;
-       font-family: 'whitney-bold';
+       @include whitney-bold();
       font-size: 1.6rem;
       line-height: 30px;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: $primary-orange;
       display:inline-block;
-
+      transition: opacity 0.5s ease-in-out;
       &:hover,
       &:active,
       &:focus{
          background-image:url('img/EMC_MapPin_Hover.png');
          text-decoration:none;
-         color:$offwhite-3;
+         // color:$offwhite-3;
+         opacity: 0.5;
       }
    }
  }
@@ -1064,13 +1142,13 @@ main.text{
 
 //Posts
 .posts-main{
-   background-color: $offwhite-bg;
+   // background-color: $offwhite-bg;
    .filter-bar{
       background: transparent;
       text-align: right;
       a,p{
          display: inline-block;
-         font-family: 'whitney-bold';
+         @include whitney-bold();
          font-size: 1.4rem;
          letter-spacing: 3px;
          text-transform: uppercase;
@@ -1078,13 +1156,7 @@ main.text{
       }
       p.cta{
          color: $primary-lightbrown;
-      }
-      a.filter-trigger{
-         color: $primary-orange;
-         cursor: pointer;
-         &:hover{
-            text-decoration: none;
-         }
+         margin-bottom: 0;
       }
       ul{
          display: inline-block;
@@ -1092,6 +1164,22 @@ main.text{
             display: inline-block;
             text-transform: uppercase;
          }
+      }
+   }
+}
+
+a.filter-trigger{
+   color: $primary-orange;
+   cursor: pointer;
+   transition: opacity 0.5s ease-in-out;
+   &:hover{
+      text-decoration: none;
+      opacity: 0.5;
+   }
+   &.open{
+      // opacity: 0.5;
+      .down-arrow{
+         transform: rotate(-90deg);
       }
    }
 }
@@ -1130,7 +1218,7 @@ main.text{
          max-width: none;
       }
       .listing-display-title{
-         font-family: 'whitney-bold';
+         @include whitney-bold();
          font-size: 2.6rem;
          color: $primary-orange;
          letter-spacing: 0.9px;
@@ -1146,6 +1234,7 @@ main.text{
 }
 
 .postinfo,.topics{
+   font-size: 1.4rem;
    .orange{
       color: $primary-orange;
    }
@@ -1153,20 +1242,49 @@ main.text{
 
 .load_more{
    text-align: center;
+   margin-bottom: 40px;
    a{
-      font-family: 'whitney-bold';
+      @include whitney-bold();
       font-size: 1.4rem;
       color: $primary-orange;
       letter-spacing: 3px;
-      transition: opacity 0.2s ease-in-out;
+      transition: opacity 0.5s ease-in-out;
       text-transform: uppercase;
+      &::after{
+         content: '';
+         display: block;
+         height: 13px;
+         width: 7px;
+         margin: 0 auto;
+         background-image: url('img/arrow-right.svg');
+         background-position: center;
+         background-size: cover;
+         background-repeat: no-repeat;
+         transform: rotate(90deg);
+      }
       &:hover{
          text-decoration: none;
          opacity: 0.5;
+         ~ .arrow-wrap{
+            opacity: 0.5;
+         }
       }
    }
    .arrow-wrap{
       text-align: center;
+      transition: opacity 0.5s ease-in-out;
+      // &::after{
+      //    content: '';
+      //    display: block;
+      //    height: 13px;
+      //    width: 7px;
+      //    margin: 0 auto;
+      //    background-image: url('img/arrow-right.svg');
+      //    background-position: center;
+      //    background-size: cover;
+      //    background-repeat: no-repeat;
+      //    transform: rotate(90deg);
+      // }
    }
 }
 
@@ -1175,24 +1293,72 @@ svg.down-arrow{
    width: auto;
    display: inline-block;
    transform: rotate(90deg);
+   transition: transform 0.5s ease-in-out;
 }
 
 a[rel="prev"],a[rel="next"]{
    font-size: 1.8rem;
    color: $primary-orange;
-   font-family: 'whitney-bold';
-   letter-spacing: 0.83px;
+   @include whitney-bold();
+   letter-spacing: 3px;
    transition: opacity 0.2s ease-in-out;
    text-transform: uppercase;
    &:hover{
       opacity: 0.5;
       text-decoration: none;
    }
+   @media screen and ($bp-smaller-than-tablet){
+      display: block;
+      width: 100%;
+      text-align: center;
+   }
 }
 
 a[rel="prev"]{
    float: left;
+   &::before{
+      content: '';
+      display: inline-block;
+      height: 14px;
+      width: 9px;
+      background-image: url('img/arrow-right.svg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-right: 6px;
+      transform: rotate(180deg);
+   }
 }
 a[rel="next"]{
    float: right;
+   &::after{
+      content: '';
+      display: inline-block;
+      height: 14px;
+      width: 9px;
+      background-image: url('img/arrow-right.svg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-left: 6px;
+   }
+   @media screen and ($bp-smaller-than-tablet){
+      margin-top: 14px;
+   }
+}
+
+//Blog page
+.blog-single{
+   margin-top: 50px;
+   margin-bottom: 50px;
+   @media screen and ($bp-smaller-than-tablet){
+      padding-left: 20px;
+      padding-right: 20px;
+   }
+   h5{
+      color: black;
+   }
+   p{
+      color: $h5-brown;
+   }
 }
