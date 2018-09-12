@@ -244,9 +244,9 @@ if($('#vmap').size() > 0){
 	  map: 'world_en',
 	  backgroundColor: 'rgba(255,255, 255, 0)',
 	  color: '#F5B996',
-	  borderWidth: 3,
+	  borderWidth: 1,
 	  borderOpacity: 1,
-	  borderColor: '#F5B996',
+	  borderColor: '#F5B996',//#F5B996
 	  hoverColor :'#ff00ff',
 	  //hoverOpacity: 1,
 	  selectedColor: '#EB742D',
