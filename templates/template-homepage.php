@@ -2,14 +2,15 @@
 /* Template Name: Homepage*/
 ?>
 <script>
-			var _places = {
+			var _pins = {
 			<?php $countries = get_field('countries');
-			//echo $countries;
+			//var_dump ($countries);
 			foreach ($countries as $row){
 				//var_dump($row['country_lp'][0]);
+
 				?>
 
-				"<?php echo $row['country']; ?>":"\u003ca href=\"<//?php echo $row['country_lp'][0]; ?>\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eBRAZIL\u003c/span\u003e \u003ca a/\u003e"
+				"<?php echo $row['country']['value']; ?>":"\u003ca href=\"<?php echo $row['country_lp'][0]; ?>\"\u003e  \u003cspan\u003e<?php echo $row['country']['label']; ?>\u003c/span\u003e \u003ca a/\u003e",
 
 			<?php } ?>
 			};

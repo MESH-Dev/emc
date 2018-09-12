@@ -205,7 +205,7 @@ var _paths =
             "name": "Russian Federation"
         },
         "us": {
-            "name": "United States of America"
+            "name": "USA"
         },
         "mu": {
             "name": "Mauritius"

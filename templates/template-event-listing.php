@@ -280,7 +280,7 @@
                  e.preventDefault();
                  var link = jQuery(this).attr('href');
                  //console.log(link+);
-                 $('.load_more').html('<span class="loader">Loading More Posts...</span>');
+                 $('.load_more').text('<span class="loader">Loading More Posts...</span>');
                  $.get(link, function(data) {
                     var post = $("#emc-events .row.event-grid ", data);
                     console.log(post);

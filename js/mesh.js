@@ -6,6 +6,31 @@ jQuery(document).ready(function($){
   //Let's do something awesome!
 
 
+
+  var videoElement = $('.matinee');
+    
+  // function toggleFullScreen() {
+  //   if (!document.mozFullScreen && !document.webkitFullScreen) {
+  //     if (videoElement.mozRequestFullScreen) {
+  //       videoElement.mozRequestFullScreen();
+  //     } else {
+  //       videoElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+  //     }
+  //   } else {
+  //     if (document.mozCancelFullScreen) {
+  //       document.mozCancelFullScreen();
+  //     } else {
+  //       document.webkitCancelFullScreen();
+  //     }
+  //   }
+  // }
+  
+  //$('.tablet-down').on("click", function(e) {
+    //if (e.keyCode == 13) {
+      //toggleFullScreen();
+    //}
+  //});//, false);
+
   //  We're setting up the video to play on our image click,
   //  so here, we're trying to get information from the video object,
   //  which is why our selector is referencing an array
@@ -24,9 +49,18 @@ jQuery(document).ready(function($){
     $matinee.play();
     $matinee.controls = true;
     //$matinee.requestFullscreen();
-    $matinee.webkitRequestFullScreen();
-    $matinee.mozRequestFullScreen();
-    $matinee.msRequestFullScreen();
+    if($matinee.webkitRequestFullScreen){
+      $matinee.webkitRequestFullScreen();
+    }else if($matinee.mozRequestFullScreen){
+      $matinee.mozRequestFullScreen();
+    }else if($matinee.msRequestFullScreen){
+      $matinee.msRequestFullScreen();
+    }else{
+      $matinee.RequestFullScreen();
+    }
+    //$matinee.webkitRequestFullScreen();
+    //$matinee.mozRequestFullScreen();
+    //$matinee.msRequestFullScreen();
     $matinee.RequestFullScreen();
     $('.player-holder').fadeOut('slow');
   });
@@ -37,6 +71,103 @@ jQuery(document).ready(function($){
     //console.log('Play Again');
     //$('.player-holder').fadeIn('slow');
   });
+
+     //Force divs in homepage grid to be square
+//Setup variables to hold our sizes
+var gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h;
+var $mclk = 0;
+//Grab the width of each element
+function gi_resize(){
+  hh = $('header').height();
+  mh = $('.matinee').height();
+  wg_w = $('.welcome-gate').width();
+  wg_h = $('.welcome-gate').height();
+  gi2 = $('.grid-item-width2 ').width();
+  gi3 = $('.grid-item-width3 ').width();
+  //console.log(gi3);
+  gi4 = $('.grid-item-width4 ').width();
+  gi5 = $('.grid-item-width5 ').width();
+  gi6 = $('.grid-item-width6 ').width();
+  gi7 = $('.grid-item-width7 ').width();
+  cp3 = $('.grid-item.columns-3').width();
+  cp4 = $('.grid-item.columns-4').width();
+  cp5 = $('.grid-item.columns-5').width();
+  cp6 =  $('.grid-item.columns-6').width();
+  //console.log(cp6);
+  //cp6_alt = $('.columns-6')
+  cp7 = $('.grid-item.columns-7').width();
+
+  $wW = $(window).width();
+
+
+  //return gi2, gi3, gi4;
+}
+//Run the function above at document ready and on a window resize event
+ $(document).ready(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3,cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h));
+ $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h));
+
+//Apply our widths to the height of selected elements either on load, or on resize
+function _resize(){
+  gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h);
+   $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7,$wW,hh, mh,wg_w, wg_h));
+
+ //  console.log("Width 2: "+gi2);
+  // console.log("Width 3: "+gi3);
+  //  console.log("Width 4: "+gi4);
+  //$('.grid-item-width2').css({height: (gi2)});
+ // $('.grid-item-width2.nest').css({height: (gi2*2)});
+ // $('.grid-item-width2.nest .nested').css({height: gi2});
+  //$('.grid-item-width3').css({height: gi3});
+  //$('.grid-item-width4').css({height: gi4});
+  //$('.grid-item-width5').css({height: gi5})
+  //$('.grid-item-width6').css({height: (gi6*.66)});
+ // $('.width6-diamond').css({height: (gi6*0.4)});
+ // $('.columns-4.child-links').css({height:cp4});
+  //$('.columns-6.promo').css({height: (cp6*.5)});
+ // $('.columns-6.cpromo').css({height: (cp6*.66)});
+  //console.log(cp6*.66);
+  //$('.columns-6 .width6-diamond').css({height: (cp6*0.4)});
+  //$('.columns-5.event-feed').css({height: (cp5)});
+ // $('.columns-7.trip').css({height: cp5});
+  //$('.grid-item-width6.nest').css({height: gi2});
+ // $('.grid-item-width6.nest .nested').css({height: gi2});
+  //$('.grid-item-width7').css({height: (gi5)});
+  $('.grid-item.columns-3').css({height:cp3});
+  $('.grid-item.columns-4').css({height:cp4});
+  $('.welcome-gate.full-video').css({'height':'calc(100vh - ' + hh + 'px)', 'margin-top':hh});
+  $('.matinee').css({width:(wg_w-150)});
+  if($wW >= 1000){
+    $('.grid-item.columns-6').css({height:cp6*0.66});
+    $('.grid-item.columns-4.tweener').css({height:cp4});
+  }else{
+    $('.grid-item.columns-6').css({height:cp6});
+    $('.grid-item.columns-4.tweener').css({height:cp6});
+  }
+  console.log($wW);
+  console.log(hh);
+  console.log(mh);
+  console.log(wg_h);
+
+
+  if($wW <= 1100){
+    $('.main-navigation').css({'display':'none'});
+
+    //$('.main-navigation ul > li.menu-item-has-children .wrap .content').append(arrow);
+    
+  }else{
+    $('.main-navigation').css({'display':'inline-block'});
+    // if(arrow.length > 0){
+    //   $('.main-navigation ul li.menu-item-has-children .wrap .content').remove(arrow);
+    // }
+    
+  }
+
+
+}
+
+//Run the function on load & on resize
+_resize();
+$(window).resize(_resize);
 
   $('#mobileMenuTrigger').sidr({
      // name: 'mobile',
@@ -103,9 +234,10 @@ $('#locationTrigger').click(function(event){
   // This is serializaed data that will be pulled from a variable created by
   // the locations that are entered into the appropriate ACF fields on the homepage
 
-  _pins = { "us" : "\u003ca href=\"#\"\u003e \u003cspan\u003eUSA\u003c/span\u003e \u003ca a/\u003e",//\u003cimg src=\"pk.png\" /\u003e
-        	"id" : "\u003ca href=\"#\"\u003e \u003cspan\u003eBRAZIL\u003c/span\u003e \u003ca a/\u003e"}, //\u003cimg src=\"pk.png\" /\u003e
-
+  //_pins = { "us" : "\u003ca href=\"#\"\u003e \u003cspan\u003eUSA\u003c/span\u003e \u003ca a/\u003e",//\u003cimg src=\"pk.png\" /\u003e
+        	//"id" : "\u003ca href=\"#\"\u003e \u003cspan\u003eBRAZIL\u003c/span\u003e \u003ca a/\u003e"}; //\u003cimg src=\"pk.png\" /\u003e
+  
+if($('#vmap').size() > 0){
 	$('#vmap').vectorMap({
 	  map: 'world_en',
 	  backgroundColor: 'rgba(255,255, 255, 0)',
@@ -130,6 +262,7 @@ $('#locationTrigger').click(function(event){
 	// "id" : "\u003ca href=\"#\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eIndonesia\u003c/span\u003e \u003ca a/\u003e"},
 	  pinMode: 'content'
 	});
+}
 
   var getUrlParameter = function getUrlParameter() { //sParam
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
