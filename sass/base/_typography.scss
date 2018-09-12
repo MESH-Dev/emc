@@ -1,33 +1,71 @@
 // Typography
 //––––––––––––––––––––––––––––––––––––––––––––––––––
-@font-face{
-   font-family: "whitney-light";
-   src: url("fonts/WhitneyHTF-Light.otf");
+// @font-face{
+//    font-family: "whitney-light";
+//    src: url("fonts/WhitneyHTF-Light.otf");
+// }
+// @font-face{
+//    font-family: "whitney-book";
+//    src: url("fonts/whitney-book.ttf");
+// }
+// @font-face{
+//    font-family: "whitney-semi";
+//    src: url("fonts/WhitneyHTF-SemiBold.otf");
+// }
+// @font-face{
+//    font-family: 'whitney-bold';
+//    src: url('fonts/WhitneyHTF-Bold.otf');
+// }
+@mixin whitney-light() {
+   font-family: "Whitney A", "Whitney B";
+   font-style: normal;
+   font-weight: 300;
 }
-@font-face{
-   font-family: "whitney-book";
-   src: url("fonts/whitney-book.ttf");
+@mixin whitney-italic{
+   font-family: "Whitney A", "Whitney B";
+   font-style: italic;
+   font-weight: 400;
 }
-@font-face{
-   font-family: "whitney-semi";
-   src: url("fonts/WhitneyHTF-SemiBold.otf");
+@mixin whitney-book() {
+   font-family: "Whitney A", "Whitney B";
+   font-style: normal;
+   font-weight: 400;
 }
-@font-face{
-   font-family: 'whitney-bold';
-   src: url('fonts/WhitneyHTF-Bold.otf');
+@mixin whitney-semi() {
+   font-family: "Whitney A", "Whitney B";
+   font-style: normal;
+   font-weight: 600;
+}
+@mixin whitney-bold() {
+   font-family: "Whitney A", "Whitney B";
+   font-style: normal;
+   font-weight: 700;
+}
+@mixin whitney-bold-italic{
+   font-family: "Whitney A", "Whitney B";
+   font-style: italic;
+   font-weight: 700;
 }
 @font-face{
    font-family: 'bianco-reg';
-   src: url('fonts/Bianco-Serif-New.otf');
+   src: url('fonts/Bianco_Serif_New.woff');
+}
+@font-face{
+   font-family: 'bianco-reg-italic';
+   src: url('fonts/Bianco_Serif_New_Italic.woff');
 }
 @font-face{
    font-family: 'bianco-extrabold';
-   src: url('fonts/Bianco-Serif-New ExtraBold.otf');
+   src: url('fonts/Bianco_Serif_New_ExtraBold.woff');
 }
 @font-face{
-   font-family: 'bianco-bold';
-   src: url('fonts/Bianco-Serif-New-Bold.otf');
+   font-family: 'bianco-extrabold';
+   src: url('fonts/Bianco_Serif_New_ExtraBold_Italic.woff');
 }
+// @font-face{
+//    font-family: 'bianco-bold';
+//    src: url('fonts/Bianco-Serif-New-Bold.otf');
+// }
 
 
 // h1, h2, h3, h4, h5, h6 {
@@ -72,7 +110,7 @@ p {
 }
 
 .heading1, h1{
-   font-family: 'whitney-book';
+   @include whitney-book();
    font-size: 4rem;
    line-height: 1.25;
    letter-spacing: 0.6px;
@@ -82,7 +120,7 @@ p {
 }
 
 .heading2, h2{
-   font-family: 'whitney-book';
+   @include whitney-book();
    font-size: 3.6rem;
    line-height: 1.25;
    letter-spacing: 0.6px;
@@ -102,7 +140,7 @@ h3{
 }
 
 h4{
-  font-family: 'whitney-bold';
+  @include whitney-bold();
   font-size:2.4rem;
   line-height:1.25;
   letter-spacing: .6px;
@@ -112,7 +150,7 @@ h4{
 }
 
 h5{
-  font-family: 'whitney-bold';
+  @include whitney-bold();
   font-size:2rem;
   line-height:1.25;
   text-transform:uppercase;
@@ -123,7 +161,7 @@ h5{
 }
 
 .heading6, h6{
-   font-family: 'whitney-bold';
+   @include whitney-bold();
    font-size: 1.4rem;
    line-height: 1.25;
    letter-spacing: 3px;

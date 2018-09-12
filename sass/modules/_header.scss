@@ -77,7 +77,7 @@ main#content{
          a{
             margin: 0;
             // border-bottom: 3px solid $primary-lightbrown;
-            font-family: 'whitney-book';
+            @include whitney-book();
             font-size: 1.7rem;
             letter-spacing: 0.66px;
             display: inline-block;
@@ -215,7 +215,8 @@ ul.sub-menu{
          margin-bottom: 0;
       }
       a{
-         font-family: 'bianco-bold';
+         font-family: 'bianco-reg';
+         font-weight: bold;
          color: $primary-lightbrown;
          font-size: 1.4rem;
          letter-spacing: 1px;
@@ -306,7 +307,8 @@ body .sidr{
       ul.sub-menu, ul#menu-main_nav .sub-menu{
          li{
             a{
-               font-family: 'bianco-bold';
+               font-family: 'bianco-reg';
+               font-weight: bold;
                color: $primary-lightbrown;
                font-size: 1.4rem;
                letter-spacing: 1px;
@@ -348,7 +350,7 @@ body .sidr{
       a{
          margin: 0;
          // border-bottom: 3px solid $primary-lightbrown;
-         font-family: 'whitney-book';
+         @include whitney-book();
          font-size: 1.7rem;
          letter-spacing: 0.66px;
          display: inline-block;

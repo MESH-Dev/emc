@@ -14,7 +14,7 @@ footer{
       }
       a{
          margin-bottom: 0;
-         font-family: 'whitney-bold';
+         @include whitney-bold();
          font-size: 1.2rem;
          text-transform: uppercase;
          color: $primary-red;
@@ -69,7 +69,7 @@ footer{
       }
       .copy{
          display: inline-block;
-         font-family: 'whitney-bold';
+         @include whitney-bold();
          font-size: 1.2rem;
          letter-spacing: 2px;
          color: $nav-brown;
@@ -81,7 +81,7 @@ footer{
       .byline{
          display: inline-block;
          float: right;
-         font-family: 'whitney-bold';
+         @include whitney-bold();
          font-size: 1.2rem;
          letter-spacing: 2px;
          color: $nav-brown;
@@ -91,7 +91,7 @@ footer{
             float: none;
          }
          a{
-            font-family: 'whitney-light';
+            @include whitney-light();
             color: $nav-brown;
             &:hover{
                text-decoration: none;
@@ -122,7 +122,7 @@ footer{
          background: transparent;
          border: 0;
          height: 20px;
-         font-family: 'whitney-bold';
+         @include whitney-bold();
          letter-spacing: 3px;
          color: #8B572A;
          text-transform: uppercase;
