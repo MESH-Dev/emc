@@ -1,4 +1,4 @@
-<?php 
+<?php
 	$background_img = get_field('banner_image');
 	$background_image_url = $background_img['sizes']['short-banner'];
 	$banner_callout = get_field('banner_callout_text');

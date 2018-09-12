@@ -334,7 +334,7 @@ li {
   src: url("fonts/Bianco_Serif_New_ExtraBold.woff");
 }
 @font-face {
-  font-family: 'bianco-extrabold';
+  font-family: 'bianco-extrabold-italic';
   src: url("fonts/Bianco_Serif_New_ExtraBold_Italic.woff");
 }
 @media (max-width: 750px) {
@@ -1163,38 +1163,39 @@ ul.sub-menu:hover {
 /* line 261, sass/modules/_header.scss */
 .ticker p strong, .ticker p b {
   font-family: 'bianco-extrabold';
+  font-style: normal;
 }
-/* line 266, sass/modules/_header.scss */
+/* line 267, sass/modules/_header.scss */
 .ticker .text {
   max-width: 1230px;
   margin: 0 auto;
   text-align: center;
 }
 @media screen and (max-width: 1250px) {
-  /* line 266, sass/modules/_header.scss */
+  /* line 267, sass/modules/_header.scss */
   .ticker .text {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
-/* line 277, sass/modules/_header.scss */
+/* line 278, sass/modules/_header.scss */
 .ticker .ticker-title {
   font-family: 'bianco-extrabold';
 }
-/* line 280, sass/modules/_header.scss */
+/* line 281, sass/modules/_header.scss */
 .ticker .close {
   height: 30px;
   position: absolute;
   top: 0;
   right: 0;
 }
-/* line 287, sass/modules/_header.scss */
+/* line 288, sass/modules/_header.scss */
 .ticker .close svg {
   height: 14px;
   width: auto;
 }
 
-/* line 295, sass/modules/_header.scss */
+/* line 296, sass/modules/_header.scss */
 body .sidr {
   position: fixed;
   z-index: 999;
@@ -1205,12 +1206,12 @@ body .sidr {
   text-align: center;
 }
 @media screen and (max-width: 750px) {
-  /* line 295, sass/modules/_header.scss */
+  /* line 296, sass/modules/_header.scss */
   body .sidr {
     padding-top: 250px;
   }
 }
-/* line 309, sass/modules/_header.scss */
+/* line 310, sass/modules/_header.scss */
 body .sidr .sidr-inner ul.sub-menu li a, body .sidr .sidr-inner ul#menu-main_nav .sub-menu li a {
   font-family: 'bianco-reg';
   font-weight: bold;
@@ -1219,22 +1220,22 @@ body .sidr .sidr-inner ul.sub-menu li a, body .sidr .sidr-inner ul#menu-main_nav
   letter-spacing: 1px;
   line-height: 18px;
 }
-/* line 320, sass/modules/_header.scss */
+/* line 321, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav {
   border-top: 0px;
   border-bottom: 0px;
 }
-/* line 323, sass/modules/_header.scss */
+/* line 324, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li {
   border-top: 0px;
   border-bottom: 0px;
   list-style-type: none;
 }
-/* line 328, sass/modules/_header.scss */
+/* line 329, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li:hover > a {
   box-shadow: 0px;
 }
-/* line 332, sass/modules/_header.scss */
+/* line 333, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li a {
   font-family: 'bianco-reg';
   font-size: 1.8rem;
@@ -1242,16 +1243,16 @@ body .sidr ul#menu-main_nav li a {
   color: #70594C;
   transition: opacity 0.5s ease-in-out;
 }
-/* line 341, sass/modules/_header.scss */
+/* line 342, sass/modules/_header.scss */
 body .sidr ul#menu-main_nav li a:hover {
   opacity: 0.5;
   text-decoration: none;
 }
-/* line 348, sass/modules/_header.scss */
+/* line 349, sass/modules/_header.scss */
 body .sidr li.menu-item {
   list-style-type: none;
 }
-/* line 350, sass/modules/_header.scss */
+/* line 351, sass/modules/_header.scss */
 body .sidr li.menu-item a {
   margin: 0;
   font-family: "Whitney A", "Whitney B";
@@ -1264,13 +1265,13 @@ body .sidr li.menu-item a {
   position: relative;
   transition: opacity 0.5s ease-in-out;
 }
-/* line 360, sass/modules/_header.scss */
+/* line 361, sass/modules/_header.scss */
 body .sidr li.menu-item a:hover {
   text-decoration: none;
   opacity: 0.5;
 }
 
-/* line 385, sass/modules/_header.scss */
+/* line 386, sass/modules/_header.scss */
 .sidr-inner:first-of-type ul.menu li.menu-item-has-children .after-arrow {
   display: inline-block;
   height: 13px;
@@ -1283,27 +1284,27 @@ body .sidr li.menu-item a:hover {
   margin-left: 10px;
   transition: transform 0.2s ease-in-out;
 }
-/* line 396, sass/modules/_header.scss */
+/* line 397, sass/modules/_header.scss */
 .sidr-inner:first-of-type ul.menu li.menu-item-has-children .after-arrow.open {
   transform: rotate(270deg);
 }
-/* line 402, sass/modules/_header.scss */
+/* line 403, sass/modules/_header.scss */
 .sidr-inner:first-of-type .menu-item-has-children {
   position: relative;
 }
-/* line 404, sass/modules/_header.scss */
+/* line 405, sass/modules/_header.scss */
 .sidr-inner:first-of-type .menu-item-has-children ul.sub-menu {
   position: relative;
   display: none;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 411, sass/modules/_header.scss */
+/* line 412, sass/modules/_header.scss */
 .sidr-inner:first-of-type .menu-item-has-children ul.sub-menu.open {
   display: block;
 }
 
-/* line 426, sass/modules/_header.scss */
+/* line 427, sass/modules/_header.scss */
 .sidr-inner:nth-of-type(2) li.menu-item a::after {
   content: '';
   position: absolute;
@@ -1315,21 +1316,21 @@ body .sidr li.menu-item a:hover {
   transform: translateX(-50%);
 }
 
-/* line 452, sass/modules/_header.scss */
+/* line 453, sass/modules/_header.scss */
 body .sidr.right {
   right: -100%;
 }
 
-/* line 457, sass/modules/_header.scss */
+/* line 458, sass/modules/_header.scss */
 .sidr-inner:nth-of-type(3) {
   margin-top: 5vh;
 }
-/* line 459, sass/modules/_header.scss */
+/* line 460, sass/modules/_header.scss */
 .sidr-inner:nth-of-type(3) a {
   color: #B46C4E;
   margin: 0 4px;
 }
-/* line 464, sass/modules/_header.scss */
+/* line 465, sass/modules/_header.scss */
 .sidr-inner:nth-of-type(1) {
   margin-bottom: 10vh;
 }
@@ -1856,7 +1857,7 @@ body {
 }
 /* line 286, sass/modules/_modules.scss */
 .panel.text-grid .grid-item {
-  max-width: 280px;
+  max-width: 379px;
   margin: 0 auto;
 }
 @media screen and (max-width: 750px) {
@@ -2602,13 +2603,13 @@ body {
   font-size: 1.4rem;
   letter-spacing: 3px;
   color: #40292D;
-  margin-left: 65px;
+  margin-right: 65px;
   text-transform: uppercase;
 }
 /* line 928, sass/modules/_modules.scss */
 .panel.search-filter {
-  padding-top: 10px;
-  padding-bottom: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #FBD8C2;
   display: none;
 }
@@ -2648,14 +2649,178 @@ body {
   letter-spacing: 0.6px;
   padding-left: 0;
 }
+/* line 963, sass/modules/_modules.scss */
+.panel.resources {
+  background-color: #FDF6ED;
+}
+/* line 966, sass/modules/_modules.scss */
+.panel.resources .event-grid.resource-grid {
+  margin-bottom: 120px;
+}
+@media screen and (max-width: 750px) {
+  /* line 966, sass/modules/_modules.scss */
+  .panel.resources .event-grid.resource-grid {
+    margin-bottom: 0;
+  }
+}
+/* line 971, sass/modules/_modules.scss */
+.panel.resources .event-grid.resource-grid:last-of-type {
+  margin-bottom: 0;
+}
+/* line 979, sass/modules/_modules.scss */
+.panel.resources .event-grid .card .title a {
+  font-family: 'bianco-reg';
+  font-size: 2.8rem;
+  letter-spacing: 0.82px;
+  color: #70594C;
+  text-transform: none;
+  line-height: normal;
+}
+/* line 986, sass/modules/_modules.scss */
+.panel.resources .event-grid .card .title a span.category {
+  color: #A99689;
+}
+/* line 989, sass/modules/_modules.scss */
+.panel.resources .event-grid .card .title a svg {
+  height: 18px;
+  width: auto;
+}
+/* line 999, sass/modules/_modules.scss */
+.panel.films-list .listing-card {
+  position: relative;
+}
+@media screen and (max-width: 750px) {
+  /* line 1005, sass/modules/_modules.scss */
+  .panel.films-list .listing-card [class*='columns-'] {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 750px) {
+  /* line 999, sass/modules/_modules.scss */
+  .panel.films-list .listing-card {
+    margin-bottom: 20px;
+  }
+}
+/* line 1014, sass/modules/_modules.scss */
+.panel.films-list .listing-card.listing-grid .item-text {
+  padding: 0;
+  min-height: unset;
+}
+@media screen and (max-width: 750px) {
+  /* line 1014, sass/modules/_modules.scss */
+  .panel.films-list .listing-card.listing-grid .item-text {
+    padding: 0;
+  }
+}
+/* line 1020, sass/modules/_modules.scss */
+.panel.films-list .listing-card.listing-grid .item-text h4 {
+  padding: 15px 0;
+  margin-bottom: 0;
+}
+@media screen and (max-width: 750px) {
+  /* line 1020, sass/modules/_modules.scss */
+  .panel.films-list .listing-card.listing-grid .item-text h4 {
+    font-size: 3rem;
+    padding-top: 0;
+  }
+}
+/* line 1029, sass/modules/_modules.scss */
+.panel.films-list .listing-card.listing-grid .read-more {
+  position: relative;
+  display: block;
+}
+/* line 1034, sass/modules/_modules.scss */
+.panel.films-list .listing-card .thumbnail {
+  height: 379px;
+  background-size: cover;
+  background-position: center;
+}
+@media screen and (max-width: 750px) {
+  /* line 1034, sass/modules/_modules.scss */
+  .panel.films-list .listing-card .thumbnail {
+    margin-bottom: 20px;
+  }
+}
+/* line 1042, sass/modules/_modules.scss */
+.panel.films-list .listing-card .item-text {
+  padding-left: 20px;
+  position: relative;
+  min-height: 379px;
+}
+@media screen and (max-width: 750px) {
+  /* line 1042, sass/modules/_modules.scss */
+  .panel.films-list .listing-card .item-text {
+    padding: 0;
+    min-height: unset;
+  }
+}
+/* line 1050, sass/modules/_modules.scss */
+.panel.films-list .listing-card .item-text h4 {
+  font-size: 3.8rem;
+  letter-spacing: 1px;
+  line-height: 53px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 1060px) {
+  /* line 1050, sass/modules/_modules.scss */
+  .panel.films-list .listing-card .item-text h4 {
+    font-size: 3rem;
+    line-height: normal;
+    padding-top: 0;
+  }
+}
+/* line 1062, sass/modules/_modules.scss */
+.panel.films-list .listing-card .item-text p {
+  font-size: 1.4rem;
+  letter-spacing: 0.41px;
+  line-height: 24px;
+  font-weight: 400;
+}
+/* line 1069, sass/modules/_modules.scss */
+.panel.films-list .listing-card .item-text a {
+  width: 100%;
+  font-size: 2rem;
+  text-decoration: none;
+  font-weight: 400;
+}
+/* line 1074, sass/modules/_modules.scss */
+.panel.films-list .listing-card .item-text a:hover {
+  text-decoration: none;
+}
+/* line 1076, sass/modules/_modules.scss */
+.panel.films-list .listing-card .item-text a:hover::after {
+  width: 50%;
+}
+/* line 1080, sass/modules/_modules.scss */
+.panel.films-list .listing-card .item-text a::after {
+  content: '';
+  display: block;
+  color: inherit;
+  border-bottom: 2px solid;
+  width: 40%;
+  transition: all 0.2s ease-in-out;
+  margin-top: 5px;
+}
+/* line 1091, sass/modules/_modules.scss */
+.panel.films-list .listing-card .read-more {
+  position: absolute;
+  bottom: 0;
+}
+@media screen and (max-width: 750px) {
+  /* line 1091, sass/modules/_modules.scss */
+  .panel.films-list .listing-card .read-more {
+    position: relative;
+  }
+}
 
-/* line 968, sass/modules/_modules.scss */
+/* line 1105, sass/modules/_modules.scss */
 .landing .topics ul li {
   margin-left: 0;
   margin-right: 65px;
 }
 
-/* line 976, sass/modules/_modules.scss */
+/* line 1113, sass/modules/_modules.scss */
 .img-screen {
   position: absolute;
   top: 0;
@@ -2666,17 +2831,21 @@ body {
   opacity: 0.5;
 }
 
-/* line 991, sass/modules/_modules.scss */
+/* line 1128, sass/modules/_modules.scss */
 .event-grid {
   margin-bottom: 46px;
 }
 @media screen and (max-width: 750px) {
-  /* line 993, sass/modules/_modules.scss */
+  /* line 1130, sass/modules/_modules.scss */
   .event-grid .card {
     margin-bottom: 40px;
   }
 }
-/* line 998, sass/modules/_modules.scss */
+/* line 1134, sass/modules/_modules.scss */
+.event-grid .card .date {
+  margin-bottom: 1.4rem;
+}
+/* line 1138, sass/modules/_modules.scss */
 .event-grid .card .excerpt p {
   color: #B46C4E;
   font-size: 1.6rem;
@@ -2684,43 +2853,43 @@ body {
   letter-spacing: 0.6px;
 }
 
-/* line 1008, sass/modules/_modules.scss */
+/* line 1148, sass/modules/_modules.scss */
 .filter-bar {
   background-color: #FBD8C2;
 }
-/* line 1011, sass/modules/_modules.scss */
+/* line 1151, sass/modules/_modules.scss */
 .filter-bar ul li {
   display: inline-block;
 }
-/* line 1013, sass/modules/_modules.scss */
+/* line 1153, sass/modules/_modules.scss */
 .filter-bar ul li a {
   color: #40292D;
 }
 
-/* line 1021, sass/modules/_modules.scss */
+/* line 1161, sass/modules/_modules.scss */
 main.landing .text-grid {
   background-color: #FEF6F2;
 }
 
-/* line 1026, sass/modules/_modules.scss */
+/* line 1166, sass/modules/_modules.scss */
 main.text {
   padding-top: 80px;
   padding-bottom: 50px;
   background-color: #FEF7F3;
 }
 @media screen and (max-width: 750px) {
-  /* line 1026, sass/modules/_modules.scss */
+  /* line 1166, sass/modules/_modules.scss */
   main.text {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
 
-/* line 1041, sass/modules/_modules.scss */
+/* line 1181, sass/modules/_modules.scss */
 .text h1, .text h2, .text h3, .text h4, .text h5, .text h6 {
   margin-top: 0;
 }
-/* line 1044, sass/modules/_modules.scss */
+/* line 1184, sass/modules/_modules.scss */
 .text .headline {
   font-family: "Whitney A", "Whitney B";
   font-style: normal;
@@ -2731,7 +2900,7 @@ main.text {
   color: #70594C;
   margin-bottom: 2rem;
 }
-/* line 1052, sass/modules/_modules.scss */
+/* line 1192, sass/modules/_modules.scss */
 .text .callout {
   font-family: "Whitney A", "Whitney B";
   font-style: normal;
@@ -2742,28 +2911,28 @@ main.text {
   color: #B46C4E;
   margin-bottom: 2em;
 }
-/* line 1066, sass/modules/_modules.scss */
+/* line 1206, sass/modules/_modules.scss */
 .text .col img {
   width: 100%;
   height: auto;
 }
-/* line 1071, sass/modules/_modules.scss */
+/* line 1211, sass/modules/_modules.scss */
 .text .col p {
   color: #B46C4E;
 }
 
-/* line 1080, sass/modules/_modules.scss */
+/* line 1220, sass/modules/_modules.scss */
 #vmap svg {
   position: relative;
   z-index: 0;
 }
 
-/* line 1084, sass/modules/_modules.scss */
+/* line 1224, sass/modules/_modules.scss */
 .jqvmap-pin {
   z-index: 9999;
   pointer-events: initial;
 }
-/* line 1087, sass/modules/_modules.scss */
+/* line 1227, sass/modules/_modules.scss */
 .jqvmap-pin a {
   padding-right: 25px;
   background-image: url("img/EMC_MapPin_Landing.png");
@@ -2781,21 +2950,21 @@ main.text {
   display: inline-block;
   transition: opacity 0.5s ease-in-out;
 }
-/* line 1101, sass/modules/_modules.scss */
+/* line 1241, sass/modules/_modules.scss */
 .jqvmap-pin a:hover, .jqvmap-pin a:active, .jqvmap-pin a:focus {
   background-image: url("img/EMC_MapPin_Hover.png");
   text-decoration: none;
   opacity: 0.5;
 }
 
-/* line 1112, sass/modules/_modules.scss */
+/* line 1252, sass/modules/_modules.scss */
 .jqvmap-region {
   position: relative;
   z-index: -1;
   pointer-events: none;
 }
 
-/* line 1117, sass/modules/_modules.scss */
+/* line 1257, sass/modules/_modules.scss */
 .jqvmap-region path {
   position: relative;
   z-index: 1;
@@ -2809,28 +2978,28 @@ main.text {
     opacity: 1;
   }
 }
-/* line 1133, sass/modules/_modules.scss */
+/* line 1273, sass/modules/_modules.scss */
 .fadeIn {
   animation-name: fadeIn;
 }
 
-/* line 1137, sass/modules/_modules.scss */
+/* line 1277, sass/modules/_modules.scss */
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
 }
 
-/* line 1142, sass/modules/_modules.scss */
+/* line 1282, sass/modules/_modules.scss */
 .hide {
   display: none;
 }
 
-/* line 1149, sass/modules/_modules.scss */
+/* line 1289, sass/modules/_modules.scss */
 .posts-main .filter-bar {
   background: transparent;
   text-align: right;
 }
-/* line 1152, sass/modules/_modules.scss */
+/* line 1292, sass/modules/_modules.scss */
 .posts-main .filter-bar a, .posts-main .filter-bar p {
   display: inline-block;
   font-family: "Whitney A", "Whitney B";
@@ -2841,46 +3010,46 @@ main.text {
   text-transform: uppercase;
   margin-left: 10px;
 }
-/* line 1160, sass/modules/_modules.scss */
+/* line 1300, sass/modules/_modules.scss */
 .posts-main .filter-bar p.cta {
   color: #A99689;
   margin-bottom: 0;
 }
-/* line 1164, sass/modules/_modules.scss */
+/* line 1304, sass/modules/_modules.scss */
 .posts-main .filter-bar ul {
   display: inline-block;
 }
-/* line 1166, sass/modules/_modules.scss */
+/* line 1306, sass/modules/_modules.scss */
 .posts-main .filter-bar ul li {
   display: inline-block;
   text-transform: uppercase;
 }
 
-/* line 1174, sass/modules/_modules.scss */
+/* line 1314, sass/modules/_modules.scss */
 a.filter-trigger {
   color: #EB742D;
   cursor: pointer;
   transition: opacity 0.5s ease-in-out;
 }
-/* line 1178, sass/modules/_modules.scss */
+/* line 1318, sass/modules/_modules.scss */
 a.filter-trigger:hover {
   text-decoration: none;
   opacity: 0.5;
 }
-/* line 1184, sass/modules/_modules.scss */
+/* line 1324, sass/modules/_modules.scss */
 a.filter-trigger.open .down-arrow {
   transform: rotate(-90deg);
 }
 
-/* line 1190, sass/modules/_modules.scss */
+/* line 1330, sass/modules/_modules.scss */
 .post {
   margin-bottom: 110px;
 }
-/* line 1192, sass/modules/_modules.scss */
+/* line 1332, sass/modules/_modules.scss */
 .post:last-of-type {
   margin-bottom: 20px;
 }
-/* line 1195, sass/modules/_modules.scss */
+/* line 1335, sass/modules/_modules.scss */
 .post h2.img-override {
   text-align: center;
   font-size: 4.8rem;
@@ -2891,35 +3060,35 @@ a.filter-trigger.open .down-arrow {
   margin-bottom: 47px;
 }
 @media screen and (max-width: 1060px) {
-  /* line 1195, sass/modules/_modules.scss */
+  /* line 1335, sass/modules/_modules.scss */
   .post h2.img-override {
     font-size: 3rem;
     line-height: 40px;
   }
 }
-/* line 1208, sass/modules/_modules.scss */
+/* line 1348, sass/modules/_modules.scss */
 .post img {
   width: 100%;
   height: auto;
   margin-bottom: 47px;
 }
-/* line 1213, sass/modules/_modules.scss */
+/* line 1353, sass/modules/_modules.scss */
 .post span.text svg {
   width: 20px;
 }
-/* line 1216, sass/modules/_modules.scss */
+/* line 1356, sass/modules/_modules.scss */
 .post .content {
   max-width: 60%;
   margin: 0 auto;
   text-align: center;
 }
 @media screen and (max-width: 750px) {
-  /* line 1216, sass/modules/_modules.scss */
+  /* line 1356, sass/modules/_modules.scss */
   .post .content {
     max-width: none;
   }
 }
-/* line 1223, sass/modules/_modules.scss */
+/* line 1363, sass/modules/_modules.scss */
 .post .content .listing-display-title {
   font-family: "Whitney A", "Whitney B";
   font-style: normal;
@@ -2929,7 +3098,7 @@ a.filter-trigger.open .down-arrow {
   letter-spacing: 0.9px;
   margin-bottom: 10px;
 }
-/* line 1230, sass/modules/_modules.scss */
+/* line 1370, sass/modules/_modules.scss */
 .post .content p {
   color: #40292D;
   font-size: 1.6rem;
@@ -2937,21 +3106,21 @@ a.filter-trigger.open .down-arrow {
   line-height: 21px;
 }
 
-/* line 1239, sass/modules/_modules.scss */
+/* line 1379, sass/modules/_modules.scss */
 .postinfo, .topics {
   font-size: 1.4rem;
 }
-/* line 1241, sass/modules/_modules.scss */
+/* line 1381, sass/modules/_modules.scss */
 .postinfo .orange, .topics .orange {
   color: #EB742D;
 }
 
-/* line 1246, sass/modules/_modules.scss */
+/* line 1386, sass/modules/_modules.scss */
 .load_more {
   text-align: center;
   margin-bottom: 40px;
 }
-/* line 1249, sass/modules/_modules.scss */
+/* line 1389, sass/modules/_modules.scss */
 .load_more a {
   font-family: "Whitney A", "Whitney B";
   font-style: normal;
@@ -2962,7 +3131,7 @@ a.filter-trigger.open .down-arrow {
   transition: opacity 0.5s ease-in-out;
   text-transform: uppercase;
 }
-/* line 1256, sass/modules/_modules.scss */
+/* line 1396, sass/modules/_modules.scss */
 .load_more a::after {
   content: '';
   display: block;
@@ -2975,22 +3144,22 @@ a.filter-trigger.open .down-arrow {
   background-repeat: no-repeat;
   transform: rotate(90deg);
 }
-/* line 1268, sass/modules/_modules.scss */
+/* line 1408, sass/modules/_modules.scss */
 .load_more a:hover {
   text-decoration: none;
   opacity: 0.5;
 }
-/* line 1271, sass/modules/_modules.scss */
+/* line 1411, sass/modules/_modules.scss */
 .load_more a:hover ~ .arrow-wrap {
   opacity: 0.5;
 }
-/* line 1276, sass/modules/_modules.scss */
+/* line 1416, sass/modules/_modules.scss */
 .load_more .arrow-wrap {
   text-align: center;
   transition: opacity 0.5s ease-in-out;
 }
 
-/* line 1294, sass/modules/_modules.scss */
+/* line 1434, sass/modules/_modules.scss */
 svg.down-arrow {
   height: 14px;
   width: auto;
@@ -2999,7 +3168,7 @@ svg.down-arrow {
   transition: transform 0.5s ease-in-out;
 }
 
-/* line 1302, sass/modules/_modules.scss */
+/* line 1442, sass/modules/_modules.scss */
 a[rel="prev"], a[rel="next"] {
   font-size: 1.8rem;
   color: #EB742D;
@@ -3010,13 +3179,13 @@ a[rel="prev"], a[rel="next"] {
   transition: opacity 0.2s ease-in-out;
   text-transform: uppercase;
 }
-/* line 1309, sass/modules/_modules.scss */
+/* line 1449, sass/modules/_modules.scss */
 a[rel="prev"]:hover, a[rel="next"]:hover {
   opacity: 0.5;
   text-decoration: none;
 }
 @media screen and (max-width: 750px) {
-  /* line 1302, sass/modules/_modules.scss */
+  /* line 1442, sass/modules/_modules.scss */
   a[rel="prev"], a[rel="next"] {
     display: block;
     width: 100%;
@@ -3024,11 +3193,11 @@ a[rel="prev"]:hover, a[rel="next"]:hover {
   }
 }
 
-/* line 1320, sass/modules/_modules.scss */
+/* line 1460, sass/modules/_modules.scss */
 a[rel="prev"] {
   float: left;
 }
-/* line 1322, sass/modules/_modules.scss */
+/* line 1462, sass/modules/_modules.scss */
 a[rel="prev"]::before {
   content: '';
   display: inline-block;
@@ -3042,11 +3211,11 @@ a[rel="prev"]::before {
   transform: rotate(180deg);
 }
 
-/* line 1335, sass/modules/_modules.scss */
+/* line 1475, sass/modules/_modules.scss */
 a[rel="next"] {
   float: right;
 }
-/* line 1337, sass/modules/_modules.scss */
+/* line 1477, sass/modules/_modules.scss */
 a[rel="next"]::after {
   content: '';
   display: inline-block;
@@ -3059,29 +3228,29 @@ a[rel="next"]::after {
   margin-left: 6px;
 }
 @media screen and (max-width: 750px) {
-  /* line 1335, sass/modules/_modules.scss */
+  /* line 1475, sass/modules/_modules.scss */
   a[rel="next"] {
     margin-top: 14px;
   }
 }
 
-/* line 1354, sass/modules/_modules.scss */
+/* line 1494, sass/modules/_modules.scss */
 .blog-single {
   margin-top: 50px;
   margin-bottom: 50px;
 }
 @media screen and (max-width: 750px) {
-  /* line 1354, sass/modules/_modules.scss */
+  /* line 1494, sass/modules/_modules.scss */
   .blog-single {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
-/* line 1361, sass/modules/_modules.scss */
+/* line 1501, sass/modules/_modules.scss */
 .blog-single h5 {
   color: black;
 }
-/* line 1364, sass/modules/_modules.scss */
+/* line 1504, sass/modules/_modules.scss */
 .blog-single p {
   color: #8B572A;
 }
