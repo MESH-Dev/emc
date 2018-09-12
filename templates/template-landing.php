@@ -292,7 +292,7 @@
 								<div class="content">
 									<div class="divider"></div>
 									<div class="caption">
-										<p><?php echo $grid_text; ?> <?php echo ($g_cnt%4); ?></p>
+										<p><?php echo $grid_text; ?> <?php //echo ($g_cnt%4); ?></p>
 									</div>
 								</div>
 								<?php if($grid_item_link != '') {?>
@@ -302,8 +302,10 @@
 						<?php if($g_cnt %4 == 0){
 									echo '</div><div class="row">';
 								}?>
-						<?php if($g_cnt%4 != 0){ echo '</div>';} ?>
-						<?php endwhile; endif; ?>
+						<?php //if($g_cnt%4 != 0){ echo '</div>';} ?>
+						<?php endwhile; ?>
+							</div>
+					<?php endif; ?>
 					</div>
 				</div>
 			</div>
