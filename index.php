@@ -9,7 +9,7 @@
 		</div>
 	</div>
 	<nav class="panel filter-bar">
-		<div class="container">
+		<div class="">
 			<div class="row">
 				<div class="columns-10 offset-by-1">
 					<p class="cta">Explore our news:</p>
@@ -37,7 +37,7 @@
 			</div>
 		</div>
 		<div class="panel topics">
-			<div class="container">
+			<div class="">
 				<div class="row">
 					<div class="columns-10 offset-by-1">
 						<ul class="topic-filter">
@@ -145,7 +145,7 @@
 					</svg>
 				</div>
 			</div>
-			<?php //if ( $wp_query->max_num_pages > 1 ) { ?>
+			 
 		  <nav class="load_more">
 			 <?php next_posts_link( 'Load More' ); ?>
 			 <div class="arrow-wrap">
@@ -165,19 +165,28 @@
 		   <script type="text/javascript">
 		   	  //Move this to the mesh.js file
 		  	  jQuery(document).ready(function($){
-
-				  jQuery('.load_more a').live('click', function(e){
+		  	  	$rows = <?php echo $wp_query->max_num_pages; ?>;
+		  	  		$cnt=0;
+				  $('.load_more a').live('click', function(e){
 					  e.preventDefault();
-					  var link = jQuery(this).attr('href');
+					  var link = $(this).attr('href');
 					  //console.log(link+);
-					  $('.load_more a').text('Loading More Posts...');
+					  //$('.load_more a').text('Loading More Posts...');
 					  $.get(link, function(data) {
+					  	$cnt++;
+					  	//console.log($cnt);
+					  	//console.log($rows);
+					  	//$cnt
 						  var post = $("#posts .post ", data);
-						  console.log(post);
+						  //console.log(post);
 						  $('#posts').append(post);
 					  });
 					  $('.load_more').load(link+' .load_more a');
-					  var url = link;
+					  // if($cnt == $rows){
+					  // 	$('.load_more svg').hide();
+					  // }
+					  //$(this).attr('href', link);
+					  //var url = link;
 					 //history.pushState(undefined, '', url);
 				  });
 			  });
