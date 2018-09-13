@@ -135,8 +135,8 @@ function _resize(){
   $('.grid-item.columns-3').css({height:cp3});
   $('.grid-item.columns-4').css({height:cp4});
   $('.welcome-gate.full-video').css({'height':'calc(100vh - ' + hh + 'px)', 'margin-top':hh});
-  $('.video-holder').css({height:(wg_h), width:(wg_w)});
-  $('.matinee').css({height:wg_h, width:wg_w});
+  $('.video-holder').css({height:(wg_h-200), width:(wg_w-300)});
+  //$('.matinee').css({height:wg_h, width:wg_w});
   //$('.matinee').css({width:(wg_w-150)});
   if($wW >= 1000){
     $('.grid-item.columns-6').css({height:cp6*0.66});
@@ -244,8 +244,8 @@ if($('#vmap').size() > 0){
 	  map: 'world_en',
 	  backgroundColor: 'rgba(255,255, 255, 0)',
 	  color: '#F5B996',
-	  borderWidth: 1,
-	  borderOpacity: 1,
+	  borderWidth: 0,
+	  borderOpacity: 0,
 	  borderColor: '#F5B996',//#F5B996
 	  hoverColor :'#ff00ff',
 	  //hoverOpacity: 1,
@@ -260,6 +260,7 @@ if($('#vmap').size() > 0){
 	  normalizeFunction: 'linear', //polynomial, linear,
 	  //Can 'pins' use serialized var? YES
 	  pins: _pins,
+    //pins: { "us" : "pin_for_us", "ru" : "pin_for_ru"},
 	  //pins: { "us" : "\u003ca href=\"#\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eUSA\u003c/span\u003e \u003ca a/\u003e",
 	// "id" : "\u003ca href=\"#\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eIndonesia\u003c/span\u003e \u003ca a/\u003e"},
 	  pinMode: 'content'

@@ -21,15 +21,15 @@
       <p class="top-callout">Watch</p>
       <h1 class="page-title heading1"><?php echo the_title(); ?></h1>
    </div>
-   <div class="player-holder" style="position:absolute; display:table; z-index:5000; height:100%; width:100%; background-color:rgba(0,0,0,.2); background-image:url('<?php echo $background_image_url; ?>'); background-repeat:no-repeat; background-size:cover; " >
+   <div class="player-holder" style="position:absolute; display:table; z-index:5000; height:100%; width:100%; background-color:rgba(0,0,0,.2); background-image:url('<?php echo $background_image_url; ?>'); background-repeat:no-repeat; background-size:cover;" >
 			<div class="player-content" style="display: table-cell; vertical-align: middle; height: 100%; text-align: center;">
 				<img class="play desktop-up" src="<?php echo get_template_directory_uri(); ?>/img/EMC_playbutton.png">
 				<img class="play tablet-down" src="<?php echo get_template_directory_uri(); ?>/img/EMC_playbutton.png">
 			</div>
 		</div>
-   <div class="video-holder" style="position:absolute; background:red; margin:0 auto;">
+   <div class="video-holder" style="position:absolute;  background:red;  margin:auto; left: 52px; right: 52px; top: 52px; bottom: 52px; overflow:hidden;">
 	   <?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
-	      <video class="matinee" placeholder="<?php echo $background_image_url; ?>" controls style="position:absolute; z-index: 300; height: auto; max-width: 800px; max-height:600px; min-height:0;">
+	      <video class="matinee" placeholder="<?php echo $background_image_url; ?>" controls style="position:absolute; z-index: 300;  min-height:0; width:100%; height:100%;" ><!-- height: auto; max-width: 800px; max-height:600px; -->
 	         <source src ="<?php echo $vm_url; ?>" >
 	         <source src ="<?php echo $vo_url; ?>" >
 	         <source src ="<?php echo $vw_url; ?>" >
