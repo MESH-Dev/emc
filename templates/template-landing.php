@@ -19,8 +19,8 @@
 	<div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>
 	<?php } ?>
 	<div class="banner-text columns-5 offset-by-1">
-		<p class="top-callout"><?php echo $l_page_callout; ?></p>
-		<h1 class="page-title heading1"><?php echo the_title(); ?></h1>
+		<p class="top-callout"><?php echo the_title(); ?></p>
+		<h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
 	</div>
 	<?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
 		<video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true">
