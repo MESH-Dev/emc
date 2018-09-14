@@ -9,11 +9,24 @@ body{
    overflow-x: hidden;
 }
 
- .textsection{
-         h1,h2,h3,h4,h5,h6,ul,ol,li{
+.text{
+   .textsection{
+       h1,h2,h3,h4,h5,h6,ul,ol,li{
             color: $primary-red;
             @include whitney-book();
          }
+   }
+}
+
+.film-page{
+   .textsection{
+      h1,h2,h3,h4,h5,h6,ul,ol,li{
+         //color: $primary-red;
+         @include whitney-book();
+      }
+   }
+}
+ .textsection{
 
          p{
             font-family: 'bianco-reg';
@@ -624,6 +637,10 @@ body{
       }
       .wysiwyg-section{
          padding-left: 37px;
+         h2, h1{
+            margin:0;
+            margin-bottom:4rem;
+         }
          @media screen and ($bp-smaller-than-tablet){
             padding-left: 0;
          }

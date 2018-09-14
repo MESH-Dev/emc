@@ -117,6 +117,12 @@ p {
    color: $offwhite-1;
    margin-bottom: 2rem;
    // margin:0;
+   strong{
+    @include whitney-bold();
+   }
+   em{
+    @include whitney-italic();
+   }
 }
 
 .heading2, h2{
@@ -127,6 +133,12 @@ p {
    color: $nav-brown;
    margin-bottom: 2rem;
    // margin:0;
+   strong{
+    @include whitney-bold();
+   }
+   em{
+    @include whitney-italic();
+   }
 }
 
 h3{
@@ -137,6 +149,12 @@ h3{
     color:$h3-brown;
     margin:0;
     margin-bottom:2rem;
+    strong{
+      font-family: 'bianco-extrabold';
+    }
+    em{
+      font-family: 'bianco-reg-italic';
+    }
 }
 
 h4{
@@ -158,6 +176,7 @@ h5{
   color:$h5-brown;
   margin:0;
   margin-bottom:2rem;
+
 }
 
 .heading6, h6{

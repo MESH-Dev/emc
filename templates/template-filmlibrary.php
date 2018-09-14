@@ -1,20 +1,20 @@
 <?php get_header();
-/* Template Name: Film Library_static Template*/
+/* Template Name: Film Library Template*/
 ?>
 
-<?php //if ( have_posts() ) : ?>
-	<?php //while ( have_posts() ) : the_post(); ?>
-<main id="content" class="landing">
+<?php if ( have_posts() ) : ?>
+	<?php while ( have_posts() ) : the_post(); ?>
+<main id="content" class="film-library">
    <?php
-   $background_img = get_field('background_image', 305);
+   $background_img = get_field('background_image');
    $background_image_url = $background_img['sizes']['short-banner'];
-   $v_ogg = get_field('video_ogg', 305);
+   $v_ogg = get_field('video_ogg');
    $vo_url = $v_ogg['url'];
-   $v_mp4 = get_field('video_mp4', 305);
+   $v_mp4 = get_field('video_mp4');
    $vm_url = $v_mp4['url'];
-   $v_webm = get_field('video_webm', 305);
+   $v_webm = get_field('video_webm');
    $vw_url = $v_webm['url'];
-   $l_page_callout = get_field('banner_callout_text', 305);
+   $l_page_callout = get_field('banner_callout_text');
 ?>
 <div class="welcome-gate interior" style="background-image:url('<?php echo $background_image_url; ?>">
    <!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
@@ -33,7 +33,7 @@
       </video>
    <?php } ?>
 </div>
-<?php //endwhile; endif;  wp_reset_postdata(); ?>
+<?php endwhile; endif;  wp_reset_postdata(); ?>
    <div class="panel filters">
       <div class="container">
          <div class="row">
