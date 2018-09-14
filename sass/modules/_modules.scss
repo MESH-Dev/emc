@@ -39,7 +39,7 @@ body{
 
             }
          }
-      }
+      
       img{
          width: 100%;
          height: auto;
@@ -47,9 +47,11 @@ body{
          @media ($bp-smaller-than-tablet){
             margin:2em auto;
          }
-      a{
+      }
+      a, p a{
          transition: opacity 0.5s ease-in-out;
          font-size:2rem;
+         color: $primary-orange;
          &:hover,
          &:focus,
          &:active{
@@ -57,7 +59,8 @@ body{
             opacity:.5;
          }
       }
-      }
+   }
+
 
 //Homepage styles
 .welcome-gate{
