@@ -13,7 +13,7 @@
 					$col_class='columns-6';
 				}
 				?>
-				<div class="col <?php echo $col_class; ?>" >
+				<div class="col <?php echo $col_class; ?> <?php if(is_post_type_hierarchical( 'films' )){echo 'textsection';}?>" >
 					<div class="content">
 						<?php echo $content; ?>
 					</div>

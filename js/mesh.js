@@ -5,7 +5,15 @@ jQuery(document).ready(function($){
 
   //Let's do something awesome!
 
+// $(window).scroll(function(){
+//   if($(window).scrollTop() > 150){
+//     $('header').addClass('fixed');
+//   }else{
+//     $('header').removeClass('fixed');
+//   }
+// })
 
+$('#tickerClose')
 
   var videoElement = $('.matinee');
     
@@ -134,7 +142,8 @@ function _resize(){
   //$('.grid-item-width7').css({height: (gi5)});
   $('.grid-item.columns-3').css({height:cp3});
   $('.grid-item.columns-4').css({height:cp4});
-  $('.welcome-gate.full-video').css({'height':'calc(100vh - ' + hh + 'px)', 'margin-top':hh});
+  $('.welcome-gate.large').css({'height':'calc(100vh - ' + hh + 'px)', 'margin-top':hh});
+  //$('.film-single').css({'margin-top':'calc(100vh - ' + hh + 'px)'});
   $('.video-holder').css({height:(wg_h-200), width:(wg_w-300)});
   //$('.matinee').css({height:wg_h, width:wg_w});
   //$('.matinee').css({width:(wg_w-150)});
@@ -208,6 +217,9 @@ $('#search').click(function(){
 $('#tickerClose').click(function(event){
    event.preventDefault();
    $('.ticker').toggle();
+   var hh = $('header').height();
+   console.log(hh);
+   $('.welcome-gate').css({'margin-top':hh});
 });
 
 $('#topicTrigger').click(function(event){

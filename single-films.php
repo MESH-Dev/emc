@@ -12,7 +12,7 @@
    $vw_url = $v_webm['url'];
    //$l_page_callout = get_field('banner_callout_text', 305);
 ?>
-<div class="welcome-gate full-video">
+<div class="welcome-gate large full-video">
    <!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
    <?php //if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
    <div class="welcome-gate-bg" style="background-image:url('<?php //echo $background_image_url; ?>'); background-color:black;>"></div>
@@ -29,10 +29,10 @@
 		</div>
    <div class="video-holder" style="position:absolute;  background:red;  margin:auto; left: 52px; right: 52px; top: 52px; bottom: 52px; overflow:hidden;">
 	   <?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
-	      <video class="matinee" placeholder="<?php echo $background_image_url; ?>" controls style="position:absolute; z-index: 300;  min-height:0; width:100%; height:100%;" ><!-- height: auto; max-width: 800px; max-height:600px; -->
-	         <source src ="<?php echo $vm_url; ?>" >
-	         <source src ="<?php echo $vo_url; ?>" >
-	         <source src ="<?php echo $vw_url; ?>" >
+	      <video class="matinee" width="100%" placeholder="<?php echo $background_image_url; ?>" playsinline="" preload="true" controls style="position:absolute; z-index: 300;  min-height:0; width:100%; height:100%;" ><!-- height: auto; max-width: 800px; max-height:600px; -->
+	         <source src ="<?php echo $vm_url; ?>" type="video/mp4">
+	         <source src ="<?php echo $vo_url; ?>" type="video/ogg">
+	         <source src ="<?php echo $vw_url; ?>" type="video/webm">
 	      </video>
 	   <?php } ?>
 		

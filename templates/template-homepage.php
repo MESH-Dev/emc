@@ -26,7 +26,7 @@
 		$v_webm = get_field('video_webm');
 		$vw_url = $v_webm['url'];
 	?>
-	<div class="welcome-gate">
+	<div class="welcome-gate large">
 		<?php if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
 		<div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?> "></div>
 		<?php } ?>

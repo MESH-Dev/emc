@@ -9,6 +9,56 @@ body{
    overflow-x: hidden;
 }
 
+ .textsection{
+         h1,h2,h3,h4,h5,h6,ul,ol,li{
+            color: $primary-red;
+            @include whitney-book();
+         }
+
+         p{
+            font-family: 'bianco-reg';
+            color: $primary-red;
+         }
+
+         h1{
+            margin-bottom:4rem;
+         }
+
+         h6{
+            text-transform:none;
+            margin-top: 0;
+            margin-bottom: 14px;
+            font-family: 'bianco-reg';
+            font-weight:700;
+            strong{
+               @include whitney-bold();
+               text-transform:uppercase;
+            }
+            em{
+               font-style:italic;
+
+            }
+         }
+      }
+      img{
+         width: 100%;
+         height: auto;
+         margin: 0;
+         @media ($bp-smaller-than-tablet){
+            margin:2em auto;
+         }
+      a{
+         transition: opacity 0.5s ease-in-out;
+         font-size:2rem;
+         &:hover,
+         &:focus,
+         &:active{
+            text-decoration:none;
+            opacity:.5;
+         }
+      }
+      }
+
 //Homepage styles
 .welcome-gate{
    height: 100vh;
@@ -461,16 +511,22 @@ body{
          }
 
          h1{
-            margin-bottom:2rem;
+            margin-bottom:4rem;
          }
 
          h6{
             text-transform:none;
             margin-top: 0;
             margin-bottom: 14px;
+            font-family: 'bianco-reg';
+            font-weight:700;
             strong{
                @include whitney-bold();
                text-transform:uppercase;
+            }
+            em{
+               font-style:italic;
+
             }
          }
       }
@@ -612,6 +668,8 @@ body{
             letter-spacing: 2.96px;
             // line-height: 29px;
             color: $primary-darkbrown;
+            margin-bottom:0;
+            margin-bottom:.5em;
          }
          .desc{
             color: $primary-darkbrown;
@@ -1581,6 +1639,10 @@ a[rel="next"]{
    p{
       color: $h5-brown;
    }
+}
+
+.film-single{
+
 }
 
 //Resource Listing
