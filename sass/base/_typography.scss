@@ -132,6 +132,7 @@ p {
    letter-spacing: 0.6px;
    color: $nav-brown;
    margin-bottom: 2rem;
+   margin-top: 0;
    // margin:0;
    strong{
     @include whitney-bold();

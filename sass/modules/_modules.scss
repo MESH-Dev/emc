@@ -53,7 +53,7 @@ body{
 
             }
          }
-      
+
       img{
          width: 100%;
          height: auto;
@@ -846,7 +846,8 @@ body{
       position: relative;
       z-index: 999;
       background-color: $offwhite-3;
-      padding: 30px 0 20px 0;
+      padding-top: 30px;
+      padding-bottom: 20px;
       .extra-links{
          text-align: right;
          @media screen and ($bp-smaller-than-tablet){
@@ -1529,7 +1530,7 @@ main.text{
          display:inline-block;
          transition: opacity 0.5s ease-in-out;
          @media ($bp-smaller-than-tablet){
-            
+
             background-image: url('img/arrow-right.svg');
          }
          &:hover,
@@ -1794,4 +1795,165 @@ a[rel="next"]{
 
 }
 
-//Resource Listing
+//Search Results
+main.search-results{
+   padding-top: 140px;
+   background-color: $offwhite-bg;
+   @media screen and ($bp-smaller-than-tablet){
+      padding-left: 20px;
+      padding-right: 20px;
+      // padding-top: 240px;
+   }
+   .field-container{
+      .search-icon{
+         width: 50px;
+         height: auto;
+         vertical-align: bottom;
+      }
+   }
+   .result{
+      margin-bottom: 40px;
+      &:last-of-type{
+         margin-bottom: 0;
+      }
+   }
+   .results-list{
+      padding: 78px 0;
+      h2{
+         @include whitney-bold();
+      }
+      .cta{
+         transition: opacity 0.5s ease-in-out;
+         &:hover{
+            opacity: 0.5;
+            text-decoration: none;
+         }
+         svg{
+            height: 16px;
+            width: auto;
+            vertical-align: bottom;
+         }
+         // &::after{
+         //    content: '';
+         //    display: inline-block;
+         //    height: 14px;
+         //    width: 9px;
+         //    background-image: url('img/arrow-right.svg');
+         //    background-position: center;
+         //    background-size: cover;
+         //    background-repeat: no-repeat;
+         //    margin-left: 6px;
+         // }
+      }
+   }
+   .form{
+      display: inline-block;
+      border-bottom: 3px solid $nav-brown;
+      padding-bottom: 10px;
+      width: calc(100% - 54px);
+      float: right;
+      input[type="text"]{
+         display: inline-block;
+         background: transparent;
+         border: 0px;
+         vertical-align: bottom;
+         width: calc(100% - 40px);
+         &.heading2{
+            margin-bottom: 0;
+         }
+      }
+      button{
+         border: 0px;
+         padding: 0;
+         float: right;
+         svg{
+            height: 36px;
+            width: 36px;
+            width: auto;
+         }
+      }
+   }
+   .pagination{
+      padding-bottom: 80px;
+   }
+}
+
+//Community Platform
+.community-grid{
+   background-color: $offwhite-bg;
+   padding-bottom: 40px;
+   .load_more{
+      margin-bottom: 0;
+   }
+   .grid-wrap{
+      padding: 40px 0;
+   }
+}
+
+.people-row{
+   margin-bottom: 70px;
+   @media screen and ($bp-smaller-than-tablet){
+      margin-bottom: 0;
+   }
+   &:last-of-type{
+      margin-bottom: 0;
+   }
+   [class*='columns-']{
+      margin-right: 4.17%;
+      text-align: center;
+      &:last-of-type{
+         margin-right: 0;
+      }
+   }
+   .thumbnail-block{
+      width: 100%;
+      position: relative;
+      margin-bottom: 10px;
+      .thumbnail{
+         height: 339px;
+         background-position: center;
+         background-size: cover;
+         background-repeat: no-repeat;
+      }
+      .overlay{
+         background-color: $primary-pink;
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         opacity: 0;
+         transition: opacity 0.2s ease-in-out;
+         text-align: center;
+         @include display-flex;
+         @include flex-direction(column);
+         @include align-items(center);
+         @include justify-content(center);
+         overflow: hidden;
+         h6{
+            margin-top: 0;
+            color: $primary-red;
+            line-height: normal;
+            max-width: 90%;
+         }
+         p{
+            font-size: 1.8rem;
+            letter-spacing: 0.35px;
+            color: $nav-brown;
+            line-height: normal;
+            max-width: 90%;
+            margin: 0;
+         }
+      }
+   }
+   .member{
+      @media screen and ($bp-smaller-than-tablet){
+         margin-bottom: 40px;
+      }
+      &:hover{
+         .overlay{
+            opacity: 1;
+         }
+      }
+   }
+}

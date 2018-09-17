@@ -8,7 +8,7 @@ footer{
    }
    .nav-row{
       padding: 14px 0;
-      background-color: $offwhite-1-rgba;
+      background-color: $secondary-offwhite;
       @media screen and ($bp-smaller-than-largedesktop){
          padding: 14px 20px;
       }
@@ -164,6 +164,12 @@ footer{
       }
    }
 }
+
+a.submit, button.submit{
+   display: inline-block;
+   vertical-align: middle;
+}
+
 #search{
    display: inline-block;
    width: 20px;

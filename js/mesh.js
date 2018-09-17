@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
 $('#tickerClose')
 
   var videoElement = $('.matinee');
-    
+
   // function toggleFullScreen() {
   //   if (!document.mozFullScreen && !document.webkitFullScreen) {
   //     if (videoElement.mozRequestFullScreen) {
@@ -32,7 +32,7 @@ $('#tickerClose')
   //     }
   //   }
   // }
-  
+
   //$('.tablet-down').on("click", function(e) {
     //if (e.keyCode == 13) {
       //toggleFullScreen();
@@ -86,7 +86,7 @@ $('#tickerClose')
  var pp_e = [];
  var pp_w = [];
 pp = $('.pins .pin');
-console.log(pp.position().left);
+// console.log(pp.position().left);
   // for(i=0; i < pp.length; i++){
   //   //var pp_v = [];
   //   var r = pp.position().left;
@@ -104,7 +104,7 @@ $('.pins .pin').each(function(){
   pp_r.push(r);
   pp_w.push(w);
   pp_e.push($pin);
-  
+
 });
 
 
@@ -287,7 +287,7 @@ $('#locationTrigger').click(function(event){
 
   //_pins = { "us" : "\u003ca href=\"#\"\u003e \u003cspan\u003eUSA\u003c/span\u003e \u003ca a/\u003e",//\u003cimg src=\"pk.png\" /\u003e
         	//"id" : "\u003ca href=\"#\"\u003e \u003cspan\u003eBRAZIL\u003c/span\u003e \u003ca a/\u003e"}; //\u003cimg src=\"pk.png\" /\u003e
-  
+
 if($('#vmap').size() > 0){
 	$('#vmap').vectorMap({
 	  map: 'world_en',
@@ -483,7 +483,7 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
     //Detach all of our original posts so that we can add our results back to the DOM
   	$('.post').detach();
 
-    //Hide the load_more nav if the search is used, 
+    //Hide the load_more nav if the search is used,
     //show if the input is cleared
     $('.load_more').hide();
     if($input == ''){
