@@ -86,7 +86,7 @@ $('#tickerClose')
  var pp_e = [];
  var pp_w = [];
 pp = $('.pins .pin');
-// console.log(pp.position().left);
+console.log(pp.position().left);
   // for(i=0; i < pp.length; i++){
   //   //var pp_v = [];
   //   var r = pp.position().left;
