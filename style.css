@@ -3184,7 +3184,19 @@ main.text {
 /* line 1463, sass/modules/_modules.scss */
 .pins .pin.usa {
   top: 39%;
-  left: 210px;
+  right: 70%;
+}
+@media only screen and (max-width: 1400px) {
+  /* line 1462, sass/modules/_modules.scss */
+  .pins .pin.usa {
+    right: 73%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  /* line 1462, sass/modules/_modules.scss */
+  .pins .pin.usa {
+    right: 75%;
+  }
 }
 /* line 1475, sass/modules/_modules.scss */
 .pins .pin.guatemala {
@@ -3194,13 +3206,13 @@ main.text {
 @media only screen and (max-width: 1400px) {
   /* line 1475, sass/modules/_modules.scss */
   .pins .pin.guatemala {
-    right: 69%;
+    right: 70%;
   }
 }
 @media only screen and (max-width: 1200px) {
   /* line 1475, sass/modules/_modules.scss */
   .pins .pin.guatemala {
-    right: 73%;
+    right: 72%;
   }
 }
 /* line 1485, sass/modules/_modules.scss */
@@ -3220,39 +3232,70 @@ main.text {
     right: 60%;
   }
 }
-/* line 1496, sass/modules/_modules.scss */
+
 .pins .pin.india {
   top: 50%;
-  left: 59%;
+  left: 60%;
 }
-@media only screen and (max-width: 1120px) {
-  /* line 1496, sass/modules/_modules.scss */
+
+@media only screen and (max-width: 1000px) {
+  /* line 1498, sass/modules/_modules.scss */
   .pins .pin.india {
-    left: 75%;
+    left: 58%;
+    top: 48%;
   }
 }
-/* line 1503, sass/modules/_modules.scss */
+
+@media only screen and (max-width: 900px) {
+  /* line 1498, sass/modules/_modules.scss */
+  .pins .pin.india {
+    left: 57%;
+  }
+}
+
 .pins .pin.bangladesh {
   top: 50%;
-  left: 68%;
+  left: 70%;
 }
-/* line 1507, sass/modules/_modules.scss */
+
+@media only screen and (max-width: 1200px) {
+  /* line 1513, sass/modules/_modules.scss */
+  .pins .pin.bangladesh {
+    left: 73%;
+    top: 48%;
+  }
+}
+
 .pins .pin.uganda {
   top: 57%;
   left: 56%;
 }
-@media only screen and (max-width: 1120px) {
-  /* line 1507, sass/modules/_modules.scss */
+
+@media only screen and (max-width: 1200px) {
+  /* line 1521, sass/modules/_modules.scss */
   .pins .pin.uganda {
     left: 57%;
   }
 }
-/* line 1514, sass/modules/_modules.scss */
+
 .pins .pin.tanzania {
   top: 63%;
   left: 55%;
 }
-/* line 1518, sass/modules/_modules.scss */
+
+@media only screen and (max-width: 1200px) {
+  /* line 1528, sass/modules/_modules.scss */
+  .pins .pin.tanzania {
+    left: 57%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  /* line 1528, sass/modules/_modules.scss */
+  .pins .pin.tanzania {
+    left: 56%;
+  }
+}
+
 .pins .pin a {
   background-image: url("img/EMC_MapPin_Landing.png");
   background-repeat: no-repeat;
@@ -3269,12 +3312,12 @@ main.text {
   transition: opacity 0.5s ease-in-out;
 }
 @media (max-width: 750px) {
-  /* line 1518, sass/modules/_modules.scss */
+
   .pins .pin a {
     background-image: url("img/arrow-right.svg");
   }
 }
-/* line 1536, sass/modules/_modules.scss */
+
 .pins .pin a:hover, .pins .pin a:active, .pins .pin a:focus {
   text-decoration: none;
   opacity: 0.5;
@@ -3288,28 +3331,25 @@ main.text {
     opacity: 1;
   }
 }
-/* line 1558, sass/modules/_modules.scss */
+
 .fadeIn {
   animation-name: fadeIn;
 }
 
-/* line 1562, sass/modules/_modules.scss */
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
 }
 
-/* line 1567, sass/modules/_modules.scss */
 .hide {
   display: none;
 }
 
-/* line 1574, sass/modules/_modules.scss */
 .posts-main .filter-bar {
   background: transparent;
   text-align: right;
 }
-/* line 1577, sass/modules/_modules.scss */
+
 .posts-main .filter-bar a, .posts-main .filter-bar p {
   display: inline-block;
   font-family: "Whitney A", "Whitney B";
@@ -3320,33 +3360,33 @@ main.text {
   text-transform: uppercase;
   margin-left: 10px;
 }
-/* line 1585, sass/modules/_modules.scss */
+
 .posts-main .filter-bar p.cta {
   color: #A99689;
   margin-bottom: 0;
 }
-/* line 1589, sass/modules/_modules.scss */
+
+/* line 1609, sass/modules/_modules.scss */
 .posts-main .filter-bar ul {
   display: inline-block;
 }
-/* line 1591, sass/modules/_modules.scss */
+
 .posts-main .filter-bar ul li {
   display: inline-block;
   text-transform: uppercase;
 }
 
-/* line 1599, sass/modules/_modules.scss */
 a.filter-trigger {
   color: #EB742D;
   cursor: pointer;
   transition: opacity 0.5s ease-in-out;
 }
-/* line 1603, sass/modules/_modules.scss */
+
 a.filter-trigger:hover {
   text-decoration: none;
   opacity: 0.5;
 }
-/* line 1609, sass/modules/_modules.scss */
+
 a.filter-trigger.open .down-arrow {
   transform: rotate(-90deg);
 }
@@ -3359,7 +3399,7 @@ a.filter-trigger.open .down-arrow {
 .post:last-of-type {
   margin-bottom: 20px;
 }
-/* line 1620, sass/modules/_modules.scss */
+
 .post h2.img-override {
   text-align: center;
   font-size: 4.8rem;
@@ -3370,35 +3410,32 @@ a.filter-trigger.open .down-arrow {
   margin-bottom: 47px;
 }
 @media screen and (max-width: 1060px) {
-  /* line 1620, sass/modules/_modules.scss */
   .post h2.img-override {
     font-size: 3rem;
     line-height: 40px;
   }
 }
-/* line 1633, sass/modules/_modules.scss */
 .post img {
   width: 100%;
   height: auto;
   margin-bottom: 47px;
 }
-/* line 1638, sass/modules/_modules.scss */
+
 .post span.text svg {
   width: 20px;
 }
-/* line 1641, sass/modules/_modules.scss */
+
 .post .content {
   max-width: 60%;
   margin: 0 auto;
   text-align: center;
 }
 @media screen and (max-width: 750px) {
-  /* line 1641, sass/modules/_modules.scss */
   .post .content {
     max-width: none;
   }
 }
-/* line 1648, sass/modules/_modules.scss */
+
 .post .content .listing-display-title {
   font-family: "Whitney A", "Whitney B";
   font-style: normal;
@@ -3408,7 +3445,7 @@ a.filter-trigger.open .down-arrow {
   letter-spacing: 0.9px;
   margin-bottom: 10px;
 }
-/* line 1655, sass/modules/_modules.scss */
+
 .post .content p {
   color: #40292D;
   font-size: 1.6rem;
@@ -3416,21 +3453,19 @@ a.filter-trigger.open .down-arrow {
   line-height: 21px;
 }
 
-/* line 1664, sass/modules/_modules.scss */
 .postinfo, .topics {
   font-size: 1.4rem;
 }
-/* line 1666, sass/modules/_modules.scss */
+
 .postinfo .orange, .topics .orange {
   color: #EB742D;
 }
 
-/* line 1671, sass/modules/_modules.scss */
 .load_more {
   text-align: center;
   margin-bottom: 40px;
 }
-/* line 1674, sass/modules/_modules.scss */
+
 .load_more a {
   font-family: "Whitney A", "Whitney B";
   font-style: normal;
@@ -3441,7 +3476,7 @@ a.filter-trigger.open .down-arrow {
   transition: opacity 0.5s ease-in-out;
   text-transform: uppercase;
 }
-/* line 1681, sass/modules/_modules.scss */
+
 .load_more a::after {
   content: '';
   display: block;
@@ -3454,22 +3489,21 @@ a.filter-trigger.open .down-arrow {
   background-repeat: no-repeat;
   transform: rotate(90deg);
 }
-/* line 1693, sass/modules/_modules.scss */
+
 .load_more a:hover {
   text-decoration: none;
   opacity: 0.5;
 }
-/* line 1696, sass/modules/_modules.scss */
+
 .load_more a:hover ~ .arrow-wrap {
   opacity: 0.5;
 }
-/* line 1701, sass/modules/_modules.scss */
+
 .load_more .arrow-wrap {
   text-align: center;
   transition: opacity 0.5s ease-in-out;
 }
 
-/* line 1719, sass/modules/_modules.scss */
 svg.down-arrow {
   height: 14px;
   width: auto;
@@ -3478,7 +3512,6 @@ svg.down-arrow {
   transition: transform 0.5s ease-in-out;
 }
 
-/* line 1727, sass/modules/_modules.scss */
 a[rel="prev"], a[rel="next"] {
   font-size: 1.8rem;
   color: #EB742D;
@@ -3489,13 +3522,12 @@ a[rel="prev"], a[rel="next"] {
   transition: opacity 0.2s ease-in-out;
   text-transform: uppercase;
 }
-/* line 1734, sass/modules/_modules.scss */
+
 a[rel="prev"]:hover, a[rel="next"]:hover {
   opacity: 0.5;
   text-decoration: none;
 }
 @media screen and (max-width: 750px) {
-  /* line 1727, sass/modules/_modules.scss */
   a[rel="prev"], a[rel="next"] {
     display: block;
     width: 100%;
@@ -3503,11 +3535,10 @@ a[rel="prev"]:hover, a[rel="next"]:hover {
   }
 }
 
-/* line 1745, sass/modules/_modules.scss */
 a[rel="prev"] {
   float: left;
 }
-/* line 1747, sass/modules/_modules.scss */
+
 a[rel="prev"]::before {
   content: '';
   display: inline-block;
@@ -3525,7 +3556,7 @@ a[rel="prev"]::before {
 a[rel="next"] {
   float: right;
 }
-/* line 1762, sass/modules/_modules.scss */
+
 a[rel="next"]::after {
   content: '';
   display: inline-block;
@@ -3538,29 +3569,27 @@ a[rel="next"]::after {
   margin-left: 6px;
 }
 @media screen and (max-width: 750px) {
-  /* line 1760, sass/modules/_modules.scss */
   a[rel="next"] {
     margin-top: 14px;
   }
 }
 
-/* line 1779, sass/modules/_modules.scss */
 .blog-single {
   margin-top: 50px;
   margin-bottom: 50px;
 }
 @media screen and (max-width: 750px) {
-  /* line 1779, sass/modules/_modules.scss */
   .blog-single {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
+
 /* line 1786, sass/modules/_modules.scss */
 .blog-single h5 {
   color: black;
 }
-/* line 1789, sass/modules/_modules.scss */
+
 .blog-single p {
   color: #8B572A;
 }

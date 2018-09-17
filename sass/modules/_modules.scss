@@ -1462,24 +1462,24 @@ main.text{
          }
          &.usa{
             top: 39%;
-            //right:70%;
+            right:70%;
             //left:16%;
-            left:210px;
-            // @media only screen and (max-width:1400px){
-            //    right:71%;
-            // }
-            // @media only screen and (max-width:1200px){
-            //    right:75%;
-            // }
+            //left:210px;
+            @media only screen and (max-width:1400px){
+               right:73%;
+            }
+            @media only screen and (max-width:1200px){
+               right:75%;
+            }
          }
          &.guatemala{
             top: 52%;
             right:69%;
              @media only screen and (max-width:1400px){
-               right:69%;
+               right:70%;
             }
             @media only screen and (max-width:1200px){
-               right:73%;
+               right:72%;
             }
          }
          &.haiti{
@@ -1491,29 +1491,50 @@ main.text{
             @media only screen and (max-width:1000px){
                right:60%;
             }
+            @media only screen and (max-width:1000px){
+               right:58%;
+            }
 
          }
          &.india{
             top: 50%;
-            left: 59%;
-            @media only screen and (max-width:1120px){
-               left:75%;
+            left: 60%;
+            @media only screen and (max-width:1200px){
+               //left:58%;
+            }
+             @media only screen and (max-width:1000px){
+               left:58%;
+               top: 48%;
+            }
+            @media only screen and (max-width:900px){
+               left:57%;
+               //top: 49%;
             }
          }
          &.bangladesh{
             top:50%;
-            left: 68%;
+            left: 70%;
+            @media only screen and (max-width:1200px){
+               left:73%;
+               top:48%;
+            }
          }
          &.uganda{
             top: 57%;
             left:56%;
-            @media only screen and (max-width:1120px){
+            @media only screen and (max-width:1200px){
                left:57%;
             }
          }
          &.tanzania{
             top: 63%;
             left: 55%;
+             @media only screen and (max-width:1200px){
+               left:57%;
+            }
+             @media only screen and (max-width:900px){
+               left:56%;
+            }
          }
          a{
          //padding-right:25px;

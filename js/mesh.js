@@ -86,7 +86,7 @@ $('#tickerClose')
  var pp_e = [];
  var pp_w = [];
 pp = $('.pins .pin');
-console.log(pp.position().left);
+//console.log(pp.position().left);
   // for(i=0; i < pp.length; i++){
   //   //var pp_v = [];
   //   var r = pp.position().left;
@@ -98,6 +98,7 @@ console.log(pp.position().left);
 $('.pins .pin').each(function(){
   var l = parseInt($(this).css('left'));
   var r = parseInt($(this).css('right'));
+  var lr = l+r;
   var w = $(this).width();
   var $pin = $(this);
   pp_l.push(l);
@@ -110,7 +111,7 @@ $('.pins .pin').each(function(){
 
      //Force divs in homepage grid to be square
 //Setup variables to hold our sizes
-var gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, pp;
+var gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, mi_h, pp;
 var $mclk = 0;
 //Grab the width of each element
 function gi_resize(){
@@ -130,6 +131,9 @@ function gi_resize(){
   cp5 = $('.grid-item.columns-5').width();
   cp6 =  $('.grid-item.columns-6').width();
   mi_w = $('.panel.map').width();
+  // mi_h = $('.panel.map').height();
+  // mi_w = $('.panel.map img').width();
+  // mi_h = $('.panel.map img').height();
   //pp_r = $('.pins .pin.right').position();
   //pp_l = $('.pins .pin.left').position();
 
@@ -156,13 +160,13 @@ function gi_resize(){
   //return gi2, gi3, gi4;
 }
 //Run the function above at document ready and on a window resize event
- $(document).ready(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3,cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, pp));
- $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, pp));
+ $(document).ready(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3,cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, mi_h, pp));
+ $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, mi_h, pp));
 
 //Apply our widths to the height of selected elements either on load, or on resize
 function _resize(){
-  gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, pp);
-   $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7,$wW,hh, mh,wg_w, wg_h, mi_w, pp));
+  gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, mi_h, pp);
+   $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7,$wW,hh, mh,wg_w, wg_h, mi_w, mi_h, pp));
 
  //  console.log("Width 2: "+gi2);
   // console.log("Width 3: "+gi3);
@@ -191,6 +195,7 @@ function _resize(){
   $('.welcome-gate.interior').css({'margin-top':hh});
   //$('.film-single').css({'margin-top':'calc(100vh - ' + hh + 'px)'});
   $('.video-holder').css({height:(wg_h-200), width:(wg_w-300)});
+  //$('.map_wrapper').css({height:mi_h, width:mi_w});
   //$('.matinee').css({height:wg_h, width:wg_w});
   //$('.matinee').css({width:(wg_w-150)});
   // if($wW >= 1000){
@@ -200,11 +205,12 @@ function _resize(){
   //   $('.grid-item.columns-6').css({height:cp6});
   //   $('.grid-item.columns-4.tweener').css({height:cp6});
   // }
-
-$('.pins .pin').each(function(i){
-  pp_e[i].css({left:((pp_l[i]/mi_w)*100)+'%'});
-  //pp_e[i].css({right:(mi_w-(pp_l[i]+pp_r[i]))});
-});
+// if(mi_w < 1400){
+// $('.pins .pin').each(function(i){
+//   pp_e[i].css({left:((pp_l[i]/mi_w)*100)+'%'});
+//   //pp_e[i].css({right:(mi_w-(pp_l[i]+pp_r[i]))});
+// });
+// }
 
   // for(i=0; i < $('.pins .pin').length; i++){
   //   pp_e[i].css({left:((pp_v[i]/mi_w)*100)+'%'});
@@ -315,6 +321,65 @@ if($('#vmap').size() > 0){
 	  pinMode: 'content'
 	});
 }
+
+//Autocomplete
+// see https://goodies.pixabay.com/jquery/auto-complete/demo.html for more info 
+
+//Search posts
+$('input[name="sp"]').autoComplete({
+    minChars: 2,
+    source: function(term, suggest){
+        term = term.toLowerCase();
+        //var choices = ['ActionScript', 'AppleScript', 'Asp'];
+        var choices = da_choices;
+        var matches = [];
+        for (i=0; i<choices.length; i++)
+            if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+        suggest(matches);
+    }
+});
+
+//Search events
+$('input[name="se"]').autoComplete({
+    minChars: 2,
+    source: function(term, suggest){
+        term = term.toLowerCase();
+        //var choices = ['ActionScript', 'AppleScript', 'Asp'];
+        var choices = da_choices;
+        var matches = [];
+        for (i=0; i<choices.length; i++)
+            if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+        suggest(matches);
+    }
+});
+
+//Search Community
+$('input[name="sc"]').autoComplete({
+    minChars: 2,
+    source: function(term, suggest){
+        term = term.toLowerCase();
+        //var choices = ['ActionScript', 'AppleScript', 'Asp'];
+        var choices = da_choices;
+        var matches = [];
+        for (i=0; i<choices.length; i++)
+            if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+        suggest(matches);
+    }
+});
+
+//Search film
+$('input[name="sf"]').autoComplete({
+    minChars: 2,
+    source: function(term, suggest){
+        term = term.toLowerCase();
+        //var choices = ['ActionScript', 'AppleScript', 'Asp'];
+        var choices = da_choices;
+        var matches = [];
+        for (i=0; i<choices.length; i++)
+            if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+        suggest(matches);
+    }
+});
 
   var getUrlParameter = function getUrlParameter() { //sParam
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -737,11 +802,12 @@ function loadFilms (filmTopic, query) { //*
 
       //console.log(projectType);
       //console.log(query);  //*
+      //console.log(filmTopic);
       var is_loading = false;
        if (is_loading == false){
             is_loading = true;
 
-      $('loader-container').removeClass('hide');
+      $('.loader-container').removeClass('hide');
             $('.loader, .loader-container').fadeIn(200);
 
             var data = {
@@ -768,8 +834,8 @@ function loadFilms (filmTopic, query) { //*
 
                   $('.card').detach();
                   $('.post-error').detach();
-                  $('.row.event-grid').detach();
-                  $('#emc-events').append(response);
+                  $('.row.listing-row').detach();
+                  $('#emc-films').append(response);
                   //$container.waitForImages(function() {
                   //   $('#loader').hide();
                   // });
@@ -805,6 +871,56 @@ function loadFilms (filmTopic, query) { //*
             });
         }
   }
+
+  $('.f-topic-filters li').click(function(e){
+    e.preventDefault;
+    $(this).parent().parent().find('ul li.selected').removeClass('selected');
+
+     $(this).addClass('selected');
+    var filmTopic = $('.f-topic-filters li.selected').attr('data-filter');
+    //console.log("eventTopic = "+eventTopic);
+    // Push the filter that was used to the end of the current URL so that we can use it
+    // to run our functions when the user is visiting from a shared link
+    if(filmTopic != ''){
+      history.pushState(null, null, '?category='+filmTopic);
+    }else{
+      history.replaceState(null, null, window.location.pathname);
+    }
+    var cat = getUrlParameter('category');
+    //console.log(cat);
+    //console.log(postTopic);
+    //Run our function above using our topic filter data
+    loadFilms(filmTopic, '');
+    $('.load_more').hide();
+    if(filmTopic == ''){
+      $('.load_more').show();
+    }
+  });
+
+  $('.f-search-filter form').submit(function(e){
+    e.preventDefault();
+    var $form = $(this);
+    var $input = $form.find('input[name="s"]');
+    var query = $input.val();
+
+    // Push the search query to the end of the current URL so that we can use it to run
+    // our functions when a user is visiting from a shared link
+    if(query != ''){
+     history.pushState(null, null, '?query='+query);
+    }else{
+      history.pushState(null, null, window.location.pathname);
+    }
+
+    //Run our AJAX function loadPostsByTopic(topic, query)
+    loadFilms('',query);
+
+    //Detach all of our original posts so that we can add our results back to the DOM
+    $('.row.listing-row').detach();
+    $('.load_more').hide();
+    if($input == ''){
+      $('.load_more').show();
+    }
+  });
 
 //2nd type of AJAX onclick
 
