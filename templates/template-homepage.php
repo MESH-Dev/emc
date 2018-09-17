@@ -48,12 +48,39 @@
 			$intro_callout = get_field('intro_callout');
 			$intro_text = get_field('intro_text');
 			$map_title = get_field('map_title');
+			$map_image = get_field('map_image');
+			$map_image_url = $map_image['url'];
 			?>
 
 			<div class="intro"><?php echo $intro_text; ?></div>
 			<div class="intro-callout"><?php echo $intro_callout; ?></div>
 			<p class="heading6"><?php echo $map_title; ?> </p>
-			<div class="panel" id="vmap" style="width: 100%; height: 600px;"></div>
+			<div class="panel map" style="position:relative;width: 100%; /*height: 600px;*/ background-image:url('<?php //echo $map_image_url; ?>'); background-repeat:no-repeat; background-size:cover; background-position:center center;">
+				<img src="<?php echo $map_image_url; ?>" style="width:100%;"/>
+				<Ul class="pins">
+					<li class="pin right usa">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/united-states">United States</a>
+					</li>
+					<li class="pin right guatemala">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/guatemala">Guatemala</a>
+					</li>
+					<li class="pin left haiti">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/haiti">Haiti</a>
+					</li>
+					<li class="pin right india">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/india">India</a>
+					</li>
+					<li class="pin left bangladesh">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/bangladesh">Bangladesh</a>
+					</li>
+					<li class="pin left uganda">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/uganda">Uganda</a>
+					</li>
+					<li class="pin left tanzania">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/tanzania">Tanzania</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<?php echo get_template_part('/partials/promo-grid'); ?>

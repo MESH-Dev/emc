@@ -161,20 +161,16 @@
 		   <script type="text/javascript">
 		   	  //Move this to the mesh.js file
 		  	  jQuery(document).ready(function($){
-		  	  	$rows = <?php echo $wp_query->max_num_pages; ?>;
-		  	  		$cnt=0;
+		  	  	//$rows = <?php echo $wp_query->max_num_pages; ?>;
+		  	  		//$cnt=0;
 				  $('.load_more a').live('click', function(e){
 					  e.preventDefault();
 					  var link = $(this).attr('href');
 					  //console.log(link+);
-					  //$('.load_more a').text('Loading More Posts...');
+					  $('.load_more a').text('Loading More Posts...');
 					  $.get(link, function(data) {
-					  	$cnt++;
-					  	//console.log($cnt);
-					  	//console.log($rows);
-					  	//$cnt
+					  	//$cnt++;
 						  var post = $("#posts .post ", data);
-						  //console.log(post);
 						  $('#posts').append(post);
 					  });
 					  $('.load_more').load(link+' .load_more a');

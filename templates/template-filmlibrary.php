@@ -87,17 +87,17 @@
                   <ul class="e-topic-filters">
                      <li data-filter="">All</li>
                      <?php
-                              //$categories='';
-                              //$separator=", ";
+                              // $categories='';
+                              // $separator=", ";
                               // $terms = get_terms([
-                              //     'taxonomy' => 'category',
+                              //     'taxonomy' => 'film_topics',
                               //     'hide_empty' => true,
                               // ]);
 
-                              $event_topics = get_terms(['taxonomy' => 'event_topic', 'hide_empty' => false]);
+                              $film_topics = get_terms(['taxonomy' => 'film_topic', 'hide_empty' => false]);
 
                               //var_dump($terms);
-                                 foreach ($event_topics as $topic) {?>
+                                 foreach ($film_topics as $topic) {?>
 
                                    <li data-filter="<?php echo $topic->slug; ?>"><?php echo $topic->name ?></li>
                            <?php } ?>
@@ -107,33 +107,7 @@
             </div>
          </div>
       </div>
-      <div class="panel locations">
-         <div class="container">
-            <div class="row">
-               <div class="columns-10 offset-by-1">
-                  <ul class="e-location-filters">
-                     <li data-filter="">All</li>
-                      <?php
-                              //$categories='';
-                              //$separator=", ";
-                              // $terms = get_terms([
-                              //     'taxonomy' => 'category',
-                              //     'hide_empty' => true,
-                              // ]);
-
-                              $event_locations = get_terms(['taxonomy' => 'event_location', 'hide_empty' => false]);
-
-                              //var_dump($terms);
-                                 foreach ($event_locations as $loc) {?>
-
-                                   <li data-filter="<?php echo $loc->slug; ?>"><?php echo $loc->name ?></li>
-                           <?php } ?>
-                  </ul>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="panel mr-search-filter search-filter event-search">
+      <div class="panel f-search-filter search-filter event-search">
          <div class="container">
             <div class="row">
                <div class="columns-10 offset-by-1">
@@ -141,8 +115,8 @@
                      <div class="search-field">
                         <form action="<?php home_url(); ?>" method="get">
                            <label class="sr-only" for="search">Search</label>
-                           <input class="" type="text" name="search" value="" placeholder="Search">
-                           <a class="submit" href="#">
+                           <input class="" type="text" name="s" value="" placeholder="Search">
+                           <button class="submit">
                               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                   viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                                  <style type="text/css">
@@ -151,7 +125,7 @@
                                  <polygon class="st9" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
                                     39.3,83.3 66,56.5 71.9,50.7 "/>
                               </svg>
-                           </a>
+                           </button>
                         </form>
                      </div>
                   </div>
@@ -162,7 +136,48 @@
    </div>
 	<div class="panel films-list">
 		<div class="container">
-			<div class="row listing-row">
+         <?php 
+            $args = array(
+            'post_type' => 'films',
+            'posts_per_page' => -1,
+            //'meta_key' => 'event_start_date',
+            //'orderby' => 'meta_value',
+            'order' => 'ASC',
+            'paged'=>$paged
+         );
+         $wp_query = new WP_Query( $args );?>
+
+         <?php if ($wp_query->have_posts()) :
+         $e_cnt=0;
+          while ($wp_query->have_posts()) : $wp_query->the_post();
+          $img = get_the_post_thumbnail_url($id, 'large');
+          var_dump($img);
+          $id = $post->ID;
+          //var_dump($id);
+          $custom_excerpt = "";
+          $film_type = get_the_terms($id, 'film_type');
+          $type = $film_type[0]->name;
+          $film_type ='';
+
+          // foreach($film_type as $type){
+          //   $film_type = $type;
+          // }
+         ?>
+
+         <div class="row listing-row">
+            <div class="listing-card columns-12">
+               <div class="thumbnail columns-7" style="background-image: url('<?php echo $img; ?>');">
+               </div>
+               <div class="item-text columns-5">
+                  <h4 class="item-title pf"><?php echo the_title(); ?></h4>
+                  <p class="item-exc first sf">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <a class="read-more pf" href="<?php echo the_permalink(); ?>">Watch the <?php echo $type; ?></a>
+               </div>
+            </div>
+         </div>
+      <?php endwhile; endif;  wp_reset_postdata(); ?>
+
+			<!-- <div class="row listing-row">
 				<div class="listing-card columns-12">
 					<div class="thumbnail columns-7" style="background-image: url('http://emc.bkfk-t5yk.accessdomain.com/wp-content/themes/mesh/img/EMC_MasterLandingPage_HeaderImage.png');">
 					</div>
@@ -194,7 +209,7 @@
 						<a class="read-more pf" href="http://example.com">Watch the Film</a>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </main><!-- End of Content -->

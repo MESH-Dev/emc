@@ -485,7 +485,7 @@ function get_events(){
           ),
         ),
       );
-      var_dump($args['paged']);
+      //var_dump($args['paged']);
   elseif ($event_location != '' ): //Using the filter - Topic filter used
   $args = array(
   'post_type' => 'events',
@@ -577,7 +577,190 @@ endif;
             }
 
             if($e_cnt % 2 != 0){
-               $div_class = 'offset_by_1';
+               $div_class = 'offset-by-1';
+            }
+                
+                $target = '';
+
+                $directory = get_bloginfo('template_directory');
+
+                $f_override = get_field('override_feature_image_text', $post->ID);
+                $f_image = the_post_thumbnail('large', $post->ID);
+
+                $feature = '';
+
+                if(the_post_thumbnail($post->ID) != ''){
+          $feature = get_the_post_thumbnail('large');
+          }elseif(get_field('override_feature_image_text', $post->ID) != ''){
+            $b = "'bianco-reg'";
+            $feature = '<h2 style="text-align:center; font-size:48px; font-family: '.$b.';">'.$f_override.'</h2>';
+          }
+
+          
+
+          //endif; 
+          echo '
+          <div class="columns-5 card '.$div_class.'">
+             <div class="row">
+                <div class="event-columns-1">
+                   <img src="'.$icon_url.'" alt="'.$icon_alt.'">
+                </div>
+                <div class="event-columns-4">
+                   <p class="heading6 date">'.$event_start.'</p>
+                   <p class="title">'.$the_title.'</p>
+                   <p class="tags">'.$event_loc.' | '. $topic_name .'</p>
+                   <div class="excerpt">'.$event_desc.'</div>
+                   <a href="'.$event_link.'" '. $target.'>'.$event_link_text.'
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                        <style type="text/css">
+                           .st0{fill:#EED9BD;}
+                           .st1{fill:#EC742E;}
+                        </style>
+                        <polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
+                           39.3,83.3 66,56.5 71.9,50.7 "/>
+                     </svg>
+                     </a>
+                </div>
+             </div>
+          </div>';
+
+          if($e_cnt %2 == 0){
+            echo '</div><div class="row grid-row"> <!-- New Row -->';
+          };
+         endwhile; 
+         // if($e_cnt % 2 == 0){
+         //  echo '</div><div class="row grid-row">';
+         // };
+       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
+        
+        echo '<article class="post-error">
+                <h3 class="404">
+                  Your search did not produce any results!</br>
+                
+                  Please use a different search term, or try something more specific.
+                </h3>
+              </article>';
+       endif; 
+       echo '</div> <!--end row-->';
+       //wp_reset_postdata();
+       // OK, I think that takes care of both scenarios (having posts or not having any posts) 
+       // echo '<nav class="load_more results">'
+       //    .next_posts_link( 'Load More' ).
+       //    '</nav>';
+       wp_reset_query();
+       die();//if this isn't included, you will get funky characters at the end of your query results.
+}
+
+function get_films(){
+  //$post_topic = $_POST['postTopic'];
+  $film_topic = $_POST['filmTopic'];
+  $query = $_POST['query']; //*
+  //var_dump($event_location);
+  // $page = $_POST['page'];
+  // var_dump($page);
+  //var_dump($event_topic);
+  //var_dump($event_location);
+
+ if ($film_topic == '' && $query == ''): //All posts? No filter
+      $args = array(
+      'post_type' => 'films',
+      'posts_per_page' => 6,
+      'order' => 'ASC',
+      'paged'=>$paged,
+      //
+      );
+ elseif ($film_topic != '' ): //Using the filter - Topic filter used
+      $args = array(
+      'post_type' => 'films',
+      'posts_per_page' => 6,
+      'order' => 'ASC',
+      'paged' => $paged,
+      'post_status' => 'publish',
+      //'s' => $query, //This is an 'and', so the query is effectively stopping here, if not commented out
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'film_topic',
+          'field'    => 'slug',
+          'terms'    => $film_topic, 
+          ),
+        ),
+      );
+      //var_dump($args['paged']);
+ //Make the search exlusive to entries or clicking the filter
+ elseif ($query != ''): //All posts? No filter
+      $args = array(
+      'post_type' => 'events',
+      'posts_per_page' => 6,
+      'post_status' => 'publish',
+      'meta_key' => 'event_start_date',
+      'orderby' => 'meta_value',
+      'order' => 'ASC',
+      'paged'=>$paged,
+      's' => $query
+      //
+      );
+
+      //var_dump($query);
+endif;
+        // the query
+      //var_dump($query);
+      global $wp_query;
+      global $paged;
+
+        $wp_query = new WP_Query( $args ); 
+        //var_dump($args);
+        //$count = $the_query->found_posts;
+        
+
+       if ( $wp_query->have_posts() ) : 
+      // Do we have any posts in the databse that match our query?
+      // In the case of the home page, this will call for the most recent posts 
+        $e_cnt=0;
+        echo '<div class="row grid-row">';
+        //echo '<div class="container '.$profile_class .'" id="project-gallery">';
+         while ( $wp_query->have_posts() ) : $wp_query->the_post(); //We set up $the_query on line 144
+        // If we have some posts to show, start a loop that will display each one the same way
+        
+        
+         //if (have_rows ('project_gallery')): //Setup the panels between the top/bottom panels
+               //Setup variables
+               
+            $the_title = get_the_title();
+            
+            $e_cnt++;
+            $div_class='';
+            $icon = get_field('eo_icon', $post->ID);
+            $icon_url = $icon['sizes']['medium'];
+            $icon_alt = $icon['alt'];
+            $event_desc = get_field('event_description', $post->ID);
+            $event_loc = get_field('event_location', $post->ID);
+            $event_start = get_field('event_start_date', $post->ID);
+            //$event_sd = date('F j, Y', $event_start);
+            $event_end = get_field('event_end_date', $post->ID);
+
+            $end='';
+            //$dash = htm('&mdash');
+            // if($event_end != '' && $event_end != $event_start){
+            //   $end =  $dash.$event_end;
+            // }
+            $event_link_text = get_field('el_text', $post->ID);
+            $event_link = get_field('el_link', $post->ID);
+            $external = get_field('external', $post->ID);
+            $event_tax = get_the_terms(get_the_ID(),'event_topic'); 
+            $topic_name='';
+            if($event_tax != ''){
+               foreach($event_tax as $topic){
+                  $topic_name = $topic->name;
+               }
+            }
+            $target = '';
+            if($external == true){
+               $target='target="_blank"';
+            }
+
+            if($e_cnt % 2 != 0){
+               $div_class = 'offset-by-1';
             }
                 
                 $target = '';
@@ -759,7 +942,7 @@ function hide_text_editor() {
   // Hide the editor on a page with a specific page template
   // Get the name of the Page Template file.
   $template_file = get_post_meta($post_id, '_wp_page_template', true);
-  $templates = array('templates/template-landing.php', 'templates/template-homepage.php', 'templates/template-event-listing.php', 'single-films.php');
+  $templates = array('templates/template-landing.php', 'templates/template-filmlibrary.php', 'templates/template-homepage.php', 'templates/template-event-listing.php', 'single-films.php');
 
 
   if(in_array($template_file, $templates)){ // the filename of the page template

@@ -187,9 +187,10 @@
 			<div class="img-screen">
 
 			</div>
-			<div class="feature-image has-background" style="background-image:url('<?php echo get_template_directory_uri(); ?>/img/Y1WMEo9Q.png');">
+			<!-- <img class="feature-image has-background" style="background-image:url('<?php echo $ip_image_url; ?>')" /> -->
+			<img class="feature-image" src="<?php echo $ip_image_url; ?>" />
 			<!-- <img class="feature-image" src="<//?php echo $story_img_url; ?>" alt="" style="opacity:0;"> -->
-			</div>
+			<!-- </div> -->
 		</div>
 		<!-- <div class="stat-visual" src="<//?php echo get_template_directory_uri(); ?>/img/Y1WMEo9Q.png" alt="">
 			<div class="img-screen">

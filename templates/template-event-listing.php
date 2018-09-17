@@ -148,7 +148,7 @@
                      <div class="search-field">
                         <form action="<?php home_url(); ?>" method="get">
                            <label class="sr-only" for="search">Search</label>
-                           <input class="" type="text" name="search" value="" placeholder="Search">
+                           <input class="" type="text" name="s" id="search-form" value="" placeholder="Search">
                            <button class="submit">
                               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                   viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
@@ -183,7 +183,7 @@
          <!-- <div class="row event-grid"> -->
           <?php   $args = array(
             'post_type' => 'events',
-            'posts_per_page' => 4,
+            'posts_per_page' => 6,
             'meta_key' => 'event_start_date',
             'orderby' => 'meta_value',
             'order' => 'ASC',
@@ -280,10 +280,10 @@
                  e.preventDefault();
                  var link = jQuery(this).attr('href');
                  //console.log(link+);
-                 $('.load_more').text('<span class="loader">Loading More Posts...</span>');
+                 $('.load_more').text('Loading More Posts...');
                  $.get(link, function(data) {
                     var post = $("#emc-events .row.event-grid ", data);
-                    console.log(post);
+                    //console.log(post);
                     $('#emc-events').append(post);
                  });
                  $('.load_more').load(link+' .load_more a');

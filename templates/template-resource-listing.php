@@ -37,7 +37,7 @@
          <div class="columns-10 offset-by-1">
             <ul>
                <li>
-                  <p>Explore our events:</p>
+                  <p>Explore our resources:</p>
                </li>
                <li class="filter">
                   <a class="filter-trigger" id="topicTrigger">
@@ -55,7 +55,7 @@
                </li>
                <li class="filter">
                   <a class="filter-trigger" id="locationTrigger">
-                     <p>Filter by location</p>
+                     <p>Filter by media</p>
                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                         <style type="text/css">
@@ -233,15 +233,15 @@
                   ?>
                      <div class="columns-5 card <?php echo $div_class; ?>">
                         <div class="row">
-                           <div class="event-columns-1">
-                              <img src="<?php echo $icon_url; ?>" alt="<?php echo $icon_alt; ?>">
+                           <div class="resource-columns-3">
+                              <img style="max-width:100%; " src="<?php echo $icon_url; ?>" alt="<?php echo $icon_alt; ?>">
                            </div>
-                           <div class="event-columns-4">
+                           <div class="resource-columns-7">
                              <p class="heading6 date"><?php echo rtrim($categories, $separator); ?></p>
                              <p class="title">
                                <a href="<?php echo $resource_link; ?>" target="_blank">
                                  <span class="category"><?php echo $r_type; ?>:</span> <?php the_title(); ?>
-                                   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                   <!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                    viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                                      <style type="text/css">
                                      .st0{fill:#EED9BD;}
@@ -249,7 +249,7 @@
                                      </style>
                                      <polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
                                      39.3,83.3 66,56.5 71.9,50.7 "/>
-                                   </svg>
+                                   </svg> -->
                                </a>
                              </p>
                            </div>
@@ -285,9 +285,9 @@
                  //console.log(link+);
                  $('.load_more').html('<span class="loader">Loading More Posts...</span>');
                  $.get(link, function(data) {
-                    var post = $("#emc-events .row.event-grid ", data);
+                    var post = $("#emc-resources .row.resource-grid ", data);
                     console.log(post);
-                    $('#emc-events').append(post);
+                    $('#emc-resources').append(post);
                  });
                  $('.load_more').load(link+' .load_more a');
                  //var url = link;

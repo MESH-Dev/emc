@@ -80,9 +80,37 @@ $('#tickerClose')
     //$('.player-holder').fadeIn('slow');
   });
 
+  var i, pp;
+ var pp_l = [];
+ var pp_r = [];
+ var pp_e = [];
+ var pp_w = [];
+pp = $('.pins .pin');
+console.log(pp.position().left);
+  // for(i=0; i < pp.length; i++){
+  //   //var pp_v = [];
+  //   var r = pp.position().left;
+  //   console.log(r);
+  //   pp_v.push(r);
+  //   console.log(pp_v);
+  // }
+
+$('.pins .pin').each(function(){
+  var l = parseInt($(this).css('left'));
+  var r = parseInt($(this).css('right'));
+  var w = $(this).width();
+  var $pin = $(this);
+  pp_l.push(l);
+  pp_r.push(r);
+  pp_w.push(w);
+  pp_e.push($pin);
+  
+});
+
+
      //Force divs in homepage grid to be square
 //Setup variables to hold our sizes
-var gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h;
+var gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, pp;
 var $mclk = 0;
 //Grab the width of each element
 function gi_resize(){
@@ -101,6 +129,23 @@ function gi_resize(){
   cp4 = $('.grid-item.columns-4').width();
   cp5 = $('.grid-item.columns-5').width();
   cp6 =  $('.grid-item.columns-6').width();
+  mi_w = $('.panel.map').width();
+  //pp_r = $('.pins .pin.right').position();
+  //pp_l = $('.pins .pin.left').position();
+
+  // $('.pins .pin').each(function(){
+  //   var pp = $(this).position;
+  //   console.log(pp);
+  // });
+
+// pp = $('.pins .pin').each(function(){var pp_p = $(this).position().left; console.log($(this).position)});
+// console.log(pp);
+
+  //pp_l = pp.left;
+  //pp_r = pp.right;
+  //console.log(pp);
+  //console.log(pp_r);
+  //console.log(mi_w);
   //console.log(cp6);
   //cp6_alt = $('.columns-6')
   cp7 = $('.grid-item.columns-7').width();
@@ -111,13 +156,13 @@ function gi_resize(){
   //return gi2, gi3, gi4;
 }
 //Run the function above at document ready and on a window resize event
- $(document).ready(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3,cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h));
- $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h));
+ $(document).ready(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3,cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, pp));
+ $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, pp));
 
 //Apply our widths to the height of selected elements either on load, or on resize
 function _resize(){
-  gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h);
-   $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7,$wW,hh, mh,wg_w, wg_h));
+  gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, pp);
+   $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7,$wW,hh, mh,wg_w, wg_h, mi_w, pp));
 
  //  console.log("Width 2: "+gi2);
   // console.log("Width 3: "+gi3);
@@ -148,31 +193,22 @@ function _resize(){
   $('.video-holder').css({height:(wg_h-200), width:(wg_w-300)});
   //$('.matinee').css({height:wg_h, width:wg_w});
   //$('.matinee').css({width:(wg_w-150)});
-  if($wW >= 1000){
-    $('.grid-item.columns-6').css({height:cp6*0.66});
-    $('.grid-item.columns-4.tweener').css({height:cp4});
-  }else{
-    $('.grid-item.columns-6').css({height:cp6});
-    $('.grid-item.columns-4.tweener').css({height:cp6});
-  }
-  console.log($wW);
-  console.log(hh);
-  console.log(mh);
-  console.log(wg_h);
+  // if($wW >= 1000){
+  //   $('.grid-item.columns-6').css({height:cp6*0.66});
+  //   $('.grid-item.columns-4.tweener').css({height:cp4});
+  // }else{
+  //   $('.grid-item.columns-6').css({height:cp6});
+  //   $('.grid-item.columns-4.tweener').css({height:cp6});
+  // }
 
+$('.pins .pin').each(function(i){
+  pp_e[i].css({left:((pp_l[i]/mi_w)*100)+'%'});
+  //pp_e[i].css({right:(mi_w-(pp_l[i]+pp_r[i]))});
+});
 
-  if($wW <= 1100){
-    //$('.main-navigation').css({'display':'none'});
-
-    //$('.main-navigation ul > li.menu-item-has-children .wrap .content').append(arrow);
-    
-  }else{
-    //$('.main-navigation').css({'display':'inline-block'});
-    // if(arrow.length > 0){
-    //   $('.main-navigation ul li.menu-item-has-children .wrap .content').remove(arrow);
-    // }
-    
-  }
+  // for(i=0; i < $('.pins .pin').length; i++){
+  //   pp_e[i].css({left:((pp_v[i]/mi_w)*100)+'%'});
+  // }
 
 
 }
@@ -219,7 +255,7 @@ $('#tickerClose').click(function(event){
    event.preventDefault();
    $('.ticker').toggle();
    var hh = $('header').height();
-   console.log(hh);
+   //console.log(hh);
    $('.welcome-gate').css({'margin-top':hh});
 });
 
@@ -286,14 +322,14 @@ if($('#vmap').size() > 0){
         sParameterName,
         i;
 
-        console.log(sPageURL);
+        //console.log(sPageURL);
         var sp = [];
 
     for (i = 0; i < sURLVariables.length; i++) {
         sParameterName = sURLVariables[i].split('=');
 
         sp += sParameterName;
-        console.log(sp);
+        //console.log(sp);
         //We only need this if statement if we are sending the function our
         // if (sParameterName[0] === sParam) {
         //     return sParameterName[1] === undefined ? true : sParameterName[1];
@@ -304,10 +340,10 @@ if($('#vmap').size() > 0){
 };
 
 var $parameter = getUrlParameter();
-console.log($parameter[0]);
+//console.log($parameter[0]);
 
-console.log('Parameter = '+getUrlParameter());
-console.log('Parameter name = '+getUrlParameter());
+//console.log('Parameter = '+getUrlParameter());
+//console.log('Parameter name = '+getUrlParameter());
 
 // var param = window.location.search;
 // var fparam = param.split('&');
@@ -416,6 +452,13 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
     //console.log(postTopic);
     //Run our function above using our topic filter data
     loadPostsByTopic(postTopic,'');
+
+    //Hide the load_more nav when the filter is used,
+    //show when All posts are shown.
+    $('.load_more').hide();
+    if(postTopic == ''){
+      $('.load_more').show();
+    }
   });
 
 
@@ -439,6 +482,13 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
 
     //Detach all of our original posts so that we can add our results back to the DOM
   	$('.post').detach();
+
+    //Hide the load_more nav if the search is used, 
+    //show if the input is cleared
+    $('.load_more').hide();
+    if($input == ''){
+      $('.load_more').show();
+    }
 
   });
 
@@ -614,7 +664,7 @@ $('.e-topic-filters li').click(function(e){
 
      $(this).addClass('selected');
     var eventTopic = $('.e-topic-filters li.selected').attr('data-filter');
-    console.log("eventTopic = "+eventTopic);
+    //console.log("eventTopic = "+eventTopic);
     // Push the filter that was used to the end of the current URL so that we can use it
     // to run our functions when the user is visiting from a shared link
     if(eventTopic != ''){
@@ -627,6 +677,10 @@ $('.e-topic-filters li').click(function(e){
     //console.log(postTopic);
     //Run our function above using our topic filter data
     loadEvents(eventTopic,'', '');
+    $('.load_more').hide();
+    if(eventTopic == ''){
+      $('.load_more').show();
+    }
   });
 
 $('.e-location-filters li').click(function(e){
@@ -648,6 +702,10 @@ $('.e-location-filters li').click(function(e){
     //console.log(postTopic);
     //Run our function above using our topic filter data
     loadEvents('', eventLocation, '');
+    $('.load_more').hide();
+    if(eventLocation == ''){
+      $('.load_more').show();
+    }
   });
 
 $('.e-search-filter form').submit(function(e){
@@ -669,8 +727,84 @@ $('.e-search-filter form').submit(function(e){
 
     //Detach all of our original posts so that we can add our results back to the DOM
     $('.card').detach();
-
+    $('.load_more').hide();
+    if($input == ''){
+      $('.load_more').show();
+    }
   });
+
+function loadFilms (filmTopic, query) { //*
+
+      //console.log(projectType);
+      //console.log(query);  //*
+      var is_loading = false;
+       if (is_loading == false){
+            is_loading = true;
+
+      $('loader-container').removeClass('hide');
+            $('.loader, .loader-container').fadeIn(200);
+
+            var data = {
+                action: 'get_films',  //Our function from function.php
+                //postTopic: postTopic,
+                filmTopic: filmTopic,
+                //eventLocation: eventLocation, //the return value
+                data: "?query=",
+                //contentType: contentType,
+                query: query //Are we using the search?
+            };
+            jQuery.post(ajaxurl, data, function(response) {
+                // now we have the response, so hide the loader
+
+                //console.log(response);
+                //console.log(data);
+                //console.log(memberResource);
+                //console.log(contentType);
+                //console.log(get_member_resources);
+
+               //$('a#load-more-photos').show();
+                // append: add the new statments to the existing data
+                if(response != 0){
+
+                  $('.card').detach();
+                  $('.post-error').detach();
+                  $('.row.event-grid').detach();
+                  $('#emc-events').append(response);
+                  //$container.waitForImages(function() {
+                  //   $('#loader').hide();
+                  // });
+          $('.loader').fadeOut(1000);
+          $('.loader-container').fadeOut(300);
+          $('.card').addClass('hide');
+          //$('.projects-nav ul > li').removeClass('selected');
+          //Adds slideinLeft and animated classes to each project tile in order
+          $('.card').each(function(i, el){
+            //Show each item in it's turn
+            window.setTimeout(function(){
+            $(el).removeClass('hide').addClass('fadeIn animated');
+            }, 50 * i);
+          });
+          $('.search_form')
+            .removeClass('slideInLeft')
+            .addClass('slideOutLeft');
+          // $('.projects-nav.gallery')
+          //  .removeClass('slideInLeft')
+          //  .addClass('slideOutLeft');
+                  is_loading = false;
+                  //console.log(url);
+                //   if(query != '')
+                //    //history.pushState(null, null, '?s='+query);
+                }
+                else{
+                  $('#loader').hide();
+
+                  is_loading = false;
+                }
+
+
+            });
+        }
+  }
 
 //2nd type of AJAX onclick
 

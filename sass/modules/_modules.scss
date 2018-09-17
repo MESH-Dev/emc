@@ -1082,6 +1082,18 @@ body{
                margin-bottom: 0;
             }
          }
+
+         .resource-columns-3{
+            width:25%;
+               img{
+               max-width: 100%;
+               height: auto;
+            }
+         }
+         .resource-columns-7{
+            width:58.33333%;
+            margin-left:8.33333%;
+         }
          .card{
             .date{
             }
@@ -1093,6 +1105,11 @@ body{
                   color: $nav-brown;
                   text-transform: none;
                   line-height: normal;
+                  padding-right:30px;
+                  background-image:url('img/arrow-right.svg');
+                  background-position:center right;
+                  background-repeat:no-repeat;
+                  background-size:6%;
                   span.category{
                      color: $primary-lightbrown;
                   }
@@ -1415,6 +1432,117 @@ main.text{
    z-index:1;
  }
 
+.pins{
+   .pin{
+      list-style-type:none;
+      position:absolute;
+      @media ($bp-smaller-than-tablet){
+         position:initial;
+      }
+         &.right{
+            a{
+               padding-right:30px;
+               background-position:right center;
+                @media ($bp-smaller-than-tablet){
+                  padding-right:25px;
+                }
+            }
+         }
+         &.left{
+            a{
+               padding-left:30px;
+               background-position:left center;
+               @media ($bp-smaller-than-tablet){
+                  padding-left:0;
+                  padding-right:25px;
+                  background-position:right center;
+                }
+            }
+         }
+         &.usa{
+            top: 39%;
+            //right:70%;
+            //left:16%;
+            left:210px;
+            // @media only screen and (max-width:1400px){
+            //    right:71%;
+            // }
+            // @media only screen and (max-width:1200px){
+            //    right:75%;
+            // }
+         }
+         &.guatemala{
+            top: 52%;
+            right:69%;
+             @media only screen and (max-width:1400px){
+               right:69%;
+            }
+            @media only screen and (max-width:1200px){
+               right:73%;
+            }
+         }
+         &.haiti{
+            top:50%;
+            right:59%;
+            @media only screen and (max-width:1400px){
+               right:61%;
+            }
+            @media only screen and (max-width:1000px){
+               right:60%;
+            }
+
+         }
+         &.india{
+            top: 50%;
+            left: 59%;
+            @media only screen and (max-width:1120px){
+               left:75%;
+            }
+         }
+         &.bangladesh{
+            top:50%;
+            left: 68%;
+         }
+         &.uganda{
+            top: 57%;
+            left:56%;
+            @media only screen and (max-width:1120px){
+               left:57%;
+            }
+         }
+         &.tanzania{
+            top: 63%;
+            left: 55%;
+         }
+         a{
+         //padding-right:25px;
+         background-image:url('img/EMC_MapPin_Landing.png');
+         background-repeat:no-repeat;
+         //background-position:right center;
+         background-size:20px;
+          @include whitney-bold();
+         font-size: 1.8rem;
+         line-height: 1;
+         letter-spacing: 3px;
+         text-transform: uppercase;
+         color: $primary-orange;
+         display:inline-block;
+         transition: opacity 0.5s ease-in-out;
+         @media ($bp-smaller-than-tablet){
+            
+            background-image: url('img/arrow-right.svg');
+         }
+         &:hover,
+         &:active,
+         &:focus{
+            //background-image:url('img/EMC_MapPin_Hover.png');
+            text-decoration:none;
+            // color:$offwhite-3;
+            opacity: 0.5;
+         }
+      }
+   }
+}
  //Animations
  @keyframes fadeIn {
     0% {
