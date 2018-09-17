@@ -76,7 +76,7 @@
                <a href="#"><i class="fab fa-facebook"></i></a>
                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
-            <p class="copy">&#169; Every Mother Counts 2018</p>
+            <p class="copy">&#169; Every Mother Counts <?php echo date('Y') ?></p>
    				<!-- <nav class="main-navigation">
    					<//?php wp_nav_menu( array('menu_id' => 'footer-menu', 'theme_location' => 'footer-menu') ); ?>
    				</nav> -->

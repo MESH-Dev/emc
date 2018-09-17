@@ -470,7 +470,7 @@ function get_events(){
  elseif ($event_topic != '' ): //Using the filter - Topic filter used
       $args = array(
       'post_type' => 'events',
-      'posts_per_page' => 6,
+      'posts_per_page' => -1,
       'meta_key' => 'event_start_date',
       'orderby' => 'meta_value',
       'order' => 'ASC',
@@ -489,7 +489,7 @@ function get_events(){
   elseif ($event_location != '' ): //Using the filter - Topic filter used
   $args = array(
   'post_type' => 'events',
-  'posts_per_page' => 6,
+  'posts_per_page' => -1,
   'meta_key' => 'event_start_date',
   'orderby' => 'meta_value',
   'order' => 'ASC',
@@ -508,7 +508,7 @@ function get_events(){
  elseif ($query != ''): //All posts? No filter
       $args = array(
       'post_type' => 'events',
-      'posts_per_page' => 6,
+      'posts_per_page' => -1,
       'post_status' => 'publish',
       'meta_key' => 'event_start_date',
       'orderby' => 'meta_value',
@@ -652,6 +652,9 @@ endif;
        die();//if this isn't included, you will get funky characters at the end of your query results.
 }
 
+add_action('wp_ajax_get_films', 'get_films');  
+add_action('wp_ajax_nopriv_get_films', 'get_films'); 
+
 function get_films(){
   //$post_topic = $_POST['postTopic'];
   $film_topic = $_POST['filmTopic'];
@@ -665,7 +668,7 @@ function get_films(){
  if ($film_topic == '' && $query == ''): //All posts? No filter
       $args = array(
       'post_type' => 'films',
-      'posts_per_page' => 6,
+      'posts_per_page' => 5,
       'order' => 'ASC',
       'paged'=>$paged,
       //
@@ -673,7 +676,7 @@ function get_films(){
  elseif ($film_topic != '' ): //Using the filter - Topic filter used
       $args = array(
       'post_type' => 'films',
-      'posts_per_page' => 6,
+      'posts_per_page' => -1,
       'order' => 'ASC',
       'paged' => $paged,
       'post_status' => 'publish',
@@ -690,11 +693,11 @@ function get_films(){
  //Make the search exlusive to entries or clicking the filter
  elseif ($query != ''): //All posts? No filter
       $args = array(
-      'post_type' => 'events',
-      'posts_per_page' => 6,
+      'post_type' => 'films',
+      'posts_per_page' => -1,
       'post_status' => 'publish',
-      'meta_key' => 'event_start_date',
-      'orderby' => 'meta_value',
+      //'meta_key' => 'event_start_date',
+      //'orderby' => 'meta_value',
       'order' => 'ASC',
       'paged'=>$paged,
       's' => $query
@@ -716,8 +719,8 @@ endif;
        if ( $wp_query->have_posts() ) : 
       // Do we have any posts in the databse that match our query?
       // In the case of the home page, this will call for the most recent posts 
-        $e_cnt=0;
-        echo '<div class="row grid-row">';
+        //$e_cnt=0;
+        //echo '<div class="row grid-row">';
         //echo '<div class="container '.$profile_class .'" id="project-gallery">';
          while ( $wp_query->have_posts() ) : $wp_query->the_post(); //We set up $the_query on line 144
         // If we have some posts to show, start a loop that will display each one the same way
@@ -727,89 +730,37 @@ endif;
                //Setup variables
                
             $the_title = get_the_title();
+            $the_link = get_the_permalink();
+            $excerpt = get_field('custom_excerpt');
+            $excerpt_style = get_field('excerpt_style');
+            $id = $post->ID;
+            $img = get_the_post_thumbnail_url($id, 'large');
+            //var_dump($id);
+            $film_type = get_the_terms($id, 'film_type');
+            $type = $film_type[0]->name;
+
             
-            $e_cnt++;
-            $div_class='';
-            $icon = get_field('eo_icon', $post->ID);
-            $icon_url = $icon['sizes']['medium'];
-            $icon_alt = $icon['alt'];
-            $event_desc = get_field('event_description', $post->ID);
-            $event_loc = get_field('event_location', $post->ID);
-            $event_start = get_field('event_start_date', $post->ID);
-            //$event_sd = date('F j, Y', $event_start);
-            $event_end = get_field('event_end_date', $post->ID);
-
-            $end='';
-            //$dash = htm('&mdash');
-            // if($event_end != '' && $event_end != $event_start){
-            //   $end =  $dash.$event_end;
-            // }
-            $event_link_text = get_field('el_text', $post->ID);
-            $event_link = get_field('el_link', $post->ID);
-            $external = get_field('external', $post->ID);
-            $event_tax = get_the_terms(get_the_ID(),'event_topic'); 
-            $topic_name='';
-            if($event_tax != ''){
-               foreach($event_tax as $topic){
-                  $topic_name = $topic->name;
-               }
-            }
-            $target = '';
-            if($external == true){
-               $target='target="_blank"';
-            }
-
-            if($e_cnt % 2 != 0){
-               $div_class = 'offset-by-1';
-            }
-                
-                $target = '';
-
-                $directory = get_bloginfo('template_directory');
-
-                $f_override = get_field('override_feature_image_text', $post->ID);
-                $f_image = the_post_thumbnail('large', $post->ID);
-
-                $feature = '';
-
-                if(the_post_thumbnail($post->ID) != ''){
-          $feature = get_the_post_thumbnail('large');
-          }elseif(get_field('override_feature_image_text', $post->ID) != ''){
-            $b = "'bianco-reg'";
-            $feature = '<h2 style="text-align:center; font-size:48px; font-family: '.$b.';">'.$f_override.'</h2>';
-          }
 
           
 
           //endif; 
-          echo '
-          <div class="columns-5 card '.$div_class.'">
-             <div class="row">
-                <div class="event-columns-1">
-                   <img src="'.$icon_url.'" alt="'.$icon_alt.'">
-                </div>
-                <div class="event-columns-4">
-                   <p class="heading6 date">'.$event_start.'</p>
-                   <p class="title">'.$the_title.'</p>
-                   <p class="tags">'.$event_loc.' | '. $topic_name .'</p>
-                   <div class="excerpt">'.$event_desc.'</div>
-                   <a href="'.$event_link.'" '. $target.'>'.$event_link_text.'
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                        <style type="text/css">
-                           .st0{fill:#EED9BD;}
-                           .st1{fill:#EC742E;}
-                        </style>
-                        <polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
-                           39.3,83.3 66,56.5 71.9,50.7 "/>
-                     </svg>
-                     </a>
-                </div>
-             </div>
-          </div>';
+          echo 
+          '
+           <div class="row listing-row">
+            <div class="listing-card columns-12">
+               <div class="thumbnail columns-7" style="background-image: url("'. $img.'");">
+               </div>
+               <div class="item-text columns-5">
+                  <h4 class="item-title pf">'.$the_title.'</h4>
+                  <p class="item-exc first sf">'.$custom_excerpt.'</p>
+                  <a class="read-more pf" href="'.$the_link.'">Watch the '.$type.'</a>
+               </div>
+            </div>
+         </div>
+         ';
 
           if($e_cnt %2 == 0){
-            echo '</div><div class="row grid-row"> <!-- New Row -->';
+            //echo '</div><div class="row grid-row"> <!-- New Row -->';
           };
          endwhile; 
          // if($e_cnt % 2 == 0){
@@ -825,7 +776,7 @@ endif;
                 </h3>
               </article>';
        endif; 
-       echo '</div> <!--end row-->';
+       //echo '</div> <!--end row-->';
        //wp_reset_postdata();
        // OK, I think that takes care of both scenarios (having posts or not having any posts) 
        // echo '<nav class="load_more results">'

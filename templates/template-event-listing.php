@@ -147,8 +147,8 @@
                   <div class="search-wrap">
                      <div class="search-field">
                         <form action="<?php home_url(); ?>" method="get">
-                           <label class="sr-only" for="search">Search</label>
-                           <input class="" type="text" name="s" id="search-form" value="" placeholder="Search">
+                           <label class="sr-only" for="search-form">Search</label>
+                           <input class="" type="text" name="se" id="search-form" value="" placeholder="Search">
                            <button class="submit">
                               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                   viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
@@ -280,7 +280,7 @@
                  e.preventDefault();
                  var link = jQuery(this).attr('href');
                  //console.log(link+);
-                 $('.load_more').text('Loading More Posts...');
+                 $('.load_more a').text('Loading More Posts...');
                  $.get(link, function(data) {
                     var post = $("#emc-events .row.event-grid ", data);
                     //console.log(post);

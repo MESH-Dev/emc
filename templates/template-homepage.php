@@ -56,30 +56,32 @@
 			<div class="intro-callout"><?php echo $intro_callout; ?></div>
 			<p class="heading6"><?php echo $map_title; ?> </p>
 			<div class="panel map" style="position:relative;width: 100%; /*height: 600px;*/ background-image:url('<?php //echo $map_image_url; ?>'); background-repeat:no-repeat; background-size:cover; background-position:center center;">
-				<img src="<?php echo $map_image_url; ?>" style="width:100%;"/>
-				<Ul class="pins">
-					<li class="pin right usa">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/united-states">United States</a>
-					</li>
-					<li class="pin right guatemala">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/guatemala">Guatemala</a>
-					</li>
-					<li class="pin left haiti">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/haiti">Haiti</a>
-					</li>
-					<li class="pin right india">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/india">India</a>
-					</li>
-					<li class="pin left bangladesh">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/bangladesh">Bangladesh</a>
-					</li>
-					<li class="pin left uganda">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/uganda">Uganda</a>
-					</li>
-					<li class="pin left tanzania">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>/tanzania">Tanzania</a>
-					</li>
-				</ul>
+				<!-- <div class="map_wrapper" style="position:relative; background:red;"> -->
+					<img src="<?php echo $map_image_url; ?>" style="width:100%;"/>
+					<Ul class="pins">
+						<li class="pin right usa">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>/united-states">United States</a>
+						</li>
+						<li class="pin right guatemala">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>/guatemala">Guatemala</a>
+						</li>
+						<li class="pin left haiti">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>/haiti">Haiti</a>
+						</li>
+						<li class="pin right india">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>/india">India</a>
+						</li>
+						<li class="pin left bangladesh">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>/bangladesh">Bangladesh</a>
+						</li>
+						<li class="pin left uganda">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>/uganda">Uganda</a>
+						</li>
+						<li class="pin left tanzania">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>/tanzania">Tanzania</a>
+						</li>
+					</ul>
+				<!-- </div> -->
 			</div>
 		</div>
 	</div>
