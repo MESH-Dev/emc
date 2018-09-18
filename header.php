@@ -46,7 +46,44 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<div class="modal">
+		<div class="modal-body">
+			<div class="thumbnail-section" style="background-image:url('<?php echo get_template_directory_uri(); ?>/img/josh-bangaldesh2.png');">
+				<svg class="modal-close" id="modalClose" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+					<style type="text/css">
+						.st0{fill:#EED9BD;}
+						.st1{fill:#EC742E;}
+					</style>
+					<g>
+						<path class="st0" d="M50.2,56.5L18.6,88.2l-6.3-6.3l31.6-31.6L12.5,18.8l5.9-5.9l31.5,31.5l31.6-31.6l6.3,6.3L56.1,50.7L87.4,82
+							l-5.9,5.9L50.2,56.5z"/>
+					</g>
+				</svg>
+			</div>
+			<div class="form-section">
+				<h5>Become a part of a community committed to caring for mothers everywhere.</h5>
+				<form class="" action="" method="post">
+					<p>
+					  <div class="name-fields first">
+							<label class="sr-only">First Name: </label>
+							<input type="text" name="first" placeholder="First Name" required />
+					  </div>
+					  <div class="name-fields">
+						 <label class="sr-only">Last Name: </label>
+						<input type="text" name="last" placeholder="Last Name" required />
+					  </div>
+						 <label class="sr-only">Email address: </label>
+						<input type="email" name="email" placeholder="Email Address" required />
+					</p>
+					<input type="submit" value="Sign up for our newsletter" />
+				</form>
+			</div>
+		</div>
+		<div class="modal-underlay">
 
+		</div>
+	</div>
 	<header>
 		<?php
 			$h_cta = get_field('cta_message', 'options');

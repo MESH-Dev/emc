@@ -241,7 +241,7 @@ $(window).resize(_resize);
 
  $('.menu-item-has-children > a').after('<div class="after-arrow"></div>');
 
- $('ul#menu-main_nav li.menu-item-has-children').click(function(){
+ $('li.menu-item-has-children').click(function(){
     $(this).children('.sub-menu').toggleClass('open');
     $(this).children('.after-arrow').toggleClass('open');
  });
@@ -263,6 +263,23 @@ $('#tickerClose').click(function(event){
    var hh = $('header').height();
    //console.log(hh);
    $('.welcome-gate').css({'margin-top':hh});
+});
+
+$('#modalOpen').click(function(event){
+   event.preventDefault();
+   $('.modal').addClass('show');
+});
+
+$('#modalClose').click(function(){
+   $('.modal').removeClass('show');
+});
+
+$('a.filter-trigger').click(function(){
+   // $('a.filter-trigger').each(function(){
+   //    $(this).removeClass('open');
+   // });
+   $('.panel.filters').find('a.open').removeClass('open');
+   $(this).addClass('open');
 });
 
 $('#topicTrigger').click(function(event){
@@ -323,7 +340,7 @@ if($('#vmap').size() > 0){
 }
 
 //Autocomplete
-// see https://goodies.pixabay.com/jquery/auto-complete/demo.html for more info 
+// see https://goodies.pixabay.com/jquery/auto-complete/demo.html for more info
 
 //Search posts
 $('input[name="sp"]').autoComplete({

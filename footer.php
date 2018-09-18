@@ -30,7 +30,7 @@
                                     echo "<p><em>main_nav</em> doesn't exist! Create it and it'll render here.</p>";
                                  } ?>
                      <li>
-                     <a class="newsletter" href="">Sign Up For Our Newsletter!</a>
+                     <a id="modalOpen" class="newsletter" href="">Sign Up For Our Newsletter!</a>
                      </li>
                   </ul>
                </nav>
