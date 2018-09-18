@@ -275,11 +275,14 @@ $('#modalClose').click(function(){
 });
 
 $('a.filter-trigger').click(function(){
-   // $('a.filter-trigger').each(function(){
-   //    $(this).removeClass('open');
-   // });
-   $('.panel.filters').find('a.open').removeClass('open');
-   $(this).addClass('open');
+   if ($(this).is('.open')) {
+      $(this).removeClass('open');
+   }else{
+      $('a.filter-trigger').each(function(){
+         $(this).removeClass('open');
+      });
+      $(this).addClass('open');
+   }
 });
 
 $('#topicTrigger').click(function(event){

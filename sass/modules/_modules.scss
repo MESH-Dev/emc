@@ -1024,6 +1024,12 @@ body{
       }
       ul{
          margin-bottom: 0;
+         &.f-topic-filters{
+            li{
+               margin-left: 0;
+               margin-right: 65px;
+            }
+         }
          li{
             margin-bottom: 0;
             @include whitney-bold();
