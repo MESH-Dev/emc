@@ -16,6 +16,34 @@
 			};
 			</script>
 <main id="content">
+	<div class="modal">
+		<div class="modal-body">
+			<div class="thumbnail-section">
+
+			</div>
+			<div class="form-section">
+				<h5>Become a part of a community committed to caring for mothers everywhere.</h5>
+				<form class="" action="" method="post">
+					<p>
+					  <div class="name-fields first">
+					      <label class="sr-only">First Name: </label>
+					      <input type="text" name="first" placeholder="First Name" required />
+					  </div>
+					  <div class="name-fields">
+					    <label class="sr-only">Last Name: </label>
+						<input type="text" name="last" placeholder="Last Name" required />
+					  </div>
+					    <label class="sr-only">Email address: </label>
+						<input type="email" name="email" placeholder="Email Address" required />
+					</p>
+					<input type="submit" value="Sign up for our newsletter" />
+				</form>
+			</div>
+		</div>
+		<div class="modal-underlay">
+
+		</div>
+	</div>
 	<?php
 		$background_img = get_field('img_fallback');
 		$background_image_url = $background_img['sizes']['background-fullscreen'];

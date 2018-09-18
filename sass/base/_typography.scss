@@ -197,15 +197,16 @@ h5{
    font-size: 2rem;
    line-height: 32px;
    letter-spacing: 0.6px;
-    a, p a{
-         transition: opacity 0.5s ease-in-out;
-         font-size:2rem;
-         color: $primary-orange;
-         &:hover,
-         &:focus,
-         &:active{
-            text-decoration:none;
-            opacity:.5;
-         }
-      }
+}
+
+a, p a{
+  transition: opacity 0.5s ease-in-out;
+  font-size:2rem;
+  color: $primary-orange;
+  &:hover,
+  &:focus,
+  &:active{
+     text-decoration:none;
+     opacity:.5;
+  }
 }
