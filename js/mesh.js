@@ -986,7 +986,7 @@ $('.filter-bar .panel').each(function(){
    // var leftPaddle = document.getElementsByClassName('left-paddle');
    var rightPaddle = $(this).find('.scroll');
    var thisFilterbar = $(this).find('.columns-11 ul');
-   console.log(rightPaddle);
+   // console.log(rightPaddle);
    // get items dimensions
    var itemsLength = $(this).find('.columns-11 ul li').length;
    var itemSize = $(this).find('.columns-11 ul li').outerWidth(true);
@@ -1054,7 +1054,7 @@ $('.filter-bar .panel').each(function(){
 
    // scroll to left
    $(rightPaddle).on('click', function() {
-      console.log(thisFilterbar);
+      // console.log(thisFilterbar);
    	$(thisFilterbar).animate( { scrollLeft: menuInvisibleSize}, scrollDuration);
    });
 
