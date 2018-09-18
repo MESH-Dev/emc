@@ -531,7 +531,7 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
   $('.mr-search-filter form').submit(function(e){
   	e.preventDefault();
   	var $form = $(this);
-  	var $input = $form.find('input[name="s"]');
+  	var $input = $form.find('input[name="sp"]');
   	var query = $input.val();
 
     // Push the search query to the end of the current URL so that we can use it to run
@@ -631,7 +631,7 @@ function loadCommunityMembers (query) { //*
 $('.cr-search-filter form').submit(function(e){
     e.preventDefault();
     var $form = $(this);
-    var $input = $form.find('input[name="s"]');
+    var $input = $form.find('input[name="sc"]');
     var query = $input.val();
 
     // Push the search query to the end of the current URL so that we can use it to run
@@ -776,7 +776,7 @@ $('.e-location-filters li').click(function(e){
 $('.e-search-filter form').submit(function(e){
     e.preventDefault();
     var $form = $(this);
-    var $input = $form.find('input[name="s"]');
+    var $input = $form.find('input[name="se"]');
     var query = $input.val();
 
     // Push the search query to the end of the current URL so that we can use it to run
@@ -900,7 +900,7 @@ function loadFilms (filmTopic, query) { //*
   $('.f-search-filter form').submit(function(e){
     e.preventDefault();
     var $form = $(this);
-    var $input = $form.find('input[name="s"]');
+    var $input = $form.find('input[name="sf"]');
     var query = $input.val();
 
     // Push the search query to the end of the current URL so that we can use it to run

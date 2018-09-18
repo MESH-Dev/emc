@@ -3,7 +3,7 @@
 <?php //echo get_template_part('/partials/short-banner-no-video'); ?>
  <?php
    $background_img = get_field('background_image');
-   $background_image_url = $background_img['sizes']['short-banner'];
+   $background_image_url = $background_img['sizes']['background-fullscreen'];
    $v_ogg = get_field('video_ogg');
    $vo_url = $v_ogg['url'];
    $v_mp4 = get_field('video_mp4');

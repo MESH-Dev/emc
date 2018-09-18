@@ -7,7 +7,9 @@
 <main id="content" class="film-library">
    <?php
    $background_img = get_field('background_image');
+   var_dump($background_img);
    $background_image_url = $background_img['sizes']['short-banner'];
+   $background = $background_img['url'];
    $v_ogg = get_field('video_ogg');
    $vo_url = $v_ogg['url'];
    $v_mp4 = get_field('video_mp4');
@@ -115,7 +117,7 @@
                      <div class="search-field">
                         <form action="<?php home_url(); ?>" method="get">
                            <label class="sr-only" for="search">Search</label>
-                           <input class="" type="text" name="sf" id="search" value="" placeholder="Search">
+                           <input class="" type="text" name="sf" id="search-form" value="" placeholder="Search">
                            <button class="submit">
                               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                   viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">

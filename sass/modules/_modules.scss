@@ -55,7 +55,7 @@ body{
          }
 
       img{
-         width: 100%;
+         max-width: 100%;
          height: auto;
          margin: 0;
          @media ($bp-smaller-than-tablet){
@@ -83,18 +83,18 @@ body{
    position:relative;
    display:table;
    background-size: cover;
-   background-position: center;
+   background-position: bottom center;
    background-repeat: no-repeat;
    overflow:hidden;
    //margin-top:115px;
    //padding-top: 220px;
 
     &.interior{
-      height: 675px;
-      padding-top: 165px;
+      height: 600px;
+      padding-top: 4em;
       position: relative;
       @media screen and ($bp-smaller-than-tablet){
-         padding-top: 200px;
+         //padding-top: 200px;
       }
       .top-callout{
          color: $offwhite-1;
@@ -133,7 +133,7 @@ body{
       z-index:100;
       background-repeat: no-repeat;
       background-size: cover;
-      background-position:center center;
+      background-position:bottom center;
    }
 
    video{
@@ -548,7 +548,7 @@ body{
          }
       }
       img{
-         width: 100%;
+         max-width: 100%;
          height: auto;
          margin: 0;
          @media ($bp-smaller-than-tablet){
@@ -560,7 +560,7 @@ body{
       background-color: $tertiary-background;
       overflow: hidden;
       img{
-         width: 100%;
+         max-width: 100%;
          height: auto;
       }
       .callout-half{
@@ -586,6 +586,7 @@ body{
             left: 50%;
             z-index: 0;
             height: 340px;
+            max-width:100%;
             // width: auto;
             @media ($bp-smaller-than-tablet){
                // position:relative;
@@ -624,7 +625,7 @@ body{
    &.story{
       background-color: $offwhite-1;
       img{
-         width: 100%;
+         max-width: 100%;
          height: auto;
          margin-bottom: 10px;
       }
@@ -723,7 +724,7 @@ body{
       .thumbnails{
          margin-top: 10px;
          img{
-            width: 100%;
+            max-width: 100%;
             height: auto;
          }
       }
@@ -914,7 +915,7 @@ body{
          width: 20%;
          min-height: 1px;
          img{
-            width: 100%;
+            max-width: 100%;
             height: auto;
          }
       }
@@ -1378,7 +1379,7 @@ main.text{
 
    .col{
       img{
-         width:100%;
+         max-width:100%;
          height:auto;
       }
 
@@ -1652,7 +1653,7 @@ a.filter-trigger{
       }
    }
    img{
-      width:100%;
+      max-width:100%;
       height:auto;
       margin-bottom: 47px;
    }
@@ -1976,5 +1977,20 @@ main.search-results{
             opacity: 1;
          }
       }
+   }
+}
+
+//Responsive 
+
+.tablet-down{
+   display:none;
+   @media only screen and ($bp-smaller-than-tablet){
+      display:inline-block;
+   }
+}
+
+.desktop-up{
+  @media only screen and ($bp-smaller-than-tablet){
+      display:none;
    }
 }
