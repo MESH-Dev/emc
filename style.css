@@ -504,6 +504,17 @@ h5 {
   line-height: 32px;
   letter-spacing: 0.6px;
 }
+/* line 200, sass/base/_typography.scss */
+.paragraph a, .paragraph p a {
+  transition: opacity 0.5s ease-in-out;
+  font-size: 2rem;
+  color: #EB742D;
+}
+/* line 204, sass/base/_typography.scss */
+.paragraph a:hover, .paragraph a:focus, .paragraph a:active, .paragraph p a:hover, .paragraph p a:focus, .paragraph p a:active {
+  text-decoration: none;
+  opacity: .5;
+}
 
 /* line 3, sass/base/_grid.scss */
 * {
