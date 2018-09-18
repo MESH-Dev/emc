@@ -14,7 +14,7 @@
 	$vw_url = $v_webm['url'];
 	$l_page_callout = get_field('banner_callout_text');
 ?>
-<div class="welcome-gate interior" style="background-image:url('<?php echo get_template_directory_uri(); ?>/img/EMC_MasterLandingPage_HeaderImage.png');">
+<div class="welcome-gate interior" style="background-image:url('<?php echo $background_image_url; ?>">
 	<!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
 	<?php if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
 	<div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>

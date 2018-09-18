@@ -99,6 +99,7 @@
 
 	$s_img = get_sub_field('statistic_image');
 	$s_img_url = $s_img['sizes']['large'];
+	$s_img_alt = $s_img['alt'];
 	$s_text = get_sub_field('statistic_text');
 	$s_background_image = get_sub_field('statstic_image');
 	$s_background_image_url = $s_background_image['sizes']['large'];
@@ -118,7 +119,7 @@
 	<div class=""><!-- container -->
 		<div class="row">
 			<div class="columns-6 image">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/EMC_ImageStat.png" alt="">
+				<img src="<?php echo $s_img_url; ?>" alt="<?php echo $s_img_url; ?>">
 			</div>
 			<div class="columns-4 offset-by-1 callout-half" >
 				<p class="desc"><?php echo $s_callout; ?></p>
