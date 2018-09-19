@@ -1,5 +1,40 @@
 <?php get_header(); ?>
 
+<style>
+.callout-link{
+	text-align: center;
+	margin-bottom:2em;
+}
+.callout-link a {
+  font-family: "Whitney A", "Whitney B";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #EB742D;
+  letter-spacing: 1.75px;
+  line-height: 41px;
+  text-transform: uppercase;
+  transition: opacity 0.5s ease-in-out;
+}
+/* line 1244, sass/modules/_modules.scss */
+.callout-link a:hover {
+  opacity: 0.5;
+  text-decoration: none;
+}
+/* line 1248, sass/modules/_modules.scss */
+.callout-link a::after {
+  content: '';
+  display: inline-block;
+  height: 14px;
+  width: 7px;
+  margin-left: 10px;
+  background-image: url("<?php echo get_template_directory_uri(); ?>/img/arrow-right.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+</style>
+
 <?php //echo get_template_part('/partials/short-banner-no-video'); ?>
  <?php
    $background_img = get_field('background_image');
@@ -65,11 +100,28 @@
 		
 	</div>
 </div>
-<main id="content" class="film-single" style="position:relative; z-index:9999; margin-top:9em;">
+<main id="content" class="film-single" style="position:relative; z-index:1; margin-top:9em;">
 	<?php ?>
 	<div class="container">
 		<div class="row">
 			<?php echo get_template_part('/partials/content-rows'); ?>
+
+			<?php 
+				$callout_link_text = get_field('callout_link_text');
+				//var_dump($callout_link_text);
+				$callout_link = get_field('callout_link');
+				$external = get_field('cc_external');
+
+				if($callout_link_text != ''){
+
+			?>
+			<div class="callout-link">
+				<a href="<?php echo $callout_link; ?>">
+					<?php echo $callout_link_text; ?>
+				</a>
+			</div>
+			<?php } ?>
+
 		</div>
 		
 	</div>

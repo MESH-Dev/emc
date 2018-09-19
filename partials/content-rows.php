@@ -13,7 +13,7 @@
 					$col_class='columns-6';
 				}
 				?>
-				<div class="col <?php if(!is_single( 'films' )){ echo $col_class; } ?> <?php if(is_single( 'films' )){echo 'columns-5 offset-by-1 textsection';}?>" >
+				<div class="col <?php if(!is_singular( 'films' )){ echo $col_class; } ?> <?php if(is_singular( 'films' )){echo 'columns-5 offset-by-1 textsection';}?>" >
 					<div class="content">
 						<?php echo $content; ?>
 					</div>

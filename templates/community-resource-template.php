@@ -146,15 +146,17 @@
             }
          ?>
             <div class="member columns-3 <?php echo $div_class; ?>">
-               <div class="thumbnail-block">
-                  <div class="overlay">
-                     <h6 class="question"><?php echo $question; ?></h6>
-                     <p class="answer"><?php echo $answer; ?></p>
-                  </div>
-                  <div class="thumbnail" style="background-image:url('<?php echo $the_feature; ?>')"></div>
+            	<div class="content">
+	               <div class="thumbnail-block">
+	                  <div class="overlay">
+	                     <h6 class="question"><?php echo $question; ?></h6>
+	                     <p class="answer"><?php echo $answer; ?></p>
+	                  </div>
+	                  <div class="thumbnail" style="background-image:url('<?php echo $the_feature; ?>')"></div>
+	               </div>
+	               <h2 class="name"><?php the_title(); ?></h2>
+	               <p class="heading6 location"><?php echo $location; ?></p>
                </div>
-               <h2 class="name"><?php the_title(); ?></h2>
-               <p class="heading6 location"><?php echo $location; ?></p>
             </div>
              <?php
          if($c_cnt %2 != 0){
