@@ -267,7 +267,7 @@ $(window).resize(_resize);
 
  $('.menu-item-has-children > a').after('<div class="after-arrow"></div>');
 
- $('ul#menu-main_nav li.menu-item-has-children').click(function(){
+ $('.sidr-inner li.menu-item-has-children').click(function(){
     $(this).children('.sub-menu').toggleClass('open');
     $(this).children('.after-arrow').toggleClass('open');
  });
