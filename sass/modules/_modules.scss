@@ -1388,6 +1388,9 @@ a.filter-trigger{
       overflow-y: hidden;
       li{
          display: inline-block;
+         &.selected{
+            color: $primary-orange;
+         }
          a{
             color: $primary-darkbrown;
          }
