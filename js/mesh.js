@@ -379,7 +379,7 @@ if($('#vmap').size() > 0){
 }
 
 //Autocomplete
-// see https://goodies.pixabay.com/jquery/auto-complete/demo.html for more info 
+// see https://goodies.pixabay.com/jquery/auto-complete/demo.html for more info
 
 //Search posts
 $('input[name="sp"]').autoComplete({
@@ -479,7 +479,7 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
   $(window).on('load',function(){
     loadPostsByTopic($parameter[1],'');
     $('.load_more').hide();
-    
+
   });
   //If we're running the search POSTS
 // }else if (getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'query'){
@@ -1106,13 +1106,33 @@ $('.filter-bar .panel').each(function(){
 
    });
 
-   console.log(menuInvisibleSize);
+   // console.log(menuInvisibleSize);
+   // var scroll = jQuery.Event("keydown");
+   // scroll.which = 39;
+   // // scroll to left
+   // $(rightPaddle).on('click', function() {
+   //    // console.log(thisFilterbar);
+   //  // $(thisFilterbar).animate( { scrollLeft: menuInvisibleSize}, scrollDuration);
+   //  $(thisFilterbar).focus();
+   //  $(thisFilterbar).trigger(scroll);
+   //  // console.log(scroll);
+   //  $(thisFilterbar).keydown(function(){
+   //    console.log("scrolled");
+   //  });
+   // });
 
-   // scroll to left
-   $(rightPaddle).on('click', function() {
-      // console.log(thisFilterbar);
-    $(thisFilterbar).animate( { scrollLeft: menuInvisibleSize}, scrollDuration);
-   });
+   // $(rightPaddle).bind("mousedown", function(event){
+   //    // event.stopPropagation();
+   //    $(thisFilterbar).focus();
+   //    $(thisFilterbar).trigger($.Event("keydown", {keyCode: 39}));
+   // });
+
+   // $(rightPaddle).mousedown(function(event){
+   //    // event.stopPropagation();
+   //    console.log(event);
+   //    $(thisFilterbar).focus();
+   //    $(thisFilterbar).trigger($.Event("keydown", {keyCode: 39}));
+   // });
 
    // scroll to right
    // $(leftPaddle).on('click', function() {

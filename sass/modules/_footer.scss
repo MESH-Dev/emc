@@ -6,6 +6,12 @@ footer{
 
       }
    }
+   .search-wrap .search-field button.submit{
+      height: 20px;
+      svg{
+         vertical-align: top;
+      }
+   }
    .nav-row{
       padding: 14px 0;
       background-color: $secondary-offwhite;
@@ -146,6 +152,9 @@ footer{
       a.submit, button.submit{
          display: none;
          margin: 0;
+         border: 0;
+         padding: 0;
+         height: 30px;
          &.show{
             display: inline-block;
             vertical-align: middle;
@@ -154,6 +163,7 @@ footer{
       svg{
          height: 15px;
          width: auto;
+         vertical-align: middle;
          // max-width: 10%;
       }
       &.open{
@@ -176,4 +186,5 @@ a.submit, button.submit{
    width: 20px;
    height: auto;
    cursor: pointer;
+   // height: 30px;
 }
