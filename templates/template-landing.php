@@ -182,9 +182,9 @@
 				<?php } ?>
 			</div>
 		</div>
-		<div class="content">
+		<div class="content" >
 			<div class="img-screen" aria-hidden="true"></div>
-			<img class="feature-image" src="<?php echo $ip_image_url; ?>" />
+			<div class="feature-image has-background" style="background-image:url(<?php echo $ip_image_url; ?>);" />
 		</div>
 	</div>
 <?php }elseif($panel_type == 'news') {
