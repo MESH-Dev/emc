@@ -241,7 +241,7 @@ $(window).resize(_resize);
 
  $('.menu-item-has-children > a').after('<div class="after-arrow"></div>');
 
- $('ul#menu-main_nav li.menu-item-has-children').click(function(){
+ $('li.menu-item-has-children').click(function(){
     $(this).children('.sub-menu').toggleClass('open');
     $(this).children('.after-arrow').toggleClass('open');
  });
@@ -263,6 +263,26 @@ $('#tickerClose').click(function(event){
    var hh = $('header').height();
    //console.log(hh);
    $('.welcome-gate').css({'margin-top':hh});
+});
+
+$('#modalOpen').click(function(event){
+   event.preventDefault();
+   $('.modal').addClass('show');
+});
+
+$('#modalClose').click(function(){
+   $('.modal').removeClass('show');
+});
+
+$('a.filter-trigger').click(function(){
+   if ($(this).is('.open')) {
+      $(this).removeClass('open');
+   }else{
+      $('a.filter-trigger').each(function(){
+         $(this).removeClass('open');
+      });
+      $(this).addClass('open');
+   }
 });
 
 $('#topicTrigger').click(function(event){
@@ -323,7 +343,7 @@ if($('#vmap').size() > 0){
 }
 
 //Autocomplete
-// see https://goodies.pixabay.com/jquery/auto-complete/demo.html for more info 
+// see https://goodies.pixabay.com/jquery/auto-complete/demo.html for more info
 
 //Search posts
 $('input[name="sp"]').autoComplete({
@@ -957,4 +977,91 @@ function loadFilms (filmTopic, query) { //*
 //     });
 //   });
 
+
+
+$('.filter-bar .panel').each(function(){
+   // duration of scroll animation
+   var scrollDuration = 300;
+   // paddles
+   // var leftPaddle = document.getElementsByClassName('left-paddle');
+   var rightPaddle = $(this).find('.scroll');
+   var thisFilterbar = $(this).find('.columns-11 ul');
+   // console.log(rightPaddle);
+   // get items dimensions
+   var itemsLength = $(this).find('.columns-11 ul li').length;
+   var itemSize = $(this).find('.columns-11 ul li').outerWidth(true);
+   // get some relevant size for the paddle triggering point
+   var paddleMargin = 20;
+
+   // get wrapper width
+   var getMenuWrapperSize = function() {
+   	return $(thisFilterbar).outerWidth();
+   }
+   var menuWrapperSize = getMenuWrapperSize();
+   // the wrapper is responsive
+   $(window).on('resize', function() {
+   	menuWrapperSize = getMenuWrapperSize();
+   });
+   // size of the visible part of the menu is equal as the wrapper size
+   var menuVisibleSize = menuWrapperSize;
+
+   // get total width of all menu items
+   var getMenuSize = function() {
+   	return itemsLength * itemSize;
+   };
+   var menuSize = getMenuSize();
+   // get how much of menu is invisible
+   var menuInvisibleSize = menuSize - menuWrapperSize;
+
+   // get how much have we scrolled to the left
+   var getMenuPosition = function() {
+   	return $(thisFilterbar).scrollLeft();
+   };
+
+   // finally, what happens when we are actually scrolling the menu
+   $(thisFilterbar).on('scroll', function() {
+
+   	// get how much of menu is invisible
+   	menuInvisibleSize = menuSize - menuWrapperSize;
+   	// get how much have we scrolled so far
+   	var menuPosition = getMenuPosition();
+
+   	var menuEndOffset = menuInvisibleSize;
+
+   	// show & hide the paddles
+   	// depending on scroll position
+   // 	if (menuPosition <= paddleMargin) {
+   // 		$(leftPaddle).addClass('hidden');
+   // 		$(rightPaddle).removeClass('hidden');
+   // 	} else if (menuPosition < menuEndOffset) {
+   // 		// show both paddles in the middle
+   // 		$(leftPaddle).removeClass('hidden');
+   // 		$(rightPaddle).removeClass('hidden');
+   // 	} else if (menuPosition >= menuEndOffset) {
+   // 		$(leftPaddle).removeClass('hidden');
+   // 		$(rightPaddle).addClass('hidden');
+   // }
+
+   	// // print important values
+   	// $('#print-wrapper-size span').text(menuWrapperSize);
+   	// $('#print-menu-size span').text(menuSize);
+   	// $('#print-menu-invisible-size span').text(menuInvisibleSize);
+   	// $('#print-menu-position span').text(menuPosition);
+
+   });
+
+   console.log(menuInvisibleSize);
+
+   // scroll to left
+   $(rightPaddle).on('click', function() {
+      // console.log(thisFilterbar);
+   	$(thisFilterbar).animate( { scrollLeft: menuInvisibleSize}, scrollDuration);
+   });
+
+   // scroll to right
+   // $(leftPaddle).on('click', function() {
+   // 	$('.menu').animate( { scrollLeft: '0' }, scrollDuration);
+   // });
+
+   });
 });

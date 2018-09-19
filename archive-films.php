@@ -72,7 +72,7 @@
                   </li>
                </ul>
             </div>
-				<div class="columns-3 offset-by-1 extra-links">
+				<div class="columns-4 extra-links">
 					<a href="">Educational PSAs</a>
 					<a href="">Archives</a>
 				</div>
@@ -83,7 +83,7 @@
       <div class="panel topics">
          <div class="container">
             <div class="row">
-               <div class="columns-10 offset-by-1">
+               <div class="columns-11 offset-by-1">
                   <ul class="f-topic-filters">
                      <li data-filter="">All</li>
                      <?php
@@ -103,6 +103,15 @@
                            <?php } ?>
 
                   </ul>
+						<svg class="scroll" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+							<style type="text/css">
+								.st0{fill:#EED9BD;}
+								.st1{fill:#EC742E;}
+							</style>
+							<polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
+								39.3,83.3 66,56.5 71.9,50.7 "/>
+						</svg>
                </div>
             </div>
          </div>
@@ -137,7 +146,7 @@
 	<div class="panel films-list">
 		<div class="container">
          <section id="emc-films">
-         <?php 
+         <?php
             $args = array(
             'post_type' => 'films',
             'posts_per_page' => 5,
@@ -240,7 +249,7 @@
               });
            });
          </script>
-			</section> 
+			</section>
 		</div>
 	</div>
 </main><!-- End of Content -->

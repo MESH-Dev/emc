@@ -168,6 +168,7 @@ body{
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+    z-index: -1;
    }
 
    .pane{
@@ -863,6 +864,11 @@ body{
             line-height: 41px;
             text-transform: uppercase;
             transition: opacity 0.5s ease-in-out;
+            @media screen and ($bp-smaller-than-tablet){
+               margin-left: 0;
+               margin-right: 10px;
+               // display: block;
+            }
             &:hover{
                opacity: 0.5;
                text-decoration: none;
@@ -886,6 +892,9 @@ body{
             display: inline-block;
             margin-right: 10px;
             margin-bottom: 0;
+            @media screen and ($bp-smaller-than-desktop){
+               display: block;
+            }
             &.filter{
                p{
                   color: $primary-orange;
@@ -908,9 +917,19 @@ body{
             }
          }
       }
+      a.filter-trigger{
+         &.open{
+            opacity: 0.5;
+            svg{
+               transform: rotate(-90deg);
+            }
+         }
+      }
    }
    &.events{
       background-color: $offwhite-3;
+      position: relative;
+      z-index: 999;
       .event-columns-1{
          width: 20%;
          min-height: 1px;
@@ -1005,6 +1024,12 @@ body{
       }
       ul{
          margin-bottom: 0;
+         &.f-topic-filters{
+            li{
+               margin-left: 0;
+               margin-right: 65px;
+            }
+         }
          li{
             margin-bottom: 0;
             @include whitney-bold();
@@ -1013,6 +1038,15 @@ body{
             color: $primary-darkbrown;
             margin-left: 65px;
             text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.5s ease-in-out;
+            @media screen and ($bp-smaller-than-tablet){
+               margin-left: 0;
+               margin-right: 65px;
+            }
+            &:hover{
+               color: $primary-orange;
+            }
          }
       }
    }
@@ -1275,6 +1309,26 @@ body{
    }
 }
 
+a.filter-trigger{
+   color: $primary-orange;
+   cursor: pointer;
+   transition: opacity 0.5s ease-in-out;
+   svg{
+      transition: all 0.2s ease-in-out;
+      vertical-align: middle;
+   }
+   &:hover{
+      text-decoration: none;
+      opacity: 0.5;
+   }
+   &.open{
+      opacity: 0.5;
+      svg{
+         transform: rotate(-90deg);
+      }
+   }
+}
+
 .landing{
    .topics{
       ul{
@@ -1294,11 +1348,11 @@ body{
    right: 40px;
    background-color: $black;
    opacity: 0.5;
-   // @media screen and ($bp-smaller-than-tablet){
-   //    left: 0;
-   //    right: 0;
-   //    opacity: 0.5;
-   // }
+   @media screen and ($bp-smaller-than-tablet){
+      left: 0;
+      right: 0;
+      // opacity: 0.5;
+   }
 }
 
 .event-grid{
@@ -1323,7 +1377,13 @@ body{
 
 .filter-bar{
    background-color: $offwhite-1;
+   [class*="columns-"]{
+      position: relative;
+   }
    ul{
+      white-space: nowrap;
+      overflow-x: scroll;
+      overflow-y: hidden;
       li{
          display: inline-block;
          a{
@@ -1597,6 +1657,9 @@ main.text{
    .filter-bar{
       background: transparent;
       text-align: right;
+      @media screen and ($bp-smaller-than-tablet){
+         text-align: left;
+      }
       a,p{
          display: inline-block;
          @include whitney-bold();
@@ -1609,30 +1672,45 @@ main.text{
          color: $primary-lightbrown;
          margin-bottom: 0;
       }
+      .pad{
+         @media screen and ($bp-smaller-than-tablet){
+            padding-left: 20px;
+            padding-right: 20px;
+         }
+      }
       ul{
-         display: inline-block;
+         // display: inline-block;
          li{
             display: inline-block;
             text-transform: uppercase;
          }
       }
    }
-}
-
-a.filter-trigger{
-   color: $primary-orange;
-   cursor: pointer;
-   transition: opacity 0.5s ease-in-out;
-   &:hover{
-      text-decoration: none;
-      opacity: 0.5;
-   }
-   &.open{
-      // opacity: 0.5;
-      .down-arrow{
-         transform: rotate(-90deg);
+   .filter-triggers{
+      a.filter-trigger{
+         @media screen and ($bp-smaller-than-tablet){
+            display: block;
+            margin-bottom: 10px;
+         }
       }
    }
+   .search-wrap{
+      @media screen and ($bp-smaller-than-desktophd){
+         text-align: right;
+      }
+      @media screen and ($bp-smaller-than-tablet){
+         text-align: left;
+      }
+   }
+}
+
+svg.scroll{
+   height: 16px;
+   width: auto;
+   display: inline-block;
+   position: absolute;
+   top: 2px;
+   right: -14px;
 }
 
 .post{
@@ -1984,31 +2062,64 @@ main.search-results{
 //Email Modal
 .modal{
    position: relative;
-   z-index: 9999;
-   // display: none;
-   // &.show{
-   //    display: block;
-   // }
+   z-index: 999999;
+   display: none;
+   &.show{
+      display: block;
+   }
 }
 
 .modal-body{
    position: fixed;
-   top: 120px;
-   left: 40%;
+   top: 20px;
+   left: 50%;
+   transform: translateX(-50%);
    max-width: 659px;
+   z-index: 1;
+   max-height: 92vh;
+   overflow-y: scroll;
+   overflow-x: hidden;
+   @media screen and ($bp-smaller-than-desktop){
+      max-width: unset;
+      width: 90%;
+      // margin: 0 auto;
+   }
    .thumbnail-section{
-      height: 364px;
+      // height: calc(90vh - 609px);
+      min-height: 300px;
+      height: 30vh;
       width: 100%;
       position: relative;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      .modal-close{
+         position: absolute;
+         top: 10px;
+         right: 10px;
+         height: 29px;
+         width: 29px;
+         cursor: pointer;
+      }
    }
    .form-section{
       background-color: $primary-pink;
       width: 100%;
+      padding: 25px;
+      form{
+         p{
+            margin-bottom: 0;
+         }
+      }
       h5{
          @include whitney-bold();
          font-size: 3.6rem;
          letter-spacing: 1.84px;
          color: $primary-red;
+         text-transform: none;
+         @media screen and ($bp-smaller-than-tablet){
+            font-size: 2.8rem;
+         }
       }
       .name-fields{
          float: left;
@@ -2035,6 +2146,8 @@ main.search-results{
          font-size: 1.6rem;
          font-family: 'bianco-reg';
          margin-bottom: 20px;
+         padding-left: 0;
+         padding-bottom: 0;
          &:focus{
             outline: none;
          }
@@ -2065,11 +2178,21 @@ main.search-results{
             text-transform: uppercase;
             font-size: 1.4rem;
             color: $primary-orange;
+            @include whitney-bold();
+            line-height: normal;
             letter-spacing: 3px;
-            float: left;
+            // float: left;
             transition: all 0.5s ease-in-out;
             background: transparent;
             text-align: left;
+            border-bottom: 0px;
+            padding-left: 0;
+            margin-bottom: 0;
+            white-space: normal;
+            height: auto;
+            background-position: center right;
+            background-repeat: no-repeat;
+            background-image: url("img/arrow-right.svg");
             &:hover{
                opacity: 0.5;
             }

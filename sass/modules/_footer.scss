@@ -19,7 +19,7 @@ footer{
          text-transform: uppercase;
          color: $primary-red;
          letter-spacing: 0.8px;
-         transition: color 0.5s ease-in-out;
+         transition: all 0.5s ease-in-out;
          margin-right: 31px;
          @media screen and ($bp-smaller-than-desktophd){
             margin-right: 0;
@@ -28,6 +28,7 @@ footer{
             color: $nav-brown;
          }
          &:hover{
+            opacity: 1;
             text-decoration: none;
             color: $primary-orange;
          }
