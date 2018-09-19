@@ -14,7 +14,6 @@
 	$l_page_callout = get_field('banner_callout_text');
 ?>
 <div class="welcome-gate interior">
-	<!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
 	<?php if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
 	<div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>
 	<?php } ?>
@@ -89,7 +88,6 @@
 					</div>
 					<div class="columns-5 offset-by-1 textsection right-col">
 						<?php echo $partner_text; ?>
-						<!-- <p>Asociación Corazón del Agua trains indigenous midwives from high maternal-mortality districts with a 3-year curriculum that incorporates indigenous traditions in the country’s first professional university-level degree program.</p> -->
 					</div>
 				</div>
 			</div>
@@ -185,19 +183,9 @@
 			</div>
 		</div>
 		<div class="content">
-			<div class="img-screen">
-
-			</div>
-			<!-- <img class="feature-image has-background" style="background-image:url('<?php echo $ip_image_url; ?>')" /> -->
+			<div class="img-screen" aria-hidden="true"></div>
 			<img class="feature-image" src="<?php echo $ip_image_url; ?>" />
-			<!-- <img class="feature-image" src="<//?php echo $story_img_url; ?>" alt="" style="opacity:0;"> -->
-			<!-- </div> -->
 		</div>
-		<!-- <div class="stat-visual" src="<//?php echo get_template_directory_uri(); ?>/img/Y1WMEo9Q.png" alt="">
-			<div class="img-screen">
-
-			</div>
-		</div> -->
 	</div>
 <?php }elseif($panel_type == 'news') {
 	$n_title = get_sub_field('news_title');

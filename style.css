@@ -1791,7 +1791,6 @@ body {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  z-index: -1;
 }
 /* line 174, sass/modules/_modules.scss */
 .welcome-gate .pane {
@@ -3867,14 +3866,17 @@ main.search-results .pagination {
   position: relative;
   margin-bottom: 10px;
 }
-/* line 2013, sass/modules/_modules.scss */
+/* line 2014, sass/modules/_modules.scss */
 .people-row .thumbnail-block .thumbnail {
   height: 339px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+  position: relative;
 }
-/* line 2019, sass/modules/_modules.scss */
+/* line 2023, sass/modules/_modules.scss */
 .people-row .thumbnail-block .overlay {
   background-color: #F8B199;
   position: absolute;
@@ -3882,8 +3884,7 @@ main.search-results .pagination {
   bottom: 0;
   left: 0;
   right: 0;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  z-index: 0;
   text-align: center;
   display: -webkit-flex;
   display: flex;
@@ -3895,14 +3896,14 @@ main.search-results .pagination {
   justify-content: center;
   overflow: hidden;
 }
-/* line 2034, sass/modules/_modules.scss */
+/* line 2037, sass/modules/_modules.scss */
 .people-row .thumbnail-block .overlay h6 {
   margin-top: 0;
   color: #B46C4E;
   line-height: normal;
   max-width: 90%;
 }
-/* line 2040, sass/modules/_modules.scss */
+/* line 2043, sass/modules/_modules.scss */
 .people-row .thumbnail-block .overlay p {
   font-size: 1.8rem;
   letter-spacing: 0.35px;
@@ -3912,28 +3913,32 @@ main.search-results .pagination {
   margin: 0;
 }
 @media screen and (max-width: 750px) {
-  /* line 2050, sass/modules/_modules.scss */
+  /* line 2053, sass/modules/_modules.scss */
   .people-row .member {
     margin-bottom: 40px;
   }
 }
-/* line 2055, sass/modules/_modules.scss */
-.people-row .member:hover .overlay {
-  opacity: 1;
+/* line 2057, sass/modules/_modules.scss */
+.people-row .member .name {
+  color: #B46C4E;
+}
+/* line 2061, sass/modules/_modules.scss */
+.people-row .member:hover .thumbnail, .people-row .member:active .thumbnail, .people-row .member:focus .thumbnail {
+  opacity: 0;
 }
 
-/* line 2063, sass/modules/_modules.scss */
+/* line 2069, sass/modules/_modules.scss */
 .modal {
   position: relative;
   z-index: 999999;
   display: none;
 }
-/* line 2067, sass/modules/_modules.scss */
+/* line 2073, sass/modules/_modules.scss */
 .modal.show {
   display: block;
 }
 
-/* line 2072, sass/modules/_modules.scss */
+/* line 2078, sass/modules/_modules.scss */
 .modal-body {
   position: fixed;
   top: 20px;
@@ -3946,13 +3951,13 @@ main.search-results .pagination {
   overflow-x: hidden;
 }
 @media screen and (max-width: 1060px) {
-  /* line 2072, sass/modules/_modules.scss */
+  /* line 2078, sass/modules/_modules.scss */
   .modal-body {
     max-width: unset;
     width: 90%;
   }
 }
-/* line 2087, sass/modules/_modules.scss */
+/* line 2093, sass/modules/_modules.scss */
 .modal-body .thumbnail-section {
   min-height: 300px;
   height: 30vh;
@@ -3962,7 +3967,7 @@ main.search-results .pagination {
   background-size: cover;
   background-repeat: no-repeat;
 }
-/* line 2096, sass/modules/_modules.scss */
+/* line 2102, sass/modules/_modules.scss */
 .modal-body .thumbnail-section .modal-close {
   position: absolute;
   top: 10px;
@@ -3971,17 +3976,17 @@ main.search-results .pagination {
   width: 29px;
   cursor: pointer;
 }
-/* line 2105, sass/modules/_modules.scss */
+/* line 2111, sass/modules/_modules.scss */
 .modal-body .form-section {
   background-color: #F8B199;
   width: 100%;
   padding: 25px;
 }
-/* line 2110, sass/modules/_modules.scss */
+/* line 2116, sass/modules/_modules.scss */
 .modal-body .form-section form p {
   margin-bottom: 0;
 }
-/* line 2114, sass/modules/_modules.scss */
+/* line 2120, sass/modules/_modules.scss */
 .modal-body .form-section h5 {
   font-family: "Whitney A", "Whitney B";
   font-style: normal;
@@ -3992,32 +3997,32 @@ main.search-results .pagination {
   text-transform: none;
 }
 @media screen and (max-width: 750px) {
-  /* line 2114, sass/modules/_modules.scss */
+  /* line 2120, sass/modules/_modules.scss */
   .modal-body .form-section h5 {
     font-size: 2.8rem;
   }
 }
-/* line 2124, sass/modules/_modules.scss */
+/* line 2130, sass/modules/_modules.scss */
 .modal-body .form-section .name-fields {
   float: left;
   width: 50%;
 }
-/* line 2127, sass/modules/_modules.scss */
+/* line 2133, sass/modules/_modules.scss */
 .modal-body .form-section .name-fields.first {
   padding-right: 20px;
 }
 @media screen and (max-width: 750px) {
-  /* line 2124, sass/modules/_modules.scss */
+  /* line 2130, sass/modules/_modules.scss */
   .modal-body .form-section .name-fields {
     float: none;
     width: 100%;
   }
-  /* line 2133, sass/modules/_modules.scss */
+  /* line 2139, sass/modules/_modules.scss */
   .modal-body .form-section .name-fields.first {
     padding-right: 0px;
   }
 }
-/* line 2139, sass/modules/_modules.scss */
+/* line 2145, sass/modules/_modules.scss */
 .modal-body .form-section input {
   border-bottom: 2px solid #70594C;
   border-left: 0;
@@ -4031,44 +4036,44 @@ main.search-results .pagination {
   padding-left: 0;
   padding-bottom: 0;
 }
-/* line 2151, sass/modules/_modules.scss */
+/* line 2157, sass/modules/_modules.scss */
 .modal-body .form-section input:focus {
   outline: none;
 }
-/* line 2154, sass/modules/_modules.scss */
+/* line 2160, sass/modules/_modules.scss */
 .modal-body .form-section input::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: #70594C;
 }
-/* line 2157, sass/modules/_modules.scss */
+/* line 2163, sass/modules/_modules.scss */
 .modal-body .form-section input::-moz-placeholder {
   /* Firefox 19+ */
   color: #70594C;
 }
-/* line 2160, sass/modules/_modules.scss */
+/* line 2166, sass/modules/_modules.scss */
 .modal-body .form-section input:-ms-input-placeholder {
   /* IE 10+ */
   color: #70594C;
 }
-/* line 2163, sass/modules/_modules.scss */
+/* line 2169, sass/modules/_modules.scss */
 .modal-body .form-section input:-moz-placeholder {
   /* Firefox 18- */
   color: #70594C;
 }
-/* line 2166, sass/modules/_modules.scss */
+/* line 2172, sass/modules/_modules.scss */
 .modal-body .form-section input[type="text"], .modal-body .form-section input[type="email"] {
   height: 50px;
 }
-/* line 2170, sass/modules/_modules.scss */
+/* line 2176, sass/modules/_modules.scss */
 .modal-body .form-section input[type="text"] {
   display: block;
   width: 100%;
 }
-/* line 2174, sass/modules/_modules.scss */
+/* line 2180, sass/modules/_modules.scss */
 .modal-body .form-section input[type="email"] {
   width: 100%;
 }
-/* line 2177, sass/modules/_modules.scss */
+/* line 2183, sass/modules/_modules.scss */
 .modal-body .form-section input[type="submit"] {
   text-transform: uppercase;
   font-size: 1.4rem;
@@ -4090,16 +4095,16 @@ main.search-results .pagination {
   background-repeat: no-repeat;
   background-image: url("img/arrow-right.svg");
 }
-/* line 2196, sass/modules/_modules.scss */
+/* line 2202, sass/modules/_modules.scss */
 .modal-body .form-section input[type="submit"]:hover {
   opacity: 0.5;
 }
-/* line 2203, sass/modules/_modules.scss */
+/* line 2209, sass/modules/_modules.scss */
 .modal-body .form-section .panel span.wpcf7-not-valid-tip {
   color: #EB742D;
 }
 
-/* line 2224, sass/modules/_modules.scss */
+/* line 2230, sass/modules/_modules.scss */
 .modal-underlay {
   position: fixed;
   top: 0;
@@ -4110,19 +4115,19 @@ main.search-results .pagination {
   opacity: 0.8;
 }
 
-/* line 2237, sass/modules/_modules.scss */
+/* line 2243, sass/modules/_modules.scss */
 .tablet-down {
   display: none;
 }
 @media only screen and (max-width: 750px) {
-  /* line 2237, sass/modules/_modules.scss */
+  /* line 2243, sass/modules/_modules.scss */
   .tablet-down {
     display: inline-block;
   }
 }
 
 @media only screen and (max-width: 750px) {
-  /* line 2244, sass/modules/_modules.scss */
+  /* line 2250, sass/modules/_modules.scss */
   .desktop-up {
     display: none;
   }

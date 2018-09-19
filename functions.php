@@ -357,15 +357,27 @@ endif;
        die();//if this isn't included, you will get funky characters at the end of your query results.
 }
 
+add_action('wp_ajax_get_community_members', 'get_community_members');  
+add_action('wp_ajax_nopriv_get_community_members', 'get_community_members'); 
+
 function get_community_members(){
   //$post_topic = $_POST['postTopic'];
   $query = $_POST['query']; //*
- 
+ //var_dump($query);
  //Make the search exlusive to entries or clicking the filter
- if ($query != ''): //All posts? No filter
+ if ($query == ''): //All posts? No filter
       $args = array(
       'post_type' => 'community',
       'posts_per_page' => 9,
+      'post_status' => 'publish',
+      'paged' => $paged,
+      
+      //
+      );
+ elseif ($query != ''): //All posts? No filter
+      $args = array(
+      'post_type' => 'community',
+      'posts_per_page' => -1,
       'post_status' => 'publish',
       'paged' => $paged,
       's' => $query
@@ -379,7 +391,8 @@ endif;
         $the_query = new WP_Query( $args ); 
         //var_dump($args);
         $count = $the_query->found_posts;
-        
+        $c_cnt=0;
+        echo '<div class="row people-row">';
 
        if ( $the_query->have_posts() ) : 
       // Do we have any posts in the databse that match our query?
@@ -392,41 +405,55 @@ endif;
         
          //if (have_rows ('project_gallery')): //Setup the panels between the top/bottom panels
                //Setup variables
-               
+               $c_cnt++;
                 $the_title = get_the_title();
-                $the_excerpt = get_the_excerpt();
-                
+                //$the_excerpt = get_the_excerpt();
+                //$the_feature = get_the_post_thumbnail_url('')
+                $id = $post->ID;
+                $the_feature = get_the_post_thumbnail_url($id, 'large');
+                $location = get_field('member_location');
+                $question = get_field('member_question');
+                $answer = get_field('member_answer');
+                $div_class = '';
+                if($c_cnt % 3 == 1){
+                   $div_class = 'offset-by-1';
+                }
                 $target = '';
 
                 $directory = get_bloginfo('template_directory');
 
                 $f_override = get_field('override_feature_image_text', $post->ID);
-                $f_image = the_post_thumbnail('large', $post->ID);
+                //$f_image = the_post_thumbnail('large', $post->ID);
 
                 $feature = '';
 
-                if(the_post_thumbnail($post->ID) != ''){
-          $feature = get_the_post_thumbnail('large');
-          }elseif(get_field('override_feature_image_text', $post->ID) != ''){
-            $b = "'bianco-reg'";
-            $feature = '<h2 style="text-align:center; font-size:48px; font-family: '.$b.';">'.$f_override.'</h2>';
-          }
+          //       if(the_post_thumbnail($post->ID) != ''){
+          // $feature = get_the_post_thumbnail('large');
+          // }elseif(get_field('override_feature_image_text', $post->ID) != ''){
+          //   $b = "'bianco-reg'";
+          //   $feature = '<h2 style="text-align:center; font-size:48px; font-family: '.$b.';">'.$f_override.'</h2>';
+          // }
 
           //endif; 
           echo '
-          <section id="posts">
-          <article class="post">
-          '.$feature.'
-          <div class="content" style="width:60%; margin:0 auto; text-align:center;">
-            <h2>'.$the_title.'</h2>
+          <div class="member columns-3 '.$div_class.'">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                     <h6 class="question">'.$question.'</h6>
+                     <p class="answer">'.$answer.'</p>
+                  </div>
+                  <div class="thumbnail" style="background-image:url('.$the_feature.')">
 
-            '.$the_excerpt.'
-          </div>
-          </article>
-
-      </section>';
+                  </div>
+               </div>
+               <h2 class="name">'.$the_title.'</h2>
+               <p class="heading6 location">'.$location.'.</p>
+            </div>
+          ';
          endwhile; 
-         
+         if($c_cnt %3 == 0){
+            echo '</div><div class="row people-row"> <!-- New Row -->';
+          };
        else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
         
         echo '<article class="post-error">
@@ -735,7 +762,7 @@ endif;
             $excerpt_style = get_field('excerpt_style');
             $id = $post->ID;
             $img = get_the_post_thumbnail_url($id, 'large');
-            //var_dump($id);
+            //var_dump($img);
             $film_type = get_the_terms($id, 'film_type');
             $type = $film_type[0]->name;
 
@@ -748,7 +775,7 @@ endif;
           '
            <div class="row listing-row">
             <div class="listing-card columns-12">
-               <div class="thumbnail columns-7" style="background-image: url("'. $img.'");">
+               <div class="thumbnail columns-7" style="background-image:url('. $img.')";">
                </div>
                <div class="item-text columns-5">
                   <h4 class="item-title pf">'.$the_title.'</h4>

@@ -11,11 +11,23 @@
 
 					<?php while ( have_posts() ) : the_post(); ?>
 
-						<div class="post">
-							<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-							<p class="postinfo">By <?php the_author(); ?> | Categories: <?php the_category(', '); ?> | <?php comments_popup_link(); ?></p>
-							<?php the_content('Read more &#8658'); ?>
-						</div>
+						<div class="columns-8 offset-by-1">
+				            <div class="">
+				               <h2 class="result-title"><?php the_title(); ?></h2>
+				               <p><?php echo the_excerpt(); ?></p>
+				               <a class="cta heading6" href="<?php the_permalink(); ?>">
+				                  Read More
+				                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+				                     <style type="text/css">
+				                        .st0{fill:#EED9BD;}
+				                        .st1{fill:#EC742E;}
+				                     </style>
+				                     <polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
+				                        39.3,83.3 66,56.5 71.9,50.7 "/>
+				                  </svg>
+				               </a>
+				            </div>
+				         </div>
 
 					<?php endwhile; ?>
 
@@ -25,9 +37,6 @@
 
 					<?php get_search_form(); ?>
 				<?php endif; ?>
-			</div>
-			<div class="columns-3">
-				<?php get_sidebar(); ?>
 			</div>
 		</div>
 	</div>

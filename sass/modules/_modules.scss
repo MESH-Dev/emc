@@ -168,7 +168,7 @@ body{
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    z-index: -1;
+    //z-index: -1;
    }
 
    .pane{
@@ -2010,11 +2010,15 @@ main.search-results{
       width: 100%;
       position: relative;
       margin-bottom: 10px;
+
       .thumbnail{
          height: 339px;
          background-position: center;
          background-size: cover;
          background-repeat: no-repeat;
+         opacity: 1;
+         transition: opacity 0.2s ease-in-out;
+         position: relative;
       }
       .overlay{
          background-color: $primary-pink;
@@ -2023,8 +2027,7 @@ main.search-results{
          bottom: 0;
          left: 0;
          right: 0;
-         opacity: 0;
-         transition: opacity 0.2s ease-in-out;
+         z-index:0;
          text-align: center;
          @include display-flex;
          @include flex-direction(column);
@@ -2051,9 +2054,12 @@ main.search-results{
       @media screen and ($bp-smaller-than-tablet){
          margin-bottom: 40px;
       }
-      &:hover{
-         .overlay{
-            opacity: 1;
+      .name{
+         color:$primary-red;
+      }
+      &:hover, &:active, &:focus{
+         .thumbnail{
+            opacity: 0;
          }
       }
    }

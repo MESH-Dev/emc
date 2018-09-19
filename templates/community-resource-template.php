@@ -1,45 +1,47 @@
-<?php get_header(); 
-
-/* Template Name: Community Resource Library Template */?>
-
-<main id="content" class="community" style="margin-top:12em;">
-	<?php
-	$background_img = get_field('background_image');
-	$background_image_url = $background_img['sizes']['short-banner'];
-	$v_ogg = get_field('video_ogg');
-	$vo_url = $v_ogg['url'];
-	$v_mp4 = get_field('video_mp4');
-	$vm_url = $v_mp4['url'];
-	$v_webm = get_field('video_webm');
-	$vw_url = $v_webm['url'];
-	$l_page_callout = get_field('banner_callout_text');
+<?php get_header();
+/* Template Name: Community Resource Library Template */
 ?>
-<div class="welcome-gate interior" style="background-image:url('<?php echo $background_image_url; ?>">
-	<!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
-	<?php if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
-	<div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>
-	<?php } ?>
-	<div class="banner-text columns-5 offset-by-1">
-		<p class="top-callout"><?php echo the_title(); ?></p>
-		<h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
-	</div>
-	<?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
-		<video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true">
-			<source src ="<?php echo $vm_url; ?>" autoplay="true" loop="true" muted="true">
-			<source src ="<?php echo $vo_url; ?>" autoplay="true" loop="true" muted="true">
-			<source src ="<?php echo $vw_url; ?>" autoplay="true" loop="true" muted="true">
-		</video>
-	<?php } ?>
+
+<main id="content" class="community-grid">
+   <?php
+   $background_img = get_field('background_image');
+   $background_image_url = $background_img['sizes']['short-banner'];
+   $v_ogg = get_field('video_ogg');
+   $vo_url = $v_ogg['url'];
+   $v_mp4 = get_field('video_mp4');
+   $vm_url = $v_mp4['url'];
+   $v_webm = get_field('video_webm');
+   $vw_url = $v_webm['url'];
+   $l_page_callout = get_field('banner_callout_text');
+?>
+<div class="welcome-gate interior">
+   <!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
+   <?php if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
+   <div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>
+   <?php } ?>
+   <div class="banner-text columns-5 offset-by-1">
+      <p class="top-callout"><?php the_title(); ?></p>
+      <h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
+   </div>
+   <?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
+      <video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true">
+         <source src ="<?php echo $vm_url; ?>" autoplay="true" loop="true" muted="true">
+         <source src ="<?php echo $vo_url; ?>" autoplay="true" loop="true" muted="true">
+         <source src ="<?php echo $vw_url; ?>" autoplay="true" loop="true" muted="true">
+      <video>
+   <?php } ?>
 </div>
-	<div class="panel filters">
+
+   <div class="panel filters">
       <div class="container">
          <div class="row">
-            <div class="columns-10 offset-by-1">
-              <ul><li>
+            <div class="columns-6 offset-by-1">
+               <ul>
+                  <li class="filter">
                      <a class="filter-trigger" id="searchTrigger">
-                        <p>Search our commmunity</p>
+                        <p>Search Our Community</p>
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                           viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                            viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                            <style type="text/css">
                               .st0{fill:#EED9BD;}
                               .st1{fill:#EC742E;}
@@ -48,21 +50,23 @@
                               39.3,83.3 66,56.5 71.9,50.7 "/>
                         </svg>
                      </a>
-                 </li></ul>
+                  </li>
+               </ul>
             </div>
          </div>
       </div>
    </div>
+
    <div class="filter-bar">
-      <div class="panel c-search-filter search-filter">
+      <div class="panel cr-search-filter search-filter event-search">
          <div class="container">
             <div class="row">
                <div class="columns-10 offset-by-1">
                   <div class="search-wrap">
                      <div class="search-field">
                         <form action="<?php home_url(); ?>" method="get">
-                           <label class="sr-only" for="search-form">Search</label>
-                           <input class="" type="text" name="cs" id="search-form" value="" placeholder="Search">
+                           <label class="sr-only" for="community-search">Search</label>
+                           <input class="" type="text" name="community-search" value="" placeholder="Search">
                            <button class="submit">
                               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                   viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
@@ -81,92 +85,245 @@
          </div>
       </div>
    </div>
-	<div class=""><!-- container -->
-		<div class="row">
-			<nav class="filter-bar">
-				<div class="cr-search-filter search-filter">
-					<form action="<?php home_url(); ?>" method="get">
-						<label for="search">Search Members</label>
-						<input type="search" name="s" id="search" placeholder="" value="" /><img src="<?php bloginfo('template_directory'); ?>/assets/img/search.png">
-					</form>
-				</div>
-			</nav>
-		</div>
-		<div class="container">
-			<style>
-			.post img{
-					width:100%;
-					height:auto;
-				}
 
-			span.text svg{
-				width:20px;
-			}
-			</style>
-			<?php 
+   <div class="grid-wrap">
+      <div class="container">
+         <section id="emc-community">
+            <?php   $args = array(
+            'post_type' => 'community',
+            'posts_per_page' => 9,
+            //'meta_key' => 'event_start_date',
+            //'orderby' => 'meta_value',
+            'order' => 'ASC',
+            'paged'=>$paged
+         );
+         $wp_query = new WP_Query( $args );?>
+         <?php if ($wp_query->have_posts()) :
+         $c_cnt=0;
+         ?>
+         <div class="row people-row">
+         <?php while ($wp_query->have_posts()) : $wp_query->the_post();
+            $c_cnt++;
+            $div_class='';
+            $id = $post->ID;
+            $the_feature = get_the_post_thumbnail_url($id, 'large');
+            $location = get_field('member_location');
+            $question = get_field('member_question');
+            $answer = get_field('member_answer');
+            // $icon = get_field('eo_icon');
+            // $icon_url = $icon['sizes']['medium'];
+            // $icon_alt = $icon['alt'];
+            // $event_desc = get_field('event_description');
+            // $event_loc = get_field('event_location');
+            // $event_start = get_field('event_start_date');
+            // //$event_sd = date('F j, Y', $event_start);
+            // $event_end = get_field('event_end_date');
+            // $event_link_text = get_field('el_text');
+            // $event_link = get_field('el_link');
+            // $external = get_field('external');
+            // $event_tax = get_the_terms(get_the_ID(),'event_topic');
+            // $topic_name='';
+            // if($event_tax != ''){
+            //    foreach($event_tax as $topic){
+            //       $topic_name = $topic->name;
+            //    }
+            // }
+            // $target = '';
+            // if($external == true){
+            //    $target='target="_blank"';
+            // }
+            $overlay = '';
+            if($the_feature != ''){
+            	$overlay = 'overlay';
+            }
+            $div_class='';
+            if($c_cnt % 3 == 1){
+               $div_class = 'offset-by-1';
+            }
 
-			// set the "paged" parameter (use 'page' if the query is on a static front page)
-			//$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;	
+            if($c_cnt %2 == 0){
+               //echo '</div><div class="row event-grid">';
+            }
+         ?>
+            <div class="member columns-3 <?php echo $div_class; ?>">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                     <h6 class="question"><?php echo $question; ?></h6>
+                     <p class="answer"><?php echo $answer; ?></p>
+                  </div>
+                  <div class="thumbnail" style="background-image:url('<?php echo $the_feature; ?>')"></div>
+               </div>
+               <h2 class="name"><?php the_title(); ?></h2>
+               <p class="heading6 location"><?php echo $location; ?></p>
+            </div>
+             <?php
+         if($c_cnt %2 != 0){
+            //echo '</div>';
+         }
+          if($c_cnt %3 == 0){
+               echo '</div><div class="row people-row">';
+            }
 
-			//Remember to use the global $paged instead of trying to use the variable above.
-			$args = array(
-				'post_type' => 'community',
-				'posts_per_page' => 9,
-				'paged'=>$paged
-			);
-			$wp_query = new WP_Query( $args );?>
-			<?php if ($wp_query->have_posts()) : ?>
-	 		<section id="posts">
-	 			<div class="row">
-		    <?php while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
-		      <article class="grid-item columns-4 has-background" style="height:0; padding-bottom:33.3333%;">
-					<img class="portrait" src='<?php echo the_post_thumbnail_url('large'); ?> ' style="max-width:100%;" />		
-								  
-							
-					<div class="content" style=" margin:0 auto; text-align:center; ">
-						
-						<h2><?php the_title(); ?></h2>
-						<h3>City, Country</h3>
+            endwhile;
+         ?>
+         </div> <!--end row-->
+      <?php endif; ?>
+           <!--  <div class="member columns-3">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                  </div>
+                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
 
-						<?php //the_excerpt(); ?>
-					</div>
-		      </article>
-    		<?php endwhile; ?>
-    				</div>
-		  	</section>
-		  <?php if ( $wp_query->max_num_pages > 1 ) { ?>
-		    <nav class="load_more">
-		      <?php next_posts_link( 'Load More' ); ?>
-		    </nav>
-	
-			<?php } ?>
-		   <script type="text/javascript">
-		   	  //Move this to the mesh.js file
-		  	  jQuery(document).ready(function($){
+                  </div>
+               </div>
+               <h2>Name</h2>
+               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+            <div class="member columns-3">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                  </div>
+                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
 
-				  jQuery('.load_more a').live('click', function(e){
-					  e.preventDefault();
-					  var link = jQuery(this).attr('href');
-					  //console.log(link+);
-					  $('.load_more a').html('Loading More Posts...');
-					  $.get(link, function(data) {
-						  var post = $("#posts .post ", data);
-						  //console.log(post);
-						  $('#posts').append(post);
-					  });
-					  $('.load_more').load(link+' .load_more a');
-					  var url = link;
-					 
-				  });
-			  });
-		   </script>
-		  <?php //}  ?>
-		<?php endif; wp_reset_query(); ?>
-		
-		</div>
-	</div>
+                  </div>
+               </div>
+               <h2>Name</h2>
+               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+         </div>
+         <div class="row people-row">
+            <div class="member columns-3 offset-by-1">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                  </div>
+                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
 
+                  </div>
+               </div>
+               <h2>Name</h2>
+               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+            <div class="member columns-3">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                  </div>
+                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
 
-</main><!-- End of Content -->
+                  </div>
+               </div>
+               <h2>Name</h2>
+               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+            <div class="member columns-3">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                  </div>
+                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
+
+                  </div>
+               </div>
+               <h2>Name</h2>
+               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+         </div>
+         <div class="row people-row">
+            <div class="member columns-3 offset-by-1">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                  </div>
+                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
+
+                  </div>
+               </div>
+               <h2>Name</h2>
+               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+            <div class="member columns-3">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                  </div>
+                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
+
+                  </div>
+               </div>
+               <h2>Name</h2>
+               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+            <div class="member columns-3">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                  </div>
+                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
+
+                  </div>
+               </div>
+               <h2>Name</h2>
+               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+         </div>
+         <div class="row people-row">
+            <div class="member columns-3 offset-by-1">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                  </div>
+                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
+
+                  </div>
+               </div>
+               <h2>Name</h2>
+               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+            <div class="member columns-3">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                  </div>
+                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
+
+                  </div>
+               </div>
+               <h2>Name</h2>
+               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+            <div class="member columns-3">
+               <div class="thumbnail-block">
+                  <div class="overlay">
+                  </div>
+                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
+
+                  </div>
+               </div>
+               <h2>Name</h2>
+               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            </div>
+         </div>
+      </div>
+   </div> -->
+   </section>
+	<nav class="load_more">
+		<?php next_posts_link( 'Load More' ); ?>
+	</nav>
+
+   <script type="text/javascript">
+        //Move this to the mesh.js file
+    jQuery(document).ready(function($){
+
+        jQuery('.load_more a').live('click', function(e){
+           e.preventDefault();
+           var link = jQuery(this).attr('href');
+           //console.log(link+);
+           $('.load_more a').text('Loading More Posts...');
+           $.get(link, function(data) {
+              var post = $("#emc-community .row.people-row ", data);
+              console.log(post);
+              $('#emc-community').append(post);
+           });
+           $('.load_more').load(link+' .load_more a');
+           //var url = link;
+
+        });
+    });
+   </script>
+
+</main>
 
 <?php get_footer(); ?>
