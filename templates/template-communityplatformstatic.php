@@ -46,7 +46,7 @@
                      <div class="search-field">
                         <form action="<?php home_url(); ?>" method="get">
                            <label class="sr-only" for="search">Search</label>
-                           <input class="" type="text" name="search" value="" placeholder="Search">
+                           <input class="" type="text" name="sc" value="" placeholder="Search">
                            <a class="submit" href="#">
                               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                   viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
@@ -68,7 +68,54 @@
 
    <div class="grid-wrap">
       <div class="container">
+         
+            <?php   $args = array(
+            'post_type' => 'community',
+            'posts_per_page' => 6,
+            //'meta_key' => 'event_start_date',
+            //'orderby' => 'meta_value',
+            'order' => 'ASC',
+            'paged'=>$paged
+         );
+         $wp_query = new WP_Query( $args );?>
+         <?php if ($wp_query->have_posts()) :
+         $c_cnt=0;
+         ?>
          <div class="row people-row">
+         <?php while ($wp_query->have_posts()) : $wp_query->the_post();
+            $c_cnt++;
+            $div_class='';
+            $icon = get_field('eo_icon');
+            $icon_url = $icon['sizes']['medium'];
+            $icon_alt = $icon['alt'];
+            $event_desc = get_field('event_description');
+            $event_loc = get_field('event_location');
+            $event_start = get_field('event_start_date');
+            //$event_sd = date('F j, Y', $event_start);
+            $event_end = get_field('event_end_date');
+            $event_link_text = get_field('el_text');
+            $event_link = get_field('el_link');
+            $external = get_field('external');
+            $event_tax = get_the_terms(get_the_ID(),'event_topic');
+            $topic_name='';
+            if($event_tax != ''){
+               foreach($event_tax as $topic){
+                  $topic_name = $topic->name;
+               }
+            }
+            $target = '';
+            if($external == true){
+               $target='target="_blank"';
+            }
+
+            if($e_cnt % 2 != 0){
+               $div_class = 'offset-by-1';
+            }
+
+            if($e_cnt %2 == 0){
+               //echo '</div><div class="row event-grid">';
+            }
+         ?>
             <div class="member columns-3 offset-by-1">
                <div class="thumbnail-block">
                   <div class="overlay">
@@ -82,7 +129,17 @@
                <h2>Name</h2>
                <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
             </div>
-            <div class="member columns-3">
+             <?php
+         if($c_cnt %2 != 0){
+            //echo '</div>';
+         }
+          if($e_cnt %2 == 0){
+               echo '</div><div class="row event-grid">';
+            }
+
+            endwhile;
+         ?>
+           <!--  <div class="member columns-3">
                <div class="thumbnail-block">
                   <div class="overlay">
                   </div>
@@ -211,8 +268,8 @@
             </div>
          </div>
       </div>
-   </div>
-
+   </div> -->
+   </section>
    <nav class="load_more">
       <a href="">Load More</a>
    </nav>

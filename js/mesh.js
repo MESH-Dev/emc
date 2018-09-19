@@ -13,7 +13,33 @@ jQuery(document).ready(function($){
 //   }
 // })
 
-$('#tickerClose')
+function createCookie(name,value,days) {
+if (days) {
+    var date = new Date();
+    date.setTime(date.getTime()+(days*24*60*60*1000));
+    var expires = "; expires="+date.toGMTString();
+}
+else var expires = "";
+document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+var nameEQ = name + "=";
+var ca = document.cookie.split(';');
+for(var i=0;i < ca.length;i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+}
+return null;
+}
+
+console.log(readCookie());
+
+function eraseCookie(name) {
+createCookie(name,"",-1);
+}
+
 
   var videoElement = $('.matinee');
 
@@ -252,6 +278,8 @@ $(window).resize(_resize);
 
  // $('.submit').hide();
 
+//createCookie('ticker','false','');
+
 $('#search').click(function(){
    $('.search-field').toggleClass('open');
    $('.submit').toggleClass('show');
@@ -263,7 +291,15 @@ $('#tickerClose').click(function(event){
    var hh = $('header').height();
    //console.log(hh);
    $('.welcome-gate').css({'margin-top':hh});
+   //eraseCookie('ticker');
+   createCookie('ticker','true',1);
 });
+
+var $ticker = readCookie('ticker');
+console.log($ticker);
+if($ticker != 'true'){
+  $('.ticker').removeClass('hide');
+}
 
 $('#topicTrigger').click(function(event){
    event.preventDefault();
@@ -422,11 +458,28 @@ var $parameter = getUrlParameter();
 if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'category'){
   $(window).on('load',function(){
     loadPostsByTopic($parameter[1],'');
+    $('.load_more').hide();
+    
   });
   //If we're running the search POSTS
-}else if (getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'query'){
+// }else if (getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'query'){
+//   $(window).on('load',function(){
+//   loadPostsByTopic('',$parameter[1]);
+//   });
+}else if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'location'){
   $(window).on('load',function(){
-  loadPostsByTopic('',$parameter[1]);
+  loadEvents('',$parameter[1], '');
+  $('.load_more').hide();
+  });
+}else if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'event-topic'){
+  $(window).on('load',function(){
+  loadEvents($parameter[1],'', '');
+  $('.load_more').hide();
+  });
+}else if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 'film-topic'){
+  $(window).on('load',function(){
+  loadFilms($parameter[1], '');
+  $('.load_more').hide();
   });
 }
 
@@ -588,8 +641,9 @@ function loadCommunityMembers (query) { //*
                 // append: add the new statments to the existing data
                 if(response != 0){
 
-                  $('.post').detach();
-                  $('#posts').append(response);
+                  $('.row.people-row').detach();
+                  $('.post-error').detach();
+                  $('#emc-community').append(response);
                   //$container.waitForImages(function() {
                   //   $('#loader').hide();
                   // });
@@ -631,22 +685,26 @@ function loadCommunityMembers (query) { //*
 $('.cr-search-filter form').submit(function(e){
     e.preventDefault();
     var $form = $(this);
-    var $input = $form.find('input[name="sc"]');
+    var $input = $form.find('input[name="community-search"]');
     var query = $input.val();
-
+//console.log(query);
     // Push the search query to the end of the current URL so that we can use it to run
     // our functions when a user is visiting from a shared link
-    if(query != ''){
-     history.pushState(null, null, '?query='+query);
-    }else{
-      history.pushState(null, null, window.location.pathname);
-    }
+    // if(query != ''){
+    //  history.pushState(null, null, '?query='+query);
+    // }else{
+    //   history.pushState(null, null, window.location.pathname);
+    // }
 
     //Run our AJAX function loadPostsByTopic(topic, query)
     loadCommunityMembers(query);
 
     //Detach all of our original posts so that we can add our results back to the DOM
-    $('.post').detach();
+    $('.row.people-row').detach();
+    $('.load_more').hide();
+    if($input == ''){
+      $('.load_more').show();
+    }
 
   });
 
@@ -733,7 +791,7 @@ $('.e-topic-filters li').click(function(e){
     // Push the filter that was used to the end of the current URL so that we can use it
     // to run our functions when the user is visiting from a shared link
     if(eventTopic != ''){
-      history.pushState(null, null, '?category='+eventTopic);
+      history.pushState(null, null, '?event-topic='+eventTopic);
     }else{
       history.replaceState(null, null, window.location.pathname);
     }
@@ -758,7 +816,7 @@ $('.e-location-filters li').click(function(e){
     // Push the filter that was used to the end of the current URL so that we can use it
     // to run our functions when the user is visiting from a shared link
     if(eventLocation != ''){
-      history.pushState(null, null, '?location='+eventLocation);
+      history.pushState(null, null, '?event-location='+eventLocation);
     }else{
       history.replaceState(null, null, window.location.pathname);
     }
@@ -882,7 +940,7 @@ function loadFilms (filmTopic, query) { //*
     // Push the filter that was used to the end of the current URL so that we can use it
     // to run our functions when the user is visiting from a shared link
     if(filmTopic != ''){
-      history.pushState(null, null, '?category='+filmTopic);
+      history.pushState(null, null, '?film-topic='+filmTopic);
     }else{
       history.replaceState(null, null, window.location.pathname);
     }

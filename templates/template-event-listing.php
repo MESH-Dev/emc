@@ -2,7 +2,7 @@
 /* Template Name: Event Listing*/
 ?>
 
-<main id="content" class="landing">
+<main id="content" class="event-listing">
    <?php
    $background_img = get_field('background_image');
    $background_image_url = $background_img['sizes']['short-banner'];
@@ -14,7 +14,7 @@
    $vw_url = $v_webm['url'];
    $l_page_callout = get_field('banner_callout_text');
 ?>
-<div class="welcome-gate interior" style="background-image:url('<?php echo $background_image_url; ?>">
+<div class="welcome-gate interior">
    <!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
    <?php if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
    <div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>

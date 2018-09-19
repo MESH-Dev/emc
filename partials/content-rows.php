@@ -9,11 +9,11 @@
 				$col_cnt++;
 				$col_class = '';
 				$content = get_sub_field('column');
-				if($cols> 1){
+				if($cols > 1){
 					$col_class='columns-6';
 				}
 				?>
-				<div class="col <?php if(!is_post_type_hierarchical( 'films' )){ echo $col_class; } ?> <?php if(is_post_type_hierarchical( 'films' )){echo 'columns-5 offset-by-1 textsection';}?>" >
+				<div class="col <?php if(!is_single( 'films' )){ echo $col_class; } ?> <?php if(is_single( 'films' )){echo 'columns-5 offset-by-1 textsection';}?>" >
 					<div class="content">
 						<?php echo $content; ?>
 					</div>

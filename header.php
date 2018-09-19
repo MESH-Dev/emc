@@ -58,7 +58,7 @@
 				$h_target='target="_blank"';
 			}
 		?>
-		<div class="ticker">
+		<div class="ticker hide">
 			<div class="container">
 				<div class="row ticker-row">
 					<div class="text">

@@ -7,7 +7,7 @@
 <main id="content" class="film-library">
    <?php
    $background_img = get_field('background_image');
-   var_dump($background_img);
+   //var_dump($background_img);
    $background_image_url = $background_img['sizes']['short-banner'];
    $background = $background_img['url'];
    $v_ogg = get_field('video_ogg');
@@ -18,7 +18,7 @@
    $vw_url = $v_webm['url'];
    $l_page_callout = get_field('banner_callout_text');
 ?>
-<div class="welcome-gate interior" style="background-image:url('<?php echo $background_image_url; ?>">
+<div class="welcome-gate interior">
    <!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
    <?php if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
    <div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>
@@ -217,9 +217,10 @@
 						<a class="read-more pf" href="http://example.com">Watch the Film</a>
 					</div>
 				</div>-->
-            <nav class="load_more">
-            <?php next_posts_link( 'Load More' ); ?>
-          </nav>
+            </section>
+         <nav class="load_more">
+         <?php next_posts_link( 'Load More' ); ?>
+         </nav>
 
 
          <script type="text/javascript">
@@ -242,7 +243,6 @@
               });
            });
          </script>
-			</section> 
 		</div>
 	</div>
 </main><!-- End of Content -->
