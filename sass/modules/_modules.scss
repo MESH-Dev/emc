@@ -1377,6 +1377,8 @@ a.filter-trigger{
 
 .filter-bar{
    background-color: $offwhite-1;
+   position: relative;
+   z-index: 9999;
    [class*="columns-"]{
       position: relative;
    }
