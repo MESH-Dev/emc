@@ -1,6 +1,67 @@
 <?php get_header();
 /* Template Name: Event Listing*/
 ?>
+<?php
+  $separator = ', ';
+  $e_topics = get_terms(['taxonomy' => 'event_topic', 'hide_empty' => false]);
+  
+  $e_topic = '';
+  foreach ($e_topics as $t){
+    $e_topic .= '"'.$t->name.'"'.$separator;
+    //var_dump($t->name);
+  }
+  $e_locs = get_terms(['taxonomy' => 'event_location', 'hide_empty' => false]);
+  $e_loc = '';
+  foreach ($e_locs as $l){
+    $e_loc .= '"'.$l->name.'"'.$separator;
+  }
+   $args2 = array(
+            'post_type' => 'events',
+            'posts_per_page' => -1,
+            'meta_key' => 'event_start_date',
+            'orderby' => 'meta_value',
+            'order' => 'ASC',
+            'paged'=>$paged
+         );
+
+        $page_titles = wp_list_pluck( get_pages($args2), 'post_title' );
+        //$wp_list = wp_list_pluck( get_pages($args));
+        $pages = get_pages($args2);
+        $e_desc = '';
+        $query = new WP_Query( $args2 );
+          if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+        $meta = get_post_meta(get_the_ID(), 'event_description');
+        
+        foreach($meta as $desc){
+          $e_desc.='"'.addslashes($desc).'"'.$separator;
+        }
+
+        
+         endwhile; endif; wp_reset_postdata();
+
+        // $query = new WP_Query( array( 'post_type' => 'events' ) );
+        // wp_reset_query();
+        // $posts = $query->posts;
+        // var_dump($posts);
+
+        // foreach($posts as $post) {
+        //     // Do your stuff, e.g.
+        //      echo $post->post_title;
+        // }
+        //var_dump($e_desc);
+        $titles='';
+        foreach($page_titles as $title){
+          $titles .= '"'.addslashes($title).'"'.$separator;
+        }
+        //var_dump($page_titles);
+//print_r( $page_titles );
+?>
+<script>
+var ec_choices = [];
+ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$e_desc; ?>);//.$titles
+//console.log(ec_choices);
+</script>
 
 <main id="content" class="landing">
    <?php
@@ -20,7 +81,7 @@
    <div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>
    <?php } ?>
    <div class="banner-text columns-5 offset-by-1">
-      <p class="top-callout"><?php the_title(); ?></p>
+      <p class="top-callout"><?php echo get_the_title(); ?></p>
       <h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
    </div>
    <?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
@@ -264,7 +325,7 @@
             endwhile;
          ?>
           </div> <!--end row-->
-      <?php endif; ?>
+      <?php endif; wp_reset_postdata();?>
 
    </section>
    <nav class="load_more">

@@ -813,6 +813,187 @@ endif;
        die();//if this isn't included, you will get funky characters at the end of your query results.
 }
 
+add_action('wp_ajax_get_the_resources', 'get_the_resources');  
+add_action('wp_ajax_nopriv_get_resources', 'get_the_resources'); 
+
+function get_the_resources(){
+  //$post_topic = $_POST['postTopic'];
+  $resource_topic = $_POST['resourceTopic'];
+  $resource_type = $_POST['resourceType'];
+  $query = $_POST['query']; //*
+  //var_dump($event_location);
+  // $page = $_POST['page'];
+  // var_dump($page);
+  //var_dump($event_topic);
+  //var_dump($event_location);
+
+ if ($resource_topic == '' && $resource_type == '' && $query == ''): //All posts? No filter
+      $args = array(
+      'post_type' => 'resources',
+      'posts_per_page' => 6,
+      //'meta_key' => 'event_start_date',
+      //'orderby' => 'meta_value',
+      'order' => 'ASC',
+      'paged'=>$paged
+      //
+      );
+ elseif ($resource_topic != '' ): //Using the filter - Topic filter used
+      $args = array(
+      'post_type' => 'resources',
+      'posts_per_page' => -1,
+      'order' => 'ASC',
+      'paged' => $paged,
+      'post_status' => 'publish',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'media_topic',
+          'field'    => 'slug',
+          'terms'    => $resource_topic, 
+          ),
+        ),
+      );
+      //var_dump($args['paged']);
+  elseif ($resource_type != '' ): //Using the filter - Topic filter used
+  $args = array(
+  'post_type' => 'resources',
+  'posts_per_page' => -1,
+  'order' => 'ASC',
+  'paged'=>$paged,
+  'post_status' => 'publish',
+  'tax_query' => array(
+        array(
+          'taxonomy' => 'media_type',
+          'field'    => 'slug',
+          'terms'    => $resource_type, 
+          ),
+        ),
+
+  );
+ //Make the search exlusive to entries or clicking the filter
+ elseif ($query != ''): //All posts? No filter
+      $args = array(
+      'post_type' => 'resources',
+      'posts_per_page' => -1,
+      'post_status' => 'publish',
+      'order' => 'ASC',
+      'paged'=>$paged,
+      's' => $query
+      );
+
+      //var_dump($query);
+endif;
+        // the query
+      //var_dump($query);
+      global $wp_query;
+      global $paged;
+
+        $wp_query = new WP_Query( $args ); 
+        //var_dump($args);
+        //$count = $the_query->found_posts;
+        
+
+       if ( $wp_query->have_posts() ) : 
+      // Do we have any posts in the databse that match our query?
+      // In the case of the home page, this will call for the most recent posts 
+        $r_cnt=0;
+        echo '<div class="row event-grid resource-grid">';
+        //echo '<div class="container '.$profile_class .'" id="project-gallery">';
+         while ( $wp_query->have_posts() ) : $wp_query->the_post(); //We set up $the_query on line 144
+        // If we have some posts to show, start a loop that will display each one the same way
+        
+        
+         //if (have_rows ('project_gallery')): //Setup the panels between the top/bottom panels
+               //Setup variables
+               
+                  $r_cnt++;
+                  $id = $post->ID;
+                  $the_title = get_the_title();
+                 $div_class='';
+                 $icon = get_field('resource_icon');
+                 $icon_url = $icon['sizes']['medium'];
+                 $icon_alt = $icon['alt'];
+                 //$event_desc = get_field('event_description');
+                 //$event_loc = get_field('event_location');
+                 //$event_start = get_field('event_start_date');
+                 //$event_sd = date('F j, Y', $event_start);
+                 //$event_end = get_field('event_end_date');
+                 //$event_link_text = get_field('el_text');
+                 $resource_link = get_field('resource_link');
+                 //$external = get_field('external');
+                 //$event_tax = get_the_terms($id,'event_topic');
+
+                 $r_type = get_the_terms($id, 'media_type')[0]->name;
+                 //$r_type = $r_types['media_type']['name'][0];
+                 // $topic_name='';
+                 // if($event_tax != ''){
+                 //    foreach($event_tax as $topic){
+                 //       $topic_name = $topic->name;
+                 //    }
+                 // }
+                 // $target = '';
+                 // if($external == true){
+                 //    $target='target="_blank"';
+                 // }
+
+                 if($r_cnt % 2 != 0){
+                    $div_class = 'offset-by-1';
+                 }
+
+                   $categories='';
+                   $separator=", ";
+                   foreach (get_the_terms(get_the_ID(), 'media_topic') as $cat) {
+                      $categories .= $cat->name . $separator;
+                   }
+
+                  $cat_list = rtrim($categories, $separator);
+          
+
+          //endif; 
+                   //rtrim($categories, $separator)
+          echo '
+          <div class="columns-5 card '.$div_class.'">
+                        <div class="row">
+                           <div class="resource-columns-3">
+                              <img style="max-width:100%;" src="'.$icon_url.'" alt="'.$icon_alt.'">
+                           </div>
+                           <div class="resource-columns-7">
+                             <p class="heading6 date">'.$cat_list.'</p>
+                             <p class="title">
+                               <a href="'.$resource_link.'" target="_blank">
+                                 <span class="category">'.$r_type.':</span> '.$the_title.'
+                               </a>
+                             </p>
+                           </div>
+                        </div>
+                     </div>';
+
+          if($r_cnt %2 == 0){
+            echo '</div><div class="row event-grid resource-grid"> <!-- New Row -->';
+          };
+         endwhile; 
+         // if($e_cnt % 2 == 0){
+         //  echo '</div><div class="row grid-row">';
+         // };
+       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
+        
+        echo '<article class="post-error">
+                <h3 class="404">
+                  Your search did not produce any results!</br>
+                
+                  Please use a different search term, or try something more specific.
+                </h3>
+              </article>';
+       endif; 
+       echo '</div> <!--end row-->';
+       //wp_reset_postdata();
+       // OK, I think that takes care of both scenarios (having posts or not having any posts) 
+       // echo '<nav class="load_more results">'
+       //    .next_posts_link( 'Load More' ).
+       //    '</nav>';
+       wp_reset_query();
+       die();//if this isn't included, you will get funky characters at the end of your query results.
+}
+
 //Can we get this to work for page filter/search results?
 // add_action('wp_enqueue_scripts','loadmore_ajaxurl');
 // function loadmore_ajaxurl() {

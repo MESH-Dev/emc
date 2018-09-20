@@ -69,12 +69,20 @@ createCookie(name,"",-1);
   //  so here, we're trying to get information from the video object,
   //  which is why our selector is referencing an array
 
+  $('.play').click(function(event){
+    
+    // $('.player-holder').fadeOut('slow');
+    // $('.banner-text').fadeOut('slow');
+    $('.video-holder').fadeIn('slow');
+  });
+
   $('.play.desktop-up').click(function(event){
     $matinee = $('.matinee')[0];
     $matinee.play();
     $matinee.controls = true;
     //$matinee.requestFullscreen();
     $('.player-holder').fadeOut('slow');
+    $('.banner-text').fadeOut('slow');
   });
 
 //Fullscreen not yet working on Firefox
@@ -218,9 +226,10 @@ function _resize(){
   $('.grid-item.columns-3').css({height:cp3});
   $('.grid-item.columns-4').css({height:cp4});
   $('.welcome-gate.large').css({'height':'calc(100vh - ' + hh + 'px)', 'margin-top':hh});
+  //$('.player-holder').css({'height':'calc(100vh - ' + hh + 'px)'});
   $('.welcome-gate.interior').css({'margin-top':hh});
   //$('.film-single').css({'margin-top':'calc(100vh - ' + hh + 'px)'});
-  $('.video-holder').css({height:(wg_h-200), width:(wg_w-300)});
+  //$('.video-holder').css({height:(wg_h), width:(wg_w)});
   //$('.map_wrapper').css({height:mi_h, width:mi_w});
   //$('.matinee').css({height:wg_h, width:wg_w});
   //$('.matinee').css({width:(wg_w-150)});
@@ -401,7 +410,7 @@ $('input[name="se"]').autoComplete({
     source: function(term, suggest){
         term = term.toLowerCase();
         //var choices = ['ActionScript', 'AppleScript', 'Asp'];
-        var choices = da_choices;
+        var choices = ec_choices;
         var matches = [];
         for (i=0; i<choices.length; i++)
             if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
@@ -994,6 +1003,156 @@ function loadFilms (filmTopic, query) { //*
 
     //Detach all of our original posts so that we can add our results back to the DOM
     $('.row.listing-row').detach();
+    $('.load_more').hide();
+    if(query == ''){
+      $('.load_more').show();
+    }
+  });
+
+  function loadResources (resourceTopic, resourceType, query) { //*
+
+      //console.log(projectType);
+      //console.log(query);  //*
+      //console.log(filmTopic);
+      var is_loading = false;
+       if (is_loading == false){
+            is_loading = true;
+
+      $('.loader-container').removeClass('hide');
+            $('.loader, .loader-container').fadeIn(200);
+
+            var data = {
+                action: 'get_the_resources',  //Our function from function.php
+                //postTopic: postTopic,
+                resourceTopic: resourceTopic,
+                resourceType: resourceType,
+                //eventLocation: eventLocation, //the return value
+                data: "?query=",
+                //contentType: contentType,
+                query: query //Are we using the search?
+            };
+            jQuery.post(ajaxurl, data, function(response) {
+                // now we have the response, so hide the loader
+
+                //console.log(response);
+                //console.log(data);
+                //console.log(memberResource);
+                //console.log(contentType);
+                //console.log(get_member_resources);
+
+               //$('a#load-more-photos').show();
+                // append: add the new statments to the existing data
+                if(response != 0){
+
+                  //$('.card').detach();
+                  $('.post-error').detach();
+                  $('.row.resource-grid').detach();
+                  $('#emc-resources').append(response);
+                  //$container.waitForImages(function() {
+                  //   $('#loader').hide();
+                  // });
+          $('.loader').fadeOut(1000);
+          $('.loader-container').fadeOut(300);
+          $('.card').addClass('hide');
+          //$('.projects-nav ul > li').removeClass('selected');
+          //Adds slideinLeft and animated classes to each project tile in order
+          $('.card').each(function(i, el){
+            //Show each item in it's turn
+            window.setTimeout(function(){
+            $(el).removeClass('hide').addClass('fadeIn animated');
+            }, 50 * i);
+          });
+          $('.search_form')
+            .removeClass('slideInLeft')
+            .addClass('slideOutLeft');
+          // $('.projects-nav.gallery')
+          //  .removeClass('slideInLeft')
+          //  .addClass('slideOutLeft');
+                  is_loading = false;
+                  //console.log(url);
+                //   if(query != '')
+                //    //history.pushState(null, null, '?s='+query);
+                }
+                else{
+                  $('#loader').hide();
+
+                  is_loading = false;
+                }
+
+
+            });
+        }
+  }
+
+  $('.r-topic-filters li').click(function(e){
+    e.preventDefault;
+    $(this).parent().parent().find('ul li.selected').removeClass('selected');
+
+     $(this).addClass('selected');
+    var resourceTopic = $('.r-topic-filters li.selected').attr('data-filter');
+    //console.log("eventTopic = "+eventTopic);
+    // Push the filter that was used to the end of the current URL so that we can use it
+    // to run our functions when the user is visiting from a shared link
+    if(resourceTopic != ''){
+      history.pushState(null, null, '?resource-topic='+resourceTopic);
+    }else{
+      history.replaceState(null, null, window.location.pathname);
+    }
+    var cat = getUrlParameter('category');
+    //console.log(cat);
+    //console.log(postTopic);
+    //Run our function above using our topic filter data
+    loadResources(resourceTopic, '', '');
+    $('.load_more').hide();
+    if(resourceTopic == ''){
+      $('.load_more').show();
+    }
+  });
+
+  $('.r-type-filters li').click(function(e){
+    e.preventDefault;
+    $(this).parent().parent().find('ul li.selected').removeClass('selected');
+
+     $(this).addClass('selected');
+    var resourceType = $('.r-type-filters li.selected').attr('data-filter');
+    //console.log("eventTopic = "+eventTopic);
+    // Push the filter that was used to the end of the current URL so that we can use it
+    // to run our functions when the user is visiting from a shared link
+    if(resourceType != ''){
+      history.pushState(null, null, '?resource-type='+resourceType);
+    }else{
+      history.replaceState(null, null, window.location.pathname);
+    }
+    var cat = getUrlParameter('category');
+    //console.log(cat);
+    //console.log(postTopic);
+    //Run our function above using our topic filter data
+    loadResources('', resourceType, '');
+    $('.load_more').hide();
+    if(resourceType == ''){
+      $('.load_more').show();
+    }
+  });
+
+  $('.r-search-filter form').submit(function(e){
+    e.preventDefault();
+    var $form = $(this);
+    var $input = $form.find('input[name="sf"]');
+    var query = $input.val();
+
+    // Push the search query to the end of the current URL so that we can use it to run
+    // our functions when a user is visiting from a shared link
+    // if(query != ''){
+    //  history.pushState(null, null, '?query='+query);
+    // }else{
+    //   history.pushState(null, null, window.location.pathname);
+    // }
+
+    //Run our AJAX function loadPostsByTopic(topic, query)
+    loadFilms('',query);
+
+    //Detach all of our original posts so that we can add our results back to the DOM
+    //$('.row.listing-row').detach();
     $('.load_more').hide();
     if(query == ''){
       $('.load_more').show();

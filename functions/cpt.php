@@ -505,7 +505,7 @@ function community_member_location_taxonomy() {
 		'add_or_remove_items'        => __( 'Add or remove items', 'text_domain' ),
 		'choose_from_most_used'      => __( 'Choose from the most used', 'text_domain' ),
 		'popular_items'              => __( 'Popular Items', 'text_domain' ),
-		'search_items'               => __( 'Search Event Topic', 'text_domain' ),
+		'search_items'               => __( 'Search Topic', 'text_domain' ),
 		'not_found'                  => __( 'Not Found', 'text_domain' ),
 		'no_terms'                   => __( 'No items', 'text_domain' ),
 		'items_list'                 => __( 'Items list', 'text_domain' ),

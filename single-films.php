@@ -45,31 +45,55 @@
    $vm_url = $v_mp4['url'];
    $v_webm = get_field('video_webm');
    $vw_url = $v_webm['url'];
+   $v_type = get_field('video_type');
    //$l_page_callout = get_field('banner_callout_text', 305);
 ?>
-<div class="welcome-gate large full-video">
+<div class="welcome-gate large full-video" style=" background-image:url('<?php echo $background_image_url; ?>');">
    <!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
    <?php //if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
-   <div class="welcome-gate-bg" style="background-image:url('<?php //echo $background_image_url; ?>'); background-color:black;>"></div>
+   <div class="welcome-gate-bg"></div>
    <?php //} ?>
    <div class="banner-text columns-5 offset-by-1">
       <!-- <p class="top-callout">Watch</p> -->
       <h1 class="page-title heading1">Watch<br><strong><?php echo the_title(); ?></strong></h1>
    </div>
-   <div class="player-holder" style="position:absolute; display:table; z-index:5000; height:100%; width:100%; background-color:rgba(0,0,0,.2); background-image:url('<?php echo $background_image_url; ?>'); background-repeat:no-repeat; background-size:cover;" >
-			<div class="player-content" style="display: table-cell; vertical-align: middle; height: 100%; text-align: center;">
-				<img class="play desktop-up" src="<?php echo get_template_directory_uri(); ?>/img/EMC_playbutton.png">
-				<img class="play tablet-down" src="<?php echo get_template_directory_uri(); ?>/img/EMC_playbutton.png">
+   <div class="player-holder">
+			<div class="player-content">
+				<?php //if ($v_type == 'hosted'){ ?>
+				<img class="play desktop-up" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
+				<img class="play tablet-down" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
+				<?php //}else{ ?>
+				<!-- <img class="vimeo_play" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png"> -->
+				<?php //} ?>
 			</div>
 		</div>
-   <div class="video-holder" style="position:absolute;  background:red;  margin:auto; left: 52px; right: 52px; top: 52px; bottom: 52px; overflow:hidden;">
-	   <?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
-	      <video class="matinee" placeholder="<?php echo $background_image_url; ?>" playsinline="" preload="true" controls style="margin-top:-2px;position:absolute; z-index: 300;  min-height:0; width:101%; height:auto;" ><!-- height: auto; max-width: 800px; max-height:600px; -->
+   <div class="video-holder">
+   	<div class="video-wrapper">
+   		<div class="video-close"></div>
+	   	<?php 
+	   		//$v_type = get_field('video_type');
+
+	   	if ($v_type == 'hosted'){ ?>
+	   	<?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
+	      <video class="matinee" placeholder="<?php echo $background_image_url; ?>" playsinline="" preload="true" controls ><!-- height: auto; max-width: 800px; max-height:600px; -->
 	         <source src ="<?php echo $vm_url; ?>" type="video/mp4">
 	         <source src ="<?php echo $vo_url; ?>" type="video/ogg">
 	         <source src ="<?php echo $vw_url; ?>" type="video/webm">
 	      </video>
-	      <div class="video-controls" style="width:100%; height:50px; background:red;">
+	     <?php 
+	 		}
+	 		}else{ 
+	     	$v_id = get_field('vimeo_id');
+
+	     	?>
+	     	<div style="padding:56.25% 0 0 0;position:relative;">
+	     		<iframe src="https://player.vimeo.com/video/<?php echo $v_id; ?>?autoplay=1&amp;color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+	     			
+	     		</iframe>
+	     	</div>
+	     	<script src="https://player.vimeo.com/api/player.js"></script>
+	     	 <?php } ?>
+	      <!-- <div class="video-controls" style="width:100%; height:50px; background:red;">
 	      	<div class="video-controls__play-pause-button video-controls__play-pause-button--paused video-controls__button">
 	      		<div class="video-controls__play-icon"></div>
 	      		<div class="video-controls__pause-icon"></div>
@@ -95,11 +119,12 @@
 	      	<div class="video-controls__fullscreen-button video-controls__fullscreen-button--minimised video-controls__button ">
 	      		<div class="video-controls__fullscreen-icon"></div>
 	      	</div>
-	      </div>
-	   <?php } ?>
-		
+	      </div> -->
+	  
+		</div>
 	</div>
 </div>
+
 <main id="content" class="film-single" style="position:relative; z-index:1; margin-top:9em;">
 	<?php ?>
 	<div class="container">
@@ -111,6 +136,10 @@
 				//var_dump($callout_link_text);
 				$callout_link = get_field('callout_link');
 				$external = get_field('cc_external');
+				$target= '';
+				if($external == true){
+
+				}
 
 				if($callout_link_text != ''){
 
