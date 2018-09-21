@@ -106,7 +106,7 @@
             $c_cnt++;
             $div_class='';
             $id = $post->ID;
-            $the_feature = get_the_post_thumbnail_url($id, 'large');
+            $the_feature = get_the_post_thumbnail_url($id, 'square');
             $location = get_field('member_location');
             $question = get_field('member_question');
             $answer = get_field('member_answer');

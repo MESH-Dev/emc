@@ -24,7 +24,7 @@
    <!-- <div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div> -->
    <?php } ?>
    <div class="banner-text columns-5 offset-by-1">
-      <p class="top-callout">Events</p>
+      <p class="top-callout">Films</p>
       <h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
    </div>
    <?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
@@ -42,7 +42,7 @@
             <div class="columns-6 offset-by-1">
                <ul>
                   <li>
-                     <p>Explore our events:</p>
+                     <p>Explore our films:</p>
                   </li>
                   <li class="filter">
 							<a class="filter-trigger" id="topicTrigger">
@@ -75,8 +75,10 @@
                </ul>
             </div>
 				<div class="columns-3 offset-by-1 extra-links">
-					<a href="">Educational PSAs</a>
-					<a href="">Archives</a>
+					<ul>
+                <li data-filter="educational-psa"><span>Educational PSAs</span></li>
+					 <li data-filter="archive"><span>Archives</span></li>
+            </ul>
 				</div>
          </div>
       </div>
@@ -96,13 +98,16 @@
                               //     'hide_empty' => true,
                               // ]);
 
-                              $film_topics = get_terms(['taxonomy' => 'film_topic', 'hide_empty' => false]);
-
+                              $film_topics = get_terms(['taxonomy' => 'film_topic', 'hide_empty' => false]);//'exclude'=>array('archive, educational-psa')
+                              //var_dump($film_topics);
                               //var_dump($terms);
-                                 foreach ($film_topics as $topic) {?>
-
-                                   <li data-filter="<?php echo $topic->slug; ?>"><?php echo $topic->name ?></li>
-                           <?php } ?>
+                                 foreach ($film_topics as $topic) {
+                                    //var_dump($topic->slug);
+                                    if($topic->slug != 'archive' && $topic->slug != 'educational-psa'){
+                                    ?>
+                                 
+                                   <li data-filter="<?php echo $topic->slug; ?>"><?php echo $topic->name ?> <?php echo $topic->term_id?></li>
+                           <?php }} ?>
 
                   </ul>
                </div>

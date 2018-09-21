@@ -116,7 +116,7 @@ add_action( 'init', 'film_type_taxonomy', 0 );
 function film_topic_taxonomy() {
 
 	$labels = array(
-		'name'                       => _x( 'Film Topcs', 'Taxonomy General Name', 'text_domain' ),
+		'name'                       => _x( 'Film Topics', 'Taxonomy General Name', 'text_domain' ),
 		'singular_name'              => _x( 'Film Topic', 'Taxonomy Singular Name', 'text_domain' ),
 		'menu_name'                  => __( 'Film Topic', 'text_domain' ),
 		'all_items'                  => __( 'All Film Topic', 'text_domain' ),
@@ -188,7 +188,7 @@ function event_post_type() {
 		'label'                 => __( 'Event', 'text_domain' ),
 		'description'           => __( 'Post Type Description', 'text_domain' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'supports'              => array( 'title', 'editor' ),
 		'taxonomies'            => array( 'post_tag', 'event_type', 'event_organizer' ),
 		'hierarchical'          => true,
 		'public'                => true,

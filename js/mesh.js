@@ -984,6 +984,31 @@ function loadFilms (filmTopic, query) { //*
     }
   });
 
+  $('.extra-links ul li').click(function(e){
+    e.preventDefault;
+    $(this).parent().parent().find('ul li.selected').removeClass('selected');
+
+     $(this).addClass('selected');
+    var filmTopic = $('.extra-links li.selected').attr('data-filter');
+    //console.log("eventTopic = "+eventTopic);
+    // Push the filter that was used to the end of the current URL so that we can use it
+    // to run our functions when the user is visiting from a shared link
+    if(filmTopic != ''){
+      history.pushState(null, null, '?film-topic='+filmTopic);
+    }else{
+      history.replaceState(null, null, window.location.pathname);
+    }
+    var cat = getUrlParameter('film-topic');
+    //console.log(cat);
+    //console.log(postTopic);
+    //Run our function above using our topic filter data
+    loadFilms(filmTopic, '');
+    $('.load_more').hide();
+    if(filmTopic == ''){
+      $('.load_more').show();
+    }
+  });
+
   $('.f-search-filter form').submit(function(e){
     e.preventDefault();
     var $form = $(this);

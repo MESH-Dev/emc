@@ -183,11 +183,13 @@ add_filter( 'admin_post_thumbnail_html', 'post_thumbnail_add_description', 10, 2
 function post_thumbnail_add_description( $content, $post_id ){
 $post = get_post( $post_id );
 $post_type = $post->post_type;
-//if ( $post_type == 'post' {
-    $content .= "<p><label for=\"html\">This image will be included on your post archive page</label></p>";
+$extra = '';
+if ( $post_type == 'community') {
+  $extra = '<br>Recommended image size 800px x 800px';
+}
+    $content .= '<p><label for=\"html\">This image will be included on your post archive page.<br>Try to make sure that the focal point for this image is near the center of the photograph (<strong>especially important for member headshots</strong>)'.$extra.'</label></p>';
     return $content;
     return $post_id;
-//}
 }
 
 // // define the admin_title callback 
