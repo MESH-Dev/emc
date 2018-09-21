@@ -525,6 +525,7 @@ body{
          //padding-left: 40px;
          img{
             max-width:100%;
+            opacity:0;
          }
       }
       .intro-wrap{
@@ -753,6 +754,10 @@ body{
          width: 100%;
          height: auto;
          min-height:600px;
+         img{
+            max-width:100%;
+            opacity:0;
+         }
          //padding-right: 40px;
          //padding-left: 40px;
       }
