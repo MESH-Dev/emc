@@ -207,7 +207,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$e_desc; ?>);//.$titles
                <div class="columns-10 offset-by-1">
                   <div class="search-wrap">
                      <div class="search-field">
-                        <form action="<?php home_url(); ?>" method="get">
+                        <form action="<?php echo home_url(); ?>" method="get">
                            <label class="sr-only" for="search-form">Search</label>
                            <input class="" type="text" name="se" id="search-form" value="" placeholder="Search">
                            <button class="submit">

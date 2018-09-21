@@ -308,9 +308,13 @@
 				<div class="columns-10 offset-by-1">
 					<?php if (have_rows('cta_grid')):
 							while (have_rows('cta_grid')):the_row();
+							$cta_img = get_sub_field('cta_image');
+							$cta_img_url = $cta_img['sizes']['large'];
+							$cta_img_alt = $cta_img['alt'];
 							$cta_title=get_sub_field('cta_title');
 							$cta_text=get_sub_field('cta_text');
 							$cta_link=get_sub_field('cta_link');
+							$cta_desc = get_sub_field('cta_description');
 							$cl_external = get_sub_field('cl_external');
 							$target='';
 							if($cl_external == 'true'){
@@ -322,7 +326,7 @@
 							<?php if ($cta_link != ''){?>
 							<a href="<?php echo $cta_link; ?>" <?php echo $target; ?>>
 							<?php } ?>
-
+								<img class="card-icon" src="<?php echo $cta_img_url; ?>" alt="<?php echo $cta_img_alt; ?>">
 								<p class="heading6"><?php echo $cta_title; ?></p>
 								<p class="desc"><?php echo $cta_text; ?></p>
 								<?php if ($cta_link != ''){?>
@@ -335,6 +339,9 @@
 									<polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
 										39.3,83.3 66,56.5 71.9,50.7 "/>
 								</svg>
+								<?php } ?>
+								<?php if($cta_desc != '') { ?>
+								<p class="more-info"><?php echo $cta_desc; ?></p>
 								<?php } ?>
 							<!-- </div> -->
 							<?php if ($cta_link != ''){?>

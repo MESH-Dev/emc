@@ -478,6 +478,7 @@ function get_events(){
   $event_topic = $_POST['eventTopic'];
   $event_location = $_POST['eventLocation'];
   $query = $_POST['query']; //*
+  var_dump($query);
   //var_dump($event_location);
   // $page = $_POST['page'];
   // var_dump($page);
