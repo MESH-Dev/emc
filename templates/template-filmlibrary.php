@@ -144,8 +144,8 @@
             'post_type' => 'films',
             'posts_per_page' => 5,
             //'meta_key' => 'event_start_date',
-            //'orderby' => 'meta_value',
-            'order' => 'ASC',
+            'orderby' => 'post_date',
+            'order' => 'DESC',
             'paged'=>$paged
          );
          $wp_query = new WP_Query( $args );?>

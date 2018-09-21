@@ -1257,6 +1257,10 @@ body{
          padding-right: 0;
       }
       .listing-row{
+         height:379px;
+         @media ($bp-smaller-than-tablet){
+            height:auto;
+         }
          &:nth-of-type(1n){
             .item-text{
                background-color: $secondary-lightbrown;
@@ -1275,6 +1279,7 @@ body{
       }
       .listing-card{
          position: relative;
+         height:100%;
          // margin-bottom: 20px;
          // &:last-of-type{
          //    margin-bottom: 0;
@@ -1283,15 +1288,20 @@ body{
          [class*='columns-']{
             @media screen and ($bp-smaller-than-tablet){
                padding: 0;
+               
             }
          }
          @media screen and ($bp-smaller-than-tablet){
             margin-bottom: 20px;
          }
          .thumbnail{
-            height: 379px;
+            height: 100%;
             background-size: cover;
             background-position: center;
+            @media screen and ($bp-smaller-than-tablet){
+               hieght:unset;
+               height:379px;
+            }
          }
          .item-text{
             padding: 20px;

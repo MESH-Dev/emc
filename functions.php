@@ -478,7 +478,7 @@ function get_events(){
   $event_topic = $_POST['eventTopic'];
   $event_location = $_POST['eventLocation'];
   $query = $_POST['query']; //*
-  var_dump($query);
+  //var_dump($query);
   //var_dump($event_location);
   // $page = $_POST['page'];
   // var_dump($page);
@@ -697,6 +697,7 @@ function get_films(){
       $args = array(
       'post_type' => 'films',
       'posts_per_page' => 5,
+      'orderby' => 'post_date',
       'order' => 'ASC',
       'paged'=>$paged,
       //
@@ -705,6 +706,7 @@ function get_films(){
       $args = array(
       'post_type' => 'films',
       'posts_per_page' => -1,
+      'orderby' => 'post_date',
       'order' => 'ASC',
       'paged' => $paged,
       'post_status' => 'publish',
@@ -724,6 +726,7 @@ function get_films(){
       'post_type' => 'films',
       'posts_per_page' => -1,
       'post_status' => 'publish',
+      'orderby' => 'post_date',
       //'meta_key' => 'event_start_date',
       //'orderby' => 'meta_value',
       'order' => 'ASC',
