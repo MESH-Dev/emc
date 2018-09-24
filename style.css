@@ -1903,7 +1903,7 @@ body {
   background-color: #FDF6ED;
   text-align: center;
   position: relative;
-  padding-bottom: 100px;
+  z-index: 500;
 }
 @media screen and (max-width: 750px) {
   /* line 303, sass/modules/_modules.scss */
