@@ -51,9 +51,9 @@
 
   endwhile; endif; wp_reset_postdata();
   //Split up and clean the paragraph content 
-  $remove = array('.', '!', ',', '?', '\n', '\r', "\r\n", 'and', 'the', 'in', 'on', 'a');
+  $remove = array('.', '!', ',', '?', '\n', '\r', "\r\n", 'and', 'the', 'in', 'on', 'a', 'but');
   $f_excerpt = str_replace($remove,'', $f_excerpt);
-  var_dump($f_excerpt);
+  //var_dump($f_excerpt);
   $f_excerpt = explode(' ', addslashes($f_excerpt));
   $f_excerpt = array_unique($f_excerpt);
 
