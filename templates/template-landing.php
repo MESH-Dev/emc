@@ -184,7 +184,7 @@
 		</div>
 		<div class="content" >
 			<div class="img-screen" aria-hidden="true"></div>
-			<div class="feature-image has-background" style="background-image:url(<?php echo $ip_image_url; ?>);" />
+			<div class="feature-image has-background">
 				<img src="<?php echo $ip_image_url; ?>">
 			</div>
 		</div>

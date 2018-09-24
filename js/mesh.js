@@ -438,7 +438,7 @@ $('input[name="sf"]').autoComplete({
     source: function(term, suggest){
         term = term.toLowerCase();
         //var choices = ['ActionScript', 'AppleScript', 'Asp'];
-        var choices = da_choices;
+        var choices = fc_choices;
         var matches = [];
         for (i=0; i<choices.length; i++)
             if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
