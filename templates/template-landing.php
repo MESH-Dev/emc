@@ -29,6 +29,7 @@
 		</video>
 	<?php } ?>
 </div>
+<main id="content" class="landing">
 <?php
 	if(have_rows('content_panel')):
 		while(have_rows('content_panel')):the_row();
@@ -400,5 +401,5 @@
 <?php } ?>
 <?php endwhile; endif; ?>
 <!-- End of Content -->
-
+</main>
 <?php get_footer(); ?>
