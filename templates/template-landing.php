@@ -278,7 +278,7 @@
 								?>
 						<div class="columns-3 card">
 							<?php if($grid_item_link != '') {?>
-							<a href="<?php echo $icon_url; ?>" <?php echo $target?>>
+							<a href="<?php echo $grid_item_link; ?>" <?php echo $target?>>
 							<?php } ?>
 								<img class="card-icon" src="<?php echo $icon_url; ?>" alt="<?php echo $icon_alt; ?>">
 								<div class="content">
