@@ -164,7 +164,7 @@ body{
       z-index:100;
       background-repeat: no-repeat;
       background-size: cover;
-      background-position:bottom center;
+      //background-position:bottom center;
    }
 
    video{
@@ -296,6 +296,9 @@ body{
 //Panels
 .panel{
    padding: 40px 0;
+   &:first-child{
+      padding-top: 0 0 40px 0;
+   }
    @media screen and ($bp-smaller-than-largedesktop){
       padding-left: 20px;
       padding-right: 20px;
@@ -349,7 +352,7 @@ body{
       }
       &.interior{
          background-color: $tertiary-background;
-         padding-top: 80px;
+         //padding-top: 80px;
          .intro{
             max-width: 1050px;
             p{
@@ -392,8 +395,8 @@ body{
    }
    &.text-grid{
       background-color: $secondary-pink;
-      padding-top: 60px;
-      padding-bottom: 60px;
+      padding-top: 40px;
+      padding-bottom: 40px;
       .container{
          // @media ($bp-smaller-than-largedesktop){
          //    padding:0 40px;
@@ -960,6 +963,9 @@ body{
             li{
                display:inline;
                list-style-type:none;
+               &.selected{
+                  opacity:.5;
+               }
                span{
                   margin-left: 10px;
                   @include whitney-bold();
@@ -1136,7 +1142,7 @@ body{
          &.f-topic-filters{
             li{
                margin-left: 0;
-               margin-right: 40px;
+               margin-right: 20px;
             }
          }
          li{
@@ -1145,13 +1151,13 @@ body{
             font-size: 1.4rem;
             letter-spacing: 3px;
             color: $primary-darkbrown;
-            margin-left: 40px;
+            margin-left: 20px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.5s ease-in-out;
             @media screen and ($bp-smaller-than-tablet){
                margin-left: 0;
-               margin-right: 40px;
+               //margin-right: 40px;
             }
             &:hover,&:active,&:focus{
                color: $primary-orange;
@@ -1175,7 +1181,7 @@ body{
             font-size: 1.4rem;
             letter-spacing: 3px;
             color: $primary-darkbrown;
-            margin-right: 40px;
+            margin-right: 20px;
             text-transform: uppercase;
             cursor:pointer;
             transition: all 0.5s ease-in-out;
@@ -1230,7 +1236,7 @@ body{
                margin-bottom: 0;
             }
             &:last-of-type{
-               margin-bottom: 0;
+               //margin-bottom: 0;
             }
          }
 
@@ -1281,7 +1287,7 @@ body{
          padding-right: 0;
       }
       .listing-row{
-         height:379px;
+         //height:379px;
          @media ($bp-smaller-than-tablet){
             height:auto;
          }
@@ -1319,7 +1325,8 @@ body{
             margin-bottom: 20px;
          }
          .thumbnail{
-            height: 100%;
+            //height: 100%;
+            height:379px;
             background-size: cover;
             background-position: center;
             @media screen and ($bp-smaller-than-tablet){
@@ -1459,7 +1466,7 @@ a.filter-trigger{
       ul{
          li{
             margin-left: 0;
-            margin-right: 40px;
+            margin-right: 20px;
          }
       }
    }
@@ -1524,20 +1531,32 @@ a.filter-trigger{
 }
 
 main.landing{
+   padding-top:8rem;
+      padding-bottom:5rem;
    .text-grid{
       background-color: $tertiary-background;
    }
 }
 
 main.text{
-   padding-top: 80px;
-   padding-bottom: 50px;
-   background-color: $offwhite-bg;
+   //padding-top: 80px;
+   //padding-bottom: 50px;
+   //background-color: $offwhite-bg;
    @media screen and ($bp-smaller-than-tablet){
       padding-left: 20px;
       padding-right: 20px;
    }
 }
+
+// main{
+//    background-color: $tertiary-background;
+//    padding-top:8rem;
+//    padding-bottom:5rem;
+//    &.home-template{
+//       padding-top:0;
+//       padding-bottom:0;
+//    }
+// }
 
 .text{
    // margin-top:9em;

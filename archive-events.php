@@ -89,9 +89,7 @@
 var ec_choices = [];
 ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
 </script>
-
-<main id="content" class="landing">
-   <?php
+ <?php
    $background_img = get_field('e_background_image', 'options');
    $background_image_url = $background_img['sizes']['short-banner'];
    $v_ogg = get_field('e_video_ogg', 'options');
@@ -127,6 +125,8 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
       <video>
    <?php } ?>
 </div>
+<main id="content" class="landing">
+  
    <div class="panel filters">
       <div class="container">
          <div class="row">

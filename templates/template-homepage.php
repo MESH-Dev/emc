@@ -15,8 +15,7 @@
 			<?php } ?>
 			};
 			</script>
-<main id="content">
-	<?php
+			<?php
 		$background_img = get_field('img_fallback');
 		$background_image_url = $background_img['sizes']['background-fullscreen'];
 		$v_ogg = get_field('video_ogg');
@@ -41,6 +40,8 @@
 			</video>
 		<?php } ?>
 	</div>
+<main id="content" class="home-template">
+	
 	<div class="panel callout">
 		<div class="container">
 			<?php

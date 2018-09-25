@@ -702,6 +702,15 @@ function get_films(){
       'orderby' => 'post_date',
       'order' => 'ASC',
       'paged'=>$paged,
+      'post_status' => 'publish',
+      'tax_query' => array(
+            array(
+              'taxonomy' => 'film_topic',
+              'field'    => 'slug',
+              'terms'    => array('educational-psa', 'archive'), 
+              'operator' => 'NOT IN',
+              ),
+            ),
       //
       );
  elseif ($film_topic != '' ): //Using the filter - Topic filter used
@@ -772,7 +781,11 @@ endif;
             $film_type = get_the_terms($id, 'film_type');
             $type = $film_type[0]->name;
 
-            
+            $excerpt_style = get_field('excerpt_style');
+          $ex_class = '';
+          if ($excerpt_style == 'bold'){
+            $ex_class = 'first';
+          }
 
           
 
@@ -785,7 +798,7 @@ endif;
                </div>
                <div class="item-text columns-5">
                   <h4 class="item-title pf">'.$the_title.'</h4>
-                  <p class="item-exc first sf">'.$custom_excerpt.'</p>
+                  <p class="item-exc'.$ex_class.'sf">'.$custom_excerpt.'</p>
                   <a class="read-more pf" href="'.$the_link.'">Watch the '.$type.'</a>
                </div>
             </div>
@@ -894,6 +907,7 @@ endif;
       global $paged;
 
         $wp_query = new WP_Query( $args ); 
+        $count = $wp_query->post_count;
         //var_dump($args);
         //$count = $the_query->found_posts;
         
@@ -973,9 +987,11 @@ endif;
                         </div>
                      </div>';
 
-          if($r_cnt %2 == 0){
-            echo '</div><div class="row event-grid resource-grid"> <!-- New Row -->';
-          };
+          if($r_cnt %2 == 0 && $r_cnt != $count){
+                echo '</div><div class="row event-grid resource-grid">';
+             }elseif($r_cnt == $count){
+              echo '</div>';
+             }
          endwhile; 
          // if($e_cnt % 2 == 0){
          //  echo '</div><div class="row grid-row">';

@@ -325,8 +325,10 @@ $('a.filter-trigger').click(function(){
    }else{
       $('a.filter-trigger').each(function(){
          $(this).removeClass('open');
+
       });
       $(this).addClass('open');
+      
    }
 });
 
@@ -962,7 +964,7 @@ function loadFilms (filmTopic, query) { //*
   $('.f-topic-filters li').click(function(e){
     e.preventDefault;
     $(this).parent().parent().find('ul li.selected').removeClass('selected');
-
+    $('.extra-links li').removeClass('selected');
      $(this).addClass('selected');
     var filmTopic = $('.f-topic-filters li.selected').attr('data-filter');
     //console.log("eventTopic = "+eventTopic);
@@ -989,6 +991,12 @@ function loadFilms (filmTopic, query) { //*
     $(this).parent().parent().find('ul li.selected').removeClass('selected');
 
      $(this).addClass('selected');
+      $('.panel.topics').slideUp();
+   $('.panel.search-filter').slideUp();
+   $('.filter').each(function(){
+    $(this).find('a').removeClass('open');
+   })
+   $('.f-topic-filters li').removeClass('selected');
     var filmTopic = $('.extra-links li.selected').attr('data-filter');
     //console.log("eventTopic = "+eventTopic);
     // Push the filter that was used to the end of the current URL so that we can use it
@@ -1014,6 +1022,7 @@ function loadFilms (filmTopic, query) { //*
     var $form = $(this);
     var $input = $form.find('input[name="sf"]');
     var query = $input.val();
+    $('.extra-links li').removeClass('selected');
 
     // Push the search query to the end of the current URL so that we can use it to run
     // our functions when a user is visiting from a shared link

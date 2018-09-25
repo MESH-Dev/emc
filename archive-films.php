@@ -74,8 +74,7 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
 
 <?php //if ( have_posts() ) : ?>
   <?php //while ( have_posts() ) : the_post(); ?>
-<main id="content" class="film-library">
-   <?php
+  <?php
    $background_img = get_field('f_background_image', 'options');
    //var_dump($background_img);
    $background_image_url = $background_img['sizes']['short-banner'];
@@ -114,6 +113,8 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
       </video>
    <?php } ?>
 </div>
+<main id="content" class="film-library">
+   
 <?php //endwhile; endif;  wp_reset_postdata(); ?>
    <div class="panel filters">
       <div class="container">
@@ -124,44 +125,44 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
                      <p>Explore our films:</p>
                   </li>
                   <li class="filter">
-              <a class="filter-trigger" id="topicTrigger">
-                <p>Filter by topic</p>
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                   viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                  <style type="text/css">
-                    .st0{fill:#EED9BD;}
-                    .st1{fill:#EC742E;}
-                  </style>
-                  <polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
-                    39.3,83.3 66,56.5 71.9,50.7 "/>
-                </svg>
-              </a>
+                    <a class="filter-trigger" id="topicTrigger">
+                        <p>Filter by topic</p>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                           viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                          <style type="text/css">
+                            .st0{fill:#EED9BD;}
+                            .st1{fill:#EC742E;}
+                          </style>
+                          <polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
+                            39.3,83.3 66,56.5 71.9,50.7 "/>
+                        </svg>
+                      </a>
                   </li>
                   <li class="filter">
-              <a class="filter-trigger" id="searchTrigger">
-                <p>Search</p>
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                   viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-                  <style type="text/css">
-                    .st0{fill:#EED9BD;}
-                    .st1{fill:#EC742E;}
-                  </style>
-                  <polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
-                    39.3,83.3 66,56.5 71.9,50.7 "/>
-                </svg>
-              </a>
+                    <a class="filter-trigger" id="searchTrigger">
+                      <p>Search</p>
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                        <style type="text/css">
+                          .st0{fill:#EED9BD;}
+                          .st1{fill:#EC742E;}
+                        </style>
+                        <polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
+                          39.3,83.3 66,56.5 71.9,50.7 "/>
+                      </svg>
+                    </a>
                   </li>
                </ul>
             </div>
         <div class="columns-3 offset-by-1 extra-links">
           <ul>
-                <li data-filter="educational-psa"><span>Educational PSAs</span></li>
-           <li data-filter="archive"><span>Archives</span></li>
-            </ul>
+            <li data-filter="educational-psa"><span>Educational PSAs</span></li>
+            <li data-filter="archive"><span>Archives</span></li>
+          </ul>
         </div>
-         </div>
-      </div>
-   </div>
+    </div>
+  </div>
+</div>
    <div class="filter-bar">
       <div class="panel topics">
          <div class="container">
@@ -222,7 +223,7 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
    </div>
   <div class="panel films-list">
     <div class="container">
-         <section id="emc-films">
+       <section id="emc-films">
          <?php 
             $args = array(
             'post_type' => 'films',
@@ -230,7 +231,15 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
             //'meta_key' => 'event_start_date',
             'orderby' => 'post_date',
             'order' => 'DESC',
-            'paged'=>$paged
+            'paged'=>$paged,
+            'tax_query' => array(
+            array(
+              'taxonomy' => 'film_topic',
+              'field'    => 'slug',
+              'terms'    => array('educational-psa', 'archive'), 
+              'operator' => 'NOT IN',
+              ),
+            ),
          );
          $wp_query = new WP_Query( $args );?>
 
@@ -268,41 +277,8 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
             </div>
          </div>
       <?php endwhile; endif;  wp_reset_postdata(); ?>
-
-      <!-- <div class="row listing-row">
-        <div class="listing-card columns-12">
-          <div class="thumbnail columns-7" style="background-image: url('http://emc.bkfk-t5yk.accessdomain.com/wp-content/themes/mesh/img/EMC_MasterLandingPage_HeaderImage.png');">
-          </div>
-          <div class="item-text columns-5">
-            <h4 class="item-title pf">Giving Birth in America: Montana</h4>
-            <p class="item-exc first sf">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a class="read-more pf" href="http://example.com">Watch the Film</a>
-          </div>
-        </div>
-      </div>
-      <div class="row listing-row">
-        <div class="listing-card columns-12">
-          <div class="thumbnail columns-7" style="background-image: url('http://emc.bkfk-t5yk.accessdomain.com/wp-content/themes/mesh/img/EMC_MasterLandingPage_HeaderImage.png');">
-          </div>
-          <div class="item-text columns-5">
-            <h4 class="item-title pf">Giving Birth in America: Montana</h4>
-            <p class="item-exc sf">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a class="read-more pf" href="http://example.com">Watch the Film</a>
-          </div>
-        </div>
-      </div>
-      <div class="row listing-row">
-        <div class="listing-card columns-12">
-          <div class="thumbnail columns-7" style="background-image: url('http://emc.bkfk-t5yk.accessdomain.com/wp-content/themes/mesh/img/EMC_MasterLandingPage_HeaderImage.png');">
-          </div>
-          <div class="item-text columns-5">
-            <h4 class="item-title pf">Giving Birth in America: Montana</h4>
-            <p class="item-exc sf">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a class="read-more pf" href="http://example.com">Watch the Film</a>
-          </div>
-        </div>-->
             
-         </section> 
+     </section>
          <nav class="load_more">
             <?php next_posts_link( 'Load More' ); ?>
           </nav>

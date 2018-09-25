@@ -1,8 +1,7 @@
 <?php get_header();
 ?>
 
-<main id="content" class="landing">
-   <?php
+ <?php
    $background_img = get_field('r_background_image', 'options');
    $background_image_url = $background_img['sizes']['short-banner'];
    $v_ogg = get_field('r_video_ogg', 'options');
@@ -38,6 +37,9 @@
       </video>
    <?php } ?>
 </div>
+
+<main id="content" class="landing">
+  
 <div class="panel filters">
    <div class="container">
       <div class="row">
@@ -179,7 +181,9 @@
          <div class="row">
             <section id="emc-resources">
                <!-- <div class="row event-grid"> -->
-                   <?php   $args = array(
+                   <?php   
+
+                   $args = array(
                      'post_type' => 'resources',
                      'posts_per_page' => 6,
                      //'meta_key' => 'event_start_date',
@@ -187,8 +191,10 @@
                      //'order' => 'ASC',
                      'paged'=>$paged
                   );
-                  $wp_query = new WP_Query( $args );?>
+                  $wp_query = new WP_Query( $args ); 
+                  $count = $wp_query->post_count;?>
                   <?php if ($wp_query->have_posts()) :
+                  
                   $r_cnt=0;
                   ?>
                   <div class="row event-grid resource-grid">
@@ -269,14 +275,16 @@
                   if($r_cnt %2 != 0){
                      //echo '</div>';
                   }
-                   if($r_cnt %2 == 0){
+                   if($r_cnt %2 == 0 && $r_cnt != $count){
                         echo '</div><div class="row event-grid resource-grid">';
+                     }elseif($r_cnt == $count){
+                      echo '</div>';
                      }
 
                      endwhile;
                   ?>
-                   </div> <!--end row-->
-               <?php endif; ?>
+                   <!-- </div> --> <!--end row-->
+               <?php endif;  wp_reset_postdata();?>
 
             </section>
          </div>

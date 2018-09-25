@@ -2,8 +2,7 @@
 /* Template Name: Community Resource Library Template */
 ?>
 
-<main id="content" class="community-grid">
-   <?php
+ <?php
    $background_img = get_field('background_image');
    $background_image_url = $background_img['sizes']['short-banner'];
    $v_ogg = get_field('video_ogg');
@@ -31,6 +30,9 @@
       <video>
    <?php } ?>
 </div>
+
+<main id="content" class="community-grid">
+  
 
    <div class="panel filters">
       <div class="container">

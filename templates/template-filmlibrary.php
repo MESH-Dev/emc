@@ -79,6 +79,8 @@
                 <li data-filter="educational-psa"><span>Educational PSAs</span></li>
 					 <li data-filter="archive"><span>Archives</span></li>
             </ul>
+
+            <span>Clear</span>
 				</div>
          </div>
       </div>

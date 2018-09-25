@@ -46,6 +46,11 @@ main#content{
                color: $primary-orange;
             }
          }
+         &.current_page_ancestor{
+            > a{
+               color: $primary-orange;
+            }
+         }
          a{
             font-family: 'bianco-reg';
             font-size: 1.7rem;
@@ -327,6 +332,16 @@ body .sidr{
    .sidr-inner{
       ul.sub-menu, ul#menu-main_nav .sub-menu{
          li{
+            &.current-menu-item{
+               > a{
+                  color: $primary-orange;
+               }
+            }
+            &.current_page_ancestor{
+               > a{
+                  color: $primary-orange;
+               }
+            }
             a{
                font-family: 'bianco-reg';
                font-weight: bold;
@@ -350,6 +365,16 @@ body .sidr{
                box-shadow: 0px;
             }
          }
+         &.current-menu-item{
+            > a{
+               color: $primary-orange;
+            }
+         }
+         &.current_page_ancestor{
+            > a{
+               color: $primary-orange;
+            }
+         }
          a{
             font-family: 'bianco-reg';
             font-size: 1.8rem;
@@ -368,6 +393,21 @@ body .sidr{
    }
    li.menu-item{
       list-style-type: none;
+      &.current-menu-item{
+         > a{
+            color: $primary-orange;
+         }
+      }
+      &.current_page_ancestor{
+         > a{
+            color: $primary-orange;
+         }
+      }
+      &.current-menu-parent{
+         > a{
+            color: $primary-orange;
+         }
+      }
       a{
          margin: 0;
          // border-bottom: 3px solid $primary-lightbrown;
