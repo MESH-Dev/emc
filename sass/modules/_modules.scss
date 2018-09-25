@@ -1541,6 +1541,8 @@ main.landing{
 main.text{
    //padding-top: 80px;
    //padding-bottom: 50px;
+   padding-top:8rem;
+      padding-bottom:5rem;
    //background-color: $offwhite-bg;
    @media screen and ($bp-smaller-than-tablet){
       padding-left: 20px;
@@ -1548,15 +1550,15 @@ main.text{
    }
 }
 
-// main{
-//    background-color: $tertiary-background;
-//    padding-top:8rem;
-//    padding-bottom:5rem;
-//    &.home-template{
-//       padding-top:0;
-//       padding-bottom:0;
-//    }
-// }
+main{
+   background-color: $tertiary-background;
+   // padding-top:8rem;
+   // padding-bottom:5rem;
+   // &.home-template{
+   //    padding-top:0;
+   //    padding-bottom:0;
+   // }
+}
 
 .text{
    // margin-top:9em;
