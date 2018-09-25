@@ -1552,6 +1552,8 @@ main.text{
 
 main{
    background-color: $tertiary-background;
+   position:relative;
+   z-index: 999;
    // padding-top:8rem;
    // padding-bottom:5rem;
    // &.home-template{
