@@ -26,7 +26,7 @@
    <div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>
    <?php } ?>
    <div class="banner-text columns-5 offset-by-1">
-      <p class="top-callout"><?php the_title(); ?></p>
+      <p class="top-callout"><?php echo $page_title; ?></p>
       <h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
    </div>
    <?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
