@@ -1557,6 +1557,13 @@ main.text{
    }
 }
 
+.film-single{
+      padding-top:8rem;
+      padding-bottom:5rem;
+      position:relative; 
+      z-index:1;
+}
+
 main{
    background-color: $tertiary-background;
    position:relative;
