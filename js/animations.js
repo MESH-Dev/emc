@@ -20,7 +20,7 @@ if (calloutPanels) {
          .to(theDesc, 0.4, {css:{transform:"translateY(0px)", opacity:1}, ease: Power2.easeInOut});
 
       //Trigger Animations
-      var calloutScene = new ScrollMagic.Scene({triggerElement: calloutPanels[i], reverse: false, triggerHook: 'onEnter', offset: 100})
+      var calloutScene = new ScrollMagic.Scene({triggerElement: calloutPanels[i], reverse: false, triggerHook: 'onEnter'})
          .setTween(calloutPanelAnim)
          .addTo(controller);
    };

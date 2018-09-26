@@ -132,24 +132,24 @@
 			<?php echo get_template_part('/partials/content-rows'); ?>
 
 			<?php 
-				$callout_link_text = get_field('callout_link_text');
-				//var_dump($callout_link_text);
-				$callout_link = get_field('callout_link');
-				$external = get_field('cc_external');
-				$target= '';
-				if($external == true){
+				// $callout_link_text = get_field('callout_link_text');
+				// //var_dump($callout_link_text);
+				// //$callout_link = get_field('callout_link');
+				// $external = get_field('cc_external');
+				// $target= '';
+				// if($external == true){
 
-				}
+				// }
 
-				if($callout_link_text != ''){
+				//if($callout_link_text != ''){
 
 			?>
-			<div class="callout-link">
+			<!-- <div class="callout-link">
 				<a href="<?php echo $callout_link; ?>">
 					<?php echo $callout_link_text; ?>
 				</a>
-			</div>
-			<?php } ?>
+			</div> -->
+			<?php //} ?>
 
 		</div>
 		
