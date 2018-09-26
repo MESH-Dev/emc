@@ -122,29 +122,29 @@ body{
             cursor:pointer;
          }
          .player-holder{
-            position:absolute; 
-            display:table; 
-            z-index:200; 
-            height:100%; 
-            width:100%; 
+            position:absolute;
+            display:table;
+            z-index:200;
+            height:100%;
+            width:100%;
             //background-color:rgba(0,0,0,.2);
             //background-color:$black;
-            background-repeat:no-repeat; 
+            background-repeat:no-repeat;
             background-size:cover;
             background-position:center center;
          }
-         
+
          .player-content{
-            display: table-cell; 
-            vertical-align: middle; 
-            height: 100%; 
+            display: table-cell;
+            vertical-align: middle;
+            height: 100%;
             text-align: center;
          }
 
-         
+
 
       }
-   
+
 
    .banner-text{
       position:relative;
@@ -228,12 +228,12 @@ body{
 }
 
 .video-holder{
-            position:absolute;  
-            z-index:100;margin:auto; 
-            // left: 52px; 
-            // right: 52px; 
-            // top: 52px; 
-            // bottom: 52px; 
+            position:absolute;
+            z-index:100;margin:auto;
+            // left: 52px;
+            // right: 52px;
+            // top: 52px;
+            // bottom: 52px;
             overflow:hidden;
              position: absolute;
              z-index: 1000;
@@ -261,10 +261,10 @@ body{
             }
             video{
                margin-top:-2px;
-               position:absolute; 
-               z-index: 300;  
-               min-height:0; 
-               width:101%; 
+               position:absolute;
+               z-index: 300;
+               min-height:0;
+               width:101%;
                height:auto;
             }
          }
@@ -327,6 +327,7 @@ body{
             line-height: 30px;
             strong,b{
                font-family: 'bianco-extrabold';
+               color: $primary-orange;
             }
          }
       }
@@ -336,13 +337,14 @@ body{
             margin-bottom: 60px;
          }
          p{
-            @include whitney-book();
+            // @include whitney-light();
+            @include whitney-light();
             font-size: 4.8rem;
             line-height: 60px;
             letter-spacing: 0.6px;
             color: $primary-lightbrown;
             strong,b{
-               font-weight:normal;
+               @include whitney-light();
                color:$primary-orange;
             }
          }
@@ -999,7 +1001,7 @@ body{
                }
             }
          }
-         
+
       }
       ul{
          margin-bottom: 0;
@@ -1318,7 +1320,7 @@ body{
          [class*='columns-']{
             @media screen and ($bp-smaller-than-tablet){
                padding: 0;
-               
+
             }
          }
          @media screen and ($bp-smaller-than-tablet){
