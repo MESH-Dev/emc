@@ -124,7 +124,7 @@
 				  <?php while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
 					 <article class="post">
 								 <?php if(has_post_thumbnail() && get_field('override_feature_image_text') == ''){
-								 	echo the_post_thumbnail('large');
+								 	echo the_post_thumbnail('background-fullscreen');
 								 	}elseif(get_field('override_feature_image_text') != ''){
 								 	echo '<h2 class="img-override">'.get_field('override_feature_image_text').'</h2>';
 								 }
