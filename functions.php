@@ -86,7 +86,7 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
             $wpse_excerpt = strip_shortcodes( $wpse_excerpt );
             $wpse_excerpt = apply_filters('the_content', $wpse_excerpt);
             $wpse_excerpt = str_replace(']]>', ']]&gt;', $wpse_excerpt);
-            //$wpse_excerpt = strip_tags($wpse_excerpt, wpse_allowedtags()); /*IF you need to allow just certain tags. Delete if all tags are allowed */
+            $wpse_excerpt = strip_tags($wpse_excerpt, wpse_allowedtags()); /*IF you need to allow just certain tags. Delete if all tags are allowed */
 
             //Set the excerpt word count and only break after sentence is complete.
             //__Since we are looking for a rough end-of-sententce point to trim the excerpt
@@ -700,9 +700,9 @@ function get_films(){
       'post_type' => 'films',
       'posts_per_page' => 5,
       'orderby' => 'post_date',
-      'order' => 'ASC',
+      'order' => 'DESC',
       'paged'=>$paged,
-      'post_status' => 'publish',
+      'post_status' => 'publish', 
       'tax_query' => array(
             array(
               'taxonomy' => 'film_topic',
