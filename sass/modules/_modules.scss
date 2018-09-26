@@ -1121,6 +1121,11 @@ body{
    &.blog-title{
       padding-top: 150px;
       padding-bottom: 50px;
+      text-align:center;
+      .blog-logo{
+         max-width:550px;
+         width:100%;
+      }
       h1{
          @include whitney-bold();
          color: $primary-red;
