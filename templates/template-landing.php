@@ -108,10 +108,10 @@
 	$stat_background_alt = $stat_background['alt'];
 	$more_link = get_sub_field('more_link_text');
 	$more_link_url = get_sub_field('more_link');
-	$external = get_sub_field('external');
-	$target = '';
+	$s_external = get_sub_field('external');
+	$s_target = '';
 	if($external == true){
-		$target = 'target="_blank"';
+		$s_target = 'target="_blank"';
 	}
 	?>
 	<div class="panel half-img-callout">
@@ -124,7 +124,7 @@
 				<p class="desc"><?php echo $s_callout; ?></p>
 				<div class="cta">
 					<?php if($more_link != ''){ ?>
-					<a href="<?php echo $more_link_url; ?>">
+					<a href="<?php echo $more_link_url; ?>" <?php echo $s_target; ?>>
 						<p><?php echo $more_link; ?></p>
 						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 							 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
@@ -172,7 +172,7 @@
 	$ib_callout_title = get_sub_field('ib_callout_title');
 	$ib_callout_text = get_sub_field('ib_callout_text');
 	$ip_overlay  = get_sub_field('remove_overlay');
-	var_dump($ip_overlay);
+	//var_dump($ip_overlay);
 	?>
 <div class="panel statistic">
 		<div class="container">
@@ -198,7 +198,7 @@
 	$n_title = get_sub_field('news_title');
 	$n_excerpt = get_sub_field('news_story_excerpt');
 	$n_link = get_sub_field('news_story_link');
-	$external = get_sub_field('n_external');
+	$n_external = get_sub_field('n_external');
 
 	?>
 <div class="panel photo-essay">
@@ -275,15 +275,18 @@
 								$icon_alt = $icon['alt'];
 								$grid_text = get_sub_field('grid_item_text');
 								$grid_item_link = get_sub_field('grid_item_link');
-								$target = '';
-								$external = get_sub_field('gl_external');
+								$gl_external = get_sub_field('gl_external');
+								$gl_target='';
+								if($gl_external == 'true'){
+									$gl_target='target="_blank"';
+								}
 								// if($g_cnt %4 == 0){
 								// 	echo '</div><div class="row">';
 								// }
 								?>
 						<div class="columns-3 card">
 							<?php if($grid_item_link != '') {?>
-							<a href="<?php echo $grid_item_link; ?>" <?php echo $target?>>
+							<a href="<?php echo $grid_item_link; ?>" <?php echo $gl_target?>>
 							<?php } ?>
 								<img class="card-icon" src="<?php echo $icon_url; ?>" alt="<?php echo $icon_alt; ?>">
 								<div class="content">
@@ -325,13 +328,13 @@
 							$cl_external = get_sub_field('cl_external');
 							$target='';
 							if($cl_external == 'true'){
-								$target='target="_blank"';
+								$cl_target='target="_blank"';
 							}
 							?>
 					<div class="columns-4">
 						<div class="grid-item">
 							<?php if ($cta_link != ''){?>
-							<a href="<?php echo $cta_link; ?>" <?php echo $target; ?>>
+							<a href="<?php echo $cta_link; ?>" <?php echo $cl_target; ?>>
 							<?php } ?>
 								<div class="img-content">
 									<img class="card-icon" src="<?php echo $cta_img_url; ?>" alt="<?php echo $cta_img_alt; ?>">
@@ -378,11 +381,11 @@
 								$cp_external = get_sub_field('cp_external');
 
 								if($cp_external == 'true'){
-									$target = 'target="_blank"';
+									$cp_target = 'target="_blank"';
 								}
 								?>
 						<div class="columns-6 cta">
-							<a href="<?php echo $cp_link; ?>" <?php echo $target; ?>>
+							<a href="<?php echo $cp_link; ?>" <?php echo $cp_target; ?>>
 								<p><?php echo $cp_text; ?></p>
 								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 									 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
