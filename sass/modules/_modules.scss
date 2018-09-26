@@ -2046,7 +2046,7 @@ a[rel="next"]{
       color: $h5-brown;
    }
    .post{
-      text-align:center;
+      //text-align:center;
    }
 }
 
@@ -2054,6 +2054,12 @@ a[rel="next"]{
 
 }
 
+
+.posts-main{
+   .post{
+      text-align:center;
+   }
+}
 //Search Results
 main.search-results{
    padding-top: 140px;
