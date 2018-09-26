@@ -171,6 +171,8 @@
 	$ip_image_alt = $ip_image['alt'];
 	$ib_callout_title = get_sub_field('ib_callout_title');
 	$ib_callout_text = get_sub_field('ib_callout_text');
+	$ip_overlay  = get_sub_field('remove_overlay');
+	var_dump($ip_overlay);
 	?>
 <div class="panel statistic">
 		<div class="container">
@@ -184,7 +186,9 @@
 			</div>
 		</div>
 		<div class="content" >
+			<?php if($ip_overlay == 'true'){ ?>
 			<div class="img-screen" aria-hidden="true"></div>
+			<?php } ?>
 			<div class="feature-image has-background">
 				<img src="<?php echo $ip_image_url; ?>">
 			</div>

@@ -186,7 +186,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
       <div class="panel topics">
          <div class="container">
             <div class="row">
-               <div class="columns-10 offset-by-1">
+               <div class=""><!-- columns-10 offset-by-1 -->
                   <ul class="e-topic-filters">
                      <li data-filter="">All</li>
                      <?php
@@ -213,7 +213,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
       <div class="panel locations">
          <div class="container">
             <div class="row">
-               <div class="columns-10 offset-by-1">
+               <div class=""><!-- columns-10 offset-by-1 -->
                   <ul class="e-location-filters">
                      <li data-filter="">All</li>
                       <?php

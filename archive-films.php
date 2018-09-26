@@ -167,7 +167,7 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
       <div class="panel topics">
          <div class="container">
             <div class="row">
-               <div class="columns-10 offset-by-1">
+               <div class=""><!-- columns-10 offset-by-1 -->
                   <ul class="f-topic-filters">
                      <li data-filter="">All</li>
                      <?php

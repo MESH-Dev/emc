@@ -1,10 +1,13 @@
 <?php get_header(); ?>
 
 <main class="posts-main" id="content">
-	<div class="panel blog-title">
+	<div class="panel blog-title" style="text-align:center;">
 		<div class="container">
-			<div class="row">
-				<h1><?php single_post_title(); ?></h1>
+			<div class="columns-10 offset-by-1">
+				<div class="row">
+					<img <img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Illustration_OnTheFrontLines_A.png" alt="On the Front Lines">
+					<h1 class="sr-only"><?php single_post_title(); ?></h1>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -41,7 +44,7 @@
 		<div class="panel topics">
 			<div class="">
 				<div class="row">
-					<div class="columns-10 offset-by-1">
+					<div class=""><!-- columns-10 offset-by-1 -->
 						<ul class="topic-filter">
 							<li data-filter="">All</li>
 								<?php
@@ -77,7 +80,7 @@
 		<div class="panel mr-search-filter search-filter">
 			<div class="container">
 				<div class="row">
-					<div class="columns-10 offset-by-1">
+					<div class=""><!-- columns-10 offset-by-1 -->
 						<div class="search-wrap">
 							<div class="search-field">
 								<form action="<?php home_url(); ?>" method="get">
