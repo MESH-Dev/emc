@@ -69,14 +69,19 @@ function pluginname_ajaxurl() {
 
 //add_action('save_post', 'update_locations_map', 10, 3);
 
+//CTA Links
+function cta_shortcode( $atts, $content = null ) {
+	return '<p class="arrow-cta">' . $content . '</p>';
+}
+add_shortcode( 'arrow_cta', 'cta_shortcode' );
 
 
 function wpse_allowedtags() {
     // Add custom tags to this string
-        return '<script>,<style>,<br>,<em>,<i>,<ul>,<ol>,<li>,<a>,<p>, <h1>, <h2>, <h3>, <h4>, <h5>, <h6>'; 
+        return '<script>,<style>,<br>,<em>,<i>,<ul>,<ol>,<li>,<a>,<p>, <h1>, <h2>, <h3>, <h4>, <h5>, <h6>';
     }
 
-if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) : 
+if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
 
     function wpse_custom_wp_trim_excerpt($wpse_excerpt) {
     $raw_excerpt = $wpse_excerpt;
@@ -94,7 +99,7 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
             //__would need.
 
                 $excerpt_word_count = 30;
-                $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
+                $excerpt_length = apply_filters('excerpt_length', $excerpt_word_count);
                 $tokens = array();
                 $excerptOutput = '';
                 $count = 0;
@@ -108,9 +113,9 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
                 // Divide the string into tokens; HTML tags, or words, followed by any whitespace
                 preg_match_all('/(<[^>]+>|[^<>\s]+)\s*/u', $wpse_excerpt, $tokens);
 
-                foreach ($tokens[0] as $token) { 
+                foreach ($tokens[0] as $token) {
 
-                    if ($count >= $excerpt_length && preg_match('/[\,\;\?\.\!]\s*$/uS', $token)) { 
+                    if ($count >= $excerpt_length && preg_match('/[\,\;\?\.\!]\s*$/uS', $token)) {
                     // Limit reached, continue until , ; ? . or ! occur at the end
                         $excerptOutput .= trim($token);
                         break;
@@ -125,9 +130,9 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
 
             $wpse_excerpt = trim(force_balance_tags($excerptOutput));
 
-                //$excerpt_end = ' <a href="'. esc_url( get_permalink() ) . '">' . '&nbsp;&raquo;&nbsp;' . sprintf(__( 'Read more about: %s &nbsp;&raquo;', 'wpse' ), get_the_title()) . '</a>'; 
+                //$excerpt_end = ' <a href="'. esc_url( get_permalink() ) . '">' . '&nbsp;&raquo;&nbsp;' . sprintf(__( 'Read more about: %s &nbsp;&raquo;', 'wpse' ), get_the_title()) . '</a>';
                 $excerpt_end = ' ... <p><a class="more-link" href="'. esc_url( get_permalink() ) . '"><span class="text"><span class="img">'.$arrow_clean.'</span></a></p>';
-                $excerpt_more = apply_filters('excerpt_more', $excerpt_end); 
+                $excerpt_more = apply_filters('excerpt_more', $excerpt_end);
 
                 $pos = strrpos($wpse_excerpt, '</');
                 //if ($pos !== false)
@@ -139,16 +144,16 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
                 // __your excerpt
                 //$wpse_excerpt .= $excerpt_more; /*Add read more in new paragraph */
 
-            return $wpse_excerpt;   
+            return $wpse_excerpt;
 
         }
         return apply_filters('wpse_custom_wp_trim_excerpt', $wpse_excerpt, $raw_excerpt);
     }
 
-endif; 
+endif;
 
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', 'wpse_custom_wp_trim_excerpt'); 
+add_filter('get_the_excerpt', 'wpse_custom_wp_trim_excerpt');
 //$wpse_excerpt = strip_tags($wpse_excerpt, wpse_allowedtags());
 
 function custom_excerpt_length( $length ) {
@@ -192,17 +197,17 @@ if ( $post_type == 'community') {
     return $post_id;
 }
 
-// // define the admin_title callback 
-// function filter_admin_title( $admin_title, $title ) { 
-//     // make filter magic happen here... 
+// // define the admin_title callback
+// function filter_admin_title( $admin_title, $title ) {
+//     // make filter magic happen here...
 //   global $before_title, $title, $after_title;
 //   $before_title = '<label>';
 //   $after_title = '</label>';
 //     return $after_title.$title.$before_title;
-// }; 
-         
-// add the filter 
-//add_filter( 'admin_title', 'filter_admin_title', 10, 2 ); 
+// };
+
+// add the filter
+//add_filter( 'admin_title', 'filter_admin_title', 10, 2 );
 
 // function change_post_titles($admin_title) {
 //     global $post, $after_title, $action, $current_screen;
@@ -239,7 +244,7 @@ if ( $post_type == 'community') {
 // }
 
 
-add_action('wp_ajax_get_post_by_topic', 'get_post_by_topic');  
+add_action('wp_ajax_get_post_by_topic', 'get_post_by_topic');
 add_action('wp_ajax_nopriv_get_post_by_topic', 'get_post_by_topic');  //_nopriv_ allows access for both signed in users, and not
 
 
@@ -267,7 +272,7 @@ function get_post_by_topic(){
         array(
           'taxonomy' => 'category',
           'field'    => 'slug',
-          'terms'    => $post_topic, 
+          'terms'    => $post_topic,
           ),
         ),
       );
@@ -279,7 +284,7 @@ elseif($query != ''):  //If the search is used
       'post_status' => 'publish',
       's' => $query
       //
-          
+
          // ),
         //),
       );
@@ -287,26 +292,26 @@ elseif($query != ''):  //If the search is used
 endif;
         // the query
       //var_dump($query);
-        $wp_query = new WP_Query( $args ); 
+        $wp_query = new WP_Query( $args );
         //var_dump($args);
         $count = $wp_query->found_posts;
-        
 
-       if ( $wp_query->have_posts() ) : 
+
+       if ( $wp_query->have_posts() ) :
       // Do we have any posts in the databse that match our query?
-      // In the case of the home page, this will call for the most recent posts 
-      
+      // In the case of the home page, this will call for the most recent posts
+
         //echo '<div class="container '.$profile_class .'" id="project-gallery">';
          while ( $wp_query->have_posts() ) : $wp_query->the_post(); //We set up $the_query on line 144
         // If we have some posts to show, start a loop that will display each one the same way
-        
-        
+
+
          //if (have_rows ('project_gallery')): //Setup the panels between the top/bottom panels
                //Setup variables
-               
+
                 $the_title = get_the_title();
                 $the_excerpt = get_the_excerpt();
-                
+
                 $target = '';
 
                 $directory = get_bloginfo('template_directory');
@@ -323,9 +328,9 @@ endif;
 				  	$feature = '<h2 class="img-override">'.$f_override.'</h2>';
 				  }
 
-          //endif; 
+          //endif;
           echo '
-          
+
       		<article class="post">
 					'.$feature.'
 					<div class="content">
@@ -336,22 +341,22 @@ endif;
       		</article>
 
 		  ';
-         endwhile; 
+         endwhile;
 
          // echo '<nav class="load_more results">'
          //  .next_posts_link( 'Load More' ).
          //  '</nav>';
          //
-       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
-        
+       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error)
+
         echo '<article class="post-error">
                 <h3 class="404">
                   Your search did not produce any results!</br>
-                
+
                   Please use a different search term, or try something more specific.
                 </h3>
               </article>';
-       endif; // OK, I think that takes care of both scenarios (having posts or not having any posts) 
+       endif; // OK, I think that takes care of both scenarios (having posts or not having any posts)
        // echo '<nav class="load_more results">'
 		     //  .next_posts_link( 'Load More' ).
 		    	// '</nav>';
@@ -359,8 +364,8 @@ endif;
        die();//if this isn't included, you will get funky characters at the end of your query results.
 }
 
-add_action('wp_ajax_get_community_members', 'get_community_members');  
-add_action('wp_ajax_nopriv_get_community_members', 'get_community_members'); 
+add_action('wp_ajax_get_community_members', 'get_community_members');
+add_action('wp_ajax_nopriv_get_community_members', 'get_community_members');
 
 function get_community_members(){
   //$post_topic = $_POST['postTopic'];
@@ -373,7 +378,7 @@ function get_community_members(){
       'posts_per_page' => 9,
       'post_status' => 'publish',
       'paged' => $paged,
-      
+
       //
       );
  elseif ($query != ''): //All posts? No filter
@@ -390,21 +395,21 @@ function get_community_members(){
 endif;
         // the query
       //var_dump($query);
-        $the_query = new WP_Query( $args ); 
+        $the_query = new WP_Query( $args );
         //var_dump($args);
         $count = $the_query->found_posts;
         $c_cnt=0;
         echo '<div class="row people-row">';
 
-       if ( $the_query->have_posts() ) : 
+       if ( $the_query->have_posts() ) :
       // Do we have any posts in the databse that match our query?
-      // In the case of the home page, this will call for the most recent posts 
-      
+      // In the case of the home page, this will call for the most recent posts
+
         //echo '<div class="container '.$profile_class .'" id="project-gallery">';
          while ( $the_query->have_posts() ) : $the_query->the_post(); //We set up $the_query on line 144
         // If we have some posts to show, start a loop that will display each one the same way
-        
-        
+
+
          //if (have_rows ('project_gallery')): //Setup the panels between the top/bottom panels
                //Setup variables
                $c_cnt++;
@@ -436,7 +441,7 @@ endif;
           //   $feature = '<h2 style="text-align:center; font-size:48px; font-family: '.$b.';">'.$f_override.'</h2>';
           // }
 
-          //endif; 
+          //endif;
           echo '
           <div class="member columns-3 '.$div_class.'">
                <div class="thumbnail-block">
@@ -452,28 +457,28 @@ endif;
                <p class="heading6 location">'.$location.'.</p>
             </div>
           ';
-         endwhile; 
+         endwhile;
          if($c_cnt %3 == 0){
             echo '</div><div class="row people-row"> <!-- New Row -->';
           };
-       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
-        
+       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error)
+
         echo '<article class="post-error">
                 <h3 class="404">
                   Your search did not produce any results!</br>
-                
+
                   Please use a different search term, or try something more specific.
                 </h3>
               </article>';
-       endif; // OK, I think that takes care of both scenarios (having posts or not having any posts) 
+       endif; // OK, I think that takes care of both scenarios (having posts or not having any posts)
        // echo '<nav class="load_more results">'
          //  .next_posts_link( 'Load More' ).
           // '</nav>';
        die();//if this isn't included, you will get funky characters at the end of your query results.
 }
 
-add_action('wp_ajax_get_events', 'get_events');  
-add_action('wp_ajax_nopriv_get_events', 'get_events'); 
+add_action('wp_ajax_get_events', 'get_events');
+add_action('wp_ajax_nopriv_get_events', 'get_events');
 
 function get_events(){
   //$post_topic = $_POST['postTopic'];
@@ -511,7 +516,7 @@ function get_events(){
         array(
           'taxonomy' => 'event_topic',
           'field'    => 'slug',
-          'terms'    => $event_topic, 
+          'terms'    => $event_topic,
           ),
         ),
       );
@@ -530,7 +535,7 @@ function get_events(){
     array(
       'taxonomy' => 'event_location',
       'field'    => 'slug',
-      'terms'    => $event_location, 
+      'terms'    => $event_location,
       ),
     ),
   );
@@ -555,26 +560,26 @@ endif;
       global $wp_query;
       global $paged;
 
-        $wp_query = new WP_Query( $args ); 
+        $wp_query = new WP_Query( $args );
         //var_dump($args);
         //$count = $the_query->found_posts;
-        
 
-       if ( $wp_query->have_posts() ) : 
+
+       if ( $wp_query->have_posts() ) :
       // Do we have any posts in the databse that match our query?
-      // In the case of the home page, this will call for the most recent posts 
+      // In the case of the home page, this will call for the most recent posts
         $e_cnt=0;
         echo '<div class="row grid-row">';
         //echo '<div class="container '.$profile_class .'" id="project-gallery">';
          while ( $wp_query->have_posts() ) : $wp_query->the_post(); //We set up $the_query on line 144
         // If we have some posts to show, start a loop that will display each one the same way
-        
-        
+
+
          //if (have_rows ('project_gallery')): //Setup the panels between the top/bottom panels
                //Setup variables
-               
+
             $the_title = get_the_title();
-            
+
             $e_cnt++;
             $div_class='';
             $icon = get_field('eo_icon', $post->ID);
@@ -594,7 +599,7 @@ endif;
             $event_link_text = get_field('el_text', $post->ID);
             $event_link = get_field('el_link', $post->ID);
             $external = get_field('external', $post->ID);
-            $event_tax = get_the_terms(get_the_ID(),'event_topic'); 
+            $event_tax = get_the_terms(get_the_ID(),'event_topic');
             $topic_name='';
             if($event_tax != ''){
                foreach($event_tax as $topic){
@@ -609,7 +614,7 @@ endif;
             if($e_cnt % 2 != 0){
                $div_class = 'offset-by-1';
             }
-                
+
                 $target = '';
 
                 $directory = get_bloginfo('template_directory');
@@ -626,9 +631,9 @@ endif;
             $feature = '<h2 style="text-align:center; font-size:48px; font-family: '.$b.';">'.$f_override.'</h2>';
           }
 
-          
 
-          //endif; 
+
+          //endif;
           echo '
           <div class="columns-5 card '.$div_class.'">
              <div class="row">
@@ -658,23 +663,23 @@ endif;
           if($e_cnt %2 == 0){
             echo '</div><div class="row grid-row"> <!-- New Row -->';
           };
-         endwhile; 
+         endwhile;
          // if($e_cnt % 2 == 0){
          //  echo '</div><div class="row grid-row">';
          // };
-       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
-        
+       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error)
+
         echo '<article class="post-error">
                 <h3 class="404">
                   Your search did not produce any results!</br>
-                
+
                   Please use a different search term, or try something more specific.
                 </h3>
               </article>';
-       endif; 
+       endif;
        echo '</div> <!--end row-->';
        //wp_reset_postdata();
-       // OK, I think that takes care of both scenarios (having posts or not having any posts) 
+       // OK, I think that takes care of both scenarios (having posts or not having any posts)
        // echo '<nav class="load_more results">'
        //    .next_posts_link( 'Load More' ).
        //    '</nav>';
@@ -682,8 +687,8 @@ endif;
        die();//if this isn't included, you will get funky characters at the end of your query results.
 }
 
-add_action('wp_ajax_get_films', 'get_films');  
-add_action('wp_ajax_nopriv_get_films', 'get_films'); 
+add_action('wp_ajax_get_films', 'get_films');
+add_action('wp_ajax_nopriv_get_films', 'get_films');
 
 function get_films(){
   //$post_topic = $_POST['postTopic'];
@@ -702,12 +707,12 @@ function get_films(){
       'orderby' => 'post_date',
       'order' => 'DESC',
       'paged'=>$paged,
-      'post_status' => 'publish', 
+      'post_status' => 'publish',
       'tax_query' => array(
             array(
               'taxonomy' => 'film_topic',
               'field'    => 'slug',
-              'terms'    => array('educational-psa', 'archive'), 
+              'terms'    => array('educational-psa', 'archive'),
               'operator' => 'NOT IN',
               ),
             ),
@@ -726,7 +731,7 @@ function get_films(){
         array(
           'taxonomy' => 'film_topic',
           'field'    => 'slug',
-          'terms'    => $film_topic, 
+          'terms'    => $film_topic,
           ),
         ),
       );
@@ -753,24 +758,24 @@ endif;
       global $wp_query;
       global $paged;
 
-        $wp_query = new WP_Query( $args ); 
+        $wp_query = new WP_Query( $args );
         //var_dump($args);
         //$count = $the_query->found_posts;
-        
 
-       if ( $wp_query->have_posts() ) : 
+
+       if ( $wp_query->have_posts() ) :
       // Do we have any posts in the databse that match our query?
-      // In the case of the home page, this will call for the most recent posts 
+      // In the case of the home page, this will call for the most recent posts
         //$e_cnt=0;
         //echo '<div class="row grid-row">';
         //echo '<div class="container '.$profile_class .'" id="project-gallery">';
          while ( $wp_query->have_posts() ) : $wp_query->the_post(); //We set up $the_query on line 144
         // If we have some posts to show, start a loop that will display each one the same way
-        
-        
+
+
          //if (have_rows ('project_gallery')): //Setup the panels between the top/bottom panels
                //Setup variables
-               
+
             $the_title = get_the_title();
             $the_link = get_the_permalink();
             $excerpt = get_field('custom_excerpt');
@@ -787,10 +792,10 @@ endif;
             $ex_class = 'first';
           }
 
-          
 
-          //endif; 
-          echo 
+
+          //endif;
+          echo
           '
            <div class="row listing-row">
             <div class="listing-card columns-12">
@@ -808,23 +813,23 @@ endif;
           if($e_cnt %2 == 0){
             //echo '</div><div class="row grid-row"> <!-- New Row -->';
           };
-         endwhile; 
+         endwhile;
          // if($e_cnt % 2 == 0){
          //  echo '</div><div class="row grid-row">';
          // };
-       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
-        
+       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error)
+
         echo '<article class="post-error">
                 <h3 class="404">
                   Your search did not produce any results!</br>
-                
+
                   Please use a different search term, or try something more specific.
                 </h3>
               </article>';
-       endif; 
+       endif;
        //echo '</div> <!--end row-->';
        //wp_reset_postdata();
-       // OK, I think that takes care of both scenarios (having posts or not having any posts) 
+       // OK, I think that takes care of both scenarios (having posts or not having any posts)
        // echo '<nav class="load_more results">'
        //    .next_posts_link( 'Load More' ).
        //    '</nav>';
@@ -832,8 +837,8 @@ endif;
        die();//if this isn't included, you will get funky characters at the end of your query results.
 }
 
-add_action('wp_ajax_get_the_resources', 'get_the_resources');  
-add_action('wp_ajax_nopriv_get_resources', 'get_the_resources'); 
+add_action('wp_ajax_get_the_resources', 'get_the_resources');
+add_action('wp_ajax_nopriv_get_resources', 'get_the_resources');
 
 function get_the_resources(){
   //$post_topic = $_POST['postTopic'];
@@ -867,7 +872,7 @@ function get_the_resources(){
         array(
           'taxonomy' => 'media_topic',
           'field'    => 'slug',
-          'terms'    => $resource_topic, 
+          'terms'    => $resource_topic,
           ),
         ),
       );
@@ -883,7 +888,7 @@ function get_the_resources(){
         array(
           'taxonomy' => 'media_type',
           'field'    => 'slug',
-          'terms'    => $resource_type, 
+          'terms'    => $resource_type,
           ),
         ),
 
@@ -906,25 +911,25 @@ endif;
       global $wp_query;
       global $paged;
 
-        $wp_query = new WP_Query( $args ); 
+        $wp_query = new WP_Query( $args );
         $count = $wp_query->post_count;
         //var_dump($args);
         //$count = $the_query->found_posts;
-        
 
-       if ( $wp_query->have_posts() ) : 
+
+       if ( $wp_query->have_posts() ) :
       // Do we have any posts in the databse that match our query?
-      // In the case of the home page, this will call for the most recent posts 
+      // In the case of the home page, this will call for the most recent posts
         $r_cnt=0;
         echo '<div class="row event-grid resource-grid">';
         //echo '<div class="container '.$profile_class .'" id="project-gallery">';
          while ( $wp_query->have_posts() ) : $wp_query->the_post(); //We set up $the_query on line 144
         // If we have some posts to show, start a loop that will display each one the same way
-        
-        
+
+
          //if (have_rows ('project_gallery')): //Setup the panels between the top/bottom panels
                //Setup variables
-               
+
                   $r_cnt++;
                   $id = $post->ID;
                   $the_title = get_the_title();
@@ -966,9 +971,9 @@ endif;
                    }
 
                   $cat_list = rtrim($categories, $separator);
-          
 
-          //endif; 
+
+          //endif;
                    //rtrim($categories, $separator)
           echo '
           <div class="columns-5 card '.$div_class.'">
@@ -992,23 +997,23 @@ endif;
              }elseif($r_cnt == $count){
               echo '</div>';
              }
-         endwhile; 
+         endwhile;
          // if($e_cnt % 2 == 0){
          //  echo '</div><div class="row grid-row">';
          // };
-       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
-        
+       else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error)
+
         echo '<article class="post-error">
                 <h3 class="404">
                   Your search did not produce any results!</br>
-                
+
                   Please use a different search term, or try something more specific.
                 </h3>
               </article>';
-       endif; 
+       endif;
        echo '</div> <!--end row-->';
        //wp_reset_postdata();
-       // OK, I think that takes care of both scenarios (having posts or not having any posts) 
+       // OK, I think that takes care of both scenarios (having posts or not having any posts)
        // echo '<nav class="load_more results">'
        //    .next_posts_link( 'Load More' ).
        //    '</nav>';
@@ -1116,7 +1121,7 @@ function hide_text_editor() {
   // Hide the editor on certian pages
    $pgname = get_the_title($post_id);
    $pages = array('Content Tester');
-  if(in_array($pgname, $pages)){ 
+  if(in_array($pgname, $pages)){
     remove_post_type_support('page', 'editor');
   }
 
@@ -1146,7 +1151,7 @@ function hide_text_editor() {
 function cf_search_join( $join ) {
     global $wpdb;
 
-    if ( is_search() ) {    
+    if ( is_search() ) {
         $join .=' LEFT JOIN '.$wpdb->postmeta. ' ON '. $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
     }
 

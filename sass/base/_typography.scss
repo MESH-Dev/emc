@@ -21,7 +21,7 @@
    font-style: normal;
    font-weight: 300;
 }
-@mixin whitney-italic{
+@mixin whitney-italic() {
    font-family: "Whitney A", "Whitney B";
    font-style: italic;
    font-weight: 400;
@@ -41,7 +41,7 @@
    font-style: normal;
    font-weight: 700;
 }
-@mixin whitney-bold-italic{
+@mixin whitney-bold-italic() {
    font-family: "Whitney A", "Whitney B";
    font-style: italic;
    font-weight: 700;
@@ -199,6 +199,34 @@ h5{
    letter-spacing: 0.6px;
 }
 
+ul{
+   li{
+      list-style-type: disc;
+      font-family: 'bianco-reg';
+      font-size: 2rem;
+      line-height: 32px;
+      letter-spacing: 0.6px;
+      color: $primary-red;
+      p{
+         color: $primary-red;
+      }
+   }
+}
+
+ol{
+   li{
+      list-style-type: decimal;
+      font-family: 'bianco-reg';
+      font-size: 2rem;
+      line-height: 32px;
+      letter-spacing: 0.6px;
+      color: $primary-red;
+      p{
+         color: $primary-red;
+      }
+   }
+}
+
 a, p a{
   transition: opacity 0.5s ease-in-out;
   // font-size:2rem;
@@ -209,4 +237,32 @@ a, p a{
      text-decoration:none;
      opacity:.5;
   }
+}
+
+p.arrow-cta{
+   a{
+      @include whitney-bold();
+      font-size: 1.4rem;
+      color: $primary-orange;
+      letter-spacing: 1.75px;
+      text-transform: uppercase;
+      transition: opacity 0.5s ease-in-out;
+      // padding-right: 20px;
+      // background-position: center right;
+      // background-repeat: no-repeat;
+      // background-image: url("img/arrow-right.svg");
+      &::after{
+         content: '';
+         display: inline-block;
+         height: 15px;
+         width: 9px;
+         background-image: url('img/arrow-right.svg');
+         background-position: center;
+         background-size: cover;
+         background-repeat: no-repeat;
+         margin-left: 6px;
+         // vertical-align: middle;
+         transform: translateY(1px);
+      }
+   }
 }

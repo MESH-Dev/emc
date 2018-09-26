@@ -16,6 +16,11 @@ header{
          opacity: 0.5;
       }
    }
+   ul,ol{
+      li{
+         line-height: normal;
+      }
+   }
 }
 
 main#content{
@@ -82,6 +87,7 @@ main#content{
    -o-justify-content: flex-end;
    justify-content: flex-end;
    .sub-menu{
+      left: -20px;
       li{
          a{
             &::after{
@@ -115,6 +121,7 @@ main#content{
                background-color: $primary-lightbrown;
                left: 50%;
                transform: translateX(-50%);
+               z-index: 9;
             }
          }
       }
@@ -468,6 +475,7 @@ body .sidr{
          // opacity: 0;
          // height: 0;
          li{
+            line-height: normal;
             a{
                &::after{
                   display: none;
