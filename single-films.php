@@ -125,7 +125,7 @@
 	</div>
 </div>
 
-<main id="content" class="film-single" style="position:relative; z-index:1; margin-top:9em;">
+<main id="content" class="film-single" style="position:relative; z-index:1; padding-top:9em;">
 	<?php ?>
 	<div class="container">
 		<div class="row">
