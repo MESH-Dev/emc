@@ -3947,8 +3947,8 @@ a[rel="next"]::after {
 
 /* line 2035, sass/modules/_modules.scss */
 .blog-single {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 @media screen and (max-width: 750px) {
   /* line 2035, sass/modules/_modules.scss */
