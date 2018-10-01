@@ -396,6 +396,7 @@ endif;
         // the query
       //var_dump($query);
         $the_query = new WP_Query( $args );
+        $count = $the_query->post_count;
         //var_dump($args);
         $count = $the_query->found_posts;
         $c_cnt=0;
@@ -457,10 +458,14 @@ endif;
                <p class="heading6 location">'.$location.'.</p>
             </div>
           ';
+          if($c_cnt %3 == 0 && $c_cnt != $count){
+               echo '</div><div class="row people-row">';
+           }elseif($c_cnt == $count){
+             echo '</div>';
+           }
          endwhile;
-         if($c_cnt %3 == 0){
-            echo '</div><div class="row people-row"> <!-- New Row -->';
-          };
+
+
        else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error)
 
         echo '<article class="post-error">

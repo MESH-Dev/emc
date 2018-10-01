@@ -5,7 +5,7 @@
   //Loop through the taxonomies used on this CPT and add it to an array
   $separator = ', ';
   $e_topics = get_terms(['taxonomy' => 'event_topic', 'hide_empty' => false]);
-  
+
   $e_topic = '';
   foreach ($e_topics as $t){
     $e_topic .= '"'.$t->name.'"'.$separator;
@@ -47,14 +47,14 @@
       $meta = get_post_meta(get_the_ID(), 'event_description');
       $description = strip_tags(get_field('event_description'));
       $organizers = get_post_meta(get_the_ID(), 'organizer_name');
-        
+
       foreach($meta as $desc){
         //$e_desc.='"'.addslashes($desc).'"'.$separator;
         $f_desc .= $desc.' ';
 
         //$e_desc = implode($e_desc);
       }
-        
+
       foreach($organizers as $organizer){
         if($organizer != ''){
           $o .= '"'.$organizer.'"'.$separator;
@@ -64,7 +64,7 @@
     //End our secondary query, and reset our postdata
     endwhile; endif; wp_reset_postdata();
 
-  //Split up and clean the paragraph content 
+  //Split up and clean the paragraph content
   $remove = array('.', '!', ',', '?', '\n', '\r', "\r\n", 'and', 'the', 'in', 'on', 'a', 'but');
   $f_desc = str_replace($remove,'', $f_desc);
   $f_desc = explode(' ', addslashes($f_desc));
@@ -126,7 +126,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
    <?php } ?>
 </div>
 <main id="content" class="landing">
-  
+
    <div class="panel filters">
       <div class="container">
          <div class="row">
@@ -285,7 +285,8 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
             'order' => 'ASC',
             'paged'=>$paged
          );
-         $wp_query = new WP_Query( $args );?>
+         $wp_query = new WP_Query( $args );
+         $count = $wp_query->post_count;?>
          <?php if ($wp_query->have_posts()) :
          $e_cnt=0;
          ?>
@@ -353,10 +354,11 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
          if($e_cnt %2 != 0){
             //echo '</div>';
          }
-          if($e_cnt %2 == 0){
-               echo '</div><div class="row event-grid">';
-            }
-
+            if($e_cnt %2 == 0 && $e_cnt != $count){
+                 echo '</div><div class="row event-grid">';
+             }elseif($e_cnt == $count){
+               echo '</div>';
+             }
             endwhile;
          ?>
           </div> <!--end row-->

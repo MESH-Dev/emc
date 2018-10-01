@@ -110,7 +110,7 @@
 	$more_link_url = get_sub_field('more_link');
 	$s_external = get_sub_field('external');
 	$s_target = '';
-	if($external == true){
+	if($s_external == true){
 		$s_target = 'target="_blank"';
 	}
 	?>
@@ -288,7 +288,11 @@
 							<?php if($grid_item_link != '') {?>
 							<a href="<?php echo $grid_item_link; ?>" <?php echo $gl_target?>>
 							<?php } ?>
-								<img class="card-icon" src="<?php echo $icon_url; ?>" alt="<?php echo $icon_alt; ?>">
+								<?php
+								if ($icon_url) {?>
+									<img class="card-icon" src="<?php echo $icon_url; ?>" alt="<?php echo $icon_alt; ?>">
+								<?php }
+								?>
 								<div class="content">
 									<div class="divider"></div>
 									<div class="caption">
@@ -326,7 +330,7 @@
 							$cta_link=get_sub_field('cta_link');
 							$cta_desc = get_sub_field('cta_description');
 							$cl_external = get_sub_field('cl_external');
-							$target='';
+							$cl_target='';
 							if($cl_external == 'true'){
 								$cl_target='target="_blank"';
 							}
@@ -377,7 +381,7 @@
 								while(have_rows('cross_promotional_grid')):the_row();
 								$cp_text = get_sub_field('cross_promotional_text');
 								$cp_link = get_sub_field('cross_promotional_link');
-								$target = '';
+								$cp_target = '';
 								$cp_external = get_sub_field('cp_external');
 
 								if($cp_external == 'true'){

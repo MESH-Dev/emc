@@ -32,7 +32,7 @@
 </div>
 
 <main id="content" class="community-grid">
-  
+
 
    <div class="panel filters">
       <div class="container">
@@ -99,7 +99,8 @@
             'order' => 'ASC',
             'paged'=>$paged
          );
-         $wp_query = new WP_Query( $args );?>
+         $wp_query = new WP_Query( $args );
+         $count = $wp_query->post_count;?>
          <?php if ($wp_query->have_posts()) :
          $c_cnt=0;
          ?>
@@ -164,144 +165,15 @@
          if($c_cnt %2 != 0){
             //echo '</div>';
          }
-          if($c_cnt %3 == 0){
-               echo '</div><div class="row people-row">';
-            }
-
+            if($c_cnt %3 == 0 && $c_cnt != $count){
+                 echo '</div><div class="row people-row">';
+             }elseif($c_cnt == $count){
+               echo '</div>';
+             }
             endwhile;
          ?>
          </div> <!--end row-->
       <?php endif; ?>
-           <!--  <div class="member columns-3">
-               <div class="thumbnail-block">
-                  <div class="overlay">
-                  </div>
-                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
-
-                  </div>
-               </div>
-               <h2>Name</h2>
-               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-            <div class="member columns-3">
-               <div class="thumbnail-block">
-                  <div class="overlay">
-                  </div>
-                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
-
-                  </div>
-               </div>
-               <h2>Name</h2>
-               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-         </div>
-         <div class="row people-row">
-            <div class="member columns-3 offset-by-1">
-               <div class="thumbnail-block">
-                  <div class="overlay">
-                  </div>
-                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
-
-                  </div>
-               </div>
-               <h2>Name</h2>
-               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-            <div class="member columns-3">
-               <div class="thumbnail-block">
-                  <div class="overlay">
-                  </div>
-                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
-
-                  </div>
-               </div>
-               <h2>Name</h2>
-               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-            <div class="member columns-3">
-               <div class="thumbnail-block">
-                  <div class="overlay">
-                  </div>
-                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
-
-                  </div>
-               </div>
-               <h2>Name</h2>
-               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-         </div>
-         <div class="row people-row">
-            <div class="member columns-3 offset-by-1">
-               <div class="thumbnail-block">
-                  <div class="overlay">
-                  </div>
-                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
-
-                  </div>
-               </div>
-               <h2>Name</h2>
-               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-            <div class="member columns-3">
-               <div class="thumbnail-block">
-                  <div class="overlay">
-                  </div>
-                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
-
-                  </div>
-               </div>
-               <h2>Name</h2>
-               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-            <div class="member columns-3">
-               <div class="thumbnail-block">
-                  <div class="overlay">
-                  </div>
-                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
-
-                  </div>
-               </div>
-               <h2>Name</h2>
-               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-         </div>
-         <div class="row people-row">
-            <div class="member columns-3 offset-by-1">
-               <div class="thumbnail-block">
-                  <div class="overlay">
-                  </div>
-                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
-
-                  </div>
-               </div>
-               <h2>Name</h2>
-               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-            <div class="member columns-3">
-               <div class="thumbnail-block">
-                  <div class="overlay">
-                  </div>
-                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
-
-                  </div>
-               </div>
-               <h2>Name</h2>
-               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-            <div class="member columns-3">
-               <div class="thumbnail-block">
-                  <div class="overlay">
-                  </div>
-                  <div class="thumbnail" style="background-image:url('<?php echo get_template_directory_uri() ?>/img/EMC_MasterLandingPage_HeaderImage.png')">
-
-                  </div>
-               </div>
-               <h2>Name</h2>
-               <p class="heading6">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            </div>
-         </div>
-      </div>
-   </div> -->
    </section>
 	<nav class="load_more">
 		<?php next_posts_link( 'Load More' ); ?>
