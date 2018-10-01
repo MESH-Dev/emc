@@ -5,7 +5,7 @@
 		<div class="container">
 			<div class="columns-10 offset-by-1">
 				<div class="row">
-					<img class="blog-logo" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Illustration_OnTheFrontLines_B.png" alt="On the Front Lines">
+					<img class="blog-logo" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Illustration_OnTheFrontLines_E_blogheader.png" alt="On the Front Lines">
 					<h1 class="sr-only"><?php single_post_title(); ?></h1>
 				</div>
 			</div>
