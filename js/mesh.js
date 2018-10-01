@@ -1088,7 +1088,7 @@ function loadFilms (filmTopic, query) { //*
 
                   //$('.card').detach();
                   $('.post-error').detach();
-                  $('.row.resource-grid').detach();
+                  $('.row.event-grid.resource-grid').detach();
                   $('#emc-resources').append(response);
                   //$container.waitForImages(function() {
                   //   $('#loader').hide();

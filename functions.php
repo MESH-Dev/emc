@@ -843,7 +843,7 @@ endif;
 }
 
 add_action('wp_ajax_get_the_resources', 'get_the_resources');
-add_action('wp_ajax_nopriv_get_resources', 'get_the_resources');
+add_action('wp_ajax_nopriv_get_the_resources', 'get_the_resources');
 
 function get_the_resources(){
   //$post_topic = $_POST['postTopic'];
