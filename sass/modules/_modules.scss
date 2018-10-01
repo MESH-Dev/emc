@@ -1913,7 +1913,7 @@ svg.scroll{
    img{
       max-width:100%;
       height:auto;
-      margin-bottom: 47px;
+      margin-bottom: 4rem;
    }
    span.text svg{
       width:20px;
@@ -2071,6 +2071,15 @@ a[rel="next"]{
    }
    .post{
       //text-align:center;
+   }
+   figcaption{
+      font-family: 'bianco-reg';
+      font-size: 2rem;
+      line-height: 32px;
+      letter-spacing: 0.6px;
+      margin-bottom: 4rem;
+      margin-top: 0;
+      color: $h5-brown;
    }
 }
 
