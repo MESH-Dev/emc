@@ -39,7 +39,7 @@
 </div>
 
 <main id="content" class="landing">
-  
+
 <div class="panel filters">
    <div class="container">
       <div class="row">
@@ -181,7 +181,7 @@
          <div class="row">
             <section id="emc-resources">
                <!-- <div class="row event-grid"> -->
-                   <?php   
+                   <?php
 
                    $args = array(
                      'post_type' => 'resources',
@@ -191,10 +191,10 @@
                      //'order' => 'ASC',
                      'paged'=>$paged
                   );
-                  $wp_query = new WP_Query( $args ); 
+                  $wp_query = new WP_Query( $args );
                   $count = $wp_query->post_count;?>
                   <?php if ($wp_query->have_posts()) :
-                  
+
                   $r_cnt=0;
                   ?>
                   <div class="row event-grid resource-grid">

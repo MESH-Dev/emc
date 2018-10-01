@@ -91,7 +91,7 @@ body{
 
     &.interior{
       height: 600px;
-      padding-top: 4em;
+      padding-top: 6em;
       position: relative;
       @media screen and ($bp-smaller-than-tablet){
          //padding-top: 200px;
@@ -325,6 +325,7 @@ body{
             font-size: 1.8rem;
             letter-spacing: 0.5px;
             line-height: 30px;
+            margin-bottom: 0;
             strong,b{
                font-family: 'bianco-extrabold';
                color: $primary-orange;
@@ -1538,12 +1539,22 @@ a.filter-trigger{
 }
 
 main.landing{
-   padding-top:8rem;
+   // padding-top:8rem;
       padding-bottom:5rem;
    .text-grid{
       background-color: $tertiary-background;
    }
 }
+
+.post-type-archive-resources{
+   main.landing{
+      padding-top: 3rem;
+   }
+   .panel.filters{
+      padding-top: 0;
+   }
+}
+
 
 main.text{
    //padding-top: 80px;
@@ -1560,7 +1571,7 @@ main.text{
 .film-single{
       padding-top:8rem;
       padding-bottom:5rem;
-      position:relative; 
+      position:relative;
       z-index:1;
 }
 
@@ -1874,10 +1885,11 @@ main{
 svg.scroll{
    height: 16px;
    width: auto;
-   display: inline-block;
+   // display: inline-block;
    position: absolute;
    top: 2px;
-   right: -14px;
+   right: 0;
+   display: none;
 }
 
 .post{

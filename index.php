@@ -44,7 +44,7 @@
 		<div class="panel topics">
 			<div class="">
 				<div class="row">
-					<div class=""><!-- columns-10 offset-by-1 -->
+					<div class="columns-12"><!-- columns-10 offset-by-1 -->
 						<ul class="topic-filter">
 							<li data-filter="">All</li>
 								<?php

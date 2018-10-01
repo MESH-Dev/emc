@@ -2,7 +2,10 @@ jQuery(document).ready(function($){
 
   //Are we loaded?
   console.log('New theme loaded!');
-
+  th= $('.ticker').height();
+  nh=$('.top-nav').height();
+   hh = (th + nh);
+   console.log(hh);
   //Let's do something awesome!
 
 // $(window).scroll(function(){
@@ -70,7 +73,7 @@ createCookie(name,"",-1);
   //  which is why our selector is referencing an array
 
   $('.play').click(function(event){
-    
+
     // $('.player-holder').fadeOut('slow');
     // $('.banner-text').fadeOut('slow');
     $('.video-holder').fadeIn('slow');
@@ -149,7 +152,10 @@ var gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_
 var $mclk = 0;
 //Grab the width of each element
 function gi_resize(){
-  hh = $('header').height();
+ // th= $('.ticker').height();
+ // nh=$('.top-nav').height();
+ //  hh = (th + nh);
+ //  console.log(hh);
   mh = $('.matinee').height();
   wg_w = $('.welcome-gate').width();
   wg_h = $('.welcome-gate').height();
@@ -306,8 +312,10 @@ $('#tickerClose').click(function(event){
 
 var $ticker = readCookie('ticker');
 console.log($ticker);
-if($ticker != 'true'){
-  $('.ticker').removeClass('hide');
+if($ticker == 'true'){
+  $('.ticker').addClass('hide');
+  var hh = $('header').height();
+  $('.welcome-gate').css({'margin-top':hh});
 }
 
 $('#modalOpen').click(function(event){
@@ -328,7 +336,7 @@ $('a.filter-trigger').click(function(){
 
       });
       $(this).addClass('open');
-      
+
    }
 });
 

@@ -13,23 +13,23 @@
 	$vw_url = $v_webm['url'];
 	$l_page_callout = get_field('banner_callout_text');
 ?>
-<div class="welcome-gate interior">
-	<?php if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
-	<div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>
-	<?php } ?>
-	<div class="banner-text columns-5 offset-by-1">
-		<p class="top-callout"><?php echo the_title(); ?></p>
-		<h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
-	</div>
-	<?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
-		<video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true">
-			<source src ="<?php echo $vm_url; ?>" autoplay="true" loop="true" muted="true">
-			<source src ="<?php echo $vo_url; ?>" autoplay="true" loop="true" muted="true">
-			<source src ="<?php echo $vw_url; ?>" autoplay="true" loop="true" muted="true">
-		</video>
-	<?php } ?>
-</div>
 <main id="content" class="landing">
+	<div class="welcome-gate interior">
+		<?php if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
+		<div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?>');"></div>
+		<?php } ?>
+		<div class="banner-text columns-5 offset-by-1">
+			<p class="top-callout"><?php echo the_title(); ?></p>
+			<h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
+		</div>
+		<?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
+			<video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true">
+				<source src ="<?php echo $vm_url; ?>" autoplay="true" loop="true" muted="true">
+				<source src ="<?php echo $vo_url; ?>" autoplay="true" loop="true" muted="true">
+				<source src ="<?php echo $vw_url; ?>" autoplay="true" loop="true" muted="true">
+			</video>
+		<?php } ?>
+	</div>
 <?php
 	if(have_rows('content_panel')):
 		while(have_rows('content_panel')):the_row();
