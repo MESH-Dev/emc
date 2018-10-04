@@ -340,9 +340,11 @@
 							<?php if ($cta_link != ''){?>
 							<a href="<?php echo $cta_link; ?>" <?php echo $cl_target; ?>>
 							<?php } ?>
+							<?php if($cta_img != ''){ ?>
 								<div class="img-content">
 									<img class="card-icon" src="<?php echo $cta_img_url; ?>" alt="<?php echo $cta_img_alt; ?>">
 								</div>
+							<?php } ?>
 								<p class="heading6"><?php echo $cta_title; ?></p>
 								<p class="desc"><?php echo $cta_text; ?></p>
 								<?php if ($cta_link != ''){?>
