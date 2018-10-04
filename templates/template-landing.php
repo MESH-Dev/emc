@@ -357,7 +357,7 @@
 								</svg>
 								<?php } ?>
 								<?php if($cta_desc != '') { ?>
-								<p class="more-info"><?php echo $cta_desc; ?></p>
+								<div class="more-info"><?php echo $cta_desc; ?></div>
 								<?php } ?>
 							<!-- </div> -->
 							<?php if ($cta_link != ''){?>
