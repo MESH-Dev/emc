@@ -396,7 +396,7 @@ endif;
         // the query
       //var_dump($query);
         $the_query = new WP_Query( $args );
-        $count = $the_query->post_count;
+        //$count = $the_query->post_count;
         //var_dump($args);
         $count = $the_query->found_posts;
         $c_cnt=0;
@@ -569,12 +569,12 @@ endif;
         //var_dump($args);
         //$count = $the_query->found_posts;
 
-
+        $e_count = $wp_query->post_count;
        if ( $wp_query->have_posts() ) :
       // Do we have any posts in the databse that match our query?
       // In the case of the home page, this will call for the most recent posts
         $e_cnt=0;
-        echo '<div class="row grid-row">';
+        echo '<div class="row event-grid">';
         //echo '<div class="container '.$profile_class .'" id="project-gallery">';
          while ( $wp_query->have_posts() ) : $wp_query->the_post(); //We set up $the_query on line 144
         // If we have some posts to show, start a loop that will display each one the same way
@@ -629,12 +629,12 @@ endif;
 
                 $feature = '';
 
-                if(the_post_thumbnail($post->ID) != ''){
-          $feature = get_the_post_thumbnail('large');
-          }elseif(get_field('override_feature_image_text', $post->ID) != ''){
-            $b = "'bianco-reg'";
-            $feature = '<h2 style="text-align:center; font-size:48px; font-family: '.$b.';">'.$f_override.'</h2>';
-          }
+          //       if(the_post_thumbnail($post->ID) != ''){
+          // $feature = get_the_post_thumbnail('large');
+          // }elseif(get_field('override_feature_image_text', $post->ID) != ''){
+          //   $b = "'bianco-reg'";
+          //   $feature = '<h2 style="text-align:center; font-size:48px; font-family: '.$b.';">'.$f_override.'</h2>';
+          // }
 
 
 
@@ -665,9 +665,11 @@ endif;
              </div>
           </div>';
 
-          if($e_cnt %2 == 0){
-            echo '</div><div class="row grid-row"> <!-- New Row -->';
-          };
+          if($e_cnt %2 == 0 && $e_cnt != $e_count){
+            echo '</div><div class="row event-grid"> <!-- New Row -->';
+          }elseif($e_cnt == $e_count){
+            echo '</div>';
+          }
          endwhile;
          // if($e_cnt % 2 == 0){
          //  echo '</div><div class="row grid-row">';
@@ -815,9 +817,9 @@ endif;
          </div>
          ';
 
-          if($e_cnt %2 == 0){
-            //echo '</div><div class="row grid-row"> <!-- New Row -->';
-          };
+          // if($e_cnt %2 == 0){
+          //   //echo '</div><div class="row grid-row"> <!-- New Row -->';
+          // };
          endwhile;
          // if($e_cnt % 2 == 0){
          //  echo '</div><div class="row grid-row">';
