@@ -1086,6 +1086,16 @@ body{
             letter-spacing: 0.6px;
             line-height: 26px;
          }
+         p{
+            a{
+               font-family: 'bianco-reg';
+               font-size: 1.6rem;
+               letter-spacing: 0.6px;
+               line-height: 26px;
+               transition: opacity 0.5s ease-in-out;
+               text-transform: none;
+            }
+         }
          a{
             display: inline;
             margin-bottom: 0;
