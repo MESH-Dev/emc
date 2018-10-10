@@ -602,8 +602,8 @@ endif;
             //   $end =  $dash.$event_end;
             // }
             $event_link_text = get_field('el_text', $post->ID);
-            $event_link = get_field('el_link', $post->ID);
-            $external = get_field('external', $post->ID);
+            $event_link = get_field('e_link', $post->ID);
+            $e_external = get_field('e_external', $post->ID);
             $event_tax = get_the_terms(get_the_ID(),'event_topic');
             $topic_name='';
             if($event_tax != ''){
@@ -612,7 +612,7 @@ endif;
                }
             }
             $target = '';
-            if($external == true){
+            if($e_external == true){
                $target='target="_blank"';
             }
 
@@ -787,6 +787,7 @@ endif;
             $the_link = get_the_permalink();
             $excerpt = get_field('custom_excerpt');
             $excerpt_style = get_field('excerpt_style');
+            $external_video = get_field('video_link');
             $id = $post->ID;
             $img = get_the_post_thumbnail_url($id, 'large');
             //var_dump($img);
@@ -798,7 +799,15 @@ endif;
           if ($excerpt_style == 'bold'){
             $ex_class = 'first';
           }
+          $link = '';
+          $target = '';
 
+          if($external_video == ''){
+            $link = $the_link;
+          }else{
+            $link = $external_video;
+            $target = 'target=_blank';
+          }
 
 
           //endif;
@@ -811,7 +820,7 @@ endif;
                <div class="item-text columns-5">
                   <h4 class="item-title pf">'.$the_title.'</h4>
                   <p class="item-exc'.$ex_class.'sf">'.$custom_excerpt.'</p>
-                  <a class="read-more pf" href="'.$the_link.'">Watch the '.$type.'</a>
+                  <a class="read-more pf" href="'.$the_link.'" '.$target.'>Watch the '.$type.'</a>
                </div>
             </div>
          </div>

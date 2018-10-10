@@ -290,6 +290,10 @@ function event_location_taxonomy() {
 }
 add_action( 'init', 'event_location_taxonomy', 0 );
 
+// REGISTER TERM META
+
+// 
+
 // Register Custom Post Type
 function resources_post_type() {
 
