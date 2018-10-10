@@ -1555,6 +1555,42 @@ a.filter-trigger{
    }
 }
 
+.scrollable{
+   margin-left: 25px;
+   margin-right: 25px;
+   &::-webkit-scrollbar { width: 0 !important }
+   overflow-x: scroll;
+   -ms-overflow-style: none;
+   overflow: -moz-scrollbars-none;
+   overflow: -moz-hidden-scrollable;
+}
+
+.arrow-up, .arrow-down{
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 25px;
+   height: 25px;
+   border: 0px;
+   padding: 0;
+   display: none;
+   svg{
+      width: 25px;
+      height: 25px;
+   }
+}
+
+.arrow-up{
+   left: 0;
+   svg{
+      transform: rotate(180deg);
+   }
+}
+
+.arrow-down{
+   right: 0;
+}
+
 main.landing{
    // padding-top:8rem;
       padding-bottom:5rem;
