@@ -4,7 +4,7 @@
 <?php
   //Loop through the taxonomies used on this CPT and add it to an array
   $separator = ', ';
-  $e_topics = get_terms(['taxonomy' => 'event_topic', 'hide_empty' => false]);
+  $e_topics = get_terms(['taxonomy' => 'event_topic', 'hide_empty' => true]);
 
   $e_topic = '';
   foreach ($e_topics as $t){
@@ -12,7 +12,7 @@
     //var_dump($t->name);
   }
 
-  $e_locs = get_terms(['taxonomy' => 'event_location', 'hide_empty' => false]);
+  $e_locs = get_terms(['taxonomy' => 'event_location', 'hide_empty' => true]);
   $e_loc = '';
   foreach ($e_locs as $l){
     $e_loc .= '"'.$l->name.'"'.$separator;
@@ -218,7 +218,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
                               //     'hide_empty' => true,
                               // ]);
 
-                              $event_topics = get_terms(['taxonomy' => 'event_topic', 'hide_empty' => false]);
+                              $event_topics = get_terms(['taxonomy' => 'event_topic', 'hide_empty' => true]);
 
                               //var_dump($terms);
                                  foreach ($event_topics as $topic) {?>
@@ -267,7 +267,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
                               //     'hide_empty' => true,
                               // ]);
 
-                              $event_locations = get_terms(['taxonomy' => 'event_location', 'hide_empty' => false]);
+                              $event_locations = get_terms(['taxonomy' => 'event_location', 'hide_empty' => true]);
 
                               //var_dump($terms);
                                  foreach ($event_locations as $loc) {?>
@@ -346,8 +346,10 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
             //$event_sd = date('F j, Y', $event_start);
             $event_end = get_field('event_end_date');
             $event_link_text = get_field('el_text');
-            $event_link = get_field('el_link');
-            $external = get_field('external');
+            $event_link = get_field('e_link');
+            //var_dump($event_link);
+            $e_external = get_field('e_external');
+
             $event_tax = get_the_terms(get_the_ID(),'event_topic');
             $topic_name='';
             if($event_tax != ''){
@@ -356,7 +358,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
                }
             }
             $target = '';
-            if($external == true){
+            if($e_external == true){
                $target='target="_blank"';
             }
 

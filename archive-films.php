@@ -3,9 +3,9 @@
 
 <?php
   $separator = ', ';
-  $f_topics = get_terms(['taxonomy' => 'film_topic', 'hide_empty' => false]);//'exclude'=>array('archive, educational-psa')
-
-  $f_topic = '';
+  $f_topics = get_terms(['taxonomy' => 'film_topic', 'hide_empty' => true]);//'exclude'=>array('archive, educational-psa')
+  
+  $f_topic = '';                       
   foreach ($f_topics as $t) {
     $f_topic .= '"'.$t->name.'"'.$separator;
   }
@@ -200,7 +200,7 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
                               //     'hide_empty' => true,
                               // ]);
 
-                              $film_topics = get_terms(['taxonomy' => 'film_topic', 'hide_empty' => false]);//'exclude'=>array('archive, educational-psa')
+                              $film_topics = get_terms(['taxonomy' => 'film_topic', 'hide_empty' => true]);//'exclude'=>array('archive, educational-psa')
                               //var_dump($film_topics);
                               //var_dump($terms);
                                  foreach ($film_topics as $topic) {
@@ -273,6 +273,7 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
           $id = $post->ID;
           //var_dump($id);
           $custom_excerpt = get_field('custom_excerpt');
+          $external_video = get_field('video_link');
           $film_type = get_the_terms($id, 'film_type');
           $type = $film_type[0]->name;
           $film_type ='';
@@ -281,6 +282,20 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
           if ($excerpt_style == 'bold'){
             $ex_class = 'first';
           }
+
+          $link = '';
+          $target = '';
+
+          if($external_video == ''){
+            $link = get_the_permalink();
+          }else{
+            $link = $external_video;
+            $target = 'target=_blank';
+          }
+
+          
+
+
 
           // foreach($film_type as $type){
           //   $film_type = $type;
@@ -294,7 +309,7 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
                <div class="item-text columns-5">
                   <h4 class="item-title pf"><?php echo the_title(); ?></h4>
                   <p class="item-exc <?php echo $ex_class; ?> sf"><?php echo $custom_excerpt; ?></p>
-                  <a class="read-more pf" href="<?php echo the_permalink(); ?>">Watch the <?php echo $type; ?></a>
+                  <a class="read-more pf" href="<?php echo $link; ?>" <?php echo $target; ?>>Watch the <?php echo $type; ?></a>
                </div>
             </div>
          </div>
