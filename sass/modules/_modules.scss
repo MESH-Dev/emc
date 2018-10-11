@@ -1543,6 +1543,15 @@ a.filter-trigger{
       white-space: nowrap;
       overflow-x: scroll;
       overflow-y: hidden;
+      //----------
+      // margin-left: 25px;
+      // margin-right: 25px;
+      // &::-webkit-scrollbar { display: none !important; }
+      // overflow-x: scroll;
+      // -ms-overflow-style: none;
+      // overflow: -moz-scrollbars-none;
+      // overflow: -moz-hidden-scrollable;
+      //-----------
       li{
          display: inline-block;
          &.selected{
@@ -1558,7 +1567,7 @@ a.filter-trigger{
 .scrollable{
    margin-left: 25px;
    margin-right: 25px;
-   &::-webkit-scrollbar { width: 0 !important }
+   &::-webkit-scrollbar { display: none !important; }
    overflow-x: scroll;
    -ms-overflow-style: none;
    overflow: -moz-scrollbars-none;

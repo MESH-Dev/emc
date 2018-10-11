@@ -32,7 +32,7 @@ var scrolling = false,
 
     $('.arrow-up, .arrow-down').on('mousedown', function (evt) {
         scrolling = true;
-        startScrolling($(this).siblings('ul.scrollable'), 5, evt.target.className);
+        startScrolling($(this).siblings('ul.scrollable'), 5, evt.currentTarget.className);
     }).on('mouseup', function () {
         scrolling = false;
     });

@@ -186,7 +186,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
          <div class="">
             <div class="row">
                <div class=""><!-- columns-10 offset-by-1 -->
-                  <button class="arrow-up">
+                  <button class="arrow-up" data-up=true>
                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                        <style type="text/css">
@@ -197,7 +197,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
                          39.3,83.3 66,56.5 71.9,50.7 "/>
                      </svg>
                   </button>
-                  <button class="arrow-down">
+                  <button class="arrow-down" data-up=false>
                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                        <style type="text/css">
@@ -235,7 +235,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
          <div class="">
             <div class="row">
                <div class=""><!-- columns-10 offset-by-1 -->
-                  <button class="arrow-up">
+                  <button class="arrow-up" data-up=true>
                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                        <style type="text/css">
@@ -246,7 +246,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
                          39.3,83.3 66,56.5 71.9,50.7 "/>
                      </svg>
                   </button>
-                  <button class="arrow-down">
+                  <button class="arrow-down" data-up=false>
                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
                        <style type="text/css">
