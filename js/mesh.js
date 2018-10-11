@@ -18,40 +18,52 @@ jQuery(document).ready(function($){
 
 //FILTER SCROLL--------------------------
 
-var scrolling = false,
-   filterBars = document.getElementsByClassName('scrollable');
-   // console.log(filterBars);
+// var scrolling = false,
+//    filterBars = document.getElementsByClassName('scrollable');
+//    // console.log(filterBars);
+//
+// // for (var i = 0; i < filterBars.length; i++) {
+// //    // if (filterBars[i].offsetWidth > filterBars[i].scrollWidth) {
+// //    //    $(this).siblings('.arrow-up, .arrow-down').hide();
+// //    // }
+// //    var thisWidth = filterBars[i].scrollWidth;
+// //    console.log(thisWidth);
+// // }
+//
+//     $('.arrow-up, .arrow-down').on('mousedown', function (evt) {
+//         scrolling = true;
+//         startScrolling($(this).siblings('ul.scrollable'), 5, evt.currentTarget.className);
+//     }).on('mouseup', function () {
+//         scrolling = false;
+//     });
+//
+//     function startScrolling(obj, spd, btn) {
+//         var travel = (btn.indexOf('up') > -1) ? '-=' + spd + 'px' : '+=' + spd + 'px';
+//         if (!scrolling) {
+//             obj.stop();
+//         } else {
+//             // recursively call startScrolling while mouse is pressed
+//             obj.animate({
+//                 "scrollLeft": travel
+//             }, 5, function () {
+//                 if (scrolling) {
+//                     startScrolling(obj, spd, btn);
+//                 }
+//             });
+//         }
+//     }
 
-// for (var i = 0; i < filterBars.length; i++) {
-//    // if (filterBars[i].offsetWidth > filterBars[i].scrollWidth) {
-//    //    $(this).siblings('.arrow-up, .arrow-down').hide();
-//    // }
-//    var thisWidth = filterBars[i].scrollWidth;
-//    console.log(thisWidth);
-// }
+// $(".scroller").smoothDivScroll({
+//  // startAtElementId: "starter",
+//  // hotSpotScrollingInterval: 33,
+//  // touchScrolling: true,
+//  // setupComplete: function(){
+//  //       $('.panel.topics, .panel.locations, .panel.search-filter').hide();
+//  //   }
+// });
 
-    $('.arrow-up, .arrow-down').on('mousedown', function (evt) {
-        scrolling = true;
-        startScrolling($(this).siblings('ul.scrollable'), 5, evt.currentTarget.className);
-    }).on('mouseup', function () {
-        scrolling = false;
-    });
+// $('.panel.topics, .panel.locations, .panel.search-filter').hide();
 
-    function startScrolling(obj, spd, btn) {
-        var travel = (btn.indexOf('up') > -1) ? '-=' + spd + 'px' : '+=' + spd + 'px';
-        if (!scrolling) {
-            obj.stop();
-        } else {
-            // recursively call startScrolling while mouse is pressed
-            obj.animate({
-                "scrollLeft": travel
-            }, 5, function () {
-                if (scrolling) {
-                    startScrolling(obj, spd, btn);
-                }
-            });
-        }
-    }
 
 //FILTER SCROLL--------------------------
 
@@ -382,17 +394,22 @@ $('a.filter-trigger').click(function(){
 $('#topicTrigger').click(function(event){
    event.preventDefault();
    $('.panel.topics').slideToggle();
+   $(".scroller").smoothDivScroll({
+    // startAtElementId: "starter",
+    // hotSpotScrollingInterval: 33,
+    touchScrolling: true
+   });
    $('.panel.topics .arrow-up, .panel.topics .arrow-down').slideToggle();
-   var currentFilters = $('.panel.topics').find('.scrollable');
+   // var currentFilters = $('.panel.topics').find('.scrollable');
    // console.log(currentFilters);
    // var ulWidth = currentFilters[0].offsetWidth;
    // var filtersWidth = currentFilters[0].scrollWidth;
    // console.log(ulWidth);
    // console.log(filtersWidth);
-   if (currentFilters[0].offsetWidth >= currentFilters[0].scrollWidth) {
-      $('.panel.topics').find('.arrow-up, .arrow-down').hide();
-      // console.log('topics buttons hidden');
-   }
+   // if (currentFilters[0].offsetWidth >= currentFilters[0].scrollWidth) {
+   //    $('.panel.topics').find('.arrow-up, .arrow-down').hide();
+   //    // console.log('topics buttons hidden');
+   // }
    $('.panel.locations .arrow-up, .panel.locations .arrow-down').slideUp();
    $('.panel.search-filter').slideUp();
    $('.panel.locations').slideUp();
@@ -408,15 +425,24 @@ $('#searchTrigger').click(function(event){
 $('#locationTrigger').click(function(event){
    event.preventDefault();
    $('.panel.locations').slideToggle();
+   $(".scroller").smoothDivScroll({
+    // startAtElementId: "starter",
+    // hotSpotScrollingInterval: 33,
+    // autoScrollingMode: "onStart",
+   //  mouseOverRightHotSpot: function(){
+   //    alert("Moused over right hotspot");
+   // }
+   touchScrolling: true
+   });
    $('.panel.locations .arrow-up, .panel.locations .arrow-down').slideToggle();
-   var currentFilters = $('.panel.locations').find('.scrollable');
+   // var currentFilters = $('.panel.locations').find('.scrollable');
    // console.log(currentFilters);
    // console.log(currentFilters[0].scrollWidth);
    // console.log(currentFilters[0].offsetWidth);
-   if (currentFilters[0].scrollWidth <= currentFilters[0].offsetWidth) {
-      $('.panel.locations').find('.arrow-up, .arrow-down').hide();
+   // if (currentFilters[0].scrollWidth <= currentFilters[0].offsetWidth) {
+      // $('.panel.locations').find('.arrow-up, .arrow-down').hide();
       // console.log('locations buttons hidden');
-   }
+   // }
    $('.panel.topics .arrow-up, .panel.topics .arrow-down').slideUp();
    $('.panel.topics').slideUp();
    $('.panel.search-filter').slideUp();

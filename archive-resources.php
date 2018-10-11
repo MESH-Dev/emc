@@ -121,7 +121,7 @@
                       39.3,83.3 66,56.5 71.9,50.7 "/>
                   </svg>
                </button>
-               <ul class="scrollable r-topic-filters">
+               <ul class="scrollable r-topic-filters scroller">
                   <li data-filter="">All</li>
                   <?php
                            //$categories='';
@@ -170,7 +170,7 @@
                       39.3,83.3 66,56.5 71.9,50.7 "/>
                   </svg>
                </button>
-               <ul class="scrollable r-type-filters">
+               <ul class="scrollable r-type-filters scroller">
                   <li data-filter="">All</li>
                   <?php
                           //$categories='';

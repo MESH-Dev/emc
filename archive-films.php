@@ -4,8 +4,8 @@
 <?php
   $separator = ', ';
   $f_topics = get_terms(['taxonomy' => 'film_topic', 'hide_empty' => true]);//'exclude'=>array('archive, educational-psa')
-  
-  $f_topic = '';                       
+
+  $f_topic = '';
   foreach ($f_topics as $t) {
     $f_topic .= '"'.$t->name.'"'.$separator;
   }
@@ -190,7 +190,7 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
                          39.3,83.3 66,56.5 71.9,50.7 "/>
                      </svg>
                   </button>
-                  <ul class="scrollable f-topic-filters">
+                  <ul class="scrollable f-topic-filters scroller">
                      <li data-filter="">All</li>
                      <?php
                               // $categories='';
@@ -293,7 +293,7 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
             $target = 'target=_blank';
           }
 
-          
+
 
 
 

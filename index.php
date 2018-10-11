@@ -67,7 +67,7 @@
 								 39.3,83.3 66,56.5 71.9,50.7 "/>
 							</svg>
 						</button>
-						<ul class="scrollable topic-filter">
+						<ul class="scrollable topic-filter scroller">
 							<li data-filter="">All</li>
 								<?php
 									$categories='';
