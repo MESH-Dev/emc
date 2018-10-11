@@ -208,7 +208,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
                          39.3,83.3 66,56.5 71.9,50.7 "/>
                      </svg>
                   </button>
-                  <ul class="scrollable e-topic-filters">
+                  <ul class="scrollable e-topic-filters scroller">
                      <li data-filter="">All</li>
                      <?php
                               //$categories='';
@@ -257,7 +257,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
                          39.3,83.3 66,56.5 71.9,50.7 "/>
                      </svg>
                   </button>
-                  <ul class="scrollable e-location-filters">
+                  <ul class="scrollable e-location-filters scroller">
                      <li data-filter="">All</li>
                       <?php
                               //$categories='';

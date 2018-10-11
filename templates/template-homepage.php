@@ -41,7 +41,7 @@
 		<?php } ?>
 	</div>
 <main id="content" class="home-template">
-	
+
 	<div class="panel callout">
 		<div class="container">
 			<?php
@@ -75,9 +75,9 @@
 						<li class="pin left bangladesh">
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>/bangladesh">Bangladesh</a>
 						</li>
-						<li class="pin left uganda">
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>/uganda">Uganda</a>
-						</li>
+						<!-- <li class="pin left uganda">
+							<a href="<//?php echo esc_url( home_url( '/' ) ); ?>/uganda">Uganda</a>
+						</li> -->
 						<li class="pin left tanzania">
 							<a href="<?php echo esc_url( home_url( '/' ) ); ?>/tanzania">Tanzania</a>
 						</li>

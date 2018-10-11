@@ -89,13 +89,14 @@
 			$h_cta = get_field('cta_message', 'options');
 			$h_link = get_field('cta_message_link', 'options');
 			$h_external = get_field('tc_external');
+			$ticker_color = get_field('cta_background_color', 'option');
 
 			$h_target = '';
 			if($h_external == 'true'){
 				$h_target='target="_blank"';
 			}
 		?>
-		<div class="ticker">
+		<div class="ticker" style="background-color:<?php echo $ticker_color; ?>;">
 			<div class="container">
 				<div class="row ticker-row">
 					<div class="text">
@@ -131,12 +132,12 @@
 							<h1 class="site-title"><a href="<//?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><//?php bloginfo( 'name' ); ?></a></h1>
 						</div> -->
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-							<?php if(is_front_page()){ ?>
-							<img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_Madonna_onecolor_40in.png" alt="">
-							<?php }else{ ?>
+							<!-- <//?php if(is_front_page()){ ?> -->
+							<!-- <img class="main-logo" src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_Madonna_onecolor_40in.png" alt=""> -->
+							<!-- <//?php }else{ ?> -->
 							<img class="interior main-logo" src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo@3x.png" alt="">
 							<img class="interior-mobile main-logo" src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_Madonna_onecolor_40in.png" alt="">
-							<?php } ?>
+							<!-- <//?php } ?> -->
 						</a>
 						<nav class="main-navigation" id="header-main">
 							<?php if(has_nav_menu('main_nav')){
