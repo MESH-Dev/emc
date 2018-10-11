@@ -1342,4 +1342,46 @@ $('.filter-bar .panel').each(function(){
 
    });
 
+//Ticker
+
+  
+  function tickerWidthCalculate(){
+    var width = 0;
+    $('#webTicker li').each(function(){
+      width += $(this).width()+20;
+    });
+    return width;
+  }
+
+  $(document).ready(function(){
+    
+    var left = 0;
+    var count = 0;
+    var tickerWidth = 0;
+    var originalSlides = $('#webTicker li');
+    
+    
+    $('#webTicker').width(tickerWidthCalculate());
+    $('#webTicker').css('left', left);
+    
+    function startTicker(){
+      var slidesCount = $('#webTicker li').size()/originalSlides.size();
+        
+      
+        left -=20;
+        count +=20;
+      
+        if(count+$('.ticker').width() >=  $('#webTicker').width()){
+      $('#webTicker').append(originalSlides.clone());
+            $('#webTicker').width(tickerWidthCalculate());
+        }
+        
+        $('#webTicker').animate({'left': left},500, 'linear');
+    }
+    
+    var ticker = setInterval(startTicker,500);
+    
+  });
+
+
 });
