@@ -51,7 +51,7 @@
 	     <?php 
 	 		}
 	 		}else{ 
-	     	$v_id = get_field('vimeo_id');
+	     	$v_id = get_field('cp_vimeo_id');
 
 	     	?>
 	     	<div style="padding:56.25% 0 0 0;position:relative;">
