@@ -1432,43 +1432,59 @@ $('.filter-bar .panel').each(function(){
 //Ticker
 
   
-  function tickerWidthCalculate(){
-    var width = 0;
-    $('#webTicker li').each(function(){
-      width += $(this).width()+20;
-    });
-    return width;
-  }
+  // function tickerWidthCalculate(){
+  //   var width = 0;
+  //   $('#webticker li').each(function(){
+  //     width += $(this).width()+20;
+  //   });
+  //   return width;
+  // }
 
-  $(document).ready(function(){
+  // //$(document).ready(function(){
     
-    var left = 0;
-    var count = 0;
-    var tickerWidth = 0;
-    var originalSlides = $('#webTicker li');
+  //   var left = 0;
+  //   var count = 0;
+  //   var tickerWidth = 0;
+  //   var originalSlides = $('#webticker li');
     
     
-    $('#webTicker').width(tickerWidthCalculate());
-    $('#webTicker').css('left', left);
+  //   $('#webticker').width(tickerWidthCalculate());
+  //   $('#webticker').css('left', left);
     
-    function startTicker(){
-      var slidesCount = $('#webTicker li').size()/originalSlides.size();
+  //   function startTicker(){
+  //     var slidesCount = $('#webticker li').size()/originalSlides.size();
         
       
-        left -=20;
-        count +=20;
+  //       left -=20;
+  //       count +=20;
       
-        if(count+$('.ticker').width() >=  $('#webTicker').width()){
-      $('#webTicker').append(originalSlides.clone());
-            $('#webTicker').width(tickerWidthCalculate());
-        }
+  //       if(count+$('.scroll-ticker').width() >=  $('#webticker').width()){
+  //     $('#webticker').append(originalSlides.clone());
+  //           $('#webticker').width(tickerWidthCalculate());
+  //       }
         
-        $('#webTicker').animate({'left': left},500, 'linear');
-    }
+  //       $('#webticker').animate({'left': left},500, 'linear');
+  //   }
     
-    var ticker = setInterval(startTicker,500);
+  //   var ticker = setInterval(startTicker,500);
     
-  });
-
+  //});
+// $.fn.ticker.defaults = {
+//   random:        false, // Whether to display ticker items in a random order
+//   itemSpeed:     3000,  // The pause on each ticker item before being replaced
+//   cursorSpeed:   50,    // Speed at which the characters are typed
+//   pauseOnHover:  true,  // Whether to pause when the mouse hovers over the ticker
+//   finishOnHover: true,  // Whether or not to complete the ticker item instantly when moused over
+//   cursorOne:     '_',   // The symbol for the first part of the cursor
+//   cursorTwo:     '-',   // The symbol for the second part of the cursor
+//   fade:          true,  // Whether to fade between ticker items or not
+//   fadeInSpeed:   600,   // Speed of the fade-in animation
+//   fadeOutSpeed:  300    // Speed of the fade-out animation
+// };
+// $('.scroll-ticker').ticker();
+Marquee3k.init({
+  selector: 'scroll-ticker',
+  pausable: 'true'
+});
 
 });

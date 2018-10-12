@@ -105,6 +105,7 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
       <p class="top-callout"><?php echo $page_title; ?></p>
       <h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
    </div>
+   <div class="overlay" aria-hidden="true"></div>
    <?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
       <video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true">
          <source src ="<?php echo $vm_url; ?>" autoplay="true" loop="true" muted="true">

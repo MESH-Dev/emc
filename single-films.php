@@ -57,6 +57,7 @@
       <!-- <p class="top-callout">Watch</p> -->
       <h1 class="page-title heading1">Watch<br><strong><?php echo the_title(); ?></strong></h1>
    </div>
+   <div class="overlay" aria-hidden="true"></div>
    <div class="player-holder">
 			<div class="player-content">
 				<?php //if ($v_type == 'hosted'){ ?>

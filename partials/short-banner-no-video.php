@@ -10,4 +10,5 @@
 		<p class="top-callout"><?php echo the_title(); ?></p>
 		<h1 class="page-title heading1"><?php echo $banner_callout; ?></h1>
 	</div>
+	<div class="overlay" aria-hidden="true"></div>
 </div>

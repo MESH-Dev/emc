@@ -30,8 +30,10 @@
 		<div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?> "></div>
 		<?php } ?>
 		<div class="pane">
-			<img src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt="">
+			<img src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt="Every Mother Counts logo">
+			<div class="overlay" aria-hidden="true"></div>
 		</div>
+
 		<?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
 			<video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true">
 				<source src ="<?php echo $vm_url; ?>" autoplay="true" loop="true" muted="true">

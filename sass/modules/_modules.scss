@@ -89,10 +89,24 @@ body{
    //margin-top:115px;
    //padding-top: 220px;
 
+   .overlay{
+      position:absolute;
+      top:0;
+      bottom:0;
+      right:0;
+      left:0;
+      background-color:rgba(0,0,0,.1);
+      z-index:100;
+   }
+
     &.interior{
       height: 600px;
       padding-top: 6em;
       position: relative;
+
+      .overlay{
+         z-index:400;
+      }
       @media screen and ($bp-smaller-than-tablet){
          //padding-top: 200px;
       }
@@ -2631,6 +2645,62 @@ main.search-results{
    }
 }
 
+.panel{
+   &.news-ticker{
+      .img-screen{
+         left:0;
+         right:0;
+      }
+      .content{
+         padding:0;
+         margin:0 40px;
+         overflow:hidden;
+      }
+   }
+}
+
+//Ticker
+.scroll-ticker{
+   position:absolute;
+   //width:100%;
+   padding:1em 0;
+   bottom:2em;
+   overflow:hidden;
+   background:$nav-brown;
+   #webticker{
+      margin:0;
+      padding:0;
+      
+      li{
+         list-style-type:none;
+         display:inline-block;
+         margin-right:1em;
+         a{
+                font-family: "Whitney A", "Whitney B";
+                font-style: normal;
+                font-weight: 700;
+                font-size: 3.6rem;
+                letter-spacing: 0.6px;
+                line-height: 48px;
+                padding-right:50px;
+                background-image:url('img/arrow-right.svg');
+                background-repeat:no-repeat;
+                background-position:center right;
+
+                // &:after{
+                //   content:url('img/arrow-right.svg');
+                //   display:inline;
+
+                // }
+
+                svg{
+                  transform:rotate(45deg);
+                  width:2em;
+                }
+         }
+      }
+   }
+}
 
 /* =WordPress Core
 -------------------------------------------------------------- */

@@ -15,7 +15,7 @@
    $l_page_callout = get_field('banner_callout_text');
    //$l_page_callout = get_field('banner_callout_text', 305);
 ?>
-<div class="welcome-gate large full-video" >
+<div class="welcome-gate large interior full-video" >
    <!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
    <?php //if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
    <div class="welcome-gate-bg" style=" background-image:url('<?php echo $background_image_url; ?>');"></div>
@@ -24,6 +24,7 @@
      	<p class="top-callout"><?php echo the_title(); ?></p>
 		<h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
    </div>
+   <div class="overlay" aria-hidden="true"></div>
    <div class="player-holder">
 			<div class="player-content">
 				<?php //if ($v_type == 'hosted'){ ?>
@@ -250,7 +251,7 @@
 
 	//var_dump($ip_overlay);
 	?>
-<div class="panel statistic">
+<div class="panel statistic news-ticker">
 		<div class="container">
 			<div class="row">
 				<?php if($ib_callout_text != '' && $ib_callout_title != ''){ ?>
@@ -269,14 +270,19 @@
 				<img src="<?php echo $ip_image_url; ?>">
 			</div>
 			<?php if(have_rows('ticker_links')): ?>
-			<div class="ticker">
+			<div class="marquee3k scroll-ticker" data-speed=".5" data-pausable="true">
 				<ul id="webticker">
 			<?php while(have_rows('ticker_links')):the_row();
 				$t_link = get_sub_field('ticker_link_url');
 				$t_link_text = get_sub_field('ticker_link_text');
 				
 			?>
-				<li><a href="<?php echo $t_link; ?><"><?php echo $t_link_text; ?></a></li>
+				<li>
+					<a href="<?php echo $t_link; ?><" target="_blank">
+						<?php echo $t_link_text; ?>
+
+					</a>
+				</li>
 			
 			<?php endwhile; ?>
 		</ul>
