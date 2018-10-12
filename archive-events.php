@@ -326,7 +326,7 @@ ec_choices.push(<?php echo $e_topic.$e_loc.$titles.$des.$o; ?>);
             'posts_per_page' => 6,
             'meta_key' => 'event_start_date',
             'orderby' => 'meta_value',
-            'order' => 'ASC',
+            'order' => 'DESC',
             'paged'=>$paged
          );
          $wp_query = new WP_Query( $args );

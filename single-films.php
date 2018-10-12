@@ -87,7 +87,7 @@
 	     	$v_id = get_field('vimeo_id');
 
 	     	?>
-	     	<div style="padding:56.25% 0 0 0;position:relative;">
+	     	<div style="padding:56.25% 0 0 0; max-height:100%; position:relative;">
 	     		<iframe src="https://player.vimeo.com/video/<?php echo $v_id; ?>?autoplay=1&amp;color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
 	     			
 	     		</iframe>

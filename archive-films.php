@@ -155,7 +155,7 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
                   </li>
                </ul>
             </div>
-        <div class="columns-3 offset-by-1 extra-links">
+        <div class="columns-4 extra-links">
           <ul>
             <li data-filter="educational-psa"><span>Educational PSAs</span></li>
             <li data-filter="archive"><span>Archives</span></li>

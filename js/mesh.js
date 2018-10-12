@@ -2,9 +2,9 @@ jQuery(document).ready(function($){
 
   //Are we loaded?
   console.log('New theme loaded!');
-  th= $('.ticker').height();
-  nh=$('.top-nav').height();
-   hh = (th + nh);
+  var th = $('.ticker').outerHeight();
+  var nh = $('.top-nav').height();
+  var hh = (th + nh);
    console.log(hh);
   //Let's do something awesome!
 
@@ -199,7 +199,7 @@ $('.pins .pin').each(function(){
 
      //Force divs in homepage grid to be square
 //Setup variables to hold our sizes
-var gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, mi_h, pp;
+var gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp;
 var $mclk = 0;
 //Grab the width of each element
 function gi_resize(){
@@ -222,6 +222,9 @@ function gi_resize(){
   cp5 = $('.grid-item.columns-5').width();
   cp6 =  $('.grid-item.columns-6').width();
   mi_w = $('.panel.map').width();
+  th = $('.ticker').outerHeight();
+  nh = $('.top-nav').height();
+  hh = (th + nh);
   // mi_h = $('.panel.map').height();
   // mi_w = $('.panel.map img').width();
   // mi_h = $('.panel.map img').height();
@@ -251,13 +254,13 @@ function gi_resize(){
   //return gi2, gi3, gi4;
 }
 //Run the function above at document ready and on a window resize event
- $(document).ready(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3,cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, mi_h, pp));
- $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, mi_h, pp));
+ $(document).ready(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3,cp4, cp5, cp6, cp7, $wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp));
+ $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp));
 
 //Apply our widths to the height of selected elements either on load, or on resize
 function _resize(){
-  gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, mh,wg_w, wg_h, mi_w, mi_h, pp);
-   $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7,$wW,hh, mh,wg_w, wg_h, mi_w, mi_h, pp));
+  gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp);
+   $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7,$wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp));
 
  //  console.log("Width 2: "+gi2);
   // console.log("Width 3: "+gi3);
@@ -282,9 +285,10 @@ function _resize(){
   //$('.grid-item-width7').css({height: (gi5)});
   $('.grid-item.columns-3').css({height:cp3});
   $('.grid-item.columns-4').css({height:cp4});
-  $('.welcome-gate.large').css({'height':'calc(100vh - ' + hh + 'px)', 'margin-top':hh});
+  //$('.welcome-gate.large').css({'height':'calc(100vh - ' + hh + 'px)', 'margin-top':hh});
   //$('.player-holder').css({'height':'calc(100vh - ' + hh + 'px)'});
   $('.welcome-gate.interior').css({'margin-top':hh});
+  $('.welcome-gate.large').css({'margin-top':hh});
   //$('.film-single').css({'margin-top':'calc(100vh - ' + hh + 'px)'});
   //$('.video-holder').css({height:(wg_h), width:(wg_w)});
   //$('.map_wrapper').css({height:mi_h, width:mi_w});
@@ -1508,5 +1512,18 @@ $('.popup-close').click(function(){
   $('header').css({position:'fixed'});
 
 });
+
+// $('img').mousedown(function (e) {
+//   if(e.button == 2) { // right click
+//     //alert('Image downloading has been disabled.  Thanks for your understanding!');
+//     return false; // do nothing!
+//   }else if (e.key == 255){
+//     return false;
+//   }
+// });
+
+ $("img").bind("contextmenu",function(e){
+        return false;
+      });
 
 });

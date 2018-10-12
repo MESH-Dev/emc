@@ -3,16 +3,16 @@
 ?>
 
 <?php
-   $background_img = get_field('background_image');
+   $background_img = get_field('cp_background_image');
    $background_image_url = $background_img['sizes']['background-fullscreen'];
-   $v_ogg = get_field('video_ogg');
+   $v_ogg = get_field('cp_video_ogg');
    $vo_url = $v_ogg['url'];
-   $v_mp4 = get_field('video_mp4');
+   $v_mp4 = get_field('cp_video_mp4');
    $vm_url = $v_mp4['url'];
-   $v_webm = get_field('video_webm');
+   $v_webm = get_field('cp_video_webm');
    $vw_url = $v_webm['url'];
-   $v_type = get_field('video_type');
-   $l_page_callout = get_field('banner_callout_text');
+   $v_type = get_field('cp_video_type');
+   $l_page_callout = get_field('cp_banner_callout_text');
    //$l_page_callout = get_field('banner_callout_text', 305);
 ?>
 <div class="welcome-gate large interior full-video" >
@@ -248,6 +248,7 @@
 	$ib_callout_title = get_sub_field('ib_callout_title');
 	$ib_callout_text = get_sub_field('ib_callout_text');
 	$ip_overlay  = get_sub_field('remove_overlay');
+	$ip_link = get_sub_field('image_panel_callout_link');
 
 	//var_dump($ip_overlay);
 	?>
@@ -257,7 +258,22 @@
 				<?php if($ib_callout_text != '' && $ib_callout_title != ''){ ?>
 				<div class="columns-3 offset-by-1 stats">
 					<p class="title"><?php echo $ib_callout_title; ?></p>
+					<?php if ($ip_link != ''){ ?>
+					<a href="<?php echo $ip_link; ?>">
+					<?php } ?>
 					<p class="desc"><?php echo $ib_callout_text; ?></p>
+					<?php if ($ip_link != ''){ ?>
+					 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+									 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+									<style type="text/css">
+										.st0{fill:#EED9BD;}
+										.st1{fill:#EC742E;}
+									</style>
+									<polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
+										39.3,83.3 66,56.5 71.9,50.7 "/>
+								</svg>
+					</a>
+					<?php } ?>
 				</div>
 				<?php } ?>
 			</div>
@@ -540,6 +556,31 @@
 			</div>
 		</div>
 	</div>
+<?php }elseif($panel_type == 'text-only'){ ?>
+
+<div class="panel text-only">
+		<div class="container">
+			<div class="row">
+				<?php if(have_rows('two_column_wysiwyg')): ?>
+				
+				<?php while(have_rows('two_column_wysiwyg')):the_row(); 
+					$w_content = get_sub_field('column');
+				?>
+				<div class="columns-5 offset-by-1 textsection">
+					<?php echo $w_content; ?>
+
+				</div>
+				<?php endwhile; ?>
+				
+			<?php endif; ?>
+		</div>
+	</div>
+</div>
+				
+		<!-- 	</div>
+		</div>
+	</div> -->
+
 <?php } ?>
 <?php endwhile; endif; ?>
 <!-- End of Content -->

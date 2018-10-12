@@ -412,6 +412,31 @@
 			</div>
 		</div>
 	</div>
+<?php }elseif($panel_type == 'text-only'){ ?>
+
+<div class="panel text-only">
+		<div class="container">
+			<div class="row">
+				<?php if(have_rows('two_column_wysiwyg')): ?>
+				
+				<?php while(have_rows('two_column_wysiwyg')):the_row(); 
+					$w_content = get_sub_field('column');
+				?>
+				<div class="columns-5 offset-by-1 textsection">
+					<?php echo $w_content; ?>
+
+				</div>
+				<?php endwhile; ?>
+				
+			<?php endif; ?>
+		</div>
+	</div>
+</div>
+				
+		<!-- 	</div>
+		</div>
+	</div> -->
+
 <?php } ?>
 <?php endwhile; endif; ?>
 <!-- End of Content -->

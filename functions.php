@@ -785,7 +785,7 @@ endif;
 
             $the_title = get_the_title();
             $the_link = get_the_permalink();
-            $excerpt = get_field('custom_excerpt');
+            $custom_excerpt = get_field('custom_excerpt');
             $excerpt_style = get_field('excerpt_style');
             $external_video = get_field('video_link');
             $id = $post->ID;
@@ -1208,5 +1208,7 @@ function cf_search_distinct( $where ) {
     return $where;
 }
 add_filter( 'posts_distinct', 'cf_search_distinct' );
+
+
 
 ?>
