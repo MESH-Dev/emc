@@ -1487,4 +1487,26 @@ Marquee3k.init({
   pausable: 'true'
 });
 
+//Campaign page 3-col popup functionality
+
+$('.grid-item.has_popup').each(function(){
+  $('.cta-popup-trigger').click(function(e){
+    e.preventDefault();
+    $target = $(this).attr('id');
+    //$(this).find('.cta-popup').show('fast');
+    $('.cta-popup[data-name="'+$target+'"]').fadeIn('fast').css({display:'table'});
+
+    //$('.cta-popup').css({display:'table'});
+    $('header').css({position:'initial'});
+  });
+
+});
+
+$('.popup-close').click(function(){
+  $('.cta-popup').fadeOut('fast');
+  //$(this).parent.parent.parent.find('.cta-popup').css({display:'none'});
+  $('header').css({position:'fixed'});
+
+});
+
 });

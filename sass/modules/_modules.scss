@@ -545,6 +545,63 @@ div.scrollableArea
             }
          }
       }
+
+      .cta-popup{
+             position: fixed;
+             //display: table;
+             height: 100vh;
+             top: 0;
+             width: 100%;
+             background: $nav_brown;
+             z-index: 9999999;
+             bottom: 0;
+             right: 0;
+             left: 0;
+
+             .popup-content{
+               color:$offwhite-1;
+               display:table-cell;
+               vertical-align:middle;
+               //width:60%;
+               //margin:0 auto;
+             }
+
+             .popup-close{
+               text-align:right;
+               cursor:pointer;
+
+               svg{
+                  fill:$offwhite-1;
+                  g{
+                     path{
+                        fill:$offwhite-1 !important;
+                     }
+                  }
+               }
+               &:hover,
+               &:active,
+               &:focus{
+                  opacity:.5;
+               }
+             }
+
+             .popup-text{
+               color:$offwhite-1;
+               //font-family: 'bianco-reg';
+               p,h1,h2,h3,h4,h5,h6{
+                  color:$offwhite-1;
+               }
+
+               p{
+                  font-family: 'bianco-reg';
+               }
+             }
+
+             .wrapper{
+               width:60%;
+               margin:0 auto;
+             }
+      }
    }
    &.feature{
       padding-top: 0;

@@ -423,6 +423,7 @@
 							$cta_img_url = $cta_img['sizes']['large'];
 							$cta_img_alt = $cta_img['alt'];
 							$cta_title=get_sub_field('cta_title');
+							$pop_id = strtolower(str_replace(' ', '-',$cta_title) );
 							$cta_text=get_sub_field('cta_text');
 							$cta_link=get_sub_field('cta_link');
 							$cta_desc = get_sub_field('cta_description');
@@ -431,11 +432,19 @@
 							if($cl_external == 'true'){
 								$cl_target='target="_blank"';
 							}
+							$popup_title = get_sub_field('popup_title');
+							$popup_content = get_sub_field('popup_content');
+							$popup_class = '';
+							$wrapper_class = '';
+							if($popup_content != ''){
+								$popup_class = 'cta-popup-trigger';
+								$wrapper_class = 'has_popup';
+							}
 							?>
 					<div class="columns-4">
-						<div class="grid-item">
+						<div class="grid-item <?php echo $wrapper_class; ?>" id="<?php echo $pop_id; ?>">
 							<?php if ($cta_link != ''){?>
-							<a href="<?php echo $cta_link; ?>" <?php echo $cl_target; ?>>
+							<a class="<?php echo $popup_class; ?>" id="<?php echo $pop_id; ?>" href="<?php echo $cta_link; ?>" <?php echo $cl_target; ?>>
 							<?php } ?>
 							<?php if($cta_img != ''){ ?>
 								<div class="img-content">
@@ -461,6 +470,29 @@
 							<!-- </div> -->
 							<?php if ($cta_link != ''){?>
 							</a>
+							<?php } ?>
+							<?php if($popup_content != ''){ ?>
+							<div class="cta-popup hide" data-name="<?php echo $pop_id; ?>">
+								<div class="popup-content">
+									<div class="wrapper">
+										<div class="popup-close">
+											<svg class="" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+												<g>
+													<path style="fill:#EB742D;" d="M50.2,56.5L18.6,88.2l-6.3-6.3l31.6-31.6L12.5,18.8l5.9-5.9l31.5,31.5l31.6-31.6l6.3,6.3L56.1,50.7L87.4,82
+														l-5.9,5.9L50.2,56.5z"/>
+												</g>
+											</svg>
+										</div>
+										<?php if($popup_title != ''){ ?>
+										<h2><?php echo $popup_title; ?></h2>
+										<?php } ?>
+										<div class="popup-text">
+											<?php echo $popup_content; ?>
+										</div>
+									</div>
+								</div>
+							</div>
 							<?php } ?>
 						</div>
 					</div>
