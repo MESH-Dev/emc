@@ -86,10 +86,10 @@
 	</div>
 	<header>
 		<?php
-			$h_cta = get_field('cta_message', 'options');
-			$h_link = get_field('cta_message_link', 'options');
-			$h_external = get_field('tc_external');
-			$ticker_color = get_field('cta_background_color', 'options');
+			$h_cta = get_field('cta_message', 'option');
+			$h_link = get_field('cta_message_link', 'option');
+			$h_external = get_field('tc_external', 'option');
+			$ticker_color = get_field('cta_background_color', 'option');
 
 			$h_target = '';
 			if($h_external == 'true'){
