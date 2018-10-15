@@ -490,7 +490,7 @@ $('#locationTrigger').click(function(event){
 // 	});
 // }
 
-
+if($('#vmap').size() > 0){
 $('#vmap').vectorMap({
           map: 'usa_en',
           enableZoom: true,
@@ -517,6 +517,7 @@ $('#vmap').vectorMap({
             $('header').css({position:'initial'});
           }
         });
+}
 // $(document).ready(function() {
     // $('#vmap').usmap({
     //   'stateSpecificStyles': {
@@ -1109,6 +1110,7 @@ function loadEvents (eventTopic, eventLocation, query) { //*
 $('.e-topic-filters li').click(function(e){
     e.preventDefault;
     $(this).parent().parent().find('ul li.selected').removeClass('selected');
+    //$(this).parent().parent().css('background':'red');
 
      $(this).addClass('selected');
     var eventTopic = $('.e-topic-filters li.selected').attr('data-filter');
