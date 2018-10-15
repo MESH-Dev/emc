@@ -880,8 +880,8 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
 
   $('.topic-filter li').click(function(e){
     e.preventDefault;
-    $(this).parent().find('li.selected').removeClass('selected');
-
+    //$(this).parent().find('li.selected').removeClass('selected');
+    $('.filter-bar').find('ul li.selected').removeClass('selected');
      $(this).addClass('selected');
     var postTopic = $('.topic-filter li.selected').attr('data-filter');
     // Push the filter that was used to the end of the current URL so that we can use it
@@ -912,7 +912,7 @@ if(getUrlParameter != '' && getUrlParameter !== "undefined" && $parameter[0] == 
   	var $form = $(this);
   	var $input = $form.find('input[name="sp"]');
   	var query = $input.val();
-
+    $('.filter-bar').find('ul li.selected').removeClass('selected');
     // Push the search query to the end of the current URL so that we can use it to run
     // our functions when a user is visiting from a shared link
     // if(query != ''){
@@ -1109,7 +1109,8 @@ function loadEvents (eventTopic, eventLocation, query) { //*
 
 $('.e-topic-filters li').click(function(e){
     e.preventDefault;
-    $(this).parent().parent().find('ul li.selected').removeClass('selected');
+    //$(this).parent().parent().parent().parent().find('ul li.selected').removeClass('selected');
+    $('.filter-bar').find('ul li.selected').removeClass('selected');
     //$(this).parent().parent().css('background':'red');
 
      $(this).addClass('selected');
@@ -1135,7 +1136,8 @@ $('.e-topic-filters li').click(function(e){
 
 $('.e-location-filters li').click(function(e){
     e.preventDefault;
-    $(this).parent().parent().find('ul li.selected').removeClass('selected');
+    //$(this).parent().parent().parent().parent().parent().find('ul li.selected').removeClass('selected');
+    $('.filter-bar').find('ul li.selected').removeClass('selected');
 
      $(this).addClass('selected');
     var eventLocation = $('.e-location-filters li.selected').attr('data-filter');
@@ -1163,7 +1165,7 @@ $('.e-search-filter form').submit(function(e){
     var $form = $(this);
     var $input = $form.find('input[name="se"]');
     var query = $input.val();
-
+    $('.filter-bar').find('ul li.selected').removeClass('selected');
     // Push the search query to the end of the current URL so that we can use it to run
     // our functions when a user is visiting from a shared link
     if(query != ''){
@@ -1259,7 +1261,8 @@ function loadFilms (filmTopic, query) { //*
 
   $('.f-topic-filters li').click(function(e){
     e.preventDefault;
-    $(this).parent().parent().find('ul li.selected').removeClass('selected');
+    //$(this).parent().parent().find('ul li.selected').removeClass('selected');
+    $('.filter-bar').find('ul li.selected').removeClass('selected');
     $('.extra-links li').removeClass('selected');
      $(this).addClass('selected');
     var filmTopic = $('.f-topic-filters li.selected').attr('data-filter');
@@ -1284,7 +1287,8 @@ function loadFilms (filmTopic, query) { //*
 
   $('.extra-links ul li').click(function(e){
     e.preventDefault;
-    $(this).parent().parent().find('ul li.selected').removeClass('selected');
+    //$(this).parent().parent().find('ul li.selected').removeClass('selected');
+    $('.filter-bar').find('ul li.selected').removeClass('selected');
 
      $(this).addClass('selected');
       $('.panel.topics').slideUp();
@@ -1319,7 +1323,7 @@ function loadFilms (filmTopic, query) { //*
     var $input = $form.find('input[name="sf"]');
     var query = $input.val();
     $('.extra-links li').removeClass('selected');
-
+    $('.filter-bar').find('ul li.selected').removeClass('selected');
     // Push the search query to the end of the current URL so that we can use it to run
     // our functions when a user is visiting from a shared link
     if(query != ''){
@@ -1416,7 +1420,8 @@ function loadFilms (filmTopic, query) { //*
 
   $('.r-topic-filters li').click(function(e){
     e.preventDefault;
-    $(this).parent().parent().find('ul li.selected').removeClass('selected');
+    //$(this).parent().parent().find('ul li.selected').removeClass('selected');
+    $('.filter-bar').find('ul li.selected').removeClass('selected');
 
      $(this).addClass('selected');
     var resourceTopic = $('.r-topic-filters li.selected').attr('data-filter');
@@ -1441,8 +1446,8 @@ function loadFilms (filmTopic, query) { //*
 
   $('.r-type-filters li').click(function(e){
     e.preventDefault;
-    $(this).parent().parent().find('ul li.selected').removeClass('selected');
-
+    //$(this).parent().parent().find('ul li.selected').removeClass('selected');
+    $('.filter-bar').find('ul li.selected').removeClass('selected');
      $(this).addClass('selected');
     var resourceType = $('.r-type-filters li.selected').attr('data-filter');
     //console.log("eventTopic = "+eventTopic);
@@ -1469,7 +1474,7 @@ function loadFilms (filmTopic, query) { //*
     var $form = $(this);
     var $input = $form.find('input[name="sf"]');
     var query = $input.val();
-
+    $('.filter-bar').find('ul li.selected').removeClass('selected');
     // Push the search query to the end of the current URL so that we can use it to run
     // our functions when a user is visiting from a shared link
     // if(query != ''){

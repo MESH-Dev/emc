@@ -1,15 +1,25 @@
 <?php get_header(); ?>
 
-<?php echo get_template_part('/partials/short-banner-no-video'); ?>
+<?php //echo get_template_part('/partials/short-banner-no-video'); ?>
 
 <main id="content" class="blog-single">
+	<div class="panel blog-title" style="text-align:center;">
+		<div class="container">
+			<div class="columns-10 offset-by-1">
+				<div class="row">
+					<img class="blog-logo" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Illustration_OnTheFrontLines_F.png" alt="On the Front Lines">
+					<!-- <h1 class="sr-only"><?php the_title(); ?></h1> -->
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="columns-10 offset-by-1">
 				<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 					<div class="post">
-						<h1><?php //the_title(); ?></h1>
+						<h1 class="single-post-title"><?php the_title(); ?></h1>
 
 						<?php the_content(); ?>
 
