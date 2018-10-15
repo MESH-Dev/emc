@@ -3697,7 +3697,6 @@ main {
 .jqvmap-region {
   position: relative;
   z-index: -1;
-  pointer-events: none;
 }
 
 /* line 1918, sass/modules/_modules.scss */
@@ -4652,6 +4651,62 @@ main.search-results .pagination {
 }
 
 /* line 2750, sass/modules/_modules.scss */
+.location-popup {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  width: 100%;
+  background: #81709f;
+  z-index: 9999999;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+/* line 2762, sass/modules/_modules.scss */
+.location-popup .popup-content {
+  color: #FBD8C2;
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 2770, sass/modules/_modules.scss */
+.location-popup .popup-close {
+  text-align: right;
+  cursor: pointer;
+}
+/* line 2774, sass/modules/_modules.scss */
+.location-popup .popup-close svg {
+  fill: #FBD8C2;
+  display: inline-block;
+  height: 18px;
+  width: auto;
+}
+/* line 2780, sass/modules/_modules.scss */
+.location-popup .popup-close svg g path {
+  fill: #FBD8C2 !important;
+}
+/* line 2785, sass/modules/_modules.scss */
+.location-popup .popup-close:hover, .location-popup .popup-close:active, .location-popup .popup-close:focus {
+  opacity: .5;
+}
+/* line 2792, sass/modules/_modules.scss */
+.location-popup .popup-text {
+  color: #FBD8C2;
+}
+/* line 2795, sass/modules/_modules.scss */
+.location-popup .popup-text p, .location-popup .popup-text h1, .location-popup .popup-text h2, .location-popup .popup-text h3, .location-popup .popup-text h4, .location-popup .popup-text h5, .location-popup .popup-text h6 {
+  color: #FBD8C2;
+}
+/* line 2799, sass/modules/_modules.scss */
+.location-popup .popup-text p {
+  font-family: 'bianco-reg';
+}
+/* line 2804, sass/modules/_modules.scss */
+.location-popup .wrapper {
+  width: 60%;
+  margin: 0 auto;
+}
+
+/* line 2811, sass/modules/_modules.scss */
 .scroll-ticker {
   position: absolute;
   padding: 1em 0;
@@ -4659,18 +4714,18 @@ main.search-results .pagination {
   overflow: hidden;
   background: #70594C;
 }
-/* line 2757, sass/modules/_modules.scss */
+/* line 2818, sass/modules/_modules.scss */
 .scroll-ticker #webticker {
   margin: 0;
   padding: 0;
 }
-/* line 2761, sass/modules/_modules.scss */
+/* line 2822, sass/modules/_modules.scss */
 .scroll-ticker #webticker li {
   list-style-type: none;
   display: inline-block;
   margin-right: 1em;
 }
-/* line 2765, sass/modules/_modules.scss */
+/* line 2826, sass/modules/_modules.scss */
 .scroll-ticker #webticker li a {
   font-family: "Whitney A", "Whitney B";
   font-style: normal;
@@ -4683,7 +4738,7 @@ main.search-results .pagination {
   background-repeat: no-repeat;
   background-position: center right;
 }
-/* line 2783, sass/modules/_modules.scss */
+/* line 2844, sass/modules/_modules.scss */
 .scroll-ticker #webticker li a svg {
   transform: rotate(45deg);
   width: 2em;
@@ -4691,55 +4746,55 @@ main.search-results .pagination {
 
 /* =WordPress Core
 -------------------------------------------------------------- */
-/* line 2794, sass/modules/_modules.scss */
+/* line 2855, sass/modules/_modules.scss */
 .alignnone {
   margin: 5px 20px 20px 0;
 }
 
-/* line 2798, sass/modules/_modules.scss */
+/* line 2859, sass/modules/_modules.scss */
 .aligncenter,
 div.aligncenter {
   display: block;
   margin: 5px auto 5px auto;
 }
 
-/* line 2804, sass/modules/_modules.scss */
+/* line 2865, sass/modules/_modules.scss */
 .alignright {
   float: right;
   margin: 5px 0 20px 20px;
 }
 
-/* line 2809, sass/modules/_modules.scss */
+/* line 2870, sass/modules/_modules.scss */
 .alignleft {
   float: left;
   margin: 5px 20px 20px 0;
 }
 
-/* line 2814, sass/modules/_modules.scss */
+/* line 2875, sass/modules/_modules.scss */
 a img.alignright {
   float: right;
   margin: 5px 0 20px 20px;
 }
 
-/* line 2819, sass/modules/_modules.scss */
+/* line 2880, sass/modules/_modules.scss */
 a img.alignnone {
   margin: 5px 20px 20px 0;
 }
 
-/* line 2823, sass/modules/_modules.scss */
+/* line 2884, sass/modules/_modules.scss */
 a img.alignleft {
   float: left;
   margin: 5px 20px 20px 0;
 }
 
-/* line 2828, sass/modules/_modules.scss */
+/* line 2889, sass/modules/_modules.scss */
 a img.aligncenter {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 2834, sass/modules/_modules.scss */
+/* line 2895, sass/modules/_modules.scss */
 .wp-caption {
   background: #fff;
   border: 1px solid #f0f0f0;
@@ -4749,22 +4804,22 @@ a img.aligncenter {
   text-align: center;
 }
 
-/* line 2842, sass/modules/_modules.scss */
+/* line 2903, sass/modules/_modules.scss */
 .wp-caption.alignnone {
   margin: 5px 20px 20px 0;
 }
 
-/* line 2846, sass/modules/_modules.scss */
+/* line 2907, sass/modules/_modules.scss */
 .wp-caption.alignleft {
   margin: 5px 20px 20px 0;
 }
 
-/* line 2850, sass/modules/_modules.scss */
+/* line 2911, sass/modules/_modules.scss */
 .wp-caption.alignright {
   margin: 5px 0 20px 20px;
 }
 
-/* line 2854, sass/modules/_modules.scss */
+/* line 2915, sass/modules/_modules.scss */
 .wp-caption img {
   border: 0 none;
   height: auto;
@@ -4774,7 +4829,7 @@ a img.aligncenter {
   width: auto;
 }
 
-/* line 2863, sass/modules/_modules.scss */
+/* line 2924, sass/modules/_modules.scss */
 .wp-caption p.wp-caption-text {
   font-size: 11px;
   line-height: 17px;
@@ -4783,7 +4838,7 @@ a img.aligncenter {
 }
 
 /* Text meant only for screen readers. */
-/* line 2871, sass/modules/_modules.scss */
+/* line 2932, sass/modules/_modules.scss */
 .screen-reader-text {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
@@ -4798,7 +4853,7 @@ a img.aligncenter {
   /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
 
-/* line 2884, sass/modules/_modules.scss */
+/* line 2945, sass/modules/_modules.scss */
 .screen-reader-text:focus {
   background-color: #eee;
   clip: auto !important;

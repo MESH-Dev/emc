@@ -503,7 +503,7 @@ function get_events(){
       'posts_per_page' => 6,
       'meta_key' => 'event_start_date',
       'orderby' => 'meta_value',
-      'order' => 'ASC',
+      'order' => 'DESC',
       'paged'=>$paged,
       //
       );
@@ -513,7 +513,7 @@ function get_events(){
       'posts_per_page' => -1,
       'meta_key' => 'event_start_date',
       'orderby' => 'meta_value',
-      'order' => 'ASC',
+      'order' => 'DESC',
       'paged' => $paged,
       'post_status' => 'publish',
       //'s' => $query, //This is an 'and', so the query is effectively stopping here, if not commented out
@@ -532,7 +532,7 @@ function get_events(){
   'posts_per_page' => -1,
   'meta_key' => 'event_start_date',
   'orderby' => 'meta_value',
-  'order' => 'ASC',
+  'order' => 'DESC',
   'paged'=>$paged,
   'post_status' => 'publish',
   //'s' => $query, //This is an 'and', so the query is effectively stopping here, if not commented out
@@ -552,7 +552,7 @@ function get_events(){
       'post_status' => 'publish',
       'meta_key' => 'event_start_date',
       'orderby' => 'meta_value',
-      'order' => 'ASC',
+      'order' => 'DESC',
       'paged'=>$paged,
       's' => $query
       //

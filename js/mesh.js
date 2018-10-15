@@ -460,33 +460,228 @@ $('#locationTrigger').click(function(event){
   //_pins = { "us" : "\u003ca href=\"#\"\u003e \u003cspan\u003eUSA\u003c/span\u003e \u003ca a/\u003e",//\u003cimg src=\"pk.png\" /\u003e
         	//"id" : "\u003ca href=\"#\"\u003e \u003cspan\u003eBRAZIL\u003c/span\u003e \u003ca a/\u003e"}; //\u003cimg src=\"pk.png\" /\u003e
 
-if($('#vmap').size() > 0){
-	$('#vmap').vectorMap({
-	  map: 'world_en',
-	  backgroundColor: 'rgba(255,255, 255, 0)',
-	  color: '#F5B996',
-	  borderWidth: 0,
-	  borderOpacity: 0,
-	  borderColor: '#F5B996',//#F5B996
-	  hoverColor :'#ff00ff',
-	  //hoverOpacity: 1,
-	  selectedColor: '#EB742D',
-	  enableZoom: false,
-	  showTooltip: false,
-	  scaleColors: ['#C8EEFF', '#006491'],
-	  onRegionLabelShow: function(e, el, code){
-	    e.preventDefault();
-	  },
-	  //values: sample_data,
-	  normalizeFunction: 'linear', //polynomial, linear,
-	  //Can 'pins' use serialized var? YES
-	  pins: _pins,
-    //pins: { "us" : "pin_for_us", "ru" : "pin_for_ru"},
-	  //pins: { "us" : "\u003ca href=\"#\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eUSA\u003c/span\u003e \u003ca a/\u003e",
-	// "id" : "\u003ca href=\"#\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eIndonesia\u003c/span\u003e \u003ca a/\u003e"},
-	  pinMode: 'content'
-	});
-}
+
+
+// if($('#vmap').size() > 0){
+// 	$('#vmap').vectorMap({
+// 	  map: 'usa_en',
+// 	  backgroundColor: 'rgba(255,255, 255, 0)',//#a99689
+// 	  color: '#a99689',
+// 	  borderWidth: 0,
+// 	  borderOpacity: 0,
+// 	  borderColor: '#a99689',//#F5B996
+// 	  hoverColor :'#eb742d',
+// 	  //hoverOpacity: 1,
+// 	  selectedColor: '#EB742D',
+// 	  enableZoom: false,
+// 	  showTooltip: false,
+// 	  scaleColors: ['#C8EEFF', '#006491'],
+// 	  // onRegionLabelShow: function(e, el, code){
+// 	  //   e.preventDefault();
+// 	  // },
+// 	  //values: sample_data,
+// 	  normalizeFunction: 'linear', //polynomial, linear,
+// 	  //Can 'pins' use serialized var? YES
+// 	  //pins: _pins,
+//     //pins: { "us" : "pin_for_us", "ru" : "pin_for_ru"},
+// 	  //pins: { "us" : "\u003ca href=\"#\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eUSA\u003c/span\u003e \u003ca a/\u003e",
+// 	// "id" : "\u003ca href=\"#\"\u003e \u003cimg src=\"pk.png\" /\u003e \u003cspan\u003eIndonesia\u003c/span\u003e \u003ca a/\u003e"},
+// 	  pinMode: 'content'
+// 	});
+// }
+
+
+$('#vmap').vectorMap({
+          map: 'usa_en',
+          enableZoom: true,
+          showTooltip: true,
+          selectedColor: null,
+          backgroundColor: 'rgba(255,255, 255, 0)',
+          hoverColor: '#eb742d',
+          color: '#a99689',
+          // colors: {
+          //   mo: '#C9DFAF',
+          //   fl: '#C9DFAF',
+          //   or: '#C9DFAF'
+          // },
+          onRegionClick: function(event, code, region){
+            event.preventDefault();
+            console.log(code);
+            //e.preventDefault();
+            //$target = $(this).attr('id');
+            $target = code;
+            //$(this).find('.cta-popup').show('fast');
+            $('.location-popup[data-name="'+$target+'"]').fadeIn('fast').css({display:'table'});
+
+            //$('.cta-popup').css({display:'table'});
+            $('header').css({position:'initial'});
+          }
+        });
+// $(document).ready(function() {
+    // $('#vmap').usmap({
+    //   'stateSpecificStyles': {
+    //     'AK' : {fill: '#f00'}
+    //   },
+    //   'stateSpecificHoverStyles': {
+    //     'HI' : {fill: '#ff0'}
+    //   },
+      
+    //   'mouseoverState': {
+    //     'HI' : function(event, data) {
+    //       //return false;
+    //     }
+    //   },
+      
+      
+    //   'click' : function(event, data) {
+    //     $('#alert')
+    //       .text('Click '+data.name+' on map 1')
+    //       .stop()
+    //       .css('backgroundColor', '#a99689')
+    //       .animate({backgroundColor: '#ddd'}, 1000);
+    //   }
+    // });
+
+
+  //$j = jQuery.noConflict();
+  //$j(document).ready(function() {
+
+    
+    var statesData = {
+    "AL": ["Alabama&nbsp;",9.8,"No","7.2%","58%","19%","1,11%","36.93%","Not Adopting"],
+    "AK": ["Alaska&nbsp;","Inadequate data","Yes","5.8%","53%","15%","31.00%","19.16%","Adopted"],
+    "AZ": ["Arizona&nbsp;",18.3,"Yes","8.6%","54%","17%","7.78%","41.07%","Adopted"],
+    "AR": ["Arkansas&nbsp;",35.4,"No","10.9%","67%","21%","1.15%","15.37%","Adopted"],
+    "CA": ["California&nbsp;",5.9,"Yes","3.8%","50%","15%","10.27%","17.10%","Adopted"],
+    "CO": ["Colorado&nbsp;",10.1,"Yes","6.2%","43%","15%","15.01%","16.95%","Adopted"],
+    "CT": ["Connecticut&nbsp;",14.1,"No","3.5%","47%","12%","10.89%","11.29%","Adopted"],
+    "DE": ["Delaware&nbsp;",13.9,"Yes","6.4%","48%","12%","9.49%","21.46%","Adopted"],
+    "DC": ["District of Columbia",40.7,"No","9.4%","46%","10%","10.29%","35.23%","Adopted"],
+    "FL": ["Florida&nbsp;",23.6,"Yes","6.8%","50%","21%","12.22%","24.50%","Not Adopting"],
+    "GA": ["Georgia&nbsp;",39.3,"Yes","8.2%","54%","21%","12.95%","24.06%","Not Adopting"],
+    "HI": ["Hawaii&nbsp;",14.8,"Yes","7.7%","N/A","8%","11.32%","10.00%","Adopted"],
+    "ID": ["Idaho&nbsp;",20.2,"No","4.5%","45%","18%","11.54%","28.69%","Not Adopting"],
+    "IL": ["Illinois",16,"Yes","5.8%","50%","13%","6.43%","27.29%","Adopted"],
+    "IN": ["Indiana&nbsp;",34.9,"No","6.0%","50%","17%","7.03%","29.35%","Adopted"],
+    "IA": ["Iowa&nbsp;",15.4,"Yes","4.4%","37%","9%","9.21%","21.40%","Adopted"],
+    "KS": ["Kansas&nbsp;",19.6,"No","3.7%","34%","14%","6.24%","23.04%","Not Adopting"],
+    "KY": ["Kentucky&nbsp;",20.4,"No","5.6%","46%","17%","8.70%","22.81%","Adopted"],
+    "LA": ["Louisiana&nbsp;",35,"Yes","7.0%","65%","20%","3.02%","42.37%","Adopted"],
+    "ME": ["Maine&nbsp;",8.2,"Yes","3.3%","43%","11%","20.66%","6.94%","Not Adopting"],
+    "MD": ["Maryland&nbsp;",25.7,"Yes","7.8%","44%","11%","11.05%","16.54%","Adopted"],
+    "MA": ["Massachusetts&nbsp;",5.8,"Yes","4.5%","41%","8%","16.52%","7.19%","Adopted"],
+    "MI": ["Michigan&nbsp;",22.7,"Yes","4.7%","46%","15%","7.59%","20.78%","Adopted"],
+    "MN": ["Minnesota&nbsp;",13.9,"Yes","3.9%","43%","10%","12.28%","7.76%","Adopted"],
+    "MS": ["Mississippi&nbsp;",26.5,"Yes","4.7%","64%","22%","1.90%","58.20%","Not Adopting"],
+    "MO": ["Missouri&nbsp;",28.5,"Yes","5.3%","42%","17%","4.43%","28.80%","Not Adopting"],
+    "MT": ["Montana",24.6,"Yes","6.5%","49%","14%","11.68%","25.22%","Adopted"],
+    "NE": ["Nebraska&nbsp;",14.6,"No","5.8%","35%","14%","6.07%","1.54%","Not Adopting"],
+    "NV": ["Nevada&nbsp;",6.8,"No","8.2%","64%","19%","6.23%","20.05%","Adopted"],
+    "NH": ["New Hampshire&nbsp;",15.8,"Yes","3.6%","27%","12%","21.99%","6.70%","Adopted"],
+    "NJ": ["New Jersey&nbsp;",37.3,"Yes","5.7%","42%","14%","6.88%","33.00%","Adopted"],
+    "NM": ["New Mexico&nbsp;",23,"No","10.8%","72%","18%","26.91%","49.66%","Adopted"],
+    "NY": ["New York&nbsp;",20.9,"Yes","5.1%","51%","13%","10.67%","20.28%","Adopted"],
+    "NC": ["North Carolina&nbsp;",12.1,"Yes","6.0%","54%","19%","12.42%","14.54%","Not Adopting"],
+    "ND": ["North Dakota&nbsp;",18,"No","5.9%","33%","8%","6.22%","24.41%","Adopted"],
+    "OH": ["Ohio&nbsp;",20.9,"Yes","6.4%","52%","14%","8.20%","11.86%","Adopted"],
+    "OK": ["Oklahoma&nbsp;",26,"Yes","7.3%","60%","18%","5.47%","30.71%","Not Adopting"],
+    "OR": ["Oregon&nbsp;",13.2,"No","4.4%","50%","16%","21.92%","23.27%","Adopted"],
+    "PA": ["Pennsylvania",16.7,"No","6.2%","39%","12%","14.07%","5.07%","Adopted"],
+    "RI": ["Rhode Island&nbsp;",18.3,"No","1.7%","50%","12%","12.24%","14.49%","Adopted"],
+    "SC": ["South Carolina&nbsp;",27.1,"Yes","7.2%","60%","21%","6.09%","30.82%","Not Adopting"],
+    "SD": ["South Dakota&nbsp;",24.9,"No","5.7%","50%","11%","7.30%","22.79%","Not Adopting"],
+    "TN": ["Tennessee&nbsp;",19.2,"Yes","6.1%","54%","17%","7.10%","22.27%","Not Adopting"],
+    "TX": ["Texas&nbsp;",31.5,"Yes","10.4%","54%","22%","3.90%","19.59%","Not Adopting"],
+    "UT": ["Utah&nbsp;",18.3,"Yes","3.9%","31%","16%","10.99%","19.31%","Not Adopting"],
+    "VT": ["Vermont&nbsp;","Inadequate data","No","1.6%","42%","9%","25.21%","1.71%","Adopted"],
+    "VA": ["Virginia&nbsp;",13.2,"Yes","4.4%","31%","16%","9.01%","16.66%","Not Adopting"],
+    "WA": ["Washington&nbsp;",14.7,"Yes","6.3%","49%","14%","12.01%","17.70%","Adopted"],
+    "WV": ["West Virginia&nbsp;",13.6,"Yes","5.7%","48%","17%","13.08%","30.30%","Adopted"],
+    "WI": ["Wisconsin&nbsp;",13.6,"Yes","4.1%","64%","11%","10.80%","16.62%","Not Adopting"],
+    "WY": ["Wyoming",22.2,"No","4.9%","36%","16%","4.78%","25.46%","Not Adopting"]
+};
+    
+
+
+    // loadMap($('#vmap'));
+    // loadMap($('#map-medium'));
+    // loadMap($('#map-small'));
+
+
+    // function loadMap(map){
+
+    //   map.usmap({
+    //     stateStyles: {fill: 'rgba(169,150,137,1)',stroke: 'transparent','stroke-width': 2},
+    //     stateHoverStyles: {fill: "rgba(255,109,34,1)"},
+    //     click: function(event, data) {
+
+    //       var selectedStateData = statesData[data.name];
+          
+    //       $j('#popup-state').find('.state-data').each(function(i){
+    //         $j(this).html(selectedStateData[i]);
+    //       });
+          
+    //       $j.fancybox({
+    //         content: $j('#popup-state')
+    //       });
+          
+    //     },
+    //     mouseout: function(event, data){
+    //       $j('#hovered-state').hide();
+    //     }
+    //   });
+
+    // }
+    
+    // $j('.take-action').click(function(e){
+    //     e.preventDefault();
+    // //$j('#engage-plugin-363903').fadeIn();
+    //   $j('#cqrc-content').fadeIn();
+      
+    // });
+    
+    // var locationHash = window.location.hash;
+    
+    // if(locationHash && locationHash == '#take-action-section'){
+    //   $j('html,body').scrollTo($j(locationHash).position().top-60, {
+    //     onAfter: function() {
+    //       $j('.take-action').click();
+    //     },
+    //     easing: 'swing',
+    //     duration:2000
+    //   }); 
+    // }
+    
+  //});
+
+    
+    // $('#map2').usmap({
+    //   'stateStyles': {
+    //     fill: '#025', 
+    //     "stroke-width": 1,
+    //     'stroke' : '#036'
+    //   },
+    //   'stateHoverStyles': {
+    //     fill: 'teal'
+    //   },
+      
+    //   'click' : function(event, data) {
+    //     $('#alert')
+    //       .text('Click '+data.name+' on map 2')
+    //       .stop()
+    //       .css('backgroundColor', '#af0')
+    //       .animate({backgroundColor: '#ddd'}, 1000);
+    //   }
+    // });
+    
+    // $('#over-md').click(function(event){
+    //   $('#map').usmap('trigger', 'MD', 'mouseover', event);
+    // });
+    
+    // $('#out-md').click(function(event){
+    //   $('#map').usmap('trigger', 'MD', 'mouseout', event);
+    // });
+  // });
 
 //Autocomplete
 // see https://goodies.pixabay.com/jquery/auto-complete/demo.html for more info
@@ -1508,6 +1703,7 @@ $('.grid-item.has_popup').each(function(){
 
 $('.popup-close').click(function(){
   $('.cta-popup').fadeOut('fast');
+  $('.location-popup').fadeOut('fast');
   //$(this).parent.parent.parent.find('.cta-popup').css({display:'none'});
   $('header').css({position:'fixed'});
 

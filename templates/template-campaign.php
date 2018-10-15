@@ -581,7 +581,44 @@
 		</div>
 	</div> -->
 
-<?php } ?>
+<?php }elseif ($panel_type =='map') ?>
+<div id="vmap" style="width: 100%; height: 600px;">
+	<?php if(have_rows('map_locations')): ?>
+		<div class="location-popups">
+			
+		<?php while(have_rows('map_locations')):the_row(); 
+			$location = get_sub_field('location_title');
+			//var_dump($location);
+			$location_data = get_field_object('location_title');
+			//The value of the select
+			$location_name = $location['label'];
+			//var_dump($location_data);
+			$location_abbr = strtolower($location['value']);
+			$location_content = get_sub_field('location_content');
+			//The label of the select
+		?>
+		<div class="location-popup hide" data-name="<?php echo $location_abbr; ?>">
+			<div class="popup-content">
+				<div class="wrapper">
+					<div class="popup-close">
+						<svg class="" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+							<g>
+								<path style="fill:#EB742D;" d="M50.2,56.5L18.6,88.2l-6.3-6.3l31.6-31.6L12.5,18.8l5.9-5.9l31.5,31.5l31.6-31.6l6.3,6.3L56.1,50.7L87.4,82
+									l-5.9,5.9L50.2,56.5z"/>
+							</g>
+						</svg>
+					</div>
+					<div class="popup-text" >
+						<?php echo $location_content; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+				<?php endwhile;?>
+			<?php endif; ?>
+
+</div>
 <?php endwhile; endif; ?>
 <!-- End of Content -->
 </main>
