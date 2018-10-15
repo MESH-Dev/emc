@@ -582,7 +582,7 @@
 	</div> -->
 
 <?php }elseif ($panel_type =='map'){ ?>
-<div id="vmap" style="width: 100%; height: 600px;">
+<div class="panel i-map" id="vmap" style="width: 100%; height: 600px;">
 	<?php if(have_rows('map_locations')): ?>
 		<div class="location-popups">
 			
@@ -594,7 +594,7 @@
 			$location_name = $location['label'];
 			//var_dump($location_data);
 			$location_abbr = strtolower($location['value']);
-			var_dump($location);
+			//var_dump($location);
 			$location_content = get_sub_field('location_content');
 			//The label of the select
 		?>
