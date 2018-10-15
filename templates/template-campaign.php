@@ -581,7 +581,7 @@
 		</div>
 	</div> -->
 
-<?php }elseif ($panel_type =='map') ?>
+<?php }elseif ($panel_type =='map'){ ?>
 <div id="vmap" style="width: 100%; height: 600px;">
 	<?php if(have_rows('map_locations')): ?>
 		<div class="location-popups">
@@ -619,6 +619,7 @@
 			<?php endif; ?>
 
 </div>
+<?php } ?>
 <?php endwhile; endif; ?>
 <!-- End of Content -->
 </main>
