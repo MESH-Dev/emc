@@ -2795,7 +2795,7 @@ main.search-results{
      .popup-text{
        color:$offwhite-1;
        //font-family: 'bianco-reg';
-       p,h1,h2,h3,h4,h5,h6{
+       p,h1,h2,h3,h4,h5,h6, ul,li,blockquote,span,div, *{
           color:$offwhite-1;
        }
 

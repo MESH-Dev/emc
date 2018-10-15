@@ -4698,7 +4698,7 @@ main.search-results .pagination {
   color: #FBD8C2;
 }
 /* line 2798, sass/modules/_modules.scss */
-.location-popup .popup-text p, .location-popup .popup-text h1, .location-popup .popup-text h2, .location-popup .popup-text h3, .location-popup .popup-text h4, .location-popup .popup-text h5, .location-popup .popup-text h6 {
+.location-popup .popup-text p, .location-popup .popup-text h1, .location-popup .popup-text h2, .location-popup .popup-text h3, .location-popup .popup-text h4, .location-popup .popup-text h5, .location-popup .popup-text h6, .location-popup .popup-text ul, .location-popup .popup-text li, .location-popup .popup-text blockquote, .location-popup .popup-text span, .location-popup .popup-text div, .location-popup .popup-text * {
   color: #FBD8C2;
 }
 /* line 2802, sass/modules/_modules.scss */
