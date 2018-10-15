@@ -594,6 +594,7 @@
 			$location_name = $location['label'];
 			//var_dump($location_data);
 			$location_abbr = strtolower($location['value']);
+			var_dump($location);
 			$location_content = get_sub_field('location_content');
 			//The label of the select
 		?>
