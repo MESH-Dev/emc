@@ -128,6 +128,11 @@ body{
          background-color: $black;
       }
    }
+   &.campaign{
+    .banner-text{
+        padding-top: 6em;
+      }
+   }
       &.large.full-video{
          .welcome-gate-bg{
             //background:$black;
@@ -135,6 +140,13 @@ body{
          .play{
             cursor:pointer;
          }
+         .top-callout{
+         color: $offwhite-1;
+         @include whitney-bold();
+         font-size: 2rem;
+         letter-spacing: 3px;
+         text-transform: uppercase;
+      }
          .player-holder{
             position:absolute;
             display:table;
