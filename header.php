@@ -187,10 +187,10 @@
 										echo "<p><em>gateway_nav</em> doesn't exist! Create it and it'll render here.</p>";
 									} ?>
 							<div class="socials" id="header-social">
-								<a href="#"><i class="fab fa-twitter"></i></a>
-								<a href="#"><i class="fab fa-instagram"></i></a>
-								<a href="#"><i class="fab fa-facebook"></i></a>
-								<a href="#"><i class="fab fa-youtube"></i></a>
+								<a href="https://twitter.com/everymomcounts" target="_blank"><i class="fab fa-twitter"></i></a>
+				               <a href="https://www.instagram.com/everymomcounts" target="_blank"><i class="fab fa-instagram"></i></a>
+				               <a href="https://www.facebook.com/everymothercounts/" target="_blank"><i class="fab fa-facebook"></i></a>
+				               <a href="https://www.youtube.com/everymothercounts" target="_blank"><i class="fab fa-youtube"></i></a>
 							</div>
 							<a id="mobileMenuTrigger">
 								<svg class="menu-icon" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 23">

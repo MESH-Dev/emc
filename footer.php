@@ -75,10 +75,10 @@
       <div class="container">
    		<div class="row">
             <div class="socials">
-               <a href="#"><i class="fab fa-twitter"></i></a>
-               <a href="#"><i class="fab fa-instagram"></i></a>
-               <a href="#"><i class="fab fa-facebook"></i></a>
-               <a href="#"><i class="fab fa-youtube"></i></a>
+               <a href="https://twitter.com/everymomcounts" target="_blank"><i class="fab fa-twitter"></i></a>
+               <a href="https://www.instagram.com/everymomcounts" target="_blank"><i class="fab fa-instagram"></i></a>
+               <a href="https://www.facebook.com/everymothercounts/" target="_blank"><i class="fab fa-facebook"></i></a>
+               <a href="https://www.youtube.com/everymothercounts" target="_blank"><i class="fab fa-youtube"></i></a>
             </div>
             <p class="copy">&#169; Every Mother Counts <?php echo date('Y') ?></p>
    				<!-- <nav class="main-navigation">
