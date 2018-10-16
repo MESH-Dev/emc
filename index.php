@@ -153,7 +153,7 @@
 								 ?>
 								 <div class="content">
 									 <h2 class="listing-display-title"><?php the_title(); ?></h2>
-
+									<p class="date"><?php echo the_date(); ?></span>
 
 									 <?php echo get_the_excerpt(); ?>
 								 </div>

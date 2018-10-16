@@ -27,8 +27,8 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="columns-2 offset-by-1">
-				<h5 class="postinfo">By: <span class="orange"><?php the_author(); ?></span></h5>
+			<div class="columns-3 offset-by-1">
+				<h5 class="postinfo">Posted: <span class="orange"><?php echo the_date(); ?></br></span> By: <span class="orange"><?php the_author(); ?></span></h5>
 				<?php
 					$categories='';
 					$separator=", ";
