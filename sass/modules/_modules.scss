@@ -2376,6 +2376,24 @@ main.search-results{
       padding-right: 20px;
       // padding-top: 240px;
    }
+   .more-link{
+    font-family: "Whitney A", "Whitney B";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.25;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #EB742D;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    .img{
+      img{
+            width: 20px;
+            margin-bottom:-5px;
+      }
+    }
+   }
    .field-container{
       .search-icon{
          width: 50px;

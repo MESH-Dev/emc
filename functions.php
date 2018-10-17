@@ -104,7 +104,8 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
                 $excerptOutput = '';
                 $count = 0;
 
-                $directory = get_template_directory();
+                $directory = get_template_directory_uri();
+                //var_dump($directory);
                 $imgs = '/img/arrow-right.svg';
                 $arrow  = $directory.$imgs;
                 $arrow_icon = file_get_contents($arrow);
@@ -129,9 +130,17 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
                 }
 
             $wpse_excerpt = trim(force_balance_tags($excerptOutput));
+            $rm_text = '';
+            $arrow_img = '';
+            if(is_search()){
+              $rm_text = "Read more on this page ";
+              $arrow_img = '<img src="'.$arrow.'">';
+            }else{
+              $arrow_img = $arrow_clean;
+            }
 
                 //$excerpt_end = ' <a href="'. esc_url( get_permalink() ) . '">' . '&nbsp;&raquo;&nbsp;' . sprintf(__( 'Read more about: %s &nbsp;&raquo;', 'wpse' ), get_the_title()) . '</a>';
-                $excerpt_end = ' ... <p><a class="more-link" href="'. esc_url( get_permalink() ) . '"><span class="text"><span class="img">'.$arrow_clean.'</span></a></p>';
+                $excerpt_end = ' ... <p><a class="more-link" href="'. esc_url( get_permalink() ) . '"><span class="text">'.$rm_text.'<span class="img">'.$arrow_img.'</span></a></p>';
                 $excerpt_more = apply_filters('excerpt_more', $excerpt_end);
 
                 $pos = strrpos($wpse_excerpt, '</');
@@ -178,7 +187,7 @@ function new_excerpt_more($more) {
     $arrow  = $directory.$imgs;
     $arrow_icon = file_get_contents($arrow);
     $arrow_clean = str_replace(array("\r\n", "\r", "\n"), '',$arrow_icon);
-    return $more . '<p><a class="more-link" href="'. get_permalink($post->ID) . '"><span class="text"><span class="img">'.$arrow_clean.'</span></a></p>';
+    return $more . '<p><a class="more-link" href="'. get_permalink($post->ID) . '"><span class="text">Read More about this page <span class="img">'.$arrow_clean.'</span></a></p>';
 }
 //add_filter('the_excerpt', 'new_excerpt_more');
 

@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 
 
-<main id="content">
-	<div class="cotnainer field-container">
+<main id="content" class="search-results">
+	<div class="container field-container">
       <div class="row">
          <div class="columns-10 offset-by-1">
             <svg class="search-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -30,12 +30,14 @@
          </div>
       </div>
    </div>
-	<div class="container">
-		<div class="row">
-			<div class="columns-9">
+	<div class="container results-list">
+		<div class="row result">
+			<!-- <div class="columns-8 offset-by-1"> -->
+				
 				<?php if ( have_posts() ) : ?>
+				<!-- <div class="columns-8 offset-by-1">
 					<h1><?php printf( __( 'Search Results for: %s' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-
+				</div> -->
 					<?php while ( have_posts() ) : the_post(); ?>
 					<?php 
 						$page_headline = get_field('page_headline', $post->ID);
@@ -44,17 +46,25 @@
 					?>
 
 						<div class="columns-8 offset-by-1">
-				            <div class="">
+				            <div class="post">
 				               <h2 class="result-title"><?php the_title(); ?></h2>
-				               <?php if(the_content() != ''){?>
-				              		<p><?php echo the_content(); ?></p>
+				               <?php if(get_the_content() != ''){?>
+				              		<p><?php echo the_excerpt(); ?></p>
 			              		<?php } ?>
 				               <?php if($page_headline != ''){ ?>
-									<p><?php echo $page_headline; ?></p>
+									<p class="headline"><?php echo $page_headline; ?></p>
 				               	<?php } ?>
-				               <a class="cta heading6" href="<?php the_permalink(); ?>">
-				                  Read More
-				               </a>
+				              <!--  <a class="cta heading6" href="<?php the_permalink(); ?>">
+				                  Read More on this page
+				                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+			                     <style type="text/css">
+			                        .st0{fill:#EED9BD;}
+			                        .st1{fill:#EC742E;}
+			                     </style>
+			                     <polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
+			                        39.3,83.3 66,56.5 71.9,50.7 "/>
+			                  </svg>
+				               </a> -->
 				            </div>
 				         </div>
 
@@ -66,7 +76,7 @@
 
 					<?php get_search_form(); ?>
 				<?php endif; ?>
-			</div>
+			<!-- </div> -->
 		</div>
 	</div>
 

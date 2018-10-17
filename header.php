@@ -5,6 +5,17 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 
 <head>
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-46432156-12"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-15984310-2');
+	</script>
+
 
 	<meta charset="utf-8">
 
@@ -26,10 +37,13 @@
 
 	<!-- Favicons
 	================================================== -->
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/img/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/img/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/img/favicon-16x16.png">
+	<link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/img/site.webmanifest">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="theme-color" content="#ffffff">
 
 	<?php wp_head(); ?>
 
@@ -63,21 +77,8 @@
 			</div>
 			<div class="form-section">
 				<h5>Become a part of a community committed to caring for mothers everywhere.</h5>
-				<form class="" action="" method="post">
-					<p>
-					  <div class="name-fields first">
-							<label class="sr-only">First Name: </label>
-							<input type="text" name="first" placeholder="First Name" required />
-					  </div>
-					  <div class="name-fields">
-						 <label class="sr-only">Last Name: </label>
-						<input type="text" name="last" placeholder="Last Name" required />
-					  </div>
-						 <label class="sr-only">Email address: </label>
-						<input type="email" name="email" placeholder="Email Address" required />
-					</p>
-					<input type="submit" value="Sign up for our newsletter" />
-				</form>
+				<?php $mc_shortcode = get_field('mailchimp_shortcode', 'option');?>
+				<?php echo do_shortcode('$mc_shortcode'); ?>
 			</div>
 		</div>
 		<div class="modal-underlay">
