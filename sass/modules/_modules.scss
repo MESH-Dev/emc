@@ -95,7 +95,7 @@ body{
       bottom:0;
       right:0;
       left:0;
-      background-color:rgba(0,0,0,.1);
+      background-color:rgba(0,0,0,.15);
       z-index:100;
    }
 
@@ -987,6 +987,9 @@ div.scrollableArea
       }
       .thumbnails{
          margin-top: 10px;
+         [class*='columns-']{
+          padding-right:15px;
+         }
          img{
             max-width: 100%;
             height: auto;
@@ -2815,6 +2818,10 @@ main.search-results{
 
      .popup-text{
        color:$offwhite-1;
+       @media ($bp-smaller-than-mobile){
+          overflow: scroll;
+          height: 600px;
+       }
        //font-family: 'bianco-reg';
        p,h1,h2,h3,h4,h5,h6, ul,li,blockquote,span,div, *{
           color:$offwhite-1;
@@ -2828,6 +2835,9 @@ main.search-results{
      .wrapper{
        width:60%;
        margin:0 auto;
+       @media ($bp-smaller-than-mobile){
+        width:80%;
+       }
      }
 }
 
