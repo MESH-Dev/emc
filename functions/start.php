@@ -17,6 +17,7 @@ function loadup_scripts() {
    if(is_page_template( 'templates/template-campaign.php' )){
     wp_enqueue_script( 'vmap-js', get_template_directory_uri().'/js/jquery.vmap.min.js', array('jquery'), '1.0.0', true );
     wp_enqueue_script( 'vmap-usa-js', get_template_directory_uri().'/js/jquery.vmap.usa.js', array('jquery'), '1.0.0', true );
+    wp_enqueue_script( 'bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js', array('jquery'), '1.0.0', true );
   }
   wp_enqueue_script( 'ui-js', get_template_directory_uri().'/js/jquery.ui.js', array('jquery'), '1.0.0', true );
   wp_enqueue_script( 'kinetic-js', get_template_directory_uri().'/js/jquery.kinetic.js', array('jquery'), '1.0.0', true );

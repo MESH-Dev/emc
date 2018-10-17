@@ -13,6 +13,7 @@
    $vw_url = $v_webm['url'];
    $v_type = get_field('cp_video_type');
    $l_page_callout = get_field('cp_banner_callout_text');
+   $ex_link = get_field('cp_video_link');
    //$l_page_callout = get_field('banner_callout_text', 305);
 ?>
 <div class="welcome-gate large campaign full-video" >
@@ -27,12 +28,12 @@
    <div class="overlay" aria-hidden="true"></div>
    <div class="player-holder">
 			<div class="player-content">
-				<?php //if ($v_type == 'hosted'){ ?>
+				<?php if ($v_type == 'hosted' || $v_type == 'vimeo'){ ?>
 				<img class="play desktop-up" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
 				<img class="play tablet-down" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
-				<?php //}else{ ?>
-				<!-- <img class="vimeo_play" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png"> -->
-				<?php //} ?>
+				<?php }else{ ?>
+				<a href="<?php echo $ex_link; ?>" target="_blank"><img class="" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png"></a>
+				<?php } ?>
 			</div>
 		</div>
    <div class="video-holder">
