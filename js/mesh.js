@@ -701,6 +701,21 @@ $('input[name="sp"]').autoComplete({
     }
 });
 
+//Search resources
+$('input[name="sr"]').autoComplete({
+    minChars: 2,
+    source: function(term, suggest){
+        term = term.toLowerCase();
+        //var choices = ['ActionScript', 'AppleScript', 'Asp'];
+        var choices = rc_choices;
+        var matches = [];
+        for (i=0; i<choices.length; i++)
+            if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+        suggest(matches);
+    }
+});
+
+
 //Search events
 $('input[name="se"]').autoComplete({
     minChars: 2,
@@ -721,7 +736,7 @@ $('input[name="community-search"]').autoComplete({
     source: function(term, suggest){
         term = term.toLowerCase();
         //var choices = ['ActionScript', 'AppleScript', 'Asp'];
-        var choices = da_choices;
+        var choices = c_choices;
         var matches = [];
         for (i=0; i<choices.length; i++)
             if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
@@ -1472,8 +1487,9 @@ function loadFilms (filmTopic, query) { //*
   $('.r-search-filter form').submit(function(e){
     e.preventDefault();
     var $form = $(this);
-    var $input = $form.find('input[name="sf"]');
+    var $input = $form.find('input[name="sr"]');
     var query = $input.val();
+    //console.log(query);
     $('.filter-bar').find('ul li.selected').removeClass('selected');
     // Push the search query to the end of the current URL so that we can use it to run
     // our functions when a user is visiting from a shared link
@@ -1484,7 +1500,7 @@ function loadFilms (filmTopic, query) { //*
     // }
 
     //Run our AJAX function loadPostsByTopic(topic, query)
-    loadFilms('',query);
+    loadResources('', '', query);
 
     //Detach all of our original posts so that we can add our results back to the DOM
     //$('.row.listing-row').detach();

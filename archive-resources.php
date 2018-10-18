@@ -1,6 +1,81 @@
 <?php get_header();
 ?>
 
+<?php
+  $separator = ', ';
+  $r_topics = get_terms(['taxonomy' => 'media_topic', 'hide_empty' => true]);//'exclude'=>array('archive, educational-psa')
+
+  $r_topic = '';
+  foreach ($r_topics as $t) {
+    $r_topic .= '"'.$t->name.'"'.$separator;
+  }
+
+  //Get page titles from all of our posts
+  $r_types = get_terms(['taxonomy' => 'media_type', 'hide_empty' => false]);
+  $r_type = '';
+  foreach ($r_types as $rt) {
+    $r_topic .= '"'.$rt->name.'"'.$separator;
+  }
+
+  $args2 = array(
+  'post_type' => 'resources',
+  'posts_per_page' => -1,
+  //'meta_key' => 'event_start_date',
+  // 'orderby' => 'post_date',
+  // 'order' => 'DESC',
+  'paged'=>$paged
+  );
+
+  $page_titles = wp_list_pluck( get_pages($args2), 'post_title' );
+  var_dump($page_titles);
+
+  $titles='';
+  foreach($page_titles as $title){
+    $titles .= '"'.addslashes($title).'"'.$separator;
+  }
+
+  $r_excerpt = '';
+
+  $query = new WP_Query( $args2 );
+
+  if ($query->have_posts()) :
+    while ($query->have_posts()) : $query->the_post();
+
+      $content = the_content();
+      //$excerpt = get_field('custom_excerpt');
+      $excerpt = get_post_meta(get_the_ID(), 'custom_excerpt');
+      //var_dump($excerpt);
+
+      foreach($excerpt as $e){
+        //$e_desc.='"'.addslashes($desc).'"'.$separator;
+        $f_excerpt .= $e.' ';
+
+        //$e_desc = implode($e_desc);
+      }
+
+  endwhile; endif; wp_reset_postdata();
+  //Split up and clean the paragraph content
+  $remove = array('.', '!', ',', '?', '\n', '\r', "\r\n", 'and', 'the', 'in', 'on', 'a', 'but');
+  $r_excerpt = str_replace($remove,'', $r_excerpt);
+  //var_dump($f_excerpt);
+  $r_excerpt = explode(' ', addslashes($f_excerpt));
+  $f_excerpt = array_unique($f_excerpt);
+
+  //Loop through our content and add it to an array
+  $exc = '';
+  foreach($f_excerpt as $e){
+    if($e != ''){
+      $exc .='"'.$e.'"'.$separator;
+    }
+  }
+?>
+
+<script>
+var rc_choices = [];
+rc_choices.push(<?php echo $r_topic.$r_type.$titles; ?>);
+
+</script>
+
  <?php
    $background_img = get_field('r_background_image', 'options');
    $background_image_url = $background_img['sizes']['short-banner'];
@@ -132,7 +207,7 @@
                            //     'hide_empty' => true,
                            // ]);
 
-                           $resource_topics = get_terms(['taxonomy' => 'media_topic', 'hide_empty' => false]);
+                           $resource_topics = get_terms(['taxonomy' => 'media_topic', 'hide_empty' => true]);
 
                            //var_dump($terms);
                               foreach ($resource_topics as $topic) {?>

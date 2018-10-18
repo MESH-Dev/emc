@@ -2,6 +2,98 @@
 /* Template Name: Community Resource Library Template */
 ?>
 
+<?php 
+  $separator = ', ';
+  $r_topics = get_terms(['taxonomy' => 'media_topic', 'hide_empty' => true]);//'exclude'=>array('archive, educational-psa')
+
+  $r_topic = '';
+  foreach ($r_topics as $t) {
+    $r_topic .= '"'.$t->name.'"'.$separator;
+  }
+
+  //Get page titles from all of our posts
+  $r_types = get_terms(['taxonomy' => 'media_type', 'hide_empty' => false]);
+  $r_type = '';
+  foreach ($r_types as $rt) {
+    $r_topic .= '"'.$rt->name.'"'.$separator;
+  }
+
+  $args2 = array(
+  'post_type' => 'community',
+  'posts_per_page' => -1,
+  //'meta_key' => 'event_start_date',
+  // 'orderby' => 'post_date',
+  // 'order' => 'DESC',
+  'paged'=>$paged
+  );
+
+  $page_titles = wp_list_pluck( get_pages($args2), 'post_title' );
+  //var_dump(get_pages($args2));
+
+  $titles='';
+  foreach($page_titles as $title){
+    $titles .= '"'.addslashes($title).'"'.$separator;
+  }
+
+  $r_excerpt = '';
+  $m_loc = '';
+
+  $query = new WP_Query( $args2 );
+
+  if ($query->have_posts()) :
+    while ($query->have_posts()) : $query->the_post();
+
+      $content = the_content();
+      //$excerpt = get_field('custom_excerpt');
+      $excerpt = get_post_meta(get_the_ID(), 'custom_excerpt');
+      $m_locations = get_post_meta(get_the_ID(),'member_location');
+      //var_dump($excerpt);
+
+      foreach($excerpt as $e){
+        //$e_desc.='"'.addslashes($desc).'"'.$separator;
+        $f_excerpt .= $e.' ';
+
+        //$e_desc = implode($e_desc);
+      }
+
+      foreach($m_locations as $ml){
+        $m_loc .=str_replace(',','',$ml).' ';
+      }
+
+
+  endwhile; endif; wp_reset_postdata();
+  //Split up and clean the paragraph content
+  $remove = array('.', '!', ',', '?', '\n', '\r', "\r\n", 'and', 'the', 'in', 'on', 'a', 'but');
+  $r_excerpt = str_replace($remove,'', $r_excerpt);
+  //var_dump($f_excerpt);
+  $r_excerpt = explode(' ', addslashes($f_excerpt));
+  $f_excerpt = array_unique($f_excerpt);
+  $m_loc = explode(' ', $m_loc);
+  $m_loc = array_unique($m_loc);
+  //var_dump($m_loc);
+
+  //Loop through our content and add it to an array
+  $exc = '';
+  foreach($f_excerpt as $e){
+    if($e != ''){
+      $exc .='"'.$e.'"'.$separator;
+    }
+  }
+  $loc = '';
+  //var_dump($m_loc);
+  foreach($m_loc as $m){
+    if($m != ''){
+      $loc .='"'.$m.'"'.$separator;
+    }
+  }
+?>
+
+<script>
+var c_choices = [];
+c_choices.push(<?php echo $titles; ?>);
+
+</script>
+
  <?php
    $background_img = get_field('background_image');
    $background_image_url = $background_img['sizes']['short-banner'];
@@ -97,6 +189,7 @@
             'posts_per_page' => 9,
             //'meta_key' => 'event_start_date',
             //'orderby' => 'meta_value',
+            'orderby' => 'post_date',
             'order' => 'ASC',
             'paged'=>$paged
          );

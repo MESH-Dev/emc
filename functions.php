@@ -132,15 +132,15 @@ if ( ! function_exists( 'wpse_custom_wp_trim_excerpt' ) ) :
             $wpse_excerpt = trim(force_balance_tags($excerptOutput));
             $rm_text = '';
             $arrow_img = '';
-            if(is_search()){
-              $rm_text = "Read more on this page ";
-              $arrow_img = '<img src="'.$arrow.'">';
-            }else{
+            // if(is_search()){
+            //   $rm_text = "Read more on this page ";
+            //   $arrow_img = '<img src="'.$arrow.'">';
+            // }elseif(is_search() && is_home()){
               $arrow_img = $arrow_clean;
-            }
+            //}
 
                 //$excerpt_end = ' <a href="'. esc_url( get_permalink() ) . '">' . '&nbsp;&raquo;&nbsp;' . sprintf(__( 'Read more about: %s &nbsp;&raquo;', 'wpse' ), get_the_title()) . '</a>';
-                $excerpt_end = ' ... <p><a class="more-link" href="'. esc_url( get_permalink() ) . '"><span class="text">'.$rm_text.'<span class="img">'.$arrow_img.'</span></a></p>';
+                $excerpt_end = ' ... <p class="read-more"><a class="more-link" href="'. esc_url( get_permalink() ) . '"><span class="text">'.$rm_text.'<span class="img">'.$arrow_img.'</span></a></p>';
                 $excerpt_more = apply_filters('excerpt_more', $excerpt_end);
 
                 $pos = strrpos($wpse_excerpt, '</');
@@ -187,9 +187,9 @@ function new_excerpt_more($more) {
     $arrow  = $directory.$imgs;
     $arrow_icon = file_get_contents($arrow);
     $arrow_clean = str_replace(array("\r\n", "\r", "\n"), '',$arrow_icon);
-    return $more . '<p><a class="more-link" href="'. get_permalink($post->ID) . '"><span class="text">Read More about this page <span class="img">'.$arrow_clean.'</span></a></p>';
+    return $more . '<p><a class="more-link" href="'. get_permalink($post->ID) . '"><span class="text">Read More on this page <span class="img">'.$arrow_clean.'</span></a></p>';
 }
-//add_filter('the_excerpt', 'new_excerpt_more');
+add_filter('the_excerpt', 'new_excerpt_more');
 
 /* Display post thumbnail meta box including description */
 add_filter( 'admin_post_thumbnail_html', 'post_thumbnail_add_description', 10, 2 );
@@ -387,7 +387,8 @@ function get_community_members(){
       'posts_per_page' => 9,
       'post_status' => 'publish',
       'paged' => $paged,
-
+      'orderby' => 'post_date',
+      'order' => 'ASC',
       //
       );
  elseif ($query != ''): //All posts? No filter
@@ -395,6 +396,8 @@ function get_community_members(){
       'post_type' => 'community',
       'posts_per_page' => -1,
       'post_status' => 'publish',
+      'orderby' => 'post_date',
+      'order' => 'ASC',
       'paged' => $paged,
       's' => $query
       //
@@ -870,6 +873,7 @@ function get_the_resources(){
   $resource_topic = $_POST['resourceTopic'];
   $resource_type = $_POST['resourceType'];
   $query = $_POST['query']; //*
+  //var_dump($query);
   //var_dump($event_location);
   // $page = $_POST['page'];
   // var_dump($page);
@@ -1218,6 +1222,40 @@ function cf_search_distinct( $where ) {
 }
 add_filter( 'posts_distinct', 'cf_search_distinct' );
 
-
+// function community_filter($query){
+//  if ( !is_admin() ) {
+//   //Use is archive for archive page for Amenities
+//   //$city = $_GET["city"];
+//   //$dropdown = $_COOKIE["dropdown"];
+//       //var_dump($city);
+//   $query = $_GET['query'];
+//   var_dump($query);
+      
+//     if ($query->is_page_template( 'templates/community-resource-template' ) ) {
+      
+//       //if($city != null || $dropdown == 'true'){
+//       $city_query = array(
+//         'posts_per_page' => -1,
+//         'meta_query' => array(
+//           array(
+//               'key' => 'member_location',
+//               'compare' => 'in',
+//               'value' => $query
+//             )
+//           )
+//         //'orderby' => 'meta_value',
+//         // array(
+//         //     'taxonomy' => 'city',
+//         //     'field'    => 'slug',
+//         //     'terms'    => $city,
+//         // )
+//     );
+//        $query->set('posts_per_page', -1,'tax_query', $city_query);
+//      }
+//     //}
+//   //} //end if city not blank
+// }
+// }
+// add_action('pre_get_posts','community_filter');
 
 ?>
