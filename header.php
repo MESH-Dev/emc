@@ -78,7 +78,7 @@
 			<div class="form-section">
 				<h5>Become a part of a community committed to caring for mothers everywhere.</h5>
 				<?php $mc_shortcode = get_field('mailchimp_shortcode', 'option');?>
-				<?php echo do_shortcode('$mc_shortcode'); ?>
+				<?php echo do_shortcode($mc_shortcode); ?>
 			</div>
 		</div>
 		<div class="modal-underlay">
