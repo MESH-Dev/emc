@@ -76,10 +76,10 @@
 
 	   	if ($v_type == 'hosted'){ ?>
 	   	<?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
-	      <video class="matinee" placeholder="<?php echo $background_image_url; ?>" playsinline="" preload="true" controls ><!-- height: auto; max-width: 800px; max-height:600px; -->
-	         <source src ="<?php echo $vm_url; ?>" type="video/mp4">
-	         <source src ="<?php echo $vo_url; ?>" type="video/ogg">
-	         <source src ="<?php echo $vw_url; ?>" type="video/webm">
+	      <video class="matinee" placeholder="<?php echo $background_image_url; ?>" playsinline preload="true" controls ><!-- height: auto; max-width: 800px; max-height:600px; -->
+	         <source src ="<?php echo $vm_url; ?>" type="video/mp4" playsinline>
+	         <source src ="<?php echo $vo_url; ?>" type="video/ogg" playsinline>
+	         <source src ="<?php echo $vw_url; ?>" type="video/webm" playsinline>
 	      </video>
 	     <?php 
 	 		}

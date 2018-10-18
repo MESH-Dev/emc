@@ -35,10 +35,10 @@
 		</div>
 
 		<?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
-			<video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true">
-				<source src ="<?php echo $vm_url; ?>" autoplay="true" loop="true" muted="true">
-				<source src ="<?php echo $vo_url; ?>" autoplay="true" loop="true" muted="true">
-				<source src ="<?php echo $vw_url; ?>" autoplay="true" loop="true" muted="true">
+			<video placeholder="<?php echo $background_image_url; ?>" autoplay="true" loop="true" muted="true" playsinline>
+				<source src ="<?php echo $vm_url; ?>" autoplay="true" loop="true" muted="true" playsinline>
+				<source src ="<?php echo $vo_url; ?>" autoplay="true" loop="true" muted="true" playsinline>
+				<source src ="<?php echo $vw_url; ?>" autoplay="true" loop="true" muted="true" playsinline>
 			</video>
 		<?php } ?>
 	</div>
