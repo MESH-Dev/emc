@@ -29,8 +29,8 @@
    <div class="player-holder">
 			<div class="player-content">
 				<?php if ($v_type == 'hosted' || $v_type == 'vimeo'){ ?>
-				<img class="play desktop-up" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
-				<img class="play tablet-down" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
+				<img class="play desktop-up <?php if ($v_type == 'vimeo'){echo 'vimeo-button'; }?>" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
+				<img class="play tablet-down <?php if ($v_type == 'vimeo'){echo 'vimeo-button'; }?>" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
 				<?php }else{ ?>
 				<a href="<?php echo $ex_link; ?>" target="_blank"><img class="" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png"></a>
 				<?php } ?>
@@ -55,12 +55,30 @@
 	     	$v_id = get_field('cp_vimeo_id');
 
 	     	?>
-	     	<div style="padding:56.25% 0 0 0; max-height:100%; position:relative;">
-	     		<iframe src="https://player.vimeo.com/video/<?php echo $v_id; ?>?autoplay=1&amp;color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+	     	<div style="padding:56.25% 0 0 0; max-height:100%; position:relative;" data-vimeo-id="<?php echo $v_id; ?>" data-vimeo-defer id="vimeo-vid">
+	     		<!-- <iframe src="https://player.vimeo.com/video/<?php echo $v_id; ?>?autoplay=1&amp;color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
 	     			
-	     		</iframe>
+	     		</iframe> -->
 	     	</div>
 	     	<script src="https://player.vimeo.com/api/player.js"></script>
+	     	<script>
+	     	var options = {
+	     		loop: true,
+	     		autoplay: true,
+	     		color: 'ffffff',
+	     		title: false,
+	     		byline: false,
+	     		//height: '100%',
+	     		//width:'100%'
+
+	     	};
+	     	var $_vimeo = new Vimeo.Player('vimeo-vid', options);
+
+	     	jQuery('.vimeo-button').click(function(){
+	     		
+	     		setTimeout(function(){$_vimeo.play();},100);
+	     	});
+	     	</script>
 	     	 <?php } ?>
 	      <!-- <div class="video-controls" style="width:100%; height:50px; background:red;">
 	      	<div class="video-controls__play-pause-button video-controls__play-pause-button--paused video-controls__button">
@@ -285,6 +303,7 @@
 			<?php } ?>
 			<div class="feature-image has-background">
 				<img src="<?php echo $ip_image_url; ?>">
+				<div class="background has-background" style="background-image:url('<?php echo $ip_image_url; ?>');"></div>
 			</div>
 			<?php if(have_rows('ticker_links')): ?>
 			<div class="marquee3k scroll-ticker" data-speed=".5" data-pausable="true">
@@ -440,7 +459,9 @@
 							$cta_img_url = $cta_img['sizes']['large'];
 							$cta_img_alt = $cta_img['alt'];
 							$cta_title=get_sub_field('cta_title');
-							$pop_id = strtolower(str_replace(' ', '-',$cta_title) );
+							$replacers = array('-', ',', '&', '&amp;', '.', ' ');
+							
+							
 							$cta_text=get_sub_field('cta_text');
 							$cta_link=get_sub_field('cta_link');
 							$cta_desc = get_sub_field('cta_description');
@@ -451,16 +472,24 @@
 							}
 							$popup_title = get_sub_field('popup_title');
 							$popup_content = get_sub_field('popup_content');
+							//$pop_id2 = strtolower(str_replace($replacers, '-' ,$popup_title) );
 							$popup_class = '';
 							$wrapper_class = '';
 							if($popup_content != ''){
 								$popup_class = 'cta-popup-trigger';
 								$wrapper_class = 'has_popup';
 							}
+
+							$pop_id = '';
+							if($cta_title != ''){
+								$pop_id = strtolower(str_replace($replacers, '-' ,$cta_title) );
+							}else{
+								$pop_id = strtolower(str_replace($replacers, '-' ,$popup_title) );
+							}
 							?>
 					<div class="columns-4">
 						<div class="grid-item <?php echo $wrapper_class; ?>" id="<?php echo $pop_id; ?>">
-							<?php if ($cta_link != ''){?>
+							<?php if ($cta_link != '' && $popup_content == ''){?>
 							<a class="<?php echo $popup_class; ?>" id="<?php echo $pop_id; ?>" href="<?php echo $cta_link; ?>" <?php echo $cl_target; ?>>
 							<?php } ?>
 							<?php if($cta_img != ''){ ?>
@@ -468,9 +497,13 @@
 									<img class="card-icon" src="<?php echo $cta_img_url; ?>" alt="<?php echo $cta_img_alt; ?>">
 								</div>
 							<?php } ?>
+								<?php if ($cta_title != ''){ ?>
 								<p class="heading6"><?php echo $cta_title; ?></p>
+								<?php } ?>
+								<?php if ($cta_text != ''){ ?>
 								<p class="desc"><?php echo $cta_text; ?></p>
-								<?php if ($cta_link != ''){?>
+								<?php } ?>
+								<?php if ($cta_link != '' && $popup_content == ''){?>
 								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 									 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
 									<style type="text/css">
@@ -485,7 +518,20 @@
 								<div class="more-info"><?php echo $cta_desc; ?></div>
 								<?php } ?>
 							<!-- </div> -->
-							<?php if ($cta_link != ''){?>
+							<?php if ($cta_link != '' && $popup_content == ''){?>
+							</a>
+							<?php } ?>
+							<?php if ($popup_content != '') { ?>
+							<a class="<?php echo $popup_class; ?> read-more heading6" id="<?php echo $pop_id; ?>" href="<?php echo $cta_link; ?>" <?php echo $cl_target; ?>>Read more 
+								<!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+									 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+									<style type="text/css">
+										.st0{fill:#EED9BD;}
+										.st1{fill:#EC742E;}
+									</style>
+									<polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
+										39.3,83.3 66,56.5 71.9,50.7 "/>
+								</svg> -->
 							</a>
 							<?php } ?>
 							<?php if($popup_content != ''){ ?>
@@ -582,12 +628,26 @@
 		</div>
 	</div> -->
 
-<?php }elseif ($panel_type =='map'){ ?>
-<div class="panel i-map" id="vmap" style="width: 100%; height: 600px;">
+<?php }elseif ($panel_type =='map'){ 
+	$map_title = get_sub_field('title');
+	$map_subtitle = get_field('subtitle');
+	?>
+<div class="panel i-map" id="vmap">
+	<?php if($map_title != ''){ ?>
+	<div class="intro">
+		<?php echo $map_title; ?>
+	</div>
+	<? }
+	if($map_subtitle != '') { ?>
+	<div class="heading6">
+		<?php echo $map_subtitle; ?>
+	</div>
+	<?php } ?>
 	<?php if(have_rows('map_locations')): ?>
 		<div class="location-popups">
 			
 		<?php while(have_rows('map_locations')):the_row(); 
+
 			$location = get_sub_field('location_title');
 			//var_dump($location);
 			$location_data = get_field_object('location_title');

@@ -101,7 +101,7 @@
 							$external = get_field('external');
 							$story_img = get_field('s_image');
 							$story_img_url = $story_img['sizes']['background-fullscreen'];
-							$story_img_alg = $story_img['alt'];
+							$story_img_alt = $story_img['alt'];
 							$target='';
 							if($external == true){
 								$target = 'target="_blank"';
@@ -137,6 +137,7 @@
 			</div>
 			<div class="feature-image has-background">
 				<img class="feature-image" src="<?php echo $story_img_url; ?>" alt="<?php echo $story_img_alt; ?>">
+				<div class="has-background background" style="background-image:url(<?php echo $story_img_url; ?>);">
 			</div>
 		</div>
 

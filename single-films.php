@@ -61,8 +61,8 @@
    <div class="player-holder">
 			<div class="player-content">
 				<?php //if ($v_type == 'hosted'){ ?>
-				<img class="play desktop-up" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
-				<img class="play tablet-down" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
+				<img class="play desktop-up <?php if ($v_type == 'vimeo'){echo 'vimeo-button'; }?>" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
+				<img class="play tablet-down <?php if ($v_type == 'vimeo'){echo 'vimeo-button'; }?>" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
 				<?php //}else{ ?>
 				<!-- <img class="vimeo_play" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png"> -->
 				<?php //} ?>
@@ -87,12 +87,40 @@
 	     	$v_id = get_field('vimeo_id');
 
 	     	?>
-	     	<div style="padding:56.25% 0 0 0; max-height:100%; position:relative;">
-	     		<iframe src="https://player.vimeo.com/video/<?php echo $v_id; ?>?autoplay=1&amp;color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+	     	<style>
+	     	#vimeo-vid iframe{
+				width:100%;
+				height:100%;
+				position:absolute;
+				top:0;
+				left:0;
+	     	}
+	     	</style>
+	     	<div style="padding:56.25% 0 0 0; max-height:100%; position:relative;" data-vimeo-id="<?php echo $v_id; ?>" data-vimeo-defer id="vimeo-vid">
+	     		<!-- <iframe src="https://player.vimeo.com/video/<?php echo $v_id; ?>?autoplay=1&amp;color=ffffff&amp;title=0&amp;byline=0&amp;portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
 	     			
-	     		</iframe>
+	     		</iframe> -->
 	     	</div>
 	     	<script src="https://player.vimeo.com/api/player.js"></script>
+	     	<script>
+	     	var options = {
+	     		loop: true,
+	     		autoplay: true,
+	     		color: 'ffffff',
+	     		title: false,
+	     		byline: false,
+	     		//height: '100%',
+	     		//width:'100%'
+
+	     	};
+	     	var $_vimeo = new Vimeo.Player('vimeo-vid', options);
+
+	     	jQuery('.vimeo-button').click(function(){
+	     		
+	     		setTimeout(function(){$_vimeo.play();},100);
+	     	});
+	     	</script>
+	     	 <?php //} ?>
 	     	 <?php } ?>
 	      <!-- <div class="video-controls" style="width:100%; height:50px; background:red;">
 	      	<div class="video-controls__play-pause-button video-controls__play-pause-button--paused video-controls__button">

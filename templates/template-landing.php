@@ -180,8 +180,10 @@
 			<div class="row">
 				<?php if($ib_callout_text != '' && $ib_callout_title != ''){ ?>
 				<div class="columns-3 offset-by-1 stats">
-					<p class="title"><?php echo $ib_callout_title; ?></p>
-					<p class="desc"><?php echo $ib_callout_text; ?></p>
+					<div class="content">
+						<p class="title"><?php echo $ib_callout_title; ?></p>
+						<p class="desc"><?php echo $ib_callout_text; ?></p>
+					</div>
 				</div>
 				<?php } ?>
 			</div>
@@ -192,6 +194,7 @@
 			<?php } ?>
 			<div class="feature-image has-background">
 				<img src="<?php echo $ip_image_url; ?>">
+				<div class="has-background background" style="background-image:url(<?php echo $ip_image_url; ?>);"></div>
 			</div>
 		</div>
 	</div>

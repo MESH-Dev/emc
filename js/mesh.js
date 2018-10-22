@@ -493,8 +493,8 @@ $('#locationTrigger').click(function(event){
 if($('#vmap').size() > 0){
 $('#vmap').vectorMap({
           map: 'usa_en',
-          enableZoom: true,
-          showTooltip: true,
+          enableZoom: false,
+          showTooltip: false,
           selectedColor: null,
           backgroundColor: 'rgba(255,255, 255, 0)',
           hoverColor: '#eb742d',
@@ -1724,7 +1724,7 @@ $('.grid-item.has_popup').each(function(){
 
 });
 
-$('.popup-close').click(function(){
+$('.popup-content').click(function(){
   $('.cta-popup').fadeOut('fast');
   $('.location-popup').fadeOut('fast');
   //$(this).parent.parent.parent.find('.cta-popup').css({display:'none'});
