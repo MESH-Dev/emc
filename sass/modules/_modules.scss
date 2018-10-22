@@ -2402,7 +2402,7 @@ a[rel="next"]{
    }
 }
 //Search Results
-main.search-results{
+main.search-results, main.notfound{
    padding-top: 140px;
    background-color: $offwhite-bg;
    @media screen and ($bp-smaller-than-tablet){
@@ -2964,6 +2964,14 @@ main.search-results{
          }
       }
    }
+}
+
+.notfound{
+
+  min-height:700px;
+
+
+
 }
 
 /* =WordPress Core

@@ -4291,19 +4291,19 @@ a[rel="next"]::after {
 }
 
 /* line 2405, sass/modules/_modules.scss */
-main.search-results {
+main.search-results, main.notfound {
   padding-top: 140px;
   background-color: #FEF7F3;
 }
 @media screen and (max-width: 750px) {
   /* line 2405, sass/modules/_modules.scss */
-  main.search-results {
+  main.search-results, main.notfound {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
 /* line 2413, sass/modules/_modules.scss */
-main.search-results .more-link {
+main.search-results .more-link, main.notfound .more-link {
   font-family: "Whitney A", "Whitney B";
   font-style: normal;
   font-weight: 700;
@@ -4316,51 +4316,51 @@ main.search-results .more-link {
   font-weight: 700;
 }
 /* line 2425, sass/modules/_modules.scss */
-main.search-results .more-link .img img {
+main.search-results .more-link .img img, main.notfound .more-link .img img {
   width: 20px;
   margin-bottom: -5px;
 }
 /* line 2432, sass/modules/_modules.scss */
-main.search-results .field-container .search-icon {
+main.search-results .field-container .search-icon, main.notfound .field-container .search-icon {
   width: 50px;
   height: auto;
   vertical-align: bottom;
 }
 /* line 2438, sass/modules/_modules.scss */
-main.search-results .result {
+main.search-results .result, main.notfound .result {
   margin-bottom: 40px;
 }
 /* line 2440, sass/modules/_modules.scss */
-main.search-results .result:last-of-type {
+main.search-results .result:last-of-type, main.notfound .result:last-of-type {
   margin-bottom: 0;
 }
 /* line 2444, sass/modules/_modules.scss */
-main.search-results .results-list {
+main.search-results .results-list, main.notfound .results-list {
   padding: 78px 0;
 }
 /* line 2446, sass/modules/_modules.scss */
-main.search-results .results-list h2 {
+main.search-results .results-list h2, main.notfound .results-list h2 {
   font-family: "Whitney A", "Whitney B";
   font-style: normal;
   font-weight: 700;
 }
 /* line 2449, sass/modules/_modules.scss */
-main.search-results .results-list .cta {
+main.search-results .results-list .cta, main.notfound .results-list .cta {
   transition: opacity 0.5s ease-in-out;
 }
 /* line 2451, sass/modules/_modules.scss */
-main.search-results .results-list .cta:hover {
+main.search-results .results-list .cta:hover, main.notfound .results-list .cta:hover {
   opacity: 0.5;
   text-decoration: none;
 }
 /* line 2455, sass/modules/_modules.scss */
-main.search-results .results-list .cta svg {
+main.search-results .results-list .cta svg, main.notfound .results-list .cta svg {
   height: 16px;
   width: auto;
   vertical-align: bottom;
 }
 /* line 2473, sass/modules/_modules.scss */
-main.search-results .form {
+main.search-results .form, main.notfound .form {
   display: inline-block;
   border-bottom: 3px solid #70594C;
   padding-bottom: 10px;
@@ -4368,7 +4368,7 @@ main.search-results .form {
   float: right;
 }
 /* line 2479, sass/modules/_modules.scss */
-main.search-results .form input[type="text"] {
+main.search-results .form input[type="text"], main.notfound .form input[type="text"] {
   display: inline-block;
   background: transparent;
   border: 0px;
@@ -4376,27 +4376,27 @@ main.search-results .form input[type="text"] {
   width: calc(100% - 40px);
 }
 /* line 2485, sass/modules/_modules.scss */
-main.search-results .form input[type="text"].heading2 {
+main.search-results .form input[type="text"].heading2, main.notfound .form input[type="text"].heading2 {
   margin-bottom: 0;
 }
 /* line 2489, sass/modules/_modules.scss */
-main.search-results .form button {
+main.search-results .form button, main.notfound .form button {
   border: 0px;
   padding: 0;
   float: right;
 }
 /* line 2493, sass/modules/_modules.scss */
-main.search-results .form button svg {
+main.search-results .form button svg, main.notfound .form button svg {
   height: 36px;
   width: 36px;
   width: auto;
 }
 /* line 2500, sass/modules/_modules.scss */
-main.search-results .pagination {
+main.search-results .pagination, main.notfound .pagination {
   padding-bottom: 80px;
 }
 /* line 2503, sass/modules/_modules.scss */
-main.search-results .read-more {
+main.search-results .read-more, main.notfound .read-more {
   display: none;
 }
 
@@ -4896,57 +4896,62 @@ main.search-results .read-more {
   width: 2em;
 }
 
+/* line 2969, sass/modules/_modules.scss */
+.notfound {
+  min-height: 700px;
+}
+
 /* =WordPress Core
 -------------------------------------------------------------- */
-/* line 2971, sass/modules/_modules.scss */
+/* line 2979, sass/modules/_modules.scss */
 .alignnone {
   margin: 5px 20px 20px 0;
 }
 
-/* line 2975, sass/modules/_modules.scss */
+/* line 2983, sass/modules/_modules.scss */
 .aligncenter,
 div.aligncenter {
   display: block;
   margin: 5px auto 5px auto;
 }
 
-/* line 2981, sass/modules/_modules.scss */
+/* line 2989, sass/modules/_modules.scss */
 .alignright {
   float: right;
   margin: 5px 0 20px 20px;
 }
 
-/* line 2986, sass/modules/_modules.scss */
+/* line 2994, sass/modules/_modules.scss */
 .alignleft {
   float: left;
   margin: 5px 20px 20px 0;
 }
 
-/* line 2991, sass/modules/_modules.scss */
+/* line 2999, sass/modules/_modules.scss */
 a img.alignright {
   float: right;
   margin: 5px 0 20px 20px;
 }
 
-/* line 2996, sass/modules/_modules.scss */
+/* line 3004, sass/modules/_modules.scss */
 a img.alignnone {
   margin: 5px 20px 20px 0;
 }
 
-/* line 3000, sass/modules/_modules.scss */
+/* line 3008, sass/modules/_modules.scss */
 a img.alignleft {
   float: left;
   margin: 5px 20px 20px 0;
 }
 
-/* line 3005, sass/modules/_modules.scss */
+/* line 3013, sass/modules/_modules.scss */
 a img.aligncenter {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 3011, sass/modules/_modules.scss */
+/* line 3019, sass/modules/_modules.scss */
 .wp-caption {
   background: #fff;
   border: 1px solid #f0f0f0;
@@ -4956,22 +4961,22 @@ a img.aligncenter {
   text-align: center;
 }
 
-/* line 3019, sass/modules/_modules.scss */
+/* line 3027, sass/modules/_modules.scss */
 .wp-caption.alignnone {
   margin: 5px 20px 20px 0;
 }
 
-/* line 3023, sass/modules/_modules.scss */
+/* line 3031, sass/modules/_modules.scss */
 .wp-caption.alignleft {
   margin: 5px 20px 20px 0;
 }
 
-/* line 3027, sass/modules/_modules.scss */
+/* line 3035, sass/modules/_modules.scss */
 .wp-caption.alignright {
   margin: 5px 0 20px 20px;
 }
 
-/* line 3031, sass/modules/_modules.scss */
+/* line 3039, sass/modules/_modules.scss */
 .wp-caption img {
   border: 0 none;
   height: auto;
@@ -4981,7 +4986,7 @@ a img.aligncenter {
   width: auto;
 }
 
-/* line 3040, sass/modules/_modules.scss */
+/* line 3048, sass/modules/_modules.scss */
 .wp-caption p.wp-caption-text {
   font-size: 11px;
   line-height: 17px;
@@ -4990,7 +4995,7 @@ a img.aligncenter {
 }
 
 /* Text meant only for screen readers. */
-/* line 3048, sass/modules/_modules.scss */
+/* line 3056, sass/modules/_modules.scss */
 .screen-reader-text {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
@@ -5005,7 +5010,7 @@ a img.aligncenter {
   /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
 
-/* line 3061, sass/modules/_modules.scss */
+/* line 3069, sass/modules/_modules.scss */
 .screen-reader-text:focus {
   background-color: #eee;
   clip: auto !important;
