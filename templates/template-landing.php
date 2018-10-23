@@ -444,7 +444,7 @@
 	$ip_image = get_sub_field('image_panel_image');
 	$ip_image_url = $ip_image['sizes']['background-fullscreen'];
 	$ip_image_alt = $ip_image['alt'];
-	$ig_link_img = get_sub_field('infographic_link_img');
+	$ig_link_img = get_sub_field('infographic_link_image');
 	//var_dump($ig_link_img);
 	$ig_bubble = $ig_link_img['sizes']['medium'];
 	$ig_link = get_sub_field('lp_infographic_link');
