@@ -447,14 +447,14 @@
 	$ig_link_img = get_sub_field('infographic_link_img');
 	//var_dump($ig_link_img);
 	$ig_bubble = $ig_link_img['sizes']['medium'];
-	$ig_link = get_sub_field('infographic_link');
+	$ig_link = get_sub_field('lp_infographic_link');
 	?>
 	<div class="panel info-with-link">
 		<div class="container">
 			<div class="infographic" style="position:relative;">
 				<img src='<?php echo $ip_image_url; ?>'>
 				<div class="bubble">
-					<a href="<?php echo $ig_link; ?>" target="_blank"><img class="bubble-img" src='<?php echo $ig_bubble; ?>'></a>
+					<a href="<?php echo $ig_link; ?>"><img class="bubble-img" src='<?php echo $ig_bubble; ?>'></a>
 				</div>
 			</div>
 			
