@@ -1,5 +1,5 @@
 <?php get_header();
-/* Template Name: Event Listing*/
+
 ?>
 <?php
   //Loop through the taxonomies used on this CPT and add it to an array
