@@ -694,7 +694,7 @@
 			</div>
 			<?php endif; ?>
 
-
+</div>
 <?php }elseif ($panel_type =='i-graphic'){ 
 	$ip_image = get_sub_field('image_panel_image');
 	$ip_image_url = $ip_image['sizes']['background-fullscreen'];
