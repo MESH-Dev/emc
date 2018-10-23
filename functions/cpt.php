@@ -443,7 +443,7 @@ function community_post_type() {
 		'archives'              => __( 'Community Member Archives', 'text_domain' ),
 		'attributes'            => __( 'Item Attributes', 'text_domain' ),
 		'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
-		'all_items'             => __( 'All Resources', 'text_domain' ),
+		'all_items'             => __( 'All Community Members', 'text_domain' ),
 		'add_new_item'          => __( 'Add New Community Member', 'text_domain' ),
 		'add_new'               => __( 'Add New', 'text_domain' ),
 		'new_item'              => __( 'New Community Member', 'text_domain' ),
