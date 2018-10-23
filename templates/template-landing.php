@@ -449,8 +449,8 @@
 	$ig_bubble = $ig_link_img['sizes']['medium'];
 	$ig_link = get_sub_field('lp_infographic_link');
 	?>
-	<div class="panel info-with-link">
-		<div class="container">
+	<div class="panel statistic info-with-link">
+		<div class="content">
 			<div class="infographic" style="position:relative;">
 				<img src='<?php echo $ip_image_url; ?>'>
 				<div class="bubble">
