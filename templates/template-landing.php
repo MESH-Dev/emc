@@ -440,6 +440,26 @@
 		</div>
 	</div> -->
 
+<?php }elseif ($panel_type =='i-graphic'){ 
+	$ip_image = get_sub_field('image_panel_image');
+	$ip_image_url = $ip_image['sizes']['background-fullscreen'];
+	$ip_image_alt = $ip_image['alt'];
+	$ig_link_img = get_sub_field('infographic_link_img');
+	//var_dump($ig_link_img);
+	$ig_bubble = $ig_link_img['sizes']['medium'];
+	$ig_link = get_sub_field('infographic_link');
+	?>
+	<div class="panel info-with-link">
+		<div class="container">
+			<div class="infographic" style="position:relative;">
+				<img src='<?php echo $ip_image_url; ?>'>
+				<div class="bubble">
+					<a href="<?php echo $ig_link; ?>" target="_blank"><img class="bubble-img" src='<?php echo $ig_bubble; ?>'></a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
 <?php } ?>
 <?php endwhile; endif; ?>
 <!-- End of Content -->
