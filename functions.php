@@ -742,7 +742,7 @@ function get_films(){
       'post_type' => 'films',
       'posts_per_page' => -1,
       'orderby' => 'post_date',
-      'order' => 'ASC',
+      'order' => 'DESC',
       'paged' => $paged,
       'post_status' => 'publish',
       //'s' => $query, //This is an 'and', so the query is effectively stopping here, if not commented out
@@ -764,7 +764,7 @@ function get_films(){
       'orderby' => 'post_date',
       //'meta_key' => 'event_start_date',
       //'orderby' => 'meta_value',
-      'order' => 'ASC',
+      'order' => 'DESC',
       'paged'=>$paged,
       's' => $query
       //

@@ -116,7 +116,9 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
 </div>
 <main id="content" class="film-library">
 
-<?php //endwhile; endif;  wp_reset_postdata(); ?>
+<?php 
+  $film_topics = get_terms(['taxonomy' => 'film_topic', 'hide_empty' => true]);
+?>
    <div class="panel filters">
       <div class="container">
          <div class="row">
@@ -158,7 +160,9 @@ fc_choices.push(<?php echo $f_topic.$titles.$exc; ?>);
         <div class="columns-4 extra-links">
           <ul>
             <li data-filter="educational-psa"><span>Educational PSAs</span></li>
+            <?php if (in_array('archive',$film_topics)){ ?>
             <li data-filter="archive"><span>Archives</span></li>
+            <?php } ?>
           </ul>
         </div>
     </div>

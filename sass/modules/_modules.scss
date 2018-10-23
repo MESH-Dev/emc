@@ -368,6 +368,27 @@ div.scrollableArea
       padding-left: 20px;
       padding-right: 20px;
    }
+   &.info-with-link{
+    .infographic{
+      position:relative;
+    }
+    img{
+      max-width:100%;
+    }
+    .bubble{
+      position:absolute;
+      bottom:16%;
+      left:17%;
+      @media ($bp-smaller-than-tablet){
+        bottom:0;
+        left:0;
+      }
+      @media ($bp-smaller-than-mobile){
+        bottom:0;
+        left:0;
+      }
+    }
+   }
    &.callout{
       background-color: $offwhite-3;
       text-align: center;

@@ -46,6 +46,7 @@
    $v_webm = get_field('video_webm');
    $vw_url = $v_webm['url'];
    $v_type = get_field('video_type');
+   $ex_link = get_field('video_link');
    //$l_page_callout = get_field('banner_callout_text', 305);
 ?>
 <div class="welcome-gate large full-video" >
@@ -60,11 +61,12 @@
    <div class="overlay" aria-hidden="true"></div>
    <div class="player-holder">
 			<div class="player-content">
-				<?php //if ($v_type == 'hosted'){ ?>
+				<?php if ($v_type == 'hosted' || $v_type== 'vimeo'){ ?>
 				<img class="play desktop-up <?php if ($v_type == 'vimeo'){echo 'vimeo-button'; }?>" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
 				<img class="play tablet-down <?php if ($v_type == 'vimeo'){echo 'vimeo-button'; }?>" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
-				<?php //}else{ ?>
-				<!-- <img class="vimeo_play" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png"> -->
+				<?php }else{ ?>
+				<a href="<?php echo $ex_link; ?>" target="_blank"><img class="" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png"></a>
+				<?php } ?>
 				<?php //} ?>
 			</div>
 		</div>

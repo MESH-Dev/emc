@@ -449,9 +449,23 @@
 		</div>
 	</div>
 <?php }elseif($panel_type == 'cta-grid'){?>
-<div class="panel text-grid interior">
+<div class="panel text-grid interior" ><!-- style="background-color:#97a88f;" -->
 		<div class="container">
 			<div class="row">
+				<?php 
+					$grid_title = get_sub_field('cta-grid-title');
+					$grid_subtitle = get_sub_field('cta-callout-subtitle');
+				?>
+				<?php if($grid_title != '') { ?>
+				<div class="intro">
+					<?php echo $grid_title; ?>
+				</div>
+				<? }
+				if($grid_subtitle != '') { ?>
+				<div class="heading6">
+					<?php echo $grid_subtitle; ?>
+				</div>
+				<?php } ?>
 				<div class="columns-10 offset-by-1">
 					<?php if (have_rows('cta_grid')):
 							while (have_rows('cta_grid')):the_row();
@@ -460,7 +474,6 @@
 							$cta_img_alt = $cta_img['alt'];
 							$cta_title=get_sub_field('cta_title');
 							$replacers = array('-', ',', '&', '&amp;', '.', ' ');
-							
 							
 							$cta_text=get_sub_field('cta_text');
 							$cta_link=get_sub_field('cta_link');
@@ -681,9 +694,30 @@
 			</div>
 			<?php endif; ?>
 
-</div>
+
+<?php }elseif ($panel_type =='i-graphic'){ 
+	$ip_image = get_sub_field('image_panel_image');
+	$ip_image_url = $ip_image['sizes']['background-fullscreen'];
+	$ip_image_alt = $ip_image['alt'];
+	$ig_link_img = get_sub_field('infographic_link_img');
+	//var_dump($ig_link_img);
+	$ig_bubble = $ig_link_img['sizes']['medium'];
+	$ig_link = get_sub_field('infographic_link');
+	?>
+	<div class="panel info-with-link">
+		<div class="container">
+			<div class="infographic" style="position:relative;">
+				<img src='<?php echo $ip_image_url; ?>'>
+				<div class="bubble">
+					<a href="<?php echo $ig_link; ?>" target="_blank"><img class="bubble-img" src='<?php echo $ig_bubble; ?>'></a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
 <?php } ?>
 <?php endwhile; endif; ?>
+</div>
 <!-- End of Content -->
 </main>
 <?php get_footer(); ?>
