@@ -457,7 +457,7 @@
 		</div>
 	</div>
 <?php }elseif($panel_type == 'cta-grid'){?>
-<div class="panel text-grid interior" style="background-color:#97a88f;"><!-- style="background-color:#97a88f;" -->
+<div class="panel text-grid interior special" style="background-color:#97a88f;"><!-- style="background-color:#97a88f;" -->
 		<div class="container">
 			<div class="row">
 				<?php 
