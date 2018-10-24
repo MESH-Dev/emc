@@ -518,14 +518,16 @@
 								</div>
 							<?php } ?>
 							<?php if ($cta_title != ''){ ?>
-								<?php if ($cta_link != ''){?>
+								
+								<p class="heading2 title">
+									<?php if ($cta_link != ''){?>
 									<a class="<?php echo $popup_class; ?> read-more" id="<?php echo $pop_id; ?>" href="<?php echo $cta_link; ?>" <?php echo $cl_target; ?>>
-								<?php } ?>
-								<p class="heading2 title"><?php echo $cta_title; ?></p>
+									<?php } ?>
+								<?php echo $cta_title; ?>
 								
 								<?php if ($cta_link != ''){?>
 									
-									<!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 									 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
 									<style type="text/css">
 										.st0{fill:#EED9BD;}
@@ -533,8 +535,10 @@
 									</style>
 									<polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
 										39.3,83.3 66,56.5 71.9,50.7 "/>
-								</svg> -->
+								</svg>
 								</a>
+								<?php } ?>
+								</p>
 								<?php } ?>
 								<?php if ($cta_text != ''){ ?>
 								<p class="desc heading4"><?php echo $cta_text; ?></p>
@@ -549,7 +553,7 @@
 									<polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
 										39.3,83.3 66,56.5 71.9,50.7 "/>
 								</svg> -->
-								<?php } ?>
+								<?php //} ?>
 								<?php if($cta_desc != '') { ?>
 								<div class="more-info"><?php echo $cta_desc; ?></div>
 								<?php } ?>
