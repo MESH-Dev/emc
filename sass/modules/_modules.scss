@@ -2993,6 +2993,22 @@ main.search-results, main.notfound{
   }
 }
 
+.i-map{
+  .intro{
+    p{
+            font-size: 2.6rem;
+            letter-spacing: 0.6px;
+            line-height: 38px;
+            //color: $offwhite-1;
+            //color:$black;
+          }
+    }
+  .intro, .subtitle{
+    text-align:center;
+    //color:$offwhite-1 !important;
+  }
+}
+
 //Ticker
 .scroll-ticker{
    position:absolute;

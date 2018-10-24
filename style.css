@@ -4934,7 +4934,18 @@ main.search-results .read-more, main.notfound .read-more {
   background-position: center right;
 }
 
-/* line 2997, sass/modules/_modules.scss */
+/* line 2998, sass/modules/_modules.scss */
+.i-map .intro p {
+  font-size: 2.6rem;
+  letter-spacing: 0.6px;
+  line-height: 38px;
+}
+/* line 3006, sass/modules/_modules.scss */
+.i-map .intro, .i-map .subtitle {
+  text-align: center;
+}
+
+/* line 3013, sass/modules/_modules.scss */
 .scroll-ticker {
   position: absolute;
   padding: 1em 0;
@@ -4942,18 +4953,18 @@ main.search-results .read-more, main.notfound .read-more {
   overflow: hidden;
   background: #70594C;
 }
-/* line 3004, sass/modules/_modules.scss */
+/* line 3020, sass/modules/_modules.scss */
 .scroll-ticker #webticker {
   margin: 0;
   padding: 0;
 }
-/* line 3008, sass/modules/_modules.scss */
+/* line 3024, sass/modules/_modules.scss */
 .scroll-ticker #webticker li {
   list-style-type: none;
   display: inline-block;
   margin-right: 1em;
 }
-/* line 3012, sass/modules/_modules.scss */
+/* line 3028, sass/modules/_modules.scss */
 .scroll-ticker #webticker li a {
   font-family: "Whitney A", "Whitney B";
   font-style: normal;
@@ -4966,68 +4977,68 @@ main.search-results .read-more, main.notfound .read-more {
   background-repeat: no-repeat;
   background-position: center right;
 }
-/* line 3030, sass/modules/_modules.scss */
+/* line 3046, sass/modules/_modules.scss */
 .scroll-ticker #webticker li a svg {
   transform: rotate(45deg);
   width: 2em;
 }
 
-/* line 3039, sass/modules/_modules.scss */
+/* line 3055, sass/modules/_modules.scss */
 .notfound {
   min-height: 700px;
 }
 
 /* =WordPress Core
 -------------------------------------------------------------- */
-/* line 3049, sass/modules/_modules.scss */
+/* line 3065, sass/modules/_modules.scss */
 .alignnone {
   margin: 5px 20px 20px 0;
 }
 
-/* line 3053, sass/modules/_modules.scss */
+/* line 3069, sass/modules/_modules.scss */
 .aligncenter,
 div.aligncenter {
   display: block;
   margin: 5px auto 5px auto;
 }
 
-/* line 3059, sass/modules/_modules.scss */
+/* line 3075, sass/modules/_modules.scss */
 .alignright {
   float: right;
   margin: 5px 0 20px 20px;
 }
 
-/* line 3064, sass/modules/_modules.scss */
+/* line 3080, sass/modules/_modules.scss */
 .alignleft {
   float: left;
   margin: 5px 20px 20px 0;
 }
 
-/* line 3069, sass/modules/_modules.scss */
+/* line 3085, sass/modules/_modules.scss */
 a img.alignright {
   float: right;
   margin: 5px 0 20px 20px;
 }
 
-/* line 3074, sass/modules/_modules.scss */
+/* line 3090, sass/modules/_modules.scss */
 a img.alignnone {
   margin: 5px 20px 20px 0;
 }
 
-/* line 3078, sass/modules/_modules.scss */
+/* line 3094, sass/modules/_modules.scss */
 a img.alignleft {
   float: left;
   margin: 5px 20px 20px 0;
 }
 
-/* line 3083, sass/modules/_modules.scss */
+/* line 3099, sass/modules/_modules.scss */
 a img.aligncenter {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 3089, sass/modules/_modules.scss */
+/* line 3105, sass/modules/_modules.scss */
 .wp-caption {
   background: #fff;
   border: 1px solid #f0f0f0;
@@ -5037,22 +5048,22 @@ a img.aligncenter {
   text-align: center;
 }
 
-/* line 3097, sass/modules/_modules.scss */
+/* line 3113, sass/modules/_modules.scss */
 .wp-caption.alignnone {
   margin: 5px 20px 20px 0;
 }
 
-/* line 3101, sass/modules/_modules.scss */
+/* line 3117, sass/modules/_modules.scss */
 .wp-caption.alignleft {
   margin: 5px 20px 20px 0;
 }
 
-/* line 3105, sass/modules/_modules.scss */
+/* line 3121, sass/modules/_modules.scss */
 .wp-caption.alignright {
   margin: 5px 0 20px 20px;
 }
 
-/* line 3109, sass/modules/_modules.scss */
+/* line 3125, sass/modules/_modules.scss */
 .wp-caption img {
   border: 0 none;
   height: auto;
@@ -5062,7 +5073,7 @@ a img.aligncenter {
   width: auto;
 }
 
-/* line 3118, sass/modules/_modules.scss */
+/* line 3134, sass/modules/_modules.scss */
 .wp-caption p.wp-caption-text {
   font-size: 11px;
   line-height: 17px;
@@ -5071,7 +5082,7 @@ a img.aligncenter {
 }
 
 /* Text meant only for screen readers. */
-/* line 3126, sass/modules/_modules.scss */
+/* line 3142, sass/modules/_modules.scss */
 .screen-reader-text {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
@@ -5086,7 +5097,7 @@ a img.aligncenter {
   /* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
 
-/* line 3139, sass/modules/_modules.scss */
+/* line 3155, sass/modules/_modules.scss */
 .screen-reader-text:focus {
   background-color: #eee;
   clip: auto !important;
