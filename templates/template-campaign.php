@@ -672,7 +672,7 @@
 	$map_title = get_sub_field('map_title');
 	$map_subtitle = get_sub_field('map_subtitle');
 	?>
-<div class="panel i-map" id="vmap">
+<div class="panel i-map" >
 	<?php if($map_title != ''){ ?>
 	<div class="intro">
 		<?php echo $map_title; ?>
@@ -683,6 +683,7 @@
 		<?php echo $map_subtitle; ?>
 	</div>
 	<?php } ?>
+	<div id="vmap"></div>
 	<?php if(have_rows('map_locations')): ?>
 		<div class="location-popups">
 			

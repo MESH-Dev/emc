@@ -4816,6 +4816,13 @@ main.search-results .read-more, main.notfound .read-more {
 /* line 2875, sass/modules/_modules.scss */
 .panel.i-map {
   width: 100%;
+  height: 600px;
+}
+@media (max-width: 750px) {
+  /* line 2875, sass/modules/_modules.scss */
+  .panel.i-map {
+    height: 400px;
+  }
 }
 @media (max-width: 480px) {
   /* line 2875, sass/modules/_modules.scss */
