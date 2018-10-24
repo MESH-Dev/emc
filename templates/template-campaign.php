@@ -677,9 +677,9 @@
 	<div class="intro">
 		<?php echo $map_title; ?>
 	</div>
-	<? }
+	<?php }
 	if($map_subtitle != '') { ?>
-	<div class="heading6">
+	<div class="heading6 subtitle">
 		<?php echo $map_subtitle; ?>
 	</div>
 	<?php } ?>
