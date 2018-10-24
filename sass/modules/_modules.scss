@@ -2953,11 +2953,15 @@ main.search-results, main.notfound{
 }
 
 .has_popup{
+
+  .title{
+    display:inline-block;
+  }
   .read-more{
-    padding-right:20px;
+    padding-right:30px;
     background-image:url('img/arrow-right.svg');
     background-repeat:no-repeat;
-    background-size:15px;
+    background-size:2em;
     background-position:center right;
     // svg{
     //   display:inline-block;

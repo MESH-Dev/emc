@@ -521,7 +521,7 @@
 								<?php if ($cta_link != ''){?>
 									<a class="<?php echo $popup_class; ?> read-more" id="<?php echo $pop_id; ?>" href="<?php echo $cta_link; ?>" <?php echo $cl_target; ?>>
 								<?php } ?>
-								<p class="heading2"><?php echo $cta_title; ?></p>
+								<p class="heading2 title"><?php echo $cta_title; ?></p>
 								
 								<?php if ($cta_link != ''){?>
 									
