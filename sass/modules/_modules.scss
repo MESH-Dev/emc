@@ -2975,6 +2975,10 @@ main.search-results, main.notfound{
 
   .title{
     display:inline-block;
+    color:$nav-brown;
+    a{
+      color:$nav-brown;
+    }
   }
   .read-more{
     padding-right:30px;
