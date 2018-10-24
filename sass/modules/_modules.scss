@@ -384,8 +384,9 @@ div.scrollableArea
         left:0;
       }
       @media ($bp-smaller-than-mobile){
-        bottom:0;
-        left:0;
+        // bottom:0;
+        // left:0;
+        position:relative;
       }
     }
    }
@@ -699,6 +700,17 @@ div.scrollableArea
           @media ($bp-smaller-than-mobile){
             height:400px;
           }
+          &.has_ig{
+            @media ($bp-smaller-than-mobile){
+            height:auto;
+            }
+
+            img{
+              @media ($bp-smaller-than-mobile){
+                display:block;
+              }
+            }
+          }
          //min-height:600px;
          //padding-right: 40px;
          //padding-left: 40px;
@@ -947,6 +959,16 @@ div.scrollableArea
          height: auto;
          @media ($bp-smaller-than-mobile){
             height:400px;
+          }
+          &.has_ig{
+            @media ($bp-smaller-than-mobile){
+            height:auto
+            }
+            img{
+               @media ($bp-smaller-than-mobile){
+                display:block;
+              }
+            }
           }
          //min-height:600px;
          img{

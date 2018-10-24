@@ -171,6 +171,7 @@
 	$ip_image_url = $ip_image['sizes']['background-fullscreen'];
 	$ip_image_alt = $ip_image['alt'];
 	$ib_callout_title = get_sub_field('ib_callout_title');
+	//var_dump($ib_callout_title);
 	$ib_callout_text = get_sub_field('ib_callout_text');
 	$ip_overlay  = get_sub_field('remove_overlay');
 	//var_dump($ip_overlay);
@@ -192,9 +193,18 @@
 			<?php if($ip_overlay == true){ ?>
 			<div class="img-screen" aria-hidden="true"></div>
 			<?php } ?>
-			<div class="feature-image has-background">
+			<?php 
+				$img_class= '';
+			if($ib_callout_text == '' && $ib_callout_title == ''){ 
+					$img_class = 'has_ig';
+				}	
+					?>
+			<div class="feature-image has-background <?php echo $img_class; ?>">
+
 				<img src="<?php echo $ip_image_url; ?>">
+				<?php if($ib_callout_text != '' && $ib_callout_title != ''){ ?>
 				<div class="has-background background" style="background-image:url(<?php echo $ip_image_url; ?>);"></div>
+				<?php } ?>
 			</div>
 		</div>
 	</div>

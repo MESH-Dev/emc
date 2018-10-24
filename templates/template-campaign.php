@@ -301,9 +301,17 @@
 			<?php if($ip_overlay == true){ ?>
 			<div class="img-screen" aria-hidden="true"></div>
 			<?php } ?>
-			<div class="feature-image has-background">
+			<?php 
+				$img_class= '';
+			if($ib_callout_text == '' && $ib_callout_title == ''){ 
+					$img_class = 'has_ig';
+				}	
+					?>
+			<div class="feature-image has-background <?php echo $img_class; ?>">
 				<img src="<?php echo $ip_image_url; ?>">
+				<?php if($ib_callout_text != '' && $ib_callout_title != ''){ ?>
 				<div class="background has-background" style="background-image:url('<?php echo $ip_image_url; ?>');"></div>
+				<?php } ?>
 			</div>
 			<?php if(have_rows('ticker_links')): ?>
 			<div class="marquee3k scroll-ticker" data-speed=".5" data-pausable="true">
@@ -511,10 +519,10 @@
 								</div>
 							<?php } ?>
 								<?php if ($cta_title != ''){ ?>
-								<p class="heading6"><?php echo $cta_title; ?></p>
+								<p class="heading2"><?php echo $cta_title; ?></p>
 								<?php } ?>
 								<?php if ($cta_text != ''){ ?>
-								<p class="desc"><?php echo $cta_text; ?></p>
+								<p class="desc heading4"><?php echo $cta_text; ?></p>
 								<?php } ?>
 								<?php if ($cta_link != '' && $popup_content == ''){?>
 								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -534,9 +542,9 @@
 							<?php if ($cta_link != '' && $popup_content == ''){?>
 							</a>
 							<?php } ?>
-							<?php if ($popup_content != '') { ?>
-							<a class="<?php echo $popup_class; ?> read-more heading6" id="<?php echo $pop_id; ?>" href="<?php echo $cta_link; ?>" <?php echo $cl_target; ?>>Read more 
-								<!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							<?php //if ($popup_content != '') { ?>
+							<!-- <a class="<?php echo $popup_class; ?> read-more heading6" id="<?php echo $pop_id; ?>" href="<?php echo $cta_link; ?>" <?php echo $cl_target; ?>>Read more 
+								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 									 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
 									<style type="text/css">
 										.st0{fill:#EED9BD;}
@@ -544,9 +552,9 @@
 									</style>
 									<polygon class="st1" points="71.9,50.7 71.9,50.7 65.6,44.4 65.6,44.4 34.1,12.9 28.3,18.8 59.7,50.2 28.1,81.8 34.4,88.2
 										39.3,83.3 66,56.5 71.9,50.7 "/>
-								</svg> -->
-							</a>
-							<?php } ?>
+								</svg>
+							</a> -->
+							<?php //} ?>
 							<?php if($popup_content != ''){ ?>
 							<div class="cta-popup hide" data-name="<?php echo $pop_id; ?>">
 								<div class="popup-content">
