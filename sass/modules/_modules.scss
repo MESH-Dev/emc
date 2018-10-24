@@ -2874,6 +2874,16 @@ main.search-results, main.notfound{
    }
  &.i-map{
     width: 100%; 
+
+    .title{
+      color:#B46C4E;
+    }
+    .subtitle{
+      p{
+        font-size:1.4rem;
+        color:#EB742D;
+      }
+    }
     #vmap{
       height: 600px;
     @media ($bp-smaller-than-tablet){
