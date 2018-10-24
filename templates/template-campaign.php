@@ -470,7 +470,7 @@
 				</div>
 				<? }
 				if($grid_subtitle != '') { ?>
-				<div class="heading6">
+				<div class="heading6 subtitle">
 					<?php echo $grid_subtitle; ?>
 				</div>
 				<?php } ?>

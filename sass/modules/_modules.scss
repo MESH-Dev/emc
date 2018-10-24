@@ -2953,6 +2953,25 @@ main.search-results, main.notfound{
 }
 
 .has_popup{
+  
+  .intro{
+    p{
+            font-size: 2.6rem;
+            letter-spacing: 0.6px;
+            line-height: 38px;
+            color: $primary-red;
+            //color:$black;
+          }
+    }
+  .intro, .subtitle{
+    text-align:center;
+    color:$primary-lightbrown;
+  }
+  .more-info{
+    p,h1,h2,h3,h4,h5,h6, ul,li,blockquote,span,div, *{
+          color:$primary-red;
+       }
+  }
 
   .title{
     display:inline-block;
