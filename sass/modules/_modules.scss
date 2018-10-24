@@ -2965,7 +2965,7 @@ main.search-results, main.notfound{
     }
   .intro, .subtitle{
     text-align:center;
-    color:$offwhite-1;
+    color:$offwhite-1 !important;
   }
   .more-info{
     p,h1,h2,h3,h4,h5,h6, ul,li,blockquote,span,div, *{
