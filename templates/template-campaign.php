@@ -510,7 +510,7 @@
 							?>
 					<div class="columns-4">
 						<div class="grid-item <?php echo $wrapper_class; ?>" id="<?php echo $pop_id; ?>">
-							<?php if ($cta_link != '' && $popup_content == ''){?>
+							<?php if ($cta_text != ''){?>
 							<a class="<?php echo $popup_class; ?>" id="<?php echo $pop_id; ?>" href="<?php echo $cta_link; ?>" <?php echo $cl_target; ?>>
 							<?php } ?>
 							<?php if($cta_img != ''){ ?>
