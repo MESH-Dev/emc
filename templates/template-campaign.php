@@ -669,8 +669,8 @@
 	</div> -->
 
 <?php }elseif ($panel_type =='map'){ 
-	$map_title = get_sub_field('title');
-	$map_subtitle = get_field('subtitle');
+	$map_title = get_sub_field('map_title');
+	$map_subtitle = get_field('map_subtitle');
 	?>
 <div class="panel i-map" id="vmap">
 	<?php if($map_title != ''){ ?>
