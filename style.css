@@ -4910,7 +4910,7 @@ main.search-results .read-more, main.notfound .read-more {
 /* line 2966, sass/modules/_modules.scss */
 .has_popup .intro, .has_popup .subtitle, .special .intro, .special .subtitle {
   text-align: center;
-  color: #A99689;
+  color: #FBD8C2;
 }
 /* line 2971, sass/modules/_modules.scss */
 .has_popup .more-info p, .has_popup .more-info h1, .has_popup .more-info h2, .has_popup .more-info h3, .has_popup .more-info h4, .has_popup .more-info h5, .has_popup .more-info h6, .has_popup .more-info ul, .has_popup .more-info li, .has_popup .more-info blockquote, .has_popup .more-info span, .has_popup .more-info div, .has_popup .more-info *, .special .more-info p, .special .more-info h1, .special .more-info h2, .special .more-info h3, .special .more-info h4, .special .more-info h5, .special .more-info h6, .special .more-info ul, .special .more-info li, .special .more-info blockquote, .special .more-info span, .special .more-info div, .special .more-info * {
