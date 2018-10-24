@@ -4917,7 +4917,7 @@ main.search-results .read-more, main.notfound .read-more {
   font-size: 2.6rem;
   letter-spacing: 0.6px;
   line-height: 38px;
-  color: #B46C4E;
+  color: #FBD8C2;
 }
 /* line 2979, sass/modules/_modules.scss */
 .has_popup .intro, .has_popup .subtitle, .special .intro, .special .subtitle {
@@ -4930,11 +4930,11 @@ main.search-results .read-more, main.notfound .read-more {
 /* line 2989, sass/modules/_modules.scss */
 .has_popup .title, .special .title {
   display: inline-block;
-  color: #70594C;
+  color: #FBD8C2;
 }
 /* line 2992, sass/modules/_modules.scss */
 .has_popup .title a, .special .title a {
-  color: #70594C;
+  color: #FBD8C2;
 }
 /* line 2996, sass/modules/_modules.scss */
 .has_popup .read-more, .special .read-more {
