@@ -485,7 +485,7 @@
 							
 							$cta_text=get_sub_field('cta_text');
 							$cta_link=get_sub_field('cta_link');
-							var_dump($cta_link);
+							//var_dump($cta_link);
 							$cta_desc = get_sub_field('cta_description');
 							$cl_external = get_sub_field('cl_external');
 							$cl_target='';
