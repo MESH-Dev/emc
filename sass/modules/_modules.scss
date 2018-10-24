@@ -2874,10 +2874,13 @@ main.search-results, main.notfound{
    }
    &.i-map{
     width: 100%; 
-    height: 600px;
+    #vmap{
+      height: 600px;
     @media ($bp-smaller-than-tablet){
       height:400px;
     }
+    }
+    
     @media($bp-smaller-than-mobile){
       display:none;
     }
