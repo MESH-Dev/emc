@@ -1,0 +1,190 @@
+footer{
+   [class*="columns-"]{
+      @media($bp-smaller-than-desktophd) {
+          width: 100%;
+          padding: 0;
+
+      }
+   }
+   .search-wrap .search-field button.submit{
+      height: 20px;
+      svg{
+         vertical-align: top;
+      }
+   }
+   .nav-row{
+      padding: 14px 0;
+      background-color: $secondary-offwhite;
+      @media screen and ($bp-smaller-than-largedesktop){
+         padding: 14px 20px;
+      }
+      a{
+         margin-bottom: 0;
+         @include whitney-bold();
+         font-size: 1.2rem;
+         text-transform: uppercase;
+         color: $primary-red;
+         letter-spacing: 0.8px;
+         transition: all 0.5s ease-in-out;
+         margin-right: 31px;
+         @media screen and ($bp-smaller-than-desktophd){
+            margin-right: 0;
+         }
+         &.newsletter{
+            color: $nav-brown;
+         }
+         &:hover{
+            opacity: 1;
+            text-decoration: none;
+            color: $primary-orange;
+         }
+      }
+   }
+   .footer-nav{
+      @media screen and ($bp-smaller-than-desktophd){
+         text-align: center;
+      }
+      ul{
+         list-style-type:none;
+         margin:0;
+         li{
+            display: inline-block;
+            margin:0;
+            margin-right:30px;
+            line-height: normal;
+            vertical-align: bottom;
+            @media screen and ($bp-smaller-than-desktophd){
+               display: block;
+               margin-bottom: 10px;
+               margin-right: 0;
+            }
+         }
+      }
+      //display: inline-block;
+   }
+   .copy-row{
+      padding: 14px 0;
+      background-color: $offwhite-1;
+      @media screen and ($bp-smaller-than-desktophd){
+         text-align: center;
+      }
+      @media screen and ($bp-smaller-than-largedesktop){
+         padding: 14px 20px;
+      }
+      p, a{
+         margin-bottom: 0;
+      }
+      .copy{
+         display: inline-block;
+         @include whitney-bold();
+         font-size: 1.2rem;
+         letter-spacing: 2px;
+         color: $nav-brown;
+         text-transform: uppercase;
+         @media screen and ($bp-smaller-than-desktophd){
+            margin-left: 10px;
+         }
+      }
+      .byline{
+         display: inline-block;
+         float: right;
+         @include whitney-bold();
+         font-size: 1.2rem;
+         letter-spacing: 2px;
+         color: $nav-brown;
+         text-transform: uppercase;
+         @media screen and ($bp-smaller-than-desktophd){
+            display: block;
+            float: none;
+         }
+         a{
+            @include whitney-light();
+            color: $nav-brown;
+            &:hover{
+               text-decoration: none;
+               opacity: 0.5;
+            }
+         }
+      }
+   }
+}
+
+.search-wrap{
+   text-align: right;
+   margin-bottom: -4px;
+   @media screen and ($bp-smaller-than-desktophd){
+      text-align: center;
+      margin-bottom: 0;
+   }
+   .search-field{
+      display: inline-block;
+      width: 0;
+      opacity: 0;
+      border-bottom: 2px solid $nav-brown;
+      transition: all 0.2s ease-in-out;
+      vertical-align: top;
+      white-space: nowrap;
+      input[type="text"]{
+         width: 90%;
+         background: transparent;
+         border: 0;
+         height: 20px;
+         @include whitney-bold();
+         letter-spacing: 3px;
+         color: #8B572A;
+         text-transform: uppercase;
+         &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+           color: #8B572A;
+         }
+         &::-moz-placeholder { /* Firefox 19+ */
+           color: #8B572A;
+         }
+         &:-ms-input-placeholder { /* IE 10+ */
+           color: #8B572A;
+         }
+         &:-moz-placeholder { /* Firefox 18- */
+           color: #8B572A;
+         }
+         &:placeholder-shown{
+            color: #8B572A;
+         }
+      }
+      a.submit, button.submit{
+         display: none;
+         margin: 0;
+         border: 0;
+         padding: 0;
+         height: 30px;
+         &.show{
+            display: inline-block;
+            vertical-align: middle;
+         }
+      }
+      svg{
+         height: 15px;
+         width: auto;
+         vertical-align: middle;
+         // max-width: 10%;
+      }
+      &.open{
+         width: 80%;
+         opacity: 1;
+         @media screen and ($bp-smaller-than-desktophd){
+            width: 200px;
+         }
+      }
+   }
+}
+
+a.submit, button.submit{
+   display: inline-block;
+   vertical-align: middle;
+}
+
+#search{
+   display: inline-block;
+   width: 20px;
+   height: auto;
+   cursor: pointer;
+   // height: 30px;
+}
