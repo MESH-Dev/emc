@@ -13,7 +13,46 @@
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
 
+
+    // jQuery(function(){
+    //  jQuery(document).on('click', '[data-ga-label]', function(){
+    //     var category = jQuery(this).data('ga-category');
+    //     var action = jQuery(this).data('ga-action');
+    //     var label = jQuery(this).data('ga-label');
+    //     ga('send',
+    //        { hitType: 'event', eventCategory: category, eventAction: action, eventLabel: label }
+    //       );
+    //   });
+    // });
+  
+
 	  gtag('config', 'UA-15984310-2');
+	   gtag('send', 'pageview');
+
+	 //  var trackOutboundLink = function(url) {
+		//    ga('send', 'event', 'outbound', 'click', url, {
+		//      'transport': 'beacon',
+		//      'hitCallback': function(){document.location = url;}
+		//    });
+		 //}
+
+		var trackOutboundLink = function(url) {
+		  gtag('event', 'click', {
+		    'event_category': 'outbound',
+		    'event_label': url,
+		    'transport_type': 'beacon',
+		    'event_callback': function(){document.location = url;}
+		  });
+		};
+
+		// jQuery('.secondary-navigation .donate a').click(function(){
+		// 	var _href = jQuery('this').attr('href');
+		// 	// console.log(_href);
+		// 	trackOutboundLink(_href);
+		// 	jQuery('this').data('ga', _href);
+		//  });
+
+		//var donate_href = 
 	</script>
 
 
@@ -48,14 +87,7 @@
 	<?php wp_head(); ?>
 
 	<!-- Bugherd - Delete before site is live -->
-	<script type='text/javascript'>
-		(function (d, t) {
-		  var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
-		  bh.type = 'text/javascript';
-		  bh.src = 'https://www.bugherd.com/sidebarv2.js?apikey=yxjz33jhnn2bgxyldpsrtg';
-		  s.parentNode.insertBefore(bh, s);
-		  })(document, 'script');
-	</script>
+	
 
 </head>
 
@@ -96,6 +128,7 @@
 			if($h_external == 'true'){
 				$h_target='target="_blank"';
 			}
+			if($h_cta != ''){
 		?>
 		<div class="ticker" style="background-color:<?php echo $ticker_color; ?>;">
 			<div class="container">
@@ -125,6 +158,7 @@
 				</div>
 			</div>
 		</div>
+		<?php } ?>
 		<div class="top-nav">
 			<div class="container">
 				<div class="row">

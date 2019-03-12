@@ -26,12 +26,13 @@
 		<h1 class="page-title heading1"><?php echo $l_page_callout; ?></h1>
    </div>
    <div class="overlay" aria-hidden="true"></div>
+   <? if ($v_type != ''){ ?>
    <div class="player-holder">
 			<div class="player-content">
 				<?php if ($v_type == 'hosted' || $v_type == 'vimeo'){ ?>
 				<img class="play desktop-up <?php if ($v_type == 'vimeo'){echo 'vimeo-button'; }?>" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
 				<img class="play tablet-down <?php if ($v_type == 'vimeo'){echo 'vimeo-button'; }?>" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png">
-				<?php }else{ ?>
+				<?php }elseif ($v_type == 'external'){ ?>
 				<a href="<?php echo $ex_link; ?>" target="_blank"><img class="" src="<?php echo get_template_directory_uri(); ?>/img/EMC_Playbutton.png"></a>
 				<?php } ?>
 			</div>
@@ -110,6 +111,8 @@
 	  
 		</div>
 	</div>
+</div>
+	<? } ?>
 </div>
 
 

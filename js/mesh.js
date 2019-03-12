@@ -8,6 +8,47 @@ jQuery(document).ready(function($){
    console.log(hh);
   //Let's do something awesome!
 
+  //Google analytics tracking
+
+  $('.ga-tracker a').each(function(){
+    var label = $(this).text();
+    var action = 'click';
+    var category = 'outbound';
+    var value = $(this).attr('href');
+
+    $(this).attr({'data-label': label, 'data-action': action});
+
+    //Additions
+    // Add click location
+    // Something for shop link clicks
+    // Shop could be handled by adding a shop class to the shop page
+    // ...
+
+    var trackOutboundLink = function(url, val) {
+      gtag('event', 'click', {
+        'event_category': val,
+        'event_label': url,
+        'event_value': val,
+        'transport_type': 'beacon',
+        'event_callback': function(){document.location = url;}
+      });
+    };
+
+    $(this).on('click', function(){
+      //trackOutboundLink()
+      var data_label = $(this).text();
+      var data_value = $(this).attr('href');
+      trackOutboundLink(data_value, data_label);
+      gtag('send', data_label, action, category);
+      return false;
+    });
+  }); 
+
+  var donate_href = $('.secondary-navigation ul li.donate a').attr('href');
+  console.log('Console Working');
+  console.log(donate_href);
+  $('.secondary-navigation ul li.donate a').attr('data-ga', donate_href);
+
 // $(window).scroll(function(){
 //   if($(window).scrollTop() > 150){
 //     $('header').addClass('fixed');

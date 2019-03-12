@@ -27,7 +27,7 @@
   );
 
   $page_titles = wp_list_pluck( get_pages($args2), 'post_title' );
-  var_dump($page_titles);
+  //var_dump($page_titles);
 
   $titles='';
   foreach($page_titles as $title){

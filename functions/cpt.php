@@ -66,6 +66,7 @@ function film_post_type() {
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
+		'rewrite' => array('slug' => 'films', 'with_front' => false)
 	);
 	register_post_type( 'films', $args );
 
@@ -204,6 +205,7 @@ function event_post_type() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
 		'show_in_rest'          => true,
+		'rewrite' => array('slug' => 'events', 'with_front' => false)
 	);
 	register_post_type( 'events', $args );
 
@@ -346,6 +348,7 @@ function resources_post_type() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
 		'show_in_rest'          => true,
+		'rewrite' => array('slug' => 'resources', 'with_front' => false)
 	);
 	register_post_type( 'resources', $args );
 
@@ -484,6 +487,7 @@ function community_post_type() {
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
 		'show_in_rest'          => true,
+		'rewrite' => array('slug' => 'community', 'with_front' => false)
 	);
 	register_post_type( 'community', $args );
 
