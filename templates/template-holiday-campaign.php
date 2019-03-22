@@ -3,6 +3,7 @@
 ?>
 <!-- Full version of banner with playable video -->
 <?php
+$campaign = get_field('campaign_description');
 	$player_type = get_field('h_prim_player_type');
    $background_img = get_field('h_pl_background_image');
    $background_image_url = $background_img['sizes']['background-fullscreen'];
@@ -19,7 +20,7 @@
    if($player_type == 'playable'){
 ?>
 
-<div class="welcome-gate large campaign full-video" >
+<div class="welcome-gate large campaign banner full-video" >
    <!-- <img src="<//?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt=""> -->
    <?php //if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
    <div class="welcome-gate-bg" style=" background-image:url('<?php echo $background_image_url; ?>');"></div>
@@ -129,14 +130,31 @@
 		$vm_url = $v_mp4['url'];
 		$v_webm = get_field('h_ap_video_webm');
 		$vw_url = $v_webm['url'];
+		$campaign_logo = get_field('hp_ap_campaign_logo');
+		$c_logo_url = $campaign_logo['sizes']['large'];
+		$c_logo_alt = $campaign_logo['alt'];
+		$campaign_title_text = get_field('h_ap_campaign_title_text');
+		$campaign_donate_text = get_field('h_ap_campaign_donate_btn_text');
+		$campaign_donate_link = get_field('h_ap_campaign_donate_button_link');
+		$google_click = get_field('h_ap_google_data_description');
+		
 ?>
-<div class="welcome-gate large">
+<div class="welcome-gate large campagin-banner" style="text-align:center;">
 		<?php if ($vm_url == '' && $vo_url == '' && $vw_url == ""){ ?>
 		<div class="welcome-gate-bg" style="background-image:url('<?php echo $background_image_url; ?> "></div>
 		<?php } ?>
 		<div class="pane">
-			<img src="<?php echo get_template_directory_uri(); ?>/img/everymothercounts_logo_primary_white_40in.png" alt="Every Mother Counts logo">
+			<?php if($campaign_logo != ''){ ?>
+			<img style="width:200px; height:auto;" src="<?php echo $c_logo_url; ?>" alt="<?php echo $c_logo_alt; ?>">
+			<?php } ?>
 			<div class="overlay" aria-hidden="true"></div>
+			<div class="campaign intro"><h1 class="hp-title"><?php echo $campaign_title_text ?></h1></div>
+<!-- 			<div class="campaign btn"><a class="trackview" href="<?php echo $campaign_donate_link; ?>" target="_blank" data-category="<?php echo $campaign; ?>" data-action="Click - <?php echo $google_click; ?>" data-ga="<?php echo $campaign ?> - <?php echo $google_click; ?>"><?php echo $campaign_donate_text; ?></a></div>
+ -->			<div class="campaign btn">
+ 					<a class="trackview" href="<?php echo $campaign_donate_link; ?>" target="_blank" data-category="<?php echo $campaign; ?>" data-action="Click - <?php echo $campaign_donate_text; ?>" data-value=" " data-label="<?php echo $google_click; ?>">
+						<?php echo $campaign_donate_text; ?>
+					</a>
+ 				</div>
 		</div>
 
 		<?php if ($vm_url != '' && $vo_url != '' && $vw_url != ""){ ?>
@@ -160,9 +178,25 @@
 	// $v_webm = get_field('video_webm');
 	// $vw_url = $v_webm['url'];
 	$l_page_callout = get_field('banner_callout_text');
-	$campaign = get_field('campaign_description');
+	
+	$intro_callout = get_field('intro_callout');
+	$intro_text = get_field('intro_text');
+	$order = get_field('intro_text_order');
 ?>
 <main id="content" class="landing holiday-campaign">
+	<?php if ($intro_callout != '' && $intro_text != '') { ?>
+	<div class="hp panel callout">
+		<div class="container">
+			<?php if ($order == 'text'){ ?>
+			<div class="hp intro"><?php echo $intro_text; ?></div>
+			<div class="hp intro-callout"><?php echo $intro_callout; ?></div>
+			<?php }else{ ?>
+			<div class="hp intro-callout"><?php echo $intro_callout; ?></div>
+			<div class="hp intro"><?php echo $intro_text; ?></div>
+			<?php } ?>
+		</div>
+	</div>
+	<?php } ?>
 <?php
 	if(have_rows('h_campaign_panel')):
 		while(have_rows('h_campaign_panel')):the_row();
@@ -206,6 +240,7 @@
 		$twocol_img_url = $twocol_img['sizes']['large'];
 		$twocol_img_alt = $twocol_img['alt'];
 		$two_col_google_data = get_sub_field('h_2up_google_click_description');
+		$two_col_google_value = get_sub_field('h_2up_google_click_value');
 		//echo $pb_layout;
 		if( $twocol_layout == 'image-second') {
 			//$partner_text = get_sub_field('partner_text');
@@ -218,7 +253,7 @@
 						<div class="hover">
 							<p><?php echo $twocol_hoverdesc; ?></p>
 							<p>
-								<a href="<?php echo $twocol_cta_link; ?>" data-qa="<?php echo $campaign ?> - <?php echo $google_data; ?>" target="_blank"><?php echo $twocol_cta_text; ?> </a>
+								<a class="trackview" href="<?php echo $twocol_cta_link; ?>" data-ga="<?php echo $campaign ?> - <?php echo $google_data; ?>" target="_blank"><?php echo $twocol_cta_text; ?> </a>
 						</div>
 					</div>
 					<div class="columns-4 offset-by-1 right-col">
@@ -242,7 +277,9 @@
 								<div class="content">
 									<h2 class="title"><?php echo $twocol_hoverdesc; ?></h2>
 									<h3 class="subtitle">
-										<a href="<?php echo $twocol_cta_link; ?>" data-qa="<?php echo $campaign ?> - <?php echo $google_data; ?>" target="_blank"><?php echo $twocol_cta_text; ?> </a>
+										<a class="trackview" href="<?php echo $twocol_cta_link; ?>" data-category="<?php echo $campaign; ?>" data-value="<?php echo $two_col_google_value; ?>" data-action="Click - <?php echo $two_col_google_data; ?>" data-label="<?php echo $two_col_google_data; ?>" data-label="<?php echo $two_col_google_data; ?>" target="_blank">
+											<?php echo $twocol_cta_text; ?> 
+										</a>
 									</h3>
 								</div>
 							</div>
@@ -264,7 +301,7 @@
 						<div class="hover">
 							<p><?php echo $twocol_hoverdesc; ?></p>
 							<p>
-								<a href="<?php echo $twocol_cta_link; ?>" data-qa="<?php echo $campaign ?> - <?php echo $google_data; ?>" target="_blank"><?php echo $twocol_cta_text; ?> </a>
+								<a class="trackview" href="<?php echo $twocol_cta_link; ?>" data-ga="<?php echo $campaign ?> - <?php echo $google_data; ?>" target="_blank"><?php echo $twocol_cta_text; ?> </a>
 						</div>
 					</div>
 				</div>
@@ -287,7 +324,9 @@
 								<div class="content">
 									<h2 class="title"><?php echo $twocol_hoverdesc; ?></h2>
 									<h3 class="subtitle">
-										<a href="<?php echo $twocol_cta_link; ?>" data-qa="<?php echo $campaign ?> - <?php echo $google_data; ?>" target="_blank"><?php echo $twocol_cta_text; ?> </a>
+										<a class="trackview" href="<?php echo $twocol_cta_link; ?>" data-category="<?php echo $campaign; ?>" data-value="<?php echo $two_col_google_value; ?>" data-action="Click - <?php echo $twocol_cta_text; ?>" data-label="<?php echo $two_col_google_data; ?>" target="_blank">
+											<?php echo $twocol_cta_text; ?> 
+										</a>									
 									</h3>
 								</div>
 							</div>
@@ -317,9 +356,9 @@
 	//$three_col_google_data = get_sub_field('h_3up_google_click_description');
 	//$three_col_block_type = get_sub_field('block_type');
 	$s_target = '';
-	if($s_external == true){
-		$s_target = 'target="_blank"';
-	}
+	// if($s_external == true){
+	// 	$s_target = 'target="_blank"';
+	// }
 
 	if(have_rows('3-column_block')):
 	?>
@@ -327,6 +366,7 @@
 	<?php
 		while(have_rows('3-column_block')):the_row();
 			$three_col_google_data = get_sub_field('h_3up_google_click_description');
+			$three_col_google_value = get_sub_field('h_3up_google_click_value');
 			$three_col_block_type = get_sub_field('block_type');
 			$three_col_bg_color = get_sub_field('h_3up_background_color');
 			$three_col_bg_image = get_sub_field('h_block_background_image');
@@ -352,7 +392,7 @@
 			<div class="hover">
 				<div class="wrapper">
 					<div class="content">
-						<a href="<?php echo $three_col_cta_link; ?>" target="_blank" data-qa="<?php echo $campaign ?> - <?php echo $three_col_google_data; ?>">
+						<a class="trackview" href="<?php echo $three_col_cta_link; ?>" target="_blank" data-value="<?php echo $three_col_google_value; ?>" data-category="<?php echo $campaign; ?>" data-action="Click - <?php echo $three_col_hover_title_text; ?>" data-label="<?php echo $three_col_google_data; ?>" data-ga="<?php echo $campaign ?> - <?php echo $three_col_google_data; ?>">
 							<h3 class="hc-title"><?php echo $three_col_hover_title_text; ?></h3>
 							<h2 class="hc-subtitle"><?php echo $three_col_hover_subtitle_text; ?></h2>
 						</a>
@@ -373,7 +413,7 @@
 				<div class="wrapper">
 					<div class="content">
 						<h2 class="description"><?php echo $three_col_hover_description; ?></h2>
-						<a class="cta" href="<?php echo $three_col_cta_link; ?>" target="_blank" data-qa="<?php echo $campaign ?> - <?php echo $three_col_google_data; ?>">
+						<a class="cta trackview" href="<?php echo $three_col_cta_link; ?>" target="_blank" data-value="<?php echo $three_col_google_value; ?>" data-category="<?php echo $campaign; ?>" data-action="Click - <?php echo $three_col_google_data; ?>" data-label="<?php echo $three_col_google_data; ?>" data-ga="<?php echo $campaign ?> - <?php echo $three_col_google_data; ?>">
 							<?php echo $three_col_cta_text;?>
 						</a>
 					</div>

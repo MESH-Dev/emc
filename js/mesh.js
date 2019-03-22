@@ -12,7 +12,7 @@ jQuery(document).ready(function($){
 
   $('.ga-tracker a').each(function(){
     var label = $(this).text();
-    var action = 'click';
+    var action = 'Click - Header Donate Link';
     var category = 'outbound';
     var value = $(this).attr('href');
 
@@ -30,7 +30,7 @@ jQuery(document).ready(function($){
         'event_label': url,
         'event_value': val,
         'transport_type': 'beacon',
-        'event_callback': function(){document.location = url;}
+        //'event_callback': function(){document.location = url;}
       });
     };
 
@@ -38,9 +38,11 @@ jQuery(document).ready(function($){
       //trackOutboundLink()
       var data_label = $(this).text();
       var data_value = $(this).attr('href');
+      console.log(data_label);
+      console.log(data_value);
       trackOutboundLink(data_value, data_label);
-      gtag('send', data_label, action, category);
-      return false;
+      //gtag('send', data_label, action, category);
+      //  return false;
     });
   }); 
 
@@ -48,6 +50,42 @@ jQuery(document).ready(function($){
   console.log('Console Working');
   console.log(donate_href);
   $('.secondary-navigation ul li.donate a').attr('data-ga', donate_href);
+
+  $('.trackview').each(function(){
+    //$(this).css({backgroundColor: 'red'});
+    //$(this).attr({'data-label': label, 'data-action': action});
+
+    var trackOutboundLink = function(url, cat, action) {
+      gtag('event', action, {
+        'event_category': cat,
+        'event_label': url,
+        //'event_value': val,
+        'transport_type': 'beacon',
+        //'event_callback': function(){document.location = loc;}
+      });
+    };
+
+    $(this).on('click', function(){
+      
+      //__ WHAT they clicked
+      var data_label = $(this).data('label');
+      //__ WHERE They clicked
+      var data_action = $(this).data('action');
+      //var data_value = $(this).data('value');
+      //__ WHAT is the campaign name
+      var data_category = $(this).data('category');
+      var data_loc = $(this).attr('href');
+      console.log('Label Value '+data_label);
+      console.log('Action Value '+data_action);
+      //console.log(data_value);
+      console.log('Category Value '+data_category);
+
+      trackOutboundLink(data_label, data_category, data_action);
+      //gtag('send', data_label, data_action, data_category);
+      //return false;
+    });
+
+  });
 
 // $(window).scroll(function(){
 //   if($(window).scrollTop() > 150){
@@ -240,7 +278,7 @@ $('.pins .pin').each(function(){
 
      //Force divs in homepage grid to be square
 //Setup variables to hold our sizes
-var gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp;
+var gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp, wh;
 var $mclk = 0;
 //Grab the width of each element
 function gi_resize(){
@@ -266,6 +304,7 @@ function gi_resize(){
   th = $('.ticker').outerHeight();
   nh = $('.top-nav').height();
   hh = (th + nh);
+  wh = $(window).height();
   // mi_h = $('.panel.map').height();
   // mi_w = $('.panel.map img').width();
   // mi_h = $('.panel.map img').height();
@@ -295,13 +334,13 @@ function gi_resize(){
   //return gi2, gi3, gi4;
 }
 //Run the function above at document ready and on a window resize event
- $(document).ready(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3,cp4, cp5, cp6, cp7, $wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp));
- $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp));
+ $(document).ready(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3,cp4, cp5, cp6, cp7, $wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp, wh));
+ $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp, wh));
 
 //Apply our widths to the height of selected elements either on load, or on resize
 function _resize(){
-  gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp);
-   $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7,$wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp));
+  gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7, $wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp, wh);
+   $(window).resize(gi_resize(gi2, gi3, gi4, gi5, gi6, gi7, cp3, cp4, cp5, cp6, cp7,$wW, hh, th, nh, mh,wg_w, wg_h, mi_w, mi_h, pp, wh));
 
  //  console.log("Width 2: "+gi2);
   // console.log("Width 3: "+gi3);
@@ -328,8 +367,8 @@ function _resize(){
   $('.grid-item.columns-4').css({height:cp4});
   //$('.welcome-gate.large').css({'height':'calc(100vh - ' + hh + 'px)', 'margin-top':hh});
   //$('.player-holder').css({'height':'calc(100vh - ' + hh + 'px)'});
-  $('.welcome-gate.interior').css({'margin-top':hh});
-  $('.welcome-gate.large').css({'margin-top':hh});
+  $('.welcome-gate.interior').css({'margin-top':hh, height:wh-hh});
+  $('.welcome-gate.large').css({'margin-top':hh, height:wh-hh});
   //$('.film-single').css({'margin-top':'calc(100vh - ' + hh + 'px)'});
   //$('.video-holder').css({height:(wg_h), width:(wg_w)});
   //$('.map_wrapper').css({height:mi_h, width:mi_w});
@@ -1785,5 +1824,7 @@ $('.popup-content').click(function(){
  $("img").bind("contextmenu",function(e){
         return false;
       });
+
+//$('#content img').unwrap('p');
 
 });

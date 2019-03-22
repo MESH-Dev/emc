@@ -1307,4 +1307,11 @@ function advanced_custom_search( $where, $wp_query ) {
  
 add_filter( 'posts_search', 'advanced_custom_search', 500, 2 );
 
+//Unrwap <P> tags from images in the Wordpress editor
+function filter_ptags_on_images($content){
+  return preg_replace('/<p>\s*(<a .*>)?\s*(<img .*\s*\/?>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
+}
+
+add_filter('acf_the_content', 'filter_ptags_on_images', 20);
+
 ?>

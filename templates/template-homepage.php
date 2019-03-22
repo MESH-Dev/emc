@@ -137,15 +137,15 @@
 			</div>
 			<?php 
 				$img_class= '';
-			if($s_title == '' && $s_text == ''){ 
+			if($s_title == '' && $s_excerpt == ''){ 
 					$img_class = 'has_ig';
 				}	
 					?>
-			<div class="feature-image has-background <?php echo $img_class; ?>">
+			<div class="feature-image mobile-hide has-background">
 				<img class="feature-image" src="<?php echo $story_img_url; ?>" alt="<?php echo $story_img_alt; ?>">
-				<?php if($s_title == '' && $s_text == ''){  ?>
-				<div class="has-background background" style="background-image:url(<?php echo $story_img_url; ?>);">
-				<?php } ?>
+				<?php //if($s_title == '' && $s_text == ''){  ?>
+				<div class="has-background background" style="background-image:url(<?php echo $story_img_url; ?>);"></div>
+				<?php //} ?>
 			</div>
 		</div>
 
